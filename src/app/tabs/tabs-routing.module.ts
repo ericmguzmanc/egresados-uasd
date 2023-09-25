@@ -8,12 +8,8 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: "vacantes",
-        loadChildren: () => import('../vacantes/vacantes.module').then(m => m.VacantesPageModule)
-      },
-      {
-        path: "mis-aplicaciones",
-        loadChildren: () => import('../mis-aplicaciones/mis-aplicaciones.module').then(m => m.MisAplicacionesPageModule)
+        path: "egresados",
+        loadChildren: () => import('../egresados/egresados.module').then(m => m.EgresadosPageModule)
       },
       {
         path: "configuracion",
@@ -21,14 +17,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/vacantes',
+        redirectTo: '/tabs/egresados',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/vacantes',
+    redirectTo: '/tabs/egresados',
     pathMatch: 'full'
   },
 ];

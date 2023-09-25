@@ -6,6 +6,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+  {
+    path: 'egresado-details',
+    loadChildren: () => import('./egresado-details/egresado-details.module').then( m => m.EgresadoDetailsPageModule)
+  },
   // {
   //   path: 'vacantes',
   //   loadChildren: () => import('./vacantes/vacantes.module').then( m => m.VacantesPageModule)

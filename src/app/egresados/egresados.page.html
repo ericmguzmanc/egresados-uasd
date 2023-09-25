@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      Vacantes
+      Egresados
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button id="open-filtrado-modal">
@@ -15,7 +15,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="primary">
-      <ion-title size="large">Vacantes</ion-title>
+      <ion-title size="large">Egresados</ion-title>
       <ion-buttons slot="primary">
         <ion-button id="open-filtrado-modal">
           <!-- Filtrar -->
@@ -25,7 +25,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Vacantes"></app-explore-container>
+  <app-egresados-list></app-egresados-list>
 
   <!-- Filrar Modal -->
   <ion-modal trigger="open-filtrado-modal" (willDismiss)="onWillDismiss($event)">
@@ -35,7 +35,7 @@
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancelar</ion-button>
           </ion-buttons>
-          <ion-title>Filtar Vacantes</ion-title>
+          <ion-title>Filtar Egresados</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
           </ion-buttons>

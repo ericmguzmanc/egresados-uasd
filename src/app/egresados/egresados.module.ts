@@ -4,19 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MisAplicacionesPageRoutingModule } from './mis-aplicaciones-routing.module';
+import { EgresadosPageRoutingModule } from './egresados-routing.module';
 
-import { MisAplicacionesPage } from './mis-aplicaciones.page';
+import { EgresadosPage } from './egresados.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { EgresadosListComponentModule } from '../egresados-list/egresados-list.module';
 
 @NgModule({
   imports: [
+    IonicModule,
     CommonModule,
     FormsModule,
-    IonicModule,
     ExploreContainerComponentModule,
-    MisAplicacionesPageRoutingModule
+    EgresadosPageRoutingModule,
+    EgresadosListComponentModule
   ],
-  declarations: [MisAplicacionesPage]
+  declarations: [EgresadosPage]
 })
-export class MisAplicacionesPageModule {}
+export class EgresadosPageModule {}
