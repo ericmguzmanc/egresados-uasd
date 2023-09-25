@@ -8,24 +8,30 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: "egresados",
-        loadChildren: () => import('../egresados/egresados.module').then(m => m.EgresadosPageModule)
+        path: 'egresados',
+        loadChildren: () =>
+          import('../egresados/egresados.module').then(
+            (m) => m.EgresadosPageModule
+          ),
       },
       {
-        path: "configuracion",
-        loadChildren: () => import('../configuracion/configuracion.module').then(m => m.ConfiguracionPageModule)
+        path: 'configuracion',
+        loadChildren: () =>
+          import('../configuracion/configuracion.module').then(
+            (m) => m.ConfiguracionPageModule
+          ),
       },
       {
         path: '',
         redirectTo: '/tabs/egresados',
-        pathMatch: 'full'
+        pathMatch: 'full',
       }
-    ]
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs/egresados',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container a {
+    text-decoration: none;
+    color: white;
+}
+.container a:hover{
+    text-decoration: underline;
+    color: blue;
+}

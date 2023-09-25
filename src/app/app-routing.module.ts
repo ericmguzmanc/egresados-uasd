@@ -9,7 +9,11 @@ const routes: Routes = [
   {
     path: 'egresado-details',
     loadChildren: () => import('./egresado-details/egresado-details.module').then( m => m.EgresadoDetailsPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
+
   // {
   //   path: 'vacantes',
   //   loadChildren: () => import('./vacantes/vacantes.module').then( m => m.VacantesPageModule)
