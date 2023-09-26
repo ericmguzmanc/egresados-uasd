@@ -8,7 +8,7 @@ import { EgresadosPageRoutingModule } from './egresados-routing.module';
 
 import { EgresadosPage } from './egresados.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { EgresadosListComponentModule } from '../egresados-list/egresados-list.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { EgresadosListComponentModule } from '../egresados-list/egresados-list.m
     FormsModule,
     ExploreContainerComponentModule,
     EgresadosPageRoutingModule,
-    EgresadosListComponentModule
+    SharedModule,
   ],
   declarations: [EgresadosPage]
 })

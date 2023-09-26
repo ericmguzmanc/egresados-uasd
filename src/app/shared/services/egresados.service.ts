@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { Egresado } from '../interfaces/egresado.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EgresadosService {
+
+  json_server_url = 'http://localhost:3006';
+  egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado'
+  
+  constructor(private http: HttpClient) { }
+
+  getEgresados() {
+    return this.http.get<Egresado[]>(`${this.json_server_url}/egresado?${this.egresado_relationships}`)
+  }
+
+}
