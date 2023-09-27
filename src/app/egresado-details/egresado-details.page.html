@@ -35,9 +35,36 @@
             <span>Fecha de Nacimiento</span>
             <span class="muted spaced-text">{{egresado.FechaNac | date}}</span>
           </ion-row>
+          <ion-row></ion-row>
+          <ion-row>
+            <span> Genero: </span>
+            <span class="muted  ion-margin-horizontal">{{egresado.Genero}}</span>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <ion-card>
+      <!--Card-->
+      <ion-card-header>
+        <ion-card-title>Experiencias</ion-card-title>
+        <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2>{{this.helperService.getLatestPosition(egresado)}}</h2>
+              <span>{{egresado.FechaNac | date}} - {{egresado.FechaNac | date}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <h2>{{this.helperService.getLatestPosition(egresado)}}</h2>
+            <span>{{egresado.FechaNac | date}} - {{egresado.FechaNac | date}}</span>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
   </ion-content>
 
 </ion-content>
