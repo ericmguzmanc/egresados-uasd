@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'egresado-details/:id',
     loadChildren: () => import('./egresado-details/egresado-details.module').then( m => m.EgresadoDetailsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
+  }
 ];
 @NgModule({
   imports: [
