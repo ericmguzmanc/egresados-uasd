@@ -22,25 +22,47 @@
       </ion-thumbnail>
       <ion-label>Portal de Egresados (UASD)</ion-label>
     </ion-item>
-    <form class="ion-margin">
+    <form class="ion-margin" [formGroup]="loginForm">
       <ion-input
         type="email"
         label="Email"
         label-placement="floating"
         fill="solid"
+        name="email"
         placeholder="Enter Email"
+        formControlName="email"
       ></ion-input>
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="danger"
+      >
+        <div *ngIf="email.errors?.['required']">El Email es Reqerido.</div>
+        <div *ngIf="email.errors?.['email']">El correo debe ser tipo Email</div>
+      </div>
       <br />
+
       <ion-input
         type="password"
         label="password"
+        name="password"
         label-placement="floating"
         fill="solid"
         placeholder="Enter password"
+        formControlName="password"
       ></ion-input>
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="danger"
+      >
+        <div *ngIf="password.errors?.['required']">
+          El password es Reqerido.
+        </div>
+      </div>
       <br />
       <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox>
-      <ion-button type="sumit" expand="block">Iniciar sesión</ion-button>
+      <ion-button type="button" (click)="login()" expand="block"
+        >Iniciar sesión</ion-button
+      >
       <a href="#">Olvidé mi contraseña</a>
     </form>
   </div>

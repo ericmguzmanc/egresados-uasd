@@ -5,7 +5,7 @@
 }
 .container a {
     text-decoration: none;
-    color: white;
+    color: grey;
 }
 .container a:hover{
     text-decoration: underline;
@@ -14,4 +14,7 @@
 
 .img{
   object-fit: fill;
+}
+.danger{
+  color: #FF4961;
 }
