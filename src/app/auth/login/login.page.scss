@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container a {
+    text-decoration: none;
+    color: grey;
+}
+.container a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+.img{
+  object-fit: fill;
+}
+.danger{
+  color: #FF4961;
+}
