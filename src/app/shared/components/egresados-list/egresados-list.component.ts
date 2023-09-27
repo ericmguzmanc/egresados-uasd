@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EgresadosService } from '../../services/egresados.service';
 import { Egresado } from '../../interfaces/egresado.interface';
+import { HelperService } from '../../services/helper.service';
 
 @Component({
   selector: 'app-egresados-list',
@@ -10,20 +11,16 @@ import { Egresado } from '../../interfaces/egresado.interface';
 export class EgresadosListComponent  implements OnInit {
   egresados: Egresado[] = [];
 
-  constructor(private egresadosService: EgresadosService) { }
+  constructor(
+    private egresadosService: EgresadosService,
+    public helperService: HelperService
+  ) { }
 
   ngOnInit() {
     this.egresadosService.getEgresados()
       .subscribe((egresados: Egresado[]) => {
         this.egresados = egresados;
       });
-  }
-
-  getLatestPosition(egresado: Egresado): string | undefined {
-    const { experienciaLaboralEgresado } = egresado;
-    const latestPosition = experienciaLaboralEgresado?.filter(ex => !ex.FechaSal)[0];
-
-    return latestPosition ? latestPosition?.posicion : "No Tiene experiencia Laboral";
   }
 
 }

@@ -22,7 +22,8 @@
       "Cedula": "40234485943",
       "Pasaporte": "RD588391",
       "FechaNac": "1997-06-21",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": "assets/img/profile/1.jpeg"
     },
     {
       "id": 2,
@@ -32,7 +33,8 @@
       "Cedula": "402399201893",
       "Pasaporte": null,
       "FechaNac": "1996-08-23",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": "assets/img/profile/2.jpeg"
     },
     {
       "id": 3,
@@ -42,7 +44,8 @@
       "Cedula": "40250038291",
       "Pasaporte": null,
       "FechaNac": "1999-02-05",
-      "Genero": "Femenino"
+      "Genero": "Femenino",
+      "profilePicUrl": "assets/img/profile/3.jpeg"
     },
     {
       "id": 4,
@@ -52,7 +55,8 @@
       "Cedula": "094588293404",
       "Pasaporte": "RD79186",
       "FechaNac": "1998-02-11",
-      "Genero": "Femenino"
+      "Genero": "Femenino",
+      "profilePicUrl": null
     },
     {
       "id": 5,
@@ -62,7 +66,8 @@
       "Cedula": "00128830498",
       "Pasaporte": "RD77894",
       "FechaNac": "1999-04-22",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": null
     },
     {
       "id": 6,
@@ -72,7 +77,8 @@
       "Cedula": "00148822736",
       "Pasaporte": null,
       "FechaNac": "1994-06-01",
-      "Genero": "Femenino"
+      "Genero": "Femenino",
+      "profilePicUrl": null
     },
     {
       "id": 7,
@@ -82,7 +88,8 @@
       "Cedula": "00137722638",
       "Pasaporte": null,
       "FechaNac": "19973-02-28",
-      "Genero": "Femenino"
+      "Genero": "Femenino",
+      "profilePicUrl": null
     },
     {
       "id": 8,
@@ -92,7 +99,8 @@
       "Cedula": "40248877654",
       "Pasaporte": null,
       "FechaNac": "1997-07-27",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": null
     },
     {
       "id": 9,
@@ -102,7 +110,8 @@
       "Cedula": "40217733228",
       "Pasaporte": null,
       "FechaNac": "1993-06-16",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": null
     },
     {
       "id": 10,
@@ -112,7 +121,8 @@
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
       "FechaNac": "1999-09-09",
-      "Genero": "Masculino"
+      "Genero": "Masculino",
+      "profilePicUrl": null
     }
   ],
   "experienciaLaboralEgresado": [
