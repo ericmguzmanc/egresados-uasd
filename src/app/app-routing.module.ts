@@ -7,21 +7,9 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'egresado-details',
+    path: 'egresado-details/:id',
     loadChildren: () => import('./egresado-details/egresado-details.module').then( m => m.EgresadoDetailsPageModule)
   },
-  // {
-  //   path: 'vacantes',
-  //   loadChildren: () => import('./vacantes/vacantes.module').then( m => m.VacantesPageModule)
-  // },
-  // {
-  //   path: 'mis-aplicaciones',
-  //   loadChildren: () => import('./mis-aplicaciones/mis-aplicaciones.module').then( m => m.MisAplicacionesPageModule)
-  // },
-  // {
-  //   path: 'configuracion',
-  //   loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
-  // }
 ];
 @NgModule({
   imports: [
