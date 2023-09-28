@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
         },
       });
       this.showLoading();
-      this.Ruter.navigateByUrl('/');
+      this.router.navigateByUrl('/');
       this.loginForm.reset();
     } else {
       this.loginForm.markAllAsTouched();
