@@ -6,9 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-import { LoginService } from '../../service/auth/login.service';
+import { LoginService } from '../../shared/services/login.service';
 import { Router } from '@angular/router';
-import { LoginRequest } from 'src/app/service/auth/loginRequest';
+import { LoginRequest } from 'src/app/shared/interfaces/login.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   constructor(
     private loadingCtrl: LoadingController,
     private loginService: LoginService,
-    private Ruter : Router
+    private Ruter: Router
   ) {}
 
   ngOnInit() {}
@@ -43,12 +43,12 @@ export class LoginPage implements OnInit {
           console.log(data);
         },
         error: (err) => {
-          console.error(err)
+          console.error(err);
         },
         complete: () => {
-          console.info('complete')
+          console.info('complete');
           //this.loadingCtrl.dismiss();
-        }
+        },
       });
       this.showLoading();
       this.Ruter.navigateByUrl('/');
@@ -62,7 +62,7 @@ export class LoginPage implements OnInit {
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Dismissing after 3 seconds...',
-      duration:3000
+      duration: 3000,
     });
 
     loading.present();

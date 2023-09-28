@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
+      <ion-back-button
+        defaultHref="/"
+        (click)="onBackButtonClick()"
+      ></ion-back-button>
       <ion-title>Detalle del Egresado</ion-title>
     </ion-buttons>
   </ion-toolbar>
@@ -23,12 +26,19 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-img src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+          <ion-img
+            src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"
+          ></ion-img>
         </ion-col>
         <ion-col>
           <ion-row>
-            <h3>{{egresado.Nombre}} {{egresado.ApellidoPaterno}} {{egresado.ApellidoMaterno}}</h3>
-            <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
+            <h3>
+              {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
+              {{egresado.ApellidoMaterno}}
+            </h3>
+            <span class="muted spaced-text"
+              >{{this.helperService.getLatestPosition(egresado)}}</span
+            >
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
@@ -38,13 +48,13 @@
           <ion-row></ion-row>
           <ion-row>
             <span> Genero: </span>
-            <span class="muted  ion-margin-horizontal">{{egresado.Genero}}</span>
+            <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
           </ion-row>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <!--Card-->
     <ion-card>
-      <!--Card-->
       <ion-card-header>
         <ion-card-title>Experiencias</ion-card-title>
         <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
@@ -52,19 +62,33 @@
 
       <ion-card-content>
         <ion-grid>
-          <ion-row>
+          <ion-row
+            *ngFor="let experiencia of egresado.experienciaLaboralEgresado"
+          >
             <ion-col>
-              <h2>{{this.helperService.getLatestPosition(egresado)}}</h2>
-              <span>{{egresado.FechaNac | date}} - {{egresado.FechaNac | date}}</span>
+              <ion-row>
+                <span>{{experiencia.posicion}}</span>
+              </ion-row>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <h2>{{this.helperService.getLatestPosition(egresado)}}</h2>
-            <span>{{egresado.FechaNac | date}} - {{egresado.FechaNac | date}}</span>
-          </ion-row>
+          <ion-row> </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
-  </ion-content>
+    <!--Card 2-->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Educacion</ion-card-title>
+      </ion-card-header>
 
+      <!--<ion-card-content *ngFor=" let educacion of egresado.educacion">
+        <h3>{{educacion.Universidad}} </h3>
+      </ion-card-content>-->
+    </ion-card>
+    <ion-grid  >
+      <ion-row >
+        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">{{idiaomas.idioma}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
 </ion-content>
