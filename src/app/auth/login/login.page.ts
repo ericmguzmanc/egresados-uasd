@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   constructor(
     private location: Location,
     private loginService: LoginService,
-    private Ruter: Router,
+    private router: Router,
     private loadingController: LoadingController
   ) {}
 
