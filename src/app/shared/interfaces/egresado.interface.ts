@@ -16,13 +16,14 @@ export interface Egresado {
   // ExperienciaLaboral
   experienciaLaboralEgresado?: ExperienciaLaboral[];
   // Educacion
-  educacionEgresado?: Educacion[];
+  educacion?: Educacion[];
   // Contacto
   contacto?: Contacto[];
 } 
 
 export interface ExperienciaLaboral {
   EgresadoId?: number;
+  empresa?: string;
   posicion?: string;
   Salario?: number;
   FechaEntr?: string;

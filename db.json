@@ -273,8 +273,8 @@
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Licenciatura en Informática",
-      "NivelCarrera": "Licenciatura"
+      "Titulo": "Licenciatura en Informática",
+      "TipoTitulo": "Licenciatura"
     },
     {
       "id": 2,
@@ -282,8 +282,8 @@
       "Universidad": "Universidad Tecnológica de Santiago",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Igeniería de Sistemas",
-      "NivelCarrera": "Ingeniería"
+      "Titulo": "Igeniería de Sistemas",
+      "TipoTitulo": "Ingeniería"
     },
     {
       "id": 3,
@@ -291,8 +291,8 @@
       "Universidad": "Universidad Tecnológica de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Ingeniería de Software",
-      "NivelCarrera": "Ingeniería"
+      "Titulo": "Ingeniería de Software",
+      "TipoTitulo": "Ingeniería"
     },
     {
       "id": 4,
@@ -300,8 +300,8 @@
       "Universidad": "Universidad Tecnológica de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Igeniería de Sistemas",
-      "NivelCarrera": "Ingeniería"
+      "Titulo": "Igeniería de Sistemas",
+      "TipoTitulo": "Ingeniería"
     },
     {
       "id": 5,
@@ -309,8 +309,8 @@
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Licenciatura en Informática",
-      "NivelCarrera": "Licenciatura"
+      "Titulo": "Licenciatura en Informática",
+      "TipoTitulo": "Licenciatura"
     },
     {
       "id": 6,
@@ -318,8 +318,8 @@
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Licenciatura en Informática",
-      "NivelCarrera": "Licenciatura"
+      "Titulo": "Licenciatura en Informática",
+      "TipoTitulo": "Licenciatura"
     },
     {
       "id": 7,
@@ -327,8 +327,8 @@
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
-      "carrera": "Licenciatura en Informática",
-      "NivelCarrera": "Licenciatura"
+      "Titulo": "Licenciatura en Informática",
+      "TipoTitulo": "Licenciatura"
     }
   ],
   "carrera": [
@@ -424,6 +424,7 @@
       "idiomaId": 1,
       "idioma": "Español"
     }
+    
   ],
   "educacion_deprecated": [
     {

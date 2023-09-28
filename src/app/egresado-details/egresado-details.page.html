@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
+      <ion-back-button
+        defaultHref="/"
+        (click)="onBackButtonClick()"
+      ></ion-back-button>
       <ion-title>Detalle del Egresado</ion-title>
     </ion-buttons>
   </ion-toolbar>
@@ -23,21 +26,105 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-img src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+          <ion-img
+            src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"
+          ></ion-img>
         </ion-col>
         <ion-col>
           <ion-row>
-            <h3>{{egresado.Nombre}} {{egresado.ApellidoPaterno}} {{egresado.ApellidoMaterno}}</h3>
-            <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
+            <h3>
+              {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
+              {{egresado.ApellidoMaterno}}
+            </h3>
+            <span class="muted spaced-text"
+              >{{this.helperService.getLatestPosition(egresado)}}</span
+            >
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
             <span>Fecha de Nacimiento</span>
             <span class="muted spaced-text">{{egresado.FechaNac | date}}</span>
           </ion-row>
+          <ion-row></ion-row>
+          <ion-row>
+            <span> Genero: </span>
+            <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!--Card-->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Experiencias</ion-card-title>
+        <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row
+            *ngFor="let experiencia of egresado.experienciaLaboralEgresado"
+          >
+            <ion-col>
+              <ion-row>
+                <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
+                <span
+                  >{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
+                  'Actualidad' }}</span
+                >
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row> </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <!--Card 2-->
+    <ion-card *ngFor=" let educacion of egresado.educacion">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="book"></ion-icon>
+          Educacion
+        </ion-card-title>
+        <ion-card-subtitle>{{educacion.TipoTitulo}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h3>{{educacion.Universidad}}</h3>
+        <ion-text>
+          <span>{{educacion.Titulo}}</span>
+          <br />
+          <span
+            >{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
+          </span>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+    <div class="ion-text-center titulo">
+      <h3>Idiomas</h3>
+    </div>
+    <ion-grid class="idioma">
+      <ion-row>
+        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
+          <ion-chip>
+            <ion-icon name="chatbubbles-outline" color="primary"></ion-icon>
+            <ion-label>{{idiaomas.idioma}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="ion-text-center titulo">
+      <h3>Nacionalidad</h3>
+    </div>
+    <ion-grid class="idioma">
+      <ion-row>
+        <ion-col *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
+          <ion-chip>
+            <ion-icon name="flag-outline" color="primary"></ion-icon>
+            <ion-label>{{nacionalidad.nacionalidad}}</ion-label>
+          </ion-chip>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
-
 </ion-content>
