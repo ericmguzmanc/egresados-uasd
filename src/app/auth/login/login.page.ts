@@ -8,7 +8,7 @@ import {
 import { LoadingController } from '@ionic/angular';
 import { LoginService } from '../../shared/services/login.service';
 import { Router } from '@angular/router';
-import { LoginRequest } from 'src/app/shared/interfaces/login.interface';
+import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
