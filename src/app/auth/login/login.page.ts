@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { LoginService } from '../../shared/services/login.service';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
+import { Location } from '@angular/common';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,9 +19,10 @@ export class LoginPage implements OnInit {
   });
 
   constructor(
-    private loadingCtrl: LoadingController,
+    private location: Location,
     private loginService: LoginService,
-    private Ruter: Router
+    private Ruter: Router,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -60,11 +59,15 @@ export class LoginPage implements OnInit {
   }
 
   async showLoading() {
-    const loading = await this.loadingCtrl.create({
+    const loading = await this.loadingController.create({
       message: 'Dismissing after 3 seconds...',
       duration: 3000,
     });
 
     loading.present();
+  }
+
+  onBackButtonClick(): void {
+    this.location.back();
   }
 }
