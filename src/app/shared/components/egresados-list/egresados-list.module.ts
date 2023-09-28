@@ -6,12 +6,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { EgresadosListComponent } from './egresados-list.component';
 import { EgresadosService } from '../../services/egresados.service';
+import { HelperService } from '../../services/helper.service';
 
 @NgModule({
   declarations: [EgresadosListComponent],
   exports: [EgresadosListComponent],
   providers: [
-    EgresadosService
+    EgresadosService,
+    HelperService
   ],
   imports: [CommonModule, FormsModule, IonicModule],
 })
