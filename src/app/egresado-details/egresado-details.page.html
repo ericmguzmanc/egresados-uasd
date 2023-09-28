@@ -1,44 +1,39 @@
+<!--Header-->
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/"
-        (click)="onBackButtonClick()"
-      ></ion-back-button>
+      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
       <ion-title>Detalle del Egresado</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<!--Conten-->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Detalle del Egresado</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <!-- content -->
+  <!-- content Egresado -->
   <ion-content *ngIf="loadingEgresado">
     <ion-spinner name="crescent"></ion-spinner>
   </ion-content>
-
   <ion-content *ngIf="!loadingEgresado">
+    <!--Grid -->
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-img
-            src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"
-          ></ion-img>
+          <!--Imagen De perfil-->
+          <ion-img src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
         </ion-col>
+        <!--Informacion Personal-->
         <ion-col>
           <ion-row>
             <h3>
               {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
               {{egresado.ApellidoMaterno}}
             </h3>
-            <span class="muted spaced-text"
-              >{{this.helperService.getLatestPosition(egresado)}}</span
-            >
+            <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
@@ -53,7 +48,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <!--Card-->
+    <!--Card Experiencia-->
     <ion-card>
       <ion-card-header>
         <ion-card-title>Experiencias</ion-card-title>
@@ -62,16 +57,12 @@
 
       <ion-card-content>
         <ion-grid>
-          <ion-row
-            *ngFor="let experiencia of egresado.experienciaLaboralEgresado"
-          >
+          <ion-row *ngFor="let experiencia of egresado.experienciaLaboralEgresado">
             <ion-col>
               <ion-row>
                 <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
-                <span
-                  >{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
-                  'Actualidad' }}</span
-                >
+                <span>{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
+                  'Actualidad' }}</span>
               </ion-row>
             </ion-col>
           </ion-row>
@@ -79,7 +70,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <!--Card 2-->
+    <!--Card Educacion-->
     <ion-card *ngFor=" let educacion of egresado.educacion">
       <ion-card-header>
         <ion-card-title>
@@ -94,12 +85,12 @@
         <ion-text>
           <span>{{educacion.Titulo}}</span>
           <br />
-          <span
-            >{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
+          <span>{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
           </span>
         </ion-text>
       </ion-card-content>
     </ion-card>
+    <!--Seccion Idioma-->
     <div class="ion-text-center titulo">
       <h3>Idiomas</h3>
     </div>
@@ -113,6 +104,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <!-- Seccion Nacionalidad -->
     <div class="ion-text-center titulo">
       <h3>Nacionalidad</h3>
     </div>
@@ -126,5 +118,30 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <!--Contactos-->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="call"></ion-icon>
+          Contactos
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content >
+        <ion-grid>
+          <ion-row *ngFor="let contactos of egresado.contacto">
+            <ion-col>
+                <h4>{{contactos.tipo}}</h4>
+                <span>{{contactos.valor}}</span>
+            </ion-col>
+            <!--<ion-col>
+              <h4>
+                Email
+              </h4>
+              <span>{{contactos.valor}}</span>
+            </ion-col>-->
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
   </ion-content>
 </ion-content>

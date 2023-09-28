@@ -1,4 +1,4 @@
-import { Contacto } from './contacto.interface';
+
 
 export interface Egresado {
   id?: number;
@@ -69,3 +69,11 @@ export interface Idioma {
   egresadoId?: number,
   idioma?: string;
 }
+
+export interface Contacto {
+  id: number,
+  egresadoId?: number,
+  tipo?: string;
+  valor?: string;
+} 
+
