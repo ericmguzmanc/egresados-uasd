@@ -100,23 +100,31 @@
         </ion-text>
       </ion-card-content>
     </ion-card>
+    <div class="ion-text-center titulo">
+      <h3>Idiomas</h3>
+    </div>
     <ion-grid class="idioma">
       <ion-row>
-        <ion-item>
-          <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
-            <ion-chip>
-              <ion-icon name="chatbubbles" color="primary"></ion-icon>
-              <ion-label>{{idiaomas.idioma}}</ion-label>
-            </ion-chip>
-          </ion-col>
-        </ion-item>
+        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
+          <ion-chip>
+            <ion-icon name="chatbubbles-outline" color="primary"></ion-icon>
+            <ion-label>{{idiaomas.idioma}}</ion-label>
+          </ion-chip>
+        </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-list [inset]="true" class="ion-text-center">
-      <h2>Nacionalidad</h2>
-      <ion-item *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
-        <ion-label>{{nacionalidad.nacionalidad}}</ion-label>
-      </ion-item>
-    </ion-list>
+    <div class="ion-text-center titulo">
+      <h3>Nacionalidad</h3>
+    </div>
+    <ion-grid class="idioma">
+      <ion-row>
+        <ion-col *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
+          <ion-chip>
+            <ion-icon name="flag-outline" color="primary"></ion-icon>
+            <ion-label>{{nacionalidad.nacionalidad}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
 </ion-content>
