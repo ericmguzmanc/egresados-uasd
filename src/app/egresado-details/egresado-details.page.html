@@ -67,9 +67,10 @@
           >
             <ion-col>
               <ion-row>
-                <span>{{experiencia.empresa}} - {{experiencia.posicion}}</span>
-                <span 
-                  >{{experiencia.FechaEntr }} | {{experiencia.FechaSal || 'Actualidad' }}</span
+                <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
+                <span
+                  >{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
+                  'Actualidad' }}</span
                 >
               </ion-row>
             </ion-col>
@@ -79,24 +80,43 @@
       </ion-card-content>
     </ion-card>
     <!--Card 2-->
-    <ion-card>
+    <ion-card *ngFor=" let educacion of egresado.educacion">
       <ion-card-header>
-        <ion-card-title>Educacion</ion-card-title>
+        <ion-card-title>
+          <ion-icon name="book"></ion-icon>
+          Educacion
+        </ion-card-title>
+        <ion-card-subtitle>{{educacion.TipoTitulo}}</ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content *ngFor=" let educacion of egresado.educacion">
+      <ion-card-content>
         <h3>{{educacion.Universidad}}</h3>
+        <ion-text>
+          <span>{{educacion.Titulo}}</span>
+          <br />
+          <span
+            >{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
+          </span>
+        </ion-text>
       </ion-card-content>
     </ion-card>
-    <ion-grid>
+    <ion-grid class="idioma">
       <ion-row>
-        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
-          <ion-chip>
-            <ion-icon name="chatbubbles-outline" color="primary"></ion-icon>
-            <ion-label>{{idiaomas.idioma}}</ion-label>
-          </ion-chip>
-        </ion-col>
+        <ion-item>
+          <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
+            <ion-chip>
+              <ion-icon name="chatbubbles" color="primary"></ion-icon>
+              <ion-label>{{idiaomas.idioma}}</ion-label>
+            </ion-chip>
+          </ion-col>
+        </ion-item>
       </ion-row>
     </ion-grid>
+    <ion-list [inset]="true" class="ion-text-center">
+      <h2>Nacionalidad</h2>
+      <ion-item *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
+        <ion-label>{{nacionalidad.nacionalidad}}</ion-label>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-content>
