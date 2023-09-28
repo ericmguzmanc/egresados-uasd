@@ -29,16 +29,22 @@
         <!--Informacion Personal-->
         <ion-col>
           <ion-row>
-            <h3>
-              {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
-              {{egresado.ApellidoMaterno}}
-            </h3>
-            <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
+            <ion-text>
+              <h3>
+                <ion-icon name="person"></ion-icon>
+                {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
+                {{egresado.ApellidoMaterno}}
+              </h3>
+              <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
+            </ion-text>
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
-            <span>Fecha de Nacimiento</span>
-            <span class="muted spaced-text">{{egresado.FechaNac | date}}</span>
+            <ion-text>
+              <span>Fecha de Nacimiento</span>
+              <br>
+              <span class="muted spaced-text">{{egresado.FechaNac | date}}</span>
+            </ion-text>
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
@@ -60,9 +66,11 @@
           <ion-row *ngFor="let experiencia of egresado.experienciaLaboralEgresado">
             <ion-col>
               <ion-row>
-                <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
-                <span>{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
-                  'Actualidad' }}</span>
+                <ion-text>
+                  <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
+                  <span>{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
+                    'Actualidad' }}</span>
+                </ion-text>
               </ion-row>
             </ion-col>
           </ion-row>
@@ -81,9 +89,9 @@
       </ion-card-header>
 
       <ion-card-content>
-        <h3>{{educacion.Universidad}}</h3>
+        <h3>{{educacion.Titulo}}</h3>
         <ion-text>
-          <span>{{educacion.Titulo}}</span>
+          <span>{{educacion.Universidad}}</span>
           <br />
           <span>{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
           </span>
@@ -92,7 +100,7 @@
     </ion-card>
     <!--Seccion Idioma-->
     <div class="ion-text-center titulo">
-      <h3>Idiomas</h3>
+      <h3><ion-icon name="language"></ion-icon> Idiomas</h3>
     </div>
     <ion-grid class="idioma">
       <ion-row>
@@ -106,7 +114,7 @@
     </ion-grid>
     <!-- Seccion Nacionalidad -->
     <div class="ion-text-center titulo">
-      <h3>Nacionalidad</h3>
+      <h3><ion-icon name="globe-outline"></ion-icon> Nacionalidad</h3>
     </div>
     <ion-grid class="idioma">
       <ion-row>
@@ -126,12 +134,12 @@
           Contactos
         </ion-card-title>
       </ion-card-header>
-      <ion-card-content >
+      <ion-card-content>
         <ion-grid>
           <ion-row *ngFor="let contactos of egresado.contacto">
             <ion-col>
-                <h4>{{contactos.tipo}}</h4>
-                <span>{{contactos.valor}}</span>
+              <h4>{{contactos.tipo}}</h4>
+              <span>{{contactos.valor}}</span>
             </ion-col>
           </ion-row>
         </ion-grid>
