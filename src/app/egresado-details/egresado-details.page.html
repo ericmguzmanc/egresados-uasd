@@ -67,7 +67,10 @@
           >
             <ion-col>
               <ion-row>
-                <span>{{experiencia.posicion}}</span>
+                <span>{{experiencia.empresa}} - {{experiencia.posicion}}</span>
+                <span 
+                  >{{experiencia.FechaEntr }} | {{experiencia.FechaSal || 'Actualidad' }}</span
+                >
               </ion-row>
             </ion-col>
           </ion-row>
@@ -81,13 +84,18 @@
         <ion-card-title>Educacion</ion-card-title>
       </ion-card-header>
 
-      <!--<ion-card-content *ngFor=" let educacion of egresado.educacion">
-        <h3>{{educacion.Universidad}} </h3>
-      </ion-card-content>-->
+      <ion-card-content *ngFor=" let educacion of egresado.educacion">
+        <h3>{{educacion.Universidad}}</h3>
+      </ion-card-content>
     </ion-card>
-    <ion-grid  >
-      <ion-row >
-        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">{{idiaomas.idioma}}</ion-col>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
+          <ion-chip>
+            <ion-icon name="chatbubbles-outline" color="primary"></ion-icon>
+            <ion-label>{{idiaomas.idioma}}</ion-label>
+          </ion-chip>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>
