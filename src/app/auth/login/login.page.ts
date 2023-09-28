@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

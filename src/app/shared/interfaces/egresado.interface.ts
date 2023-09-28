@@ -2,13 +2,14 @@ import { Contacto } from './contacto.interface';
 
 export interface Egresado {
   id?: number;
-  Nombre: string;
-  ApellidoPaterno: string;
-  ApellidoMaterno: string;
+  Nombre?: string;
+  ApellidoPaterno?: string;
+  ApellidoMaterno?: string;
   Cedula?: string;
   Pasaporte?: string;
   Genero?: string;
   FechaNac?: string;
+  profilePicUrl?: string;
   // Nacionalidad
   nacionalidadEgresado?: Nacionalidad[];
   idiomaEgresado?: Idioma[];
