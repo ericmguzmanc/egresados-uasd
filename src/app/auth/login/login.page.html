@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Inicio de Sesión</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
+      <ion-title>Inicio de Sesión</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
