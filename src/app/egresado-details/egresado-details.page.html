@@ -54,13 +54,37 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <!--Card About-->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>About</ion-card-title>
+        <ion-card-subtitle>{{egresado.Nombre}}</ion-card-subtitle>
+      </ion-card-header>
+      <!--Card Contenido -->
+      <ion-card-content>
+       {{egresado.about}}
+      </ion-card-content>
+    </ion-card>
+    <!--Grid de Skills-->
+    <div class="ion-text-center titulo">
+      <h3>Skills</h3>
+    </div>
+    <ion-grid class="chip">
+      <ion-row>
+        <ion-col *ngFor="let habilidad of egresado.habilidades">
+          <ion-chip *ngFor="let skills of habilidad.skills">
+            <ion-label>{{skills}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <!--Card Experiencia-->
     <ion-card>
       <ion-card-header>
         <ion-card-title>Experiencias</ion-card-title>
         <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
       </ion-card-header>
-
+      <!--Card Contenido -->
       <ion-card-content>
         <ion-grid>
           <ion-row *ngFor="let experiencia of egresado.experienciaLaboralEgresado">
@@ -87,7 +111,7 @@
         </ion-card-title>
         <ion-card-subtitle>{{educacion.TipoTitulo}}</ion-card-subtitle>
       </ion-card-header>
-
+      <!--Card Contenido -->
       <ion-card-content>
         <h3>{{educacion.Titulo}}</h3>
         <ion-text>
@@ -102,7 +126,7 @@
     <div class="ion-text-center titulo">
       <h3><ion-icon name="language"></ion-icon> Idiomas</h3>
     </div>
-    <ion-grid class="idioma">
+    <ion-grid class="chip">
       <ion-row>
         <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
           <ion-chip>
@@ -116,7 +140,7 @@
     <div class="ion-text-center titulo">
       <h3><ion-icon name="globe-outline"></ion-icon> Nacionalidad</h3>
     </div>
-    <ion-grid class="idioma">
+    <ion-grid class="chip">
       <ion-row>
         <ion-col *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
           <ion-chip>

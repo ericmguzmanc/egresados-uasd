@@ -10,6 +10,7 @@ export interface Egresado {
   Genero?: string;
   FechaNac?: string;
   profilePicUrl?: string;
+  about?: string;
   // Nacionalidad
   nacionalidadEgresado?: Nacionalidad[];
   idiomaEgresado?: Idioma[];
@@ -19,6 +20,8 @@ export interface Egresado {
   educacion?: Educacion[];
   // Contacto
   contacto?: Contacto[];
+  // Habilidades
+  habilidades?: Habilidades[];
 } 
 
 export interface ExperienciaLaboral {
@@ -76,4 +79,10 @@ export interface Contacto {
   tipo?: string;
   valor?: string;
 } 
+
+export interface Habilidades {
+  id?: number;
+  egresadoId?: number;
+  skills?:[]
+}
 

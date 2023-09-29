@@ -23,7 +23,8 @@
       "Pasaporte": "RD588391",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
-      "profilePicUrl": "assets/img/profile/1.jpeg"
+      "profilePicUrl": "assets/img/profile/1.jpeg",
+      "about": "Soy un desarrollador web apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas"
     },
     {
       "id": 2,
@@ -34,7 +35,8 @@
       "Pasaporte": null,
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
-      "profilePicUrl": "assets/img/profile/2.jpeg"
+      "profilePicUrl": "assets/img/profile/2.jpeg",
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 3,
@@ -45,7 +47,8 @@
       "Pasaporte": null,
       "FechaNac": "1999-02-05",
       "Genero": "Femenino",
-      "profilePicUrl": "assets/img/profile/3.jpeg"
+      "profilePicUrl": "assets/img/profile/3.jpeg",
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 4,
@@ -56,7 +59,8 @@
       "Pasaporte": "RD79186",
       "FechaNac": "1998-02-11",
       "Genero": "Femenino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 5,
@@ -67,7 +71,8 @@
       "Pasaporte": "RD77894",
       "FechaNac": "1999-04-22",
       "Genero": "Masculino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 6,
@@ -78,7 +83,8 @@
       "Pasaporte": null,
       "FechaNac": "1994-06-01",
       "Genero": "Femenino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 7,
@@ -89,7 +95,8 @@
       "Pasaporte": null,
       "FechaNac": "19973-02-28",
       "Genero": "Femenino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 8,
@@ -100,7 +107,8 @@
       "Pasaporte": null,
       "FechaNac": "1997-07-27",
       "Genero": "Masculino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 9,
@@ -111,7 +119,8 @@
       "Pasaporte": null,
       "FechaNac": "1993-06-16",
       "Genero": "Masculino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 10,
@@ -122,7 +131,8 @@
       "Pasaporte": "RD55983",
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
-      "profilePicUrl": null
+      "profilePicUrl": null,
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     }
   ],
   "experienciaLaboralEgresado": [
@@ -424,7 +434,6 @@
       "idiomaId": 1,
       "idioma": "Español"
     }
-    
   ],
   "educacion_deprecated": [
     {
@@ -506,6 +515,13 @@
     {
       "id": 5,
       "idioma": "Indú"
+    }
+  ],
+  "habilidades":[
+    {
+      "id":1,
+      "egresadoId":1,
+      "skills":["Programador", "Angular","React", "HTML", "Css","vue.js","javaScript"]
     }
   ]
 }

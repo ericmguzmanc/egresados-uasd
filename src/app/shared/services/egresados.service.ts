@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class EgresadosService {
 
   json_server_url = 'http://localhost:3006';
-  egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado'
+  egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=habilidades'
   
   constructor(private http: HttpClient) { }
 
