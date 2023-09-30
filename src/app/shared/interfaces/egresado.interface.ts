@@ -1,4 +1,4 @@
-import { Contacto } from './contacto.interface';
+
 
 export interface Egresado {
   id?: number;
@@ -10,6 +10,7 @@ export interface Egresado {
   Genero?: string;
   FechaNac?: string;
   profilePicUrl?: string;
+  about?: string;
   // Nacionalidad
   nacionalidadEgresado?: Nacionalidad[];
   idiomaEgresado?: Idioma[];
@@ -19,6 +20,8 @@ export interface Egresado {
   educacion?: Educacion[];
   // Contacto
   contacto?: Contacto[];
+  // Habilidades
+  egresadosHabilidad?: EgresadosHabilidad[];
 } 
 
 export interface ExperienciaLaboral {
@@ -69,3 +72,18 @@ export interface Idioma {
   egresadoId?: number,
   idioma?: string;
 }
+
+export interface Contacto {
+  id: number,
+  egresadoId?: number,
+  tipo?: string;
+  valor?: string;
+} 
+
+export interface EgresadosHabilidad {
+  id?: number;
+  egresadoId?: number;
+  habilidadId?: number;
+  habilidad?:string
+}
+
