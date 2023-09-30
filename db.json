@@ -517,11 +517,58 @@
       "idioma": "Indú"
     }
   ],
-  "habilidades":[
+  "egresadosHabilidad":[
     {
       "id":1,
       "egresadoId":1,
-      "skills":["Programador", "Angular","React", "HTML", "Css","vue.js","javaScript"]
+      "habilidadesId":1,
+      "habilidad":"Programador"
+    },
+    {
+      "id":2,
+      "egresadoId":1,
+      "habilidadesId":2,
+      "habilidad":"Angular"
+    },
+    {
+      "id":3,
+      "egresadoId":1,
+      "habilidadesId":3,
+      "habilidad":"React"
+    },
+    {
+      "id":4,
+      "egresadoId":1,
+      "habilidadesId":4,
+      "habilidad":"HTML5"
+    },
+    {
+      "id":5,
+      "egresadoId":1,
+      "habilidadesId":5,
+      "habilidad":"CSS3"
+    }
+  ],
+  "habilidades":[
+    {
+      "id":1,
+      "habilida":"Programador"
+    },
+    {
+      "id":2,
+      "habilida":"Angular"
+    },
+    {
+      "id":3,
+      "habilida": "React"
+    },
+    {
+      "id":4,
+      "habilida": "HTML5"
+    },
+    {
+      "id":5,
+      "habilida": "CSS3"
     }
   ]
 }

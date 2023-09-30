@@ -70,10 +70,11 @@
       <h3>Skills</h3>
     </div>
     <ion-grid class="chip">
-      <ion-row>
-        <ion-col *ngFor="let habilidad of egresado.habilidades">
-          <ion-chip *ngFor="let skills of habilidad.skills">
-            <ion-label>{{skills}}</ion-label>
+     <ion-row>
+        <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad
+        ">
+          <ion-chip>
+            <ion-label>{{habilidad.habilidad}}</ion-label>
           </ion-chip>
         </ion-col>
       </ion-row>

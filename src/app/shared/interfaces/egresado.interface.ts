@@ -21,7 +21,7 @@ export interface Egresado {
   // Contacto
   contacto?: Contacto[];
   // Habilidades
-  habilidades?: Habilidades[];
+  egresadosHabilidad?: EgresadosHabilidad[];
 } 
 
 export interface ExperienciaLaboral {
@@ -80,9 +80,10 @@ export interface Contacto {
   valor?: string;
 } 
 
-export interface Habilidades {
+export interface EgresadosHabilidad {
   id?: number;
   egresadoId?: number;
-  skills?:[]
+  habilidadId?: number;
+  habilidad?:string
 }
 
