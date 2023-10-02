@@ -21,6 +21,7 @@ export class EgresadosListComponent  implements OnInit {
       .subscribe((egresados: Egresado[]) => {
         this.egresados = egresados;
       });
+       
   }
 
 }

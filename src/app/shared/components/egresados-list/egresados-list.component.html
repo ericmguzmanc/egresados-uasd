@@ -16,6 +16,7 @@
         <div class="separator"></div>
         <ion-label>
           <h2>
+            {{ this.helperService.getTipoTituloEgresado(egresado) }}
             {{ egresado.Nombre }} {{ egresado.ApellidoPaterno }}
             {{ egresado.ApellidoMaterno }}
           </h2>
@@ -23,19 +24,6 @@
             <h6 class="muted">
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
-            <ion-grid [fixed]="true">
-              <ion-row class="muted" *ngFor="let titulo of egresado.educacion">
-                <ion-col size="auto"
-                  ><h6
-                    *ngIf="titulo.TipoTitulo === 'Licenciatura'; else elseBlock"
-                  >
-                    Licenciado
-                  </h6>
-                  <ng-template #elseBlock>Ingeniero</ng-template>
-                </ion-col>
-                <ion-col size="auto">{{ egresado.Genero }}</ion-col>
-              </ion-row>
-            </ion-grid>
           </ion-text>
         </ion-label>
       </ion-item>
