@@ -1,18 +1,33 @@
 <ion-content>
   <ng-container *ngIf="egresados">
     <ion-list>
-      <ion-item href="/egresado-details/{{egresado.id}}" *ngFor="let egresado of egresados">
+      <ion-item
+        href="/egresado-details/{{ egresado.id }}"
+        *ngFor="let egresado of egresados"
+      >
         <ion-thumbnail>
-          <ion-img class="avatar-img" src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}" ></ion-img>
+          <ion-img
+            class="avatar-img"
+            src="{{
+              egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'
+            }}"
+          ></ion-img>
         </ion-thumbnail>
         <div class="separator"></div>
         <ion-label>
-          <h2>{{egresado.Nombre}} {{egresado.ApellidoPaterno}} {{egresado.ApellidoMaterno}}</h2>
+          <h2>
+            {{ this.helperService.getTipoTituloEgresado(egresado) }}
+            {{ egresado.Nombre }} {{ egresado.ApellidoPaterno }}
+            {{ egresado.ApellidoMaterno }}
+          </h2>
           <ion-text>
-            <h6 class="muted">{{this.helperService.getLatestPosition(egresado)}}</h6>
+            <h6 class="muted">
+              {{ this.helperService.getLatestPosition(egresado) }}
+            </h6>
+            <span class="muted">Emp. {{this.helperService.getLatestEmpresa(egresado)}}</span>
+            <h4></h4>
           </ion-text>
         </ion-label>
-        
       </ion-item>
     </ion-list>
   </ng-container>
