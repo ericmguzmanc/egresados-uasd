@@ -1,13 +1,13 @@
 <!--Header-->
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
       <ion-title>Detalle del Egresado</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<!--Conten-->
+<!--Content-->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -15,10 +15,10 @@
     </ion-toolbar>
   </ion-header>
   <!-- content Egresado -->
-  <ion-content *ngIf="loadingEgresado">
+  <ion-content *ngIf="loading">
     <ion-spinner name="crescent"></ion-spinner>
   </ion-content>
-  <ion-content *ngIf="!loadingEgresado">
+  <ion-content *ngIf="!loading">
     <!--Grid -->
     <ion-grid>
       <ion-row>

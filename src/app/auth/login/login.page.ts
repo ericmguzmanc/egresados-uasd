@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from 'src/app/shared/interfaces/usuario.interface';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loading = false;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
@@ -37,20 +40,25 @@ export class LoginPage implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
+      this.loading = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: (data) => {
-          console.log(data);
+        next: (usuario: Usuario[]) => {
+          const { egresadoId } = usuario[0];
+          if (egresadoId) {
+            this.router.navigate(['/egresado-edit/', 1]);
+
+          }
+          this.loading = false;
         },
         error: (err) => {
+          this.loading = false;
           console.error(err);
         },
         complete: () => {
           console.info('complete');
-          //this.loadingCtrl.dismiss();
+          this.loading = false;
         },
       });
-      this.showLoading();
-      this.router.navigateByUrl('/');
       this.loginForm.reset();
     } else {
       this.loginForm.markAllAsTouched();
@@ -60,7 +68,7 @@ export class LoginPage implements OnInit {
 
   async showLoading() {
     const loading = await this.loadingController.create({
-      message: 'Dismissing after 3 seconds...',
+      message: 'Cargando...',
       duration: 3000,
     });
 

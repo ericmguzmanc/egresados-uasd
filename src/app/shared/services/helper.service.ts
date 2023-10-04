@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Egresado } from '../interfaces/egresado.interface';
 
 
@@ -7,8 +6,8 @@ import { Egresado } from '../interfaces/egresado.interface';
   providedIn: 'root'
 })
 export class HelperService {
-  
-  constructor(private http: HttpClient) { }
+
+  constructor() { }
 
   getLatestPosition(egresado: Egresado): string | undefined {
     const { experienciaLaboralEgresado } = egresado;

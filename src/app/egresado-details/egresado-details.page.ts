@@ -12,7 +12,7 @@ import { HelperService } from '../shared/services/helper.service';
 })
 export class EgresadoDetailsPage implements OnInit {
   egresado: Egresado = {};
-  loadingEgresado = true;
+  loading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,17 +22,13 @@ export class EgresadoDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loadingEgresado = false;
-    }, 2000);
 
     this.route.params.subscribe(params => {
       const egresadoId = params['id'];
       if (egresadoId) {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
-          console.log('🚀 ~ file: egresado-details.page.ts:34 ~ EgresadoDetailsPage ~ this.egresadoService.getEgresadoById ~ egresado:', egresado)
           this.egresado = egresado;
-          this.loadingEgresado = false;
+          this.loading = false;
         });
       }
     });
