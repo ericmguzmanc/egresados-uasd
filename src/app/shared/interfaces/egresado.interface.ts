@@ -61,21 +61,22 @@ export interface Titulo {
 }
 
 export interface Nacionalidad {
-  id?: number,
-  egresadoId?: number,
-  nacionalidadId?: number,
+  id?: number;
+  egresadoId?: number;
+  nacionalidadId?: number;
   nacionalidad?: string;
 }
 
 export interface Idioma {
-  id: number,
-  egresadoId?: number,
+  id: number;
+  egresadoId?: number;
   idioma?: string;
+  disabled?: boolean;
 }
 
 export interface Contacto {
-  id: number,
-  egresadoId?: number,
+  id: number;
+  egresadoId?: number;
   tipo?: string;
   valor?: string;
 } 
@@ -84,6 +85,6 @@ export interface EgresadosHabilidad {
   id?: number;
   egresadoId?: number;
   habilidadId?: number;
-  habilidad?:string
+  habilidad?: string;
 }
 

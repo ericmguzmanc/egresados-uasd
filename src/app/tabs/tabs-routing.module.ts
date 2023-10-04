@@ -15,6 +15,10 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'destacados',
+        loadChildren: () => import('../destacados/destacados.module').then( m => m.DestacadosPageModule)
+      },
+      {
         path: 'configuracion',
         loadChildren: () =>
           import('../configuracion/configuracion.module').then(

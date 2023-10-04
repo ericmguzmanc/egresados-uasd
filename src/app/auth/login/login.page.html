@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
-      <ion-title>Inicio de Sesión</ion-title>
+      <ion-title>Login</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,11 +10,14 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">LOGIN</ion-title>
+      <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="ion-margin container">
+  <!-- Loading spinner -->
+  <app-loader *ngIf="loading"></app-loader>
+  
+  <div class="ion-margin container" *ngIf="!loading">
     <ion-item>
       <ion-thumbnail slot="start">
         <img
@@ -25,7 +28,7 @@
       </ion-thumbnail>
       <ion-label>Portal de Egresados (UASD)</ion-label>
     </ion-item>
-    <form class="ion-margin" [formGroup]="loginForm">
+    <form [formGroup]="loginForm">
       <ion-input
         type="email"
         label="Email"

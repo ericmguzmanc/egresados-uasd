@@ -1,11 +1,8 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>
-      Egresados
-    </ion-title>
+  <ion-toolbar>
+    <ion-title size="large">Egresados</ion-title>
     <ion-buttons slot="primary">
       <ion-button id="open-filtrado-modal">
-        <!-- Filtrar -->
         <ion-icon slot="end" name="filter"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -14,14 +11,8 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar color="primary">
+    <ion-toolbar>
       <ion-title size="large">Egresados</ion-title>
-      <ion-buttons slot="primary">
-        <ion-button id="open-filtrado-modal">
-          <!-- Filtrar -->
-          <ion-icon slot="end" name="filter"></ion-icon>
-        </ion-button>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
@@ -35,9 +26,9 @@
           <ion-buttons slot="start">
             <ion-button (click)="cancel()">Cancelar</ion-button>
           </ion-buttons>
-          <ion-title>Filtrar</ion-title>
+          <ion-title>Filtros</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
+            <ion-button (click)="confirm()" [strong]="true">Filtrar</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
