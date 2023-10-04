@@ -27,4 +27,12 @@ export class HelperService {
      }
      return titulo ? titulo?.TipoTitulo : " ";
   }
+  getLatestEmpresa(egresado: Egresado): string | undefined {
+    const { experienciaLaboralEgresado } = egresado;
+    const latestEmpresa = experienciaLaboralEgresado?.filter(ex => !ex.FechaSal)[0];
+    return latestEmpresa ? latestEmpresa?.empresa : "";
+  }
+
+  
+
 }
