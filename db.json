@@ -2,15 +2,17 @@
   "usuario": [
     {
       "id": 1,
-      "Email": "example1@example.com",
+      "email": "example1@example.com",
       "password": "password1",
-      "username ": "user1"
+      "username ": "user1",
+      "egresadoId": 1
     },
     {
       "id": 2,
-      "Email": "example2@example.com",
+      "email": "example2@example.com",
       "password": "password2",
-      "username ": "user2"
+      "username ": "user2",
+      "egresadoId": 2
     }
   ],
   "egresado": [
@@ -514,7 +516,7 @@
     },
     {
       "id": 5,
-      "idioma": "Indú"
+      "idioma": "Indhi"
     }
   ],
   "egresadosHabilidad":[

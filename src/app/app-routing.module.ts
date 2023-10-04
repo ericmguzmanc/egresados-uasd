@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
-  }
+  },
+  {
+    path: 'egresado-edit/:id',
+    loadChildren: () => import('./egresado-edit/egresado-edit.module').then( m => m.EgresadoEditPageModule)
+  },
 ];
 @NgModule({
   imports: [

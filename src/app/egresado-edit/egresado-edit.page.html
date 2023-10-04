@@ -1,0 +1,257 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edición Egresado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Edición Egresado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <form class="ion-margin" [formGroup]="egresadoForm" (ngSubmit)="save()" *ngIf="egresado">
+      <!-- Nombre Egresado -->
+      <ion-input type="text" fill="solid" label="Nombres" labelPlacement="floating" helperText="Ingresa tu Nombre"
+        errorText="Nombre Inválido" formControlName="Nombre" email></ion-input>
+
+      <!-- Apellido Paterno  -->
+      <ion-input type="text" fill="solid" label="Primer Apellido" labelPlacement="floating"
+        helperText="Ingresa tu Primer Apellido" errorText="Primer Apellido Inválido"
+        formControlName="ApellidoPaterno"></ion-input>
+
+      <!-- Apellido Materno -->
+      <ion-input type="text" fill="solid" label="Segundo Apellido" labelPlacement="floating"
+        helperText="Ingresa tu Segundo Apellido" errorText="Segundo Apellido Inválido"
+        formControlName="ApellidoMaterno"></ion-input>
+
+      <!-- About -->
+      <ion-textarea type="text" fill="solid" label="Acerca de" labelPlacement="floating"
+        helperText="Ingresa tu Información" errorText="Información Inválida"
+        formControlName="about"></ion-textarea>
+
+      <!-- Cédula -->
+      <ion-input type="text" fill="solid" label="Cédula" labelPlacement="floating"
+        helperText="Ingresa tu Cédula" errorText="Cédula Inválida"
+        formControlName="Cedula"></ion-input>
+
+      <!-- Pasaporte -->
+      <ion-input type="text" fill="solid" label="Pasaporte" labelPlacement="floating"
+        helperText="Ingresa tu Pasaporte" errorText="Pasaporte Inválido"
+        formControlName="Pasaporte"></ion-input>
+
+
+      <!-- Fecha Nacimiento -->
+      <ion-input type="date" fill="solid" label="Fecha Nacimiento" labelPlacement="floating"
+        helperText="Ingresa tu Fecha de Nacimiento" errorText="Fecha de Nacimiento Inválida"
+        formControlName="FechaNac"></ion-input>
+
+      <!-- Genero -->
+      <ion-text>
+        <h5>Sexo</h5>
+      </ion-text>
+      <ion-radio-group value="Masculino" [allowEmptySelection]="true" formControlName="Genero">
+        <ion-radio value="Masculino" labelPlacement="fixed">Masculino</ion-radio><br />
+        <ion-radio value="Femenino" labelPlacement="fixed">Femenino</ion-radio><br />
+        <ion-radio value="Otro" labelPlacement="fixed">Otro</ion-radio><br />
+      </ion-radio-group>
+
+      <!-- Nacionalidad -->
+      <ion-list formArrayName="nacionalidadEgresado">
+        <ion-row>
+          <ion-col size="10">
+            <h5>Nacionalidad</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right>
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="nacionalidadEgresadoArray.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay Nacionalidades definidas</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="nacionalidadEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let nacionalidad of nacionalidadEgresadoArray.controls; let i = index">
+            <ion-label>{{nacionalidad.value.nacionalidad}}</ion-label>
+            <ion-button color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+      <!-- Fin Nacionalidad -->
+
+      <!-- Idioma Egresado -->
+      <ion-list formArrayName="idiomaEgresado">
+        <ion-row>
+          <ion-col size="10">
+            <h5>Idioma</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right id="open-idiomas-modal">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="idiomaEgresadoArray.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay Idiomas definidas</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="idiomaEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let idioma of idiomaEgresadoArray.controls; let i = index">
+            <ion-label>{{idioma.value.idioma}}</ion-label>
+            <ion-button color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+      <!-- Fin Idiomas -->
+
+      <!-- Experiencia Laboral -->
+      <ion-list>
+        <ion-row>
+          <ion-col size="10">
+            <h5>Experiencia Laboral</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right>
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="experienciaLaboralEgresado.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay Experiencia Laboral definida</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="experienciaLaboralEgresado.controls.length >= 0">
+          <ion-item *ngFor="let experiencia of experienciaLaboralEgresado.controls; let i = index" class="work-experience-item">
+            <ion-content style="min-height: 60px;">
+              <ion-label>{{experiencia.value.posicion}}</ion-label>
+
+              <ion-label class="muted">
+                {{experiencia.value.empresa}}
+                <br/>
+                {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal || 'Actualidad'}}
+              </ion-label>
+            </ion-content>
+            <ion-button color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+      <!-- Fin de Experiencia Laboral -->
+
+      <!-- Educación -->
+      <ion-list>
+        <ion-row>
+          <ion-col size="10">
+            <h5>Educación</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right>
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="educacionEgresadoArray.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay Educación definida</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="educacionEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let educacion of educacionEgresadoArray.controls; let i = index">
+            <ion-content>
+              <ion-label>{{educacion.value.Titulo}}</ion-label>
+              <ion-label class="muted">
+                {{educacion.value.FechaEntr}} - {{educacion.value.FechaSal || 'Actualidad'}}
+              </ion-label>
+            </ion-content>
+            <ion-button color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+            </ion-item>
+        </ng-container>
+      </ion-list>
+      <!-- Fin de Educación -->
+
+      <!-- Contacto -->
+      <ion-list>
+        <ion-row>
+          <ion-col size="10">
+            <h5>Contacto</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right>
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="contactoEgresadoArray.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay Información de Contacto definida</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="contactoEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let contacto of contactoEgresadoArray.controls; let i = index">
+            <ion-content>
+              <ion-label>{{contacto.value.valor}}</ion-label>
+              <ion-label class="muted">{{contacto.value.tipo | lowercase}}</ion-label>
+            </ion-content>
+              <ion-button color="danger">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+      <!-- Fin de Contacto -->
+
+      <ion-item-divider></ion-item-divider>
+      <ion-grid style="margin-top: 15px;">
+        <ion-row>
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-button expand="full" class="ion-text-wrap min-max-width" color="light" (click)="onCancelClick()">Cancelar</ion-button>
+          </ion-col>
+  
+          <ion-col size-sm="6" size="6" class="ion-text-center">
+            <ion-button expand="full" class="ion-text-wrap min-max-width">Guardar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
+
+
+  <!-- Idioma Egresado Modal -->
+  <ion-modal trigger="open-idiomas-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Agregar Idioma</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Agregar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <app-idiomas [idiomasEgresado]="egresado.idiomaEgresado"></app-idiomas>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- Fin Idioma Egresado Modal -->
+
+
+
+
+</ion-content>

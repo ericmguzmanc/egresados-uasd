@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { EgresadosService } from './services/egresados.service';
 import { EgresadosListComponentModule } from './components/egresados-list/egresados-list.module';
 import { HelperService } from './services/helper.service';
+import { EntitiesService } from './services/entities.service';
+import { LoaderComponentModule } from './components/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -13,13 +15,16 @@ import { HelperService } from './services/helper.service';
     CommonModule,
     IonicModule,
     EgresadosListComponentModule,
+    LoaderComponentModule
   ],
   exports: [
-    EgresadosListComponentModule
+    EgresadosListComponentModule,
+    LoaderComponentModule
   ],
   providers: [
     EgresadosService,
-    HelperService
+    HelperService,
+    EntitiesService
   ]
 })
 export class SharedModule {}
