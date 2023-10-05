@@ -32,7 +32,7 @@ export class DestacadosPage implements OnInit {
     */
 
     this.egresadosService.getEgresados().subscribe((egresados: Egresado[]) => {
-      const destacados = egresados.filter((ex) => ex.destacado === true);
+      const destacados = egresados.filter((ex) => ex.destacado);
       return (this.egresados = destacados);
     });
   }

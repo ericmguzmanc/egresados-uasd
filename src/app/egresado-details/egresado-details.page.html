@@ -50,9 +50,9 @@
             <ion-text>
               <span>Fecha de Nacimiento</span>
               <br />
-              <span class="muted spaced-text"
-                >{{egresado.FechaNac | date}}</span
-              >
+              <span class="muted spaced-text">
+                {{egresado.FechaNac | date}}
+              </span>
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
@@ -60,7 +60,7 @@
             <span> Genero: </span>
             <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
           </ion-row>
-          <span *ngIf="egresado.destacado === true" class="star"
+          <span *ngIf="egresado.destacado" class="star"
             ><ion-icon name="star"></ion-icon
           ></span>
         </ion-col>
@@ -81,10 +81,7 @@
     </div>
     <ion-grid class="chip">
       <ion-row>
-        <ion-col
-          *ngFor="let habilidad of egresado.egresadosHabilidad
-        "
-        >
+        <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad">
           <ion-chip>
             <ion-label>{{habilidad.habilidad}}</ion-label>
           </ion-chip>
