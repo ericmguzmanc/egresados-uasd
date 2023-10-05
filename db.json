@@ -26,7 +26,8 @@
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
       "profilePicUrl": "assets/img/profile/1.jpeg",
-      "about": "Soy un desarrollador web apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas"
+      "about": "Soy un desarrollador web apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas",
+      "destacado": true
     },
     {
       "id": 2,
@@ -38,7 +39,8 @@
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
       "profilePicUrl": "assets/img/profile/2.jpeg",
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
+      "destacado": true
     },
     {
       "id": 3,

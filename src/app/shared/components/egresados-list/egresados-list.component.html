@@ -25,7 +25,7 @@
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
             <span class="muted">Emp. {{this.helperService.getLatestEmpresa(egresado)}}</span>
-            <h4></h4>
+            <span *ngIf="egresado.destacado === true" class="star"><ion-icon name="star" ></ion-icon></span>
           </ion-text>
         </ion-label>
       </ion-item>
