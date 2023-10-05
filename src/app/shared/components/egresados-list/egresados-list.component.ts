@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EgresadosService } from '../../services/egresados.service';
 import { Egresado } from '../../interfaces/egresado.interface';
 import { HelperService } from '../../services/helper.service';
@@ -9,19 +9,14 @@ import { HelperService } from '../../services/helper.service';
   styleUrls: ['./egresados-list.component.scss'],
 })
 export class EgresadosListComponent  implements OnInit {
-  egresados: Egresado[] = [];
-
+   @Input() egresados: Egresado[] = [];
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
   ) { }
 
   ngOnInit() {
-    this.egresadosService.getEgresados()
-      .subscribe((egresados: Egresado[]) => {
-        this.egresados = egresados;
-      });
-       
+    
   }
 
 }
