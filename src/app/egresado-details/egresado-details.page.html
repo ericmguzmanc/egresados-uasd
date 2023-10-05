@@ -2,7 +2,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
+      <ion-back-button
+        defaultHref="/"
+        (click)="onBackButtonClick()"
+      ></ion-back-button>
       <ion-title>Detalle del Egresado</ion-title>
     </ion-buttons>
   </ion-toolbar>
@@ -24,7 +27,9 @@
       <ion-row>
         <ion-col>
           <!--Imagen De perfil-->
-          <ion-img src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+          <ion-img
+            src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"
+          ></ion-img>
         </ion-col>
         <!--Informacion Personal-->
         <ion-col>
@@ -35,15 +40,19 @@
                 {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
                 {{egresado.ApellidoMaterno}}
               </h3>
-              <span class="muted spaced-text">{{this.helperService.getLatestPosition(egresado)}}</span>
+              <span class="muted spaced-text"
+                >{{this.helperService.getLatestPosition(egresado)}}</span
+              >
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
           <ion-row>
             <ion-text>
               <span>Fecha de Nacimiento</span>
-              <br>
-              <span class="muted spaced-text">{{egresado.FechaNac | date}}</span>
+              <br />
+              <span class="muted spaced-text">
+                {{egresado.FechaNac | date}}
+              </span>
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
@@ -51,6 +60,9 @@
             <span> Genero: </span>
             <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
           </ion-row>
+          <span *ngIf="egresado.destacado" class="star"
+            ><ion-icon name="star"></ion-icon
+          ></span>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -61,18 +73,15 @@
         <ion-card-subtitle>{{egresado.Nombre}}</ion-card-subtitle>
       </ion-card-header>
       <!--Card Contenido -->
-      <ion-card-content>
-       {{egresado.about}}
-      </ion-card-content>
+      <ion-card-content> {{egresado.about}} </ion-card-content>
     </ion-card>
     <!--Grid de Skills-->
-    <div class=" titulo">
+    <div class="titulo">
       <h3>Skills</h3>
     </div>
     <ion-grid class="chip">
-     <ion-row>
-        <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad
-        ">
+      <ion-row>
+        <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad">
           <ion-chip>
             <ion-label>{{habilidad.habilidad}}</ion-label>
           </ion-chip>
@@ -88,13 +97,17 @@
       <!--Card Contenido -->
       <ion-card-content>
         <ion-grid>
-          <ion-row *ngFor="let experiencia of egresado.experienciaLaboralEgresado">
+          <ion-row
+            *ngFor="let experiencia of egresado.experienciaLaboralEgresado"
+          >
             <ion-col>
               <ion-row>
                 <ion-text>
                   <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
-                  <span>{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
-                    'Actualidad' }}</span>
+                  <span
+                    >{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
+                    'Actualidad' }}</span
+                  >
                 </ion-text>
               </ion-row>
             </ion-col>
@@ -118,7 +131,8 @@
         <ion-text>
           <span>{{educacion.Universidad}}</span>
           <br />
-          <span>{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
+          <span
+            >{{educacion.FechaEntr}} | {{educacion.FechaSal || 'Actualidad'}}
           </span>
         </ion-text>
       </ion-card-content>

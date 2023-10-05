@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { DestacadosPageRoutingModule } from './destacados-routing.module';
 
 import { DestacadosPage } from './destacados.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DestacadosPageRoutingModule
+    DestacadosPageRoutingModule,
+    SharedModule
   ],
   declarations: [DestacadosPage]
 })

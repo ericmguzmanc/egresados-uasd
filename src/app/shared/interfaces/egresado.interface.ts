@@ -11,6 +11,7 @@ export interface Egresado {
   FechaNac?: string;
   profilePicUrl?: string;
   about?: string;
+  destacado?: boolean;
   // Nacionalidad
   nacionalidadEgresado?: Nacionalidad[];
   idiomaEgresado?: Idioma[];
