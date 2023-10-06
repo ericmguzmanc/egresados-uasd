@@ -71,7 +71,6 @@ export class EgresadoEditPage implements OnInit {
       if (egresadoId) {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
           this.egresado = egresado;  
-          console.log('🚀 ~ file: egresado-edit.page.ts:78 ~ EgresadoEditPage ~ this.egresadoService.getEgresadoById ~ this.egresado:', this.egresado)
           this.loading = false;
           this.loadEgresadoForm();
         });
