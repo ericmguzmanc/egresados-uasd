@@ -1,12 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Contacto, Educacion, Egresado, ExperienciaLaboral, Idioma } from '../shared/interfaces/egresado.interface';
+import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../shared/interfaces/egresado.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertController, IonModal } from '@ionic/angular';
+import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { forkJoin } from 'rxjs';
+import { IdiomasComponent } from './idiomas/idiomas.component';
+import { HabilidadesComponent } from './habilidades/habilidades.component';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -15,6 +17,7 @@ import { forkJoin } from 'rxjs';
 })
 export class EgresadoEditPage implements OnInit {
   @ViewChild(IonModal) IdiomaModal: IonModal;
+  @ViewChild(IonModal) HabilidadesModal: IonModal;
 
   loading = false;
   egresado: Egresado = {};
@@ -42,6 +45,7 @@ export class EgresadoEditPage implements OnInit {
     private fb: FormBuilder,
     private alertController: AlertController,
     private router: Router,
+    private modalCtrl: ModalController
   ) { }
 
   get idiomaEgresadoArray(): FormArray {
@@ -62,6 +66,10 @@ export class EgresadoEditPage implements OnInit {
 
   get contactoEgresadoArray(): FormArray {
     return this.egresadoForm.get('contacto') as FormArray;
+  }
+
+  get habilidadesEgresadoArray(): FormArray {
+    return this.egresadoForm.get('egresadosHabilidad') as FormArray;
   }
 
   ngOnInit() {
@@ -116,7 +124,30 @@ export class EgresadoEditPage implements OnInit {
       this.egresadoForm.setControl('experienciaLaboralEgresado', this.fb.array(this.fillExperienciaLaboralArray()));
       this.egresadoForm.setControl('educacion', this.fb.array(this.fillEducacionEgresadoArray()));
       this.egresadoForm.setControl('contacto', this.fb.array(this.fillContactoEgresadoArray()));
+      this.egresadoForm.setControl('egresadosHabilidad', this.fb.array(this.fillHabilidadesArray()))
     }
+  }
+
+  fillHabilidadesArray() {
+    const habilidades = [];
+
+    if (this.egresado?.egresadosHabilidad && this.egresado?.egresadosHabilidad.length > 0) {
+      for (const habilidad of this.egresado?.egresadosHabilidad) {
+        habilidades.push(
+          this.createHabilidadFormGroup(habilidad)
+        );
+      }
+    }
+
+    return habilidades;
+  }
+
+  private createHabilidadFormGroup(habilidad: EgresadosHabilidad) {
+    return this.fb.group({
+      id: new FormControl(habilidad?.id || 0),
+      egresadoId: new FormControl(habilidad?.egresadoId || this.egresado.id),
+      habilidad: new FormControl(habilidad?.habilidad || ''),
+  });
   }
 
   fillIdiomaArray() {
@@ -184,6 +215,53 @@ export class EgresadoEditPage implements OnInit {
         egresadoId: new FormControl(idioma?.egresadoId || this.egresado.id),
         idioma: new FormControl(idioma?.idioma || ''),
     });
+  }
+
+  addHabilidadEgresado(habilidades: EgresadosHabilidad[] | undefined) {
+    this.loading = true;
+
+    if (habilidades) {
+      const habilidadEgresado = habilidades.map((habilidad) => {
+        return {
+          habilidad: habilidad.habilidad,
+          habilidadId: habilidad.id,
+          egresadoId: this.egresado.id,
+        }
+      });
+
+      forkJoin([
+        ...this.resetHabilidadEgresadoRequests(),
+        ...this.addHabilidadEgresadoRequests(habilidadEgresado)
+      ])
+      .subscribe((response) => {
+        this.habilidadesEgresadoArray.clear();
+        this.egresado.egresadosHabilidad = [];
+
+        response
+        .filter((habilidad) => habilidad.id)
+        .forEach((habilidad) => {
+          if (habilidad.id) {
+            this.habilidadesEgresadoArray.push(this.createHabilidadFormGroup(habilidad));
+            this.egresado.egresadosHabilidad?.push({
+              ...habilidad,
+              egresadoId: this.egresado.id,
+            });
+          }
+        });
+      });
+    }
+  }
+
+  resetHabilidadEgresadoRequests() {
+    return this.egresado.egresadosHabilidad.map(egresadosHabilidad => this.egresadoService.removeHabilidadEgresado(egresadosHabilidad.id));
+  }
+
+  addHabilidadEgresadoRequests(habilidades: EgresadosHabilidad[]) {
+    return habilidades.map(habilidad => this.egresadoService.addHabilidadEgresado({
+      habilidad: habilidad.habilidad,
+      habilidadId: habilidad.habilidadId,
+      egresadoId: this.egresado.id
+    }));
   }
 
   fillExperienciaLaboralArray() {
@@ -302,18 +380,39 @@ export class EgresadoEditPage implements OnInit {
     await alert.present();
   }
 
-  cancel() {
-    this.IdiomaModal.dismiss(null, 'cancel');
-  }
+  async openIdiomasModal() {
+    const idiomasModal = await this.modalCtrl.create({
+      component: IdiomasComponent,
+      componentProps: { idiomasEgresado: this.egresado.idiomaEgresado }
+    });
 
-  confirm() {
-    this.IdiomaModal.dismiss(null, 'confirm');
-  }
+    idiomasModal.present();
 
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
+    const { data, role } = await idiomasModal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.addIdiomaEgresado(data);
+    } else {
+      console.log('Modal closed cancelled')
     }
+  }
+
+  async openHabilidadesModal() {
+    const habilidadesModal = await this.modalCtrl.create({
+      component: HabilidadesComponent,
+      componentProps: { egresadosHabilidad: this.egresado.egresadosHabilidad }
+    });
+
+    habilidadesModal.present();
+
+    const { data, role } = await habilidadesModal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.addHabilidadEgresado(data);
+    } else {
+      console.log('Modal closed cancelled')
+    }
+
   }
 
 }

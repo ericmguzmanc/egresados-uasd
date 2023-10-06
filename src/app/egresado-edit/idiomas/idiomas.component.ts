@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Idioma } from 'src/app/shared/interfaces/egresado.interface';
 import { EntitiesService } from 'src/app/shared/services/entities.service';
 
@@ -7,16 +8,16 @@ import { EntitiesService } from 'src/app/shared/services/entities.service';
   templateUrl: './idiomas.component.html',
   styleUrls: ['./idiomas.component.scss'],
 })
-export class IdiomasComponent  implements OnInit, OnDestroy {
+export class IdiomasComponent  implements OnInit {
   @Input() idiomasEgresado: Idioma[] | undefined;
   @Output() idiomaSeleccionado = new EventEmitter<Idioma[] | undefined>();
-
+  
   selectedValue: number;
-
+  
   idiomas: Idioma[];
   loading = false;
   
-  constructor(private entitiesService: EntitiesService) { }
+  constructor(private entitiesService: EntitiesService, private modalCtrl: ModalController) { }
   
   ngOnInit() {
     this.loading = true;
@@ -30,9 +31,13 @@ export class IdiomasComponent  implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  confirm() {
     const checkedIdiomas = this.idiomas.filter((idioma) => idioma.checked);
-    this.idiomaSeleccionado.emit(checkedIdiomas);
+    return this.modalCtrl.dismiss(checkedIdiomas, 'confirm');
   }
 
 }
