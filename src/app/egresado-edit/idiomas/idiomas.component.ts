@@ -15,7 +15,6 @@ export class IdiomasComponent  implements OnInit {
   @Output() idiomaSeleccionado = new EventEmitter<Idioma[] | undefined>();
   
   selectedValue: number;
-  
   idiomas: Idioma[];
   loading = false;
   

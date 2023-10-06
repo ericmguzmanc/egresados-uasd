@@ -28,7 +28,6 @@ export class HabilidadesComponent  implements OnInit {
     .subscribe((habilidades: EgresadosHabilidad[]) => {
       this.habilidades = habilidades.map((habilidad) => {
         const exists = this.egresadosHabilidad?.some(egresadoHabilidad => egresadoHabilidad.habilidadId === habilidad.id);
-        console.log('🚀 ~ file: habilidades.component.ts:28 ~ HabilidadesComponent ~ this.habilidades=habilidades.map ~ exists:', exists)
         return { ...habilidad, checked: !!exists }
       });
       this.loading = false;
