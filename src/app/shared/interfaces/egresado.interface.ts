@@ -69,9 +69,10 @@ export interface Nacionalidad {
 }
 
 export interface Idioma {
-  id: number;
+  id?: number;
   egresadoId?: number;
   idioma?: string;
+  idiomaId?: number;
   disabled?: boolean;
 }
 

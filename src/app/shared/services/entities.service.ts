@@ -13,6 +13,6 @@ export class EntitiesService {
   constructor(private http: HttpClient) { }
 
   getIdiomas(): Observable<Idioma[]> {
-    return this.http.get<Idioma[]>(`${JSON_SERVER_URL}/idioma`)
+    return this.http.get<Idioma[]>(`${JSON_SERVER_URL}/idioma?_sort=idioma`)
   }
 }

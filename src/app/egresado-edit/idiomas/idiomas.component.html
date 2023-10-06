@@ -1,9 +1,15 @@
 <ng-container *ngIf="!loading">
+  <ion-title>Agregar Idioma (A-z)</ion-title>
   <ion-list>
-    <ion-radio-group value="strawberries">
+    <ion-radio-group [(ngModel)]="selectedValue">
       <ion-item *ngFor="let idioma of idiomas">
         <ion-label>{{idioma.idioma}}</ion-label>
-        <ion-radio slot="end" value="{{idioma.idioma}}" [disabled]="idioma.disabled"></ion-radio>
+        <ng-container *ngIf="idioma.disabled">
+          <ion-radio slot="end" value="{{idioma.id}}" [disabled]="idioma.disabled" class="radio-checked"></ion-radio>
+        </ng-container>
+        <ng-container *ngIf="!idioma.disabled">
+          <ion-radio slot="end" value="{{idioma.id}}"></ion-radio>
+        </ng-container>
       </ion-item>
     </ion-radio-group>
   </ion-list>

@@ -34,9 +34,6 @@ export class EgresadoEditPage implements OnInit {
     educacion: this.fb.array([]),
   });;
 
-  IdiomaModalMessage = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
-  name: String;
-
   constructor(
     private location: Location,
     private route: ActivatedRoute,
@@ -72,7 +69,8 @@ export class EgresadoEditPage implements OnInit {
       const egresadoId = params['id'];
       if (egresadoId) {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
-          this.egresado = egresado;          
+          this.egresado = egresado;  
+          console.log('🚀 ~ file: egresado-edit.page.ts:78 ~ EgresadoEditPage ~ this.egresadoService.getEgresadoById ~ this.egresado:', this.egresado)
           this.loading = false;
           this.loadEgresadoForm();
         });
@@ -80,8 +78,24 @@ export class EgresadoEditPage implements OnInit {
     });
   }
 
-  onBackButtonClick(): void {
-    this.location.back();
+  async savedConfirmation() {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'Cambios Guardados',
+      message: `Los cambios al perfil del egresado ${this.egresado.Nombre} ${this.egresado.ApellidoPaterno} han sido guardados.`,
+      buttons: [
+        {
+          text: 'OK',
+          role: 'Confirmar',
+          handler: () => {
+            console.log('✨ Alerta Aceptada');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+    
   }
 
   loadEgresadoForm(): void {
@@ -117,14 +131,49 @@ export class EgresadoEditPage implements OnInit {
     return idiomas;
   }
 
-  addNewIdiomaEgresado() {
-    this.idiomaEgresadoArray.push(this.createIdiomaFormGroup());
+  addIdiomaEgresado(idioma: Idioma | undefined) {
+    this.loading = true;
+    if (idioma) {
+      const idiomaEgresado = {
+        idioma: idioma.idioma,
+        idiomaId: idioma.id,
+        egresadoId: this.egresado.id
+      };
+
+      this.egresadoService.addIdiomaEgresado(idiomaEgresado)
+        .subscribe(() => {
+          this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
+          this.egresado.idiomaEgresado?.push({
+            ...idioma,
+            egresadoId: this.egresado.id,
+          });
+
+          this.savedConfirmation()
+          this.loading = false;
+        });
+    }
+  }
+
+  removeEgresadoIdioma(idiomaId: number, position: number) {
+    this.loading = true;
+
+    this.egresadoService.removeIdiomaEgresado(idiomaId)
+      .subscribe(() => {
+        const filteredIdiomaEgresado = this.egresado.idiomaEgresado?.filter((idiomaEgresado) => idiomaId != idiomaEgresado.id);
+        this.egresado.idiomaEgresado = filteredIdiomaEgresado;
+        this.idiomaEgresadoArray.removeAt(position);
+
+        this.savedConfirmation();
+        this.loading = false;
+      });
+
+
   }
 
   private createIdiomaFormGroup(idioma?: Idioma): FormGroup {
     return this.fb.group({
         id: new FormControl(idioma?.id || 0),
-        egresadoId: new FormControl(idioma?.egresadoId || 0),
+        egresadoId: new FormControl(idioma?.egresadoId || this.egresado.id),
         idioma: new FormControl(idioma?.idioma || ''),
     });
   }
@@ -193,14 +242,36 @@ export class EgresadoEditPage implements OnInit {
   }
 
   save() {
-    console.log('🚀 ~ file: egresado-edit.page.ts:66 ~ save ~ this.egresadoForm.value:', this.egresadoForm.value)
+    if (this.egresadoForm.valid) {
+      const egresado = this.buildEgresadoUpdateObject();
+      
+      this.egresadoService.updateEgresado(egresado)
+      .subscribe(() => {
+        this.savedConfirmation();
+      });
+    }
+  }
+
+  buildEgresadoUpdateObject() {
+    const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Genero, FechaNac, Pasaporte, about} = this.egresadoForm.value
+    return {
+      id: this.egresado.id,
+      Nombre, 
+      ApellidoPaterno,
+      ApellidoMaterno,
+      Cedula,
+      Genero,
+      FechaNac,
+      Pasaporte,
+      about
+    }
   }
 
   async onCancelClick() {
     const alert = await this.alertController.create({
       header: 'Cuidado!',
       subHeader: 'Mensaje Importante',
-      message: 'Si cancela la edición de perfil, se perderán los cambios.',
+      message: 'Si sale de la edición de perfil, se perderán los cambios no guardados.',
       buttons: [
         {
           text: 'Cancelar',
@@ -228,13 +299,12 @@ export class EgresadoEditPage implements OnInit {
   }
 
   confirm() {
-    this.IdiomaModal.dismiss(this.name, 'confirm');
+    this.IdiomaModal.dismiss(null, 'confirm');
   }
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
-      this.IdiomaModalMessage = `Hello, ${ev.detail.data}!`;
     }
   }
 

@@ -19,14 +19,14 @@
     {
       "id": 1,
       "Nombre": "Eric",
-      "ApellidoMaterno": "Guzman",
-      "ApellidoPaterno": "Cabreja",
+      "ApellidoMaterno": "Cabreja",
+      "ApellidoPaterno": "Guzman",
       "Cedula": "40234485943",
-      "Pasaporte": "RD588391",
+      "Pasaporte": "RD588392",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
       "profilePicUrl": "assets/img/profile/1.jpeg",
-      "about": "Soy un desarrollador web apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas",
+      "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true
     },
     {
@@ -39,7 +39,7 @@
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
       "profilePicUrl": "assets/img/profile/2.jpeg",
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
       "destacado": true
     },
     {
@@ -52,7 +52,7 @@
       "FechaNac": "1999-02-05",
       "Genero": "Femenino",
       "profilePicUrl": "assets/img/profile/3.jpeg",
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 4,
@@ -64,7 +64,7 @@
       "FechaNac": "1998-02-11",
       "Genero": "Femenino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 5,
@@ -76,7 +76,7 @@
       "FechaNac": "1999-04-22",
       "Genero": "Masculino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 6,
@@ -88,7 +88,7 @@
       "FechaNac": "1994-06-01",
       "Genero": "Femenino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 7,
@@ -100,7 +100,7 @@
       "FechaNac": "19973-02-28",
       "Genero": "Femenino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 8,
@@ -112,7 +112,7 @@
       "FechaNac": "1997-07-27",
       "Genero": "Masculino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 9,
@@ -124,7 +124,7 @@
       "FechaNac": "1993-06-16",
       "Genero": "Masculino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
       "id": 10,
@@ -136,7 +136,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
-      "about":"Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     }
   ],
   "experienciaLaboralEgresado": [
@@ -379,20 +379,8 @@
       "idioma": "Español"
     },
     {
-      "id": 2,
-      "egresadoId": 1,
-      "idiomaId": 2,
-      "idioma": "Inglés"
-    },
-    {
       "id": 3,
       "egresadoId": 2,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 4,
-      "egresadoId": 3,
       "idiomaId": 1,
       "idioma": "Español"
     },
@@ -437,6 +425,18 @@
       "egresadoId": 10,
       "idiomaId": 1,
       "idioma": "Español"
+    },
+    {
+      "idioma": "Inglés",
+      "idiomaId": 2,
+      "egresadoId": 1,
+      "id": 12
+    },
+    {
+      "idioma": "Mandarín",
+      "idiomaId": 4,
+      "egresadoId": 1,
+      "id": 13
     }
   ],
   "educacion_deprecated": [
@@ -521,57 +521,57 @@
       "idioma": "Indhi"
     }
   ],
-  "egresadosHabilidad":[
+  "egresadosHabilidad": [
     {
-      "id":1,
-      "egresadoId":1,
-      "habilidadesId":1,
-      "habilidad":"Programador"
+      "id": 1,
+      "egresadoId": 1,
+      "habilidadesId": 1,
+      "habilidad": "Programador"
     },
     {
-      "id":2,
-      "egresadoId":1,
-      "habilidadesId":2,
-      "habilidad":"Angular"
+      "id": 2,
+      "egresadoId": 1,
+      "habilidadesId": 2,
+      "habilidad": "Angular"
     },
     {
-      "id":3,
-      "egresadoId":1,
-      "habilidadesId":3,
-      "habilidad":"React"
+      "id": 3,
+      "egresadoId": 1,
+      "habilidadesId": 3,
+      "habilidad": "React"
     },
     {
-      "id":4,
-      "egresadoId":1,
-      "habilidadesId":4,
-      "habilidad":"HTML5"
+      "id": 4,
+      "egresadoId": 1,
+      "habilidadesId": 4,
+      "habilidad": "HTML5"
     },
     {
-      "id":5,
-      "egresadoId":1,
-      "habilidadesId":5,
-      "habilidad":"CSS3"
+      "id": 5,
+      "egresadoId": 1,
+      "habilidadesId": 5,
+      "habilidad": "CSS3"
     }
   ],
-  "habilidades":[
+  "habilidades": [
     {
-      "id":1,
-      "habilida":"Programador"
+      "id": 1,
+      "habilida": "Programador"
     },
     {
-      "id":2,
-      "habilida":"Angular"
+      "id": 2,
+      "habilida": "Angular"
     },
     {
-      "id":3,
+      "id": 3,
       "habilida": "React"
     },
     {
-      "id":4,
+      "id": 4,
       "habilida": "HTML5"
     },
     {
-      "id":5,
+      "id": 5,
       "habilida": "CSS3"
     }
   ]

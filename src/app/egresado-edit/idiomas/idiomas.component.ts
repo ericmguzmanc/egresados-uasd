@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Idioma } from 'src/app/shared/interfaces/egresado.interface';
 import { EntitiesService } from 'src/app/shared/services/entities.service';
 
@@ -7,8 +7,11 @@ import { EntitiesService } from 'src/app/shared/services/entities.service';
   templateUrl: './idiomas.component.html',
   styleUrls: ['./idiomas.component.scss'],
 })
-export class IdiomasComponent  implements OnInit {
+export class IdiomasComponent  implements OnInit, OnDestroy {
   @Input() idiomasEgresado: Idioma[] | undefined;
+  @Output() idiomaSeleccionado = new EventEmitter<Idioma | undefined>();
+
+  selectedValue: number;
 
   idiomas: Idioma[];
   loading = false;
@@ -27,4 +30,10 @@ export class IdiomasComponent  implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.idiomaSeleccionado.emit(this.getIdioma(this.selectedValue));
+  }
+
+  getIdioma = (idiomaId: number): Idioma | undefined => this.idiomas.find((idioma) => idioma.id == idiomaId);
+  
 }
