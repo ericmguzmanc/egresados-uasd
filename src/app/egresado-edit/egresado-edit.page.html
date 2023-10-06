@@ -112,7 +112,7 @@
           </ion-col>
           <ion-col size="2">
             <ion-button color="primary" float-right id="open-idiomas-modal">
-              <ion-icon name="add-outline"></ion-icon>
+              <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
@@ -124,9 +124,6 @@
         <ng-container *ngIf="idiomaEgresadoArray.controls.length >= 0">
           <ion-item *ngFor="let idioma of idiomaEgresadoArray.controls; let i = index">
             <ion-label>{{idioma.value.idioma}}</ion-label>
-            <ion-button color="danger" (click)="removeEgresadoIdioma(idioma.value.id, i)">
-              <ion-icon name="trash-outline"></ion-icon>
-            </ion-button>
           </ion-item>
         </ng-container>
       </ion-list>
@@ -257,7 +254,7 @@
           </ion-buttons>
           <ion-title>Idiomas</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Agregar</ion-button>
+            <ion-button (click)="confirm()" [strong]="true">Modificar</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

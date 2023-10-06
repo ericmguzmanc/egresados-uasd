@@ -9,7 +9,7 @@ import { EntitiesService } from 'src/app/shared/services/entities.service';
 })
 export class IdiomasComponent  implements OnInit, OnDestroy {
   @Input() idiomasEgresado: Idioma[] | undefined;
-  @Output() idiomaSeleccionado = new EventEmitter<Idioma | undefined>();
+  @Output() idiomaSeleccionado = new EventEmitter<Idioma[] | undefined>();
 
   selectedValue: number;
 
@@ -23,17 +23,16 @@ export class IdiomasComponent  implements OnInit, OnDestroy {
     this.entitiesService.getIdiomas()
     .subscribe((idiomas: Idioma[]) => {
       this.idiomas = idiomas.map((i) => {
-        const exists = this.idiomasEgresado?.some(ie => ie.id === i.id);
-        return { ...i, disabled: !!exists }
+        const exists = this.idiomasEgresado?.some(ie => ie.idiomaId === i.id);
+        return { ...i, checked: !!exists }
       });
       this.loading = false;
     });
   }
 
   ngOnDestroy(): void {
-    this.idiomaSeleccionado.emit(this.getIdioma(this.selectedValue));
+    const checkedIdiomas = this.idiomas.filter((idioma) => idioma.checked);
+    this.idiomaSeleccionado.emit(checkedIdiomas);
   }
 
-  getIdioma = (idiomaId: number): Idioma | undefined => this.idiomas.find((idioma) => idioma.id == idiomaId);
-  
 }

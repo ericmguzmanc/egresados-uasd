@@ -73,7 +73,7 @@ export interface Idioma {
   egresadoId?: number;
   idioma?: string;
   idiomaId?: number;
-  disabled?: boolean;
+  checked?: boolean;
 }
 
 export interface Contacto {

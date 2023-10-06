@@ -6,6 +6,7 @@ import { EgresadosService } from '../shared/services/egresados.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -131,43 +132,51 @@ export class EgresadoEditPage implements OnInit {
     return idiomas;
   }
 
-  addIdiomaEgresado(idioma: Idioma | undefined) {
+  addIdiomaEgresado(idiomas: Idioma[] | undefined) {
     this.loading = true;
-    if (idioma) {
-      const idiomaEgresado = {
-        idioma: idioma.idioma,
-        idiomaId: idioma.id,
-        egresadoId: this.egresado.id
-      };
 
-      this.egresadoService.addIdiomaEgresado(idiomaEgresado)
-        .subscribe(() => {
-          this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
-          this.egresado.idiomaEgresado?.push({
-            ...idioma,
-            egresadoId: this.egresado.id,
-          });
+    if (idiomas) {
+      const idiomaEgresado = idiomas.map((idioma) => {
+        return {
+          idioma: idioma.idioma,
+          idiomaId: idioma.id,
+          egresadoId: this.egresado.id,
+        }
+      });
 
-          this.savedConfirmation()
-          this.loading = false;
+      forkJoin([
+        ...this.resetIdiomaEgresadoRequests(),
+        ...this.addIdiomaEgresadoRequests(idiomaEgresado)
+      ])
+      .subscribe((response) => {
+        this.idiomaEgresadoArray.clear();
+        this.egresado.idiomaEgresado = [];
+
+        response
+        .filter((idioma) => idioma.id)
+        .forEach((idioma) => {
+          if (idioma.id) {
+            this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
+            this.egresado.idiomaEgresado?.push({
+              ...idioma,
+              egresadoId: this.egresado.id,
+            });
+          }
         });
+      });
     }
   }
 
-  removeEgresadoIdioma(idiomaId: number, position: number) {
-    this.loading = true;
+  resetIdiomaEgresadoRequests() {
+    return this.egresado.idiomaEgresado.map(idiomaEgresado => this.egresadoService.removeIdiomaEgresado(idiomaEgresado.id));
+  }
 
-    this.egresadoService.removeIdiomaEgresado(idiomaId)
-      .subscribe(() => {
-        const filteredIdiomaEgresado = this.egresado.idiomaEgresado?.filter((idiomaEgresado) => idiomaId != idiomaEgresado.id);
-        this.egresado.idiomaEgresado = filteredIdiomaEgresado;
-        this.idiomaEgresadoArray.removeAt(position);
-
-        this.savedConfirmation();
-        this.loading = false;
-      });
-
-
+  addIdiomaEgresadoRequests(idiomas: Idioma[]) {
+    return idiomas.map(idioma => this.egresadoService.addIdiomaEgresado({
+      idioma: idioma.idioma,
+      idiomaId: idioma.idiomaId,
+      egresadoId: this.egresado.id
+    }));
   }
 
   private createIdiomaFormGroup(idioma?: Idioma): FormGroup {

@@ -373,24 +373,6 @@
   ],
   "idiomaEgresado": [
     {
-      "id": 1,
-      "egresadoId": 1,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 3,
-      "egresadoId": 2,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 5,
-      "egresadoId": 4,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
       "id": 6,
       "egresadoId": 5,
       "idiomaId": 1,
@@ -427,16 +409,22 @@
       "idioma": "Español"
     },
     {
+      "idioma": "Español",
+      "idiomaId": 1,
+      "egresadoId": 1,
+      "id": 17
+    },
+    {
+      "idioma": "Francés",
+      "idiomaId": 3,
+      "egresadoId": 1,
+      "id": 18
+    },
+    {
       "idioma": "Inglés",
       "idiomaId": 2,
       "egresadoId": 1,
-      "id": 12
-    },
-    {
-      "idioma": "Mandarín",
-      "idiomaId": 4,
-      "egresadoId": 1,
-      "id": 13
+      "id": 19
     }
   ],
   "educacion_deprecated": [
