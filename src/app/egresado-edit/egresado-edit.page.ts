@@ -5,8 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonModal, ModalController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components';
-import { forkJoin } from 'rxjs';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 
@@ -165,48 +163,19 @@ export class EgresadoEditPage implements OnInit {
   addIdiomaEgresado(idiomas: Idioma[] | undefined) {
     this.loading = true;
 
-    if (idiomas) {
-      const idiomaEgresado = idiomas.map((idioma) => {
-        return {
-          idioma: idioma.idioma,
-          idiomaId: idioma.id,
+    if (idiomas.length > 0) {
+      this.idiomaEgresadoArray.clear();
+      this.egresado.idiomaEgresado = [];
+      
+      idiomas.forEach((idioma) => {
+        this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
+        this.egresado.idiomaEgresado?.push({
+          ...idioma,
+          idiomaId: idioma.idiomaId,
           egresadoId: this.egresado.id,
-        }
-      });
-
-      forkJoin([
-        ...this.resetIdiomaEgresadoRequests(),
-        ...this.addIdiomaEgresadoRequests(idiomaEgresado)
-      ])
-      .subscribe((response) => {
-        this.idiomaEgresadoArray.clear();
-        this.egresado.idiomaEgresado = [];
-
-        response
-        .filter((idioma) => idioma.id)
-        .forEach((idioma) => {
-          if (idioma.id) {
-            this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
-            this.egresado.idiomaEgresado?.push({
-              ...idioma,
-              egresadoId: this.egresado.id,
-            });
-          }
         });
       });
     }
-  }
-
-  resetIdiomaEgresadoRequests() {
-    return this.egresado.idiomaEgresado.map(idiomaEgresado => this.egresadoService.removeIdiomaEgresado(idiomaEgresado.id));
-  }
-
-  addIdiomaEgresadoRequests(idiomas: Idioma[]) {
-    return idiomas.map(idioma => this.egresadoService.addIdiomaEgresado({
-      idioma: idioma.idioma,
-      idiomaId: idioma.idiomaId,
-      egresadoId: this.egresado.id
-    }));
   }
 
   private createIdiomaFormGroup(idioma?: Idioma): FormGroup {
@@ -220,48 +189,19 @@ export class EgresadoEditPage implements OnInit {
   addHabilidadEgresado(habilidades: EgresadosHabilidad[] | undefined) {
     this.loading = true;
 
-    if (habilidades) {
-      const habilidadEgresado = habilidades.map((habilidad) => {
-        return {
-          habilidad: habilidad.habilidad,
-          habilidadId: habilidad.id,
+    if (habilidades.length > 0) {
+      this.habilidadesEgresadoArray.clear();
+      this.egresado.egresadosHabilidad = [];
+      
+      habilidades.forEach((habilidad) => {
+        this.habilidadesEgresadoArray.push(this.createHabilidadFormGroup(habilidad));
+        this.egresado.egresadosHabilidad?.push({
+          ...habilidad,
+          habilidadId: habilidad.habilidadId,
           egresadoId: this.egresado.id,
-        }
-      });
-
-      forkJoin([
-        ...this.resetHabilidadEgresadoRequests(),
-        ...this.addHabilidadEgresadoRequests(habilidadEgresado)
-      ])
-      .subscribe((response) => {
-        this.habilidadesEgresadoArray.clear();
-        this.egresado.egresadosHabilidad = [];
-
-        response
-        .filter((habilidad) => habilidad.id)
-        .forEach((habilidad) => {
-          if (habilidad.id) {
-            this.habilidadesEgresadoArray.push(this.createHabilidadFormGroup(habilidad));
-            this.egresado.egresadosHabilidad?.push({
-              ...habilidad,
-              egresadoId: this.egresado.id,
-            });
-          }
         });
       });
     }
-  }
-
-  resetHabilidadEgresadoRequests() {
-    return this.egresado.egresadosHabilidad.map(egresadosHabilidad => this.egresadoService.removeHabilidadEgresado(egresadosHabilidad.id));
-  }
-
-  addHabilidadEgresadoRequests(habilidades: EgresadosHabilidad[]) {
-    return habilidades.map(habilidad => this.egresadoService.addHabilidadEgresado({
-      habilidad: habilidad.habilidad,
-      habilidadId: habilidad.habilidadId,
-      egresadoId: this.egresado.id
-    }));
   }
 
   fillExperienciaLaboralArray() {
@@ -383,7 +323,10 @@ export class EgresadoEditPage implements OnInit {
   async openIdiomasModal() {
     const idiomasModal = await this.modalCtrl.create({
       component: IdiomasComponent,
-      componentProps: { idiomasEgresado: this.egresado.idiomaEgresado }
+      componentProps: { 
+        idiomasEgresado: this.egresado.idiomaEgresado,
+        egresadoId: this.egresado.id,
+      }
     });
 
     idiomasModal.present();
@@ -400,7 +343,10 @@ export class EgresadoEditPage implements OnInit {
   async openHabilidadesModal() {
     const habilidadesModal = await this.modalCtrl.create({
       component: HabilidadesComponent,
-      componentProps: { egresadosHabilidad: this.egresado.egresadosHabilidad }
+      componentProps: { 
+        egresadosHabilidad: this.egresado.egresadosHabilidad,
+        egresadoId: this.egresado.id,
+      }
     });
 
     habilidadesModal.present();

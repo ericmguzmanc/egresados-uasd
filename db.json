@@ -385,46 +385,22 @@
       "idioma": "Español"
     },
     {
-      "id": 8,
-      "egresadoId": 7,
+      "idioma": "Español",
       "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 9,
-      "egresadoId": 8,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 10,
-      "egresadoId": 9,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 11,
-      "egresadoId": 10,
-      "idiomaId": 1,
-      "idioma": "Español"
+      "egresadoId": 1,
+      "id": 20
     },
     {
       "idioma": "Francés",
       "idiomaId": 3,
       "egresadoId": 1,
-      "id": 12
-    },
-    {
-      "idioma": "Español",
-      "idiomaId": 1,
-      "egresadoId": 1,
-      "id": 13
+      "id": 23
     },
     {
       "idioma": "Inglés",
       "idiomaId": 2,
       "egresadoId": 1,
-      "id": 14
+      "id": 25
     }
   ],
   "educacion_deprecated": [
@@ -523,20 +499,14 @@
       "id": 7
     },
     {
-      "habilidad": "CI/CD",
-      "habilidadId": 10,
-      "egresadoId": 1,
-      "id": 8
-    },
-    {
-      "habilidad": "HTML5",
-      "habilidadId": 4,
+      "habilidad": "React",
+      "habilidadId": 3,
       "egresadoId": 1,
       "id": 9
     },
     {
-      "habilidad": "React",
-      "habilidadId": 3,
+      "habilidad": "CI/CD",
+      "habilidadId": 10,
       "egresadoId": 1,
       "id": 10
     },
@@ -544,7 +514,7 @@
       "habilidad": "VueJS",
       "habilidadId": 9,
       "egresadoId": 1,
-      "id": 11
+      "id": 12
     }
   ],
   "habilidades": [

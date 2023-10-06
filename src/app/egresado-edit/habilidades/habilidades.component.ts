@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { CheckboxChangeEventDetail, ModalController } from '@ionic/angular';
 import { EgresadosHabilidad } from 'src/app/shared/interfaces/egresado.interface';
+import { EgresadosService } from 'src/app/shared/services/egresados.service';
 import { EntitiesService } from 'src/app/shared/services/entities.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { EntitiesService } from 'src/app/shared/services/entities.service';
   styleUrls: ['./habilidades.component.scss'],
 })
 export class HabilidadesComponent  implements OnInit {
+  @Input() egresadoId: number;
   @Input() egresadosHabilidad: EgresadosHabilidad[];
 
   loading = false;
@@ -16,7 +18,8 @@ export class HabilidadesComponent  implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private entitiesService: EntitiesService
+    private entitiesService: EntitiesService,
+    private egresadoService: EgresadosService,
   ) { }
 
   ngOnInit() {
@@ -32,12 +35,44 @@ export class HabilidadesComponent  implements OnInit {
     });
   }
 
-  cancel() {
-    return this.modalCtrl.dismiss(null, 'cancel');
+  checkboxChanged(event: any, habilidad: EgresadosHabilidad) {
+    const idiomaChecked = event.detail as CheckboxChangeEventDetail;
+
+    if (idiomaChecked.checked) {
+      this.addEgresadoHabilidad(habilidad);
+    } else {
+      this.removeEgresadoHabilidad(habilidad.id);
+    }
   }
 
-  confirm() {
-    const checkedHabilidades = this.habilidades.filter((habilidad) => habilidad.checked);
-    return this.modalCtrl.dismiss(checkedHabilidades, 'confirm');
+  addEgresadoHabilidad(habilidad: EgresadosHabilidad) {
+    const newHabilidad = {
+      habilidad: habilidad.habilidad,
+      habilidadId: habilidad.id,
+      egresadoId: this.egresadoId
+    }
+
+    this.egresadoService.addHabilidadEgresado(newHabilidad)
+      .subscribe((habilidad) => {
+        this.egresadosHabilidad.push({
+          ...habilidad,
+          egresadoId: this.egresadoId,
+        });
+      });
+  }
+
+  removeEgresadoHabilidad(habilidadId: number) {
+    const habilidadToRemove = this.egresadosHabilidad.find((habilidad) => habilidad.habilidadId === habilidadId);
+    
+    if (habilidadToRemove) {
+      this.egresadoService.removeHabilidadEgresado(habilidadToRemove.id)
+        .subscribe((_) => {
+          this.egresadosHabilidad = this.egresadosHabilidad.filter((habilidad) => habilidadToRemove.id != habilidad.id)
+        });
+    }
+  }
+
+  close() {
+    return this.modalCtrl.dismiss(this.egresadosHabilidad, 'confirm');
   }
 }
