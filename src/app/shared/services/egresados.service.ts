@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Egresado } from '../interfaces/egresado.interface';
+import { Egresado, Idioma } from '../interfaces/egresado.interface';
 import { Observable } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 
@@ -20,9 +20,16 @@ export class EgresadosService {
     return this.http.get<Egresado>(`${JSON_SERVER_URL}/egresado/${id}?${this.egresado_relationships}`);
   }
 
-  updateEgresado(id: number): Observable<Egresado> {
-    // TODO - finish up this part
-    return this.http.patch<Egresado>(`${JSON_SERVER_URL}/egresado/${id}?${this.egresado_relationships}`, {});
+  updateEgresado(egresado: Egresado): Observable<Egresado> {
+    return this.http.patch<Egresado>(`${JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
+  }
+
+  addIdiomaEgresado(idioma: Idioma): Observable<Idioma> {
+    return this.http.post<Idioma>(`${JSON_SERVER_URL}/idiomaEgresado`, idioma);
+  }
+
+  removeIdiomaEgresado(idiomaId: number): Observable<Idioma> {
+    return this.http.delete<Idioma>(`${JSON_SERVER_URL}/idiomaEgresado/${idiomaId}`);
   }
 
 }

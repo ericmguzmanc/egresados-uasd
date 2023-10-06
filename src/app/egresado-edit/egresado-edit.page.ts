@@ -6,6 +6,7 @@ import { EgresadosService } from '../shared/services/egresados.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -33,9 +34,6 @@ export class EgresadoEditPage implements OnInit {
     egresadosHabilidad: this.fb.array([]),
     educacion: this.fb.array([]),
   });;
-
-  IdiomaModalMessage = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
-  name: String;
 
   constructor(
     private location: Location,
@@ -72,7 +70,7 @@ export class EgresadoEditPage implements OnInit {
       const egresadoId = params['id'];
       if (egresadoId) {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
-          this.egresado = egresado;          
+          this.egresado = egresado;  
           this.loading = false;
           this.loadEgresadoForm();
         });
@@ -80,8 +78,24 @@ export class EgresadoEditPage implements OnInit {
     });
   }
 
-  onBackButtonClick(): void {
-    this.location.back();
+  async savedConfirmation() {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'Cambios Guardados',
+      message: `Los cambios al perfil del egresado ${this.egresado.Nombre} ${this.egresado.ApellidoPaterno} han sido guardados.`,
+      buttons: [
+        {
+          text: 'OK',
+          role: 'Confirmar',
+          handler: () => {
+            console.log('✨ Alerta Aceptada');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+    
   }
 
   loadEgresadoForm(): void {
@@ -117,14 +131,57 @@ export class EgresadoEditPage implements OnInit {
     return idiomas;
   }
 
-  addNewIdiomaEgresado() {
-    this.idiomaEgresadoArray.push(this.createIdiomaFormGroup());
+  addIdiomaEgresado(idiomas: Idioma[] | undefined) {
+    this.loading = true;
+
+    if (idiomas) {
+      const idiomaEgresado = idiomas.map((idioma) => {
+        return {
+          idioma: idioma.idioma,
+          idiomaId: idioma.id,
+          egresadoId: this.egresado.id,
+        }
+      });
+
+      forkJoin([
+        ...this.resetIdiomaEgresadoRequests(),
+        ...this.addIdiomaEgresadoRequests(idiomaEgresado)
+      ])
+      .subscribe((response) => {
+        this.idiomaEgresadoArray.clear();
+        this.egresado.idiomaEgresado = [];
+
+        response
+        .filter((idioma) => idioma.id)
+        .forEach((idioma) => {
+          if (idioma.id) {
+            this.idiomaEgresadoArray.push(this.createIdiomaFormGroup(idioma));
+            this.egresado.idiomaEgresado?.push({
+              ...idioma,
+              egresadoId: this.egresado.id,
+            });
+          }
+        });
+      });
+    }
+  }
+
+  resetIdiomaEgresadoRequests() {
+    return this.egresado.idiomaEgresado.map(idiomaEgresado => this.egresadoService.removeIdiomaEgresado(idiomaEgresado.id));
+  }
+
+  addIdiomaEgresadoRequests(idiomas: Idioma[]) {
+    return idiomas.map(idioma => this.egresadoService.addIdiomaEgresado({
+      idioma: idioma.idioma,
+      idiomaId: idioma.idiomaId,
+      egresadoId: this.egresado.id
+    }));
   }
 
   private createIdiomaFormGroup(idioma?: Idioma): FormGroup {
     return this.fb.group({
         id: new FormControl(idioma?.id || 0),
-        egresadoId: new FormControl(idioma?.egresadoId || 0),
+        egresadoId: new FormControl(idioma?.egresadoId || this.egresado.id),
         idioma: new FormControl(idioma?.idioma || ''),
     });
   }
@@ -193,14 +250,36 @@ export class EgresadoEditPage implements OnInit {
   }
 
   save() {
-    console.log('🚀 ~ file: egresado-edit.page.ts:66 ~ save ~ this.egresadoForm.value:', this.egresadoForm.value)
+    if (this.egresadoForm.valid) {
+      const egresado = this.buildEgresadoUpdateObject();
+      
+      this.egresadoService.updateEgresado(egresado)
+      .subscribe(() => {
+        this.savedConfirmation();
+      });
+    }
+  }
+
+  buildEgresadoUpdateObject() {
+    const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Genero, FechaNac, Pasaporte, about} = this.egresadoForm.value
+    return {
+      id: this.egresado.id,
+      Nombre, 
+      ApellidoPaterno,
+      ApellidoMaterno,
+      Cedula,
+      Genero,
+      FechaNac,
+      Pasaporte,
+      about
+    }
   }
 
   async onCancelClick() {
     const alert = await this.alertController.create({
       header: 'Cuidado!',
       subHeader: 'Mensaje Importante',
-      message: 'Si cancela la edición de perfil, se perderán los cambios.',
+      message: 'Si sale de la edición de perfil, se perderán los cambios no guardados.',
       buttons: [
         {
           text: 'Cancelar',
@@ -228,13 +307,12 @@ export class EgresadoEditPage implements OnInit {
   }
 
   confirm() {
-    this.IdiomaModal.dismiss(this.name, 'confirm');
+    this.IdiomaModal.dismiss(null, 'confirm');
   }
 
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
-      this.IdiomaModalMessage = `Hello, ${ev.detail.data}!`;
     }
   }
 
