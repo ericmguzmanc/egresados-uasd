@@ -1,5 +1,5 @@
+
 <ion-content>
-  <app-loader></app-loader>
   <ng-container *ngIf="egresados">
     <ion-list>
       <ion-item
@@ -25,16 +25,20 @@
             <h6 class="muted">
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
-            <span class="muted">Emp. {{this.helperService.getLatestEmpresa(egresado)}}</span>
-            <span *ngIf="egresado.destacado === true" class="star"><ion-icon name="star" ></ion-icon></span>
+            <span class="muted"
+              >Emp. {{ this.helperService.getLatestEmpresa(egresado) }}</span
+            >
+            <span *ngIf="egresado.destacado === true" class="star"
+              ><ion-icon name="star"></ion-icon
+            ></span>
           </ion-text>
         </ion-label>
       </ion-item>
     </ion-list>
   </ng-container>
+</ion-content>
 
-  <!-- Loading spinner -->
-  <!--<ion-content *ngIf="!egresados">
-    <ion-spinner name="crescent"></ion-spinner>
-  </ion-content>
-</ion-content>-->
+<!-- Loading spinner -->
+<ion-content *ngIf="isLoading">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-content>

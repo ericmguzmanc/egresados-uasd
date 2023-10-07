@@ -9,6 +9,9 @@ import { EgresadosPageRoutingModule } from './egresados-routing.module';
 import { EgresadosPage } from './egresados.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { spinnerInterceptor } from '../shared/interceptor/spinner.interceptor';
+import { LoaderComponentModule } from '../shared/components/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -18,7 +21,9 @@ import { SharedModule } from '../shared/shared.module';
     ExploreContainerComponentModule,
     EgresadosPageRoutingModule,
     SharedModule,
+    LoaderComponentModule
   ],
-  declarations: [EgresadosPage]
+  declarations: [EgresadosPage],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true}],
 })
 export class EgresadosPageModule {}

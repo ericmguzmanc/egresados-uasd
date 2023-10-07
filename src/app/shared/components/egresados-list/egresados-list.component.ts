@@ -9,7 +9,7 @@ import { HelperService } from '../../services/helper.service';
 })
 export class EgresadosListComponent implements OnInit {
   @Input() egresados: Egresado[] = [];
-
+  @Input() isLoading: boolean = true;
   constructor(public helperService: HelperService) {}
 
   ngOnInit() {}
