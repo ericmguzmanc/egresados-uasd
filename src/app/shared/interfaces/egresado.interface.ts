@@ -88,5 +88,6 @@ export interface EgresadosHabilidad {
   egresadoId?: number;
   habilidadId?: number;
   habilidad?: string;
+  checked?: boolean;
 }
 

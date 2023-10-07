@@ -1,9 +1,19 @@
-<ng-container *ngIf="!loading">
-  <ion-title style="margin-bottom: 15px;">Agregar Idioma (A-z)</ion-title>
-  <ion-item *ngFor="let idioma of idiomas">
-    <ion-checkbox slot="end" [(ngModel)]="idioma.checked"></ion-checkbox>
-    <ion-label>{{idioma.idioma}}</ion-label>
-  </ion-item>
-</ng-container>
-
 <app-loader *ngIf="loading"></app-loader>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Idiomas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!loading">
+    <ion-title style="margin-bottom: 15px;">Editar Idioma (A-z)</ion-title>
+    <ion-item *ngFor="let idioma of idiomas">
+      <ion-checkbox slot="end" [(ngModel)]="idioma.checked" (ionChange)="checkboxChanged($event, idioma)"></ion-checkbox>
+      <ion-label>{{idioma.idioma}}</ion-label>
+    </ion-item>
+  </ng-container>
+</ion-content>

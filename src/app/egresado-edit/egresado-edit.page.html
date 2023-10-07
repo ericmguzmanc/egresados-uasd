@@ -73,7 +73,7 @@
 
       <ion-title style="margin-top: 15px; margin-left: -15px;">Información Adicional</ion-title>
       <!-- Nacionalidad -->
-      <ion-list formArrayName="nacionalidadEgresado">
+      <!-- <ion-list formArrayName="nacionalidadEgresado">
         <ion-row>
           <ion-col size="10">
             <h5>Nacionalidad</h5>
@@ -97,11 +97,32 @@
             </ion-button>
           </ion-item>
         </ng-container>
-      </ion-list>
+      </ion-list> -->
       <!-- Fin Nacionalidad -->
 
       <!-- Habilidades -->
-      <!-- TODO Habilidades -->
+      <ion-list formArrayName="egresadosHabilidad">
+        <ion-row>
+          <ion-col size="10">
+            <h5>Habilidades</h5>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button color="primary" float-right (click)="openHabilidadesModal()">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ng-container *ngIf="habilidadesEgresadoArray.controls.length === 0">
+          <ion-label class="muted upper-separation"> No hay habilidades definidas</ion-label>
+        </ng-container>
+
+        <ng-container *ngIf="habilidadesEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let habilidad of habilidadesEgresadoArray.controls; let i = index">
+            <ion-label>{{habilidad.value.habilidad}}</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
       <!-- Fin de Habilidades -->
 
       <!-- Idioma Egresado -->
@@ -111,7 +132,7 @@
             <h5>Idioma</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right id="open-idiomas-modal">
+            <ion-button color="primary" float-right (click)="openIdiomasModal()">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </ion-col>
@@ -242,30 +263,6 @@
       </ion-grid>
     </form>
   </ion-content>
-
-
-  <!-- Idioma Egresado Modal -->
-  <ion-modal trigger="open-idiomas-modal" (willDismiss)="onWillDismiss($event)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancelar</ion-button>
-          </ion-buttons>
-          <ion-title>Idiomas</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Modificar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <app-idiomas [idiomasEgresado]="egresado.idiomaEgresado" (idiomaSeleccionado)="addIdiomaEgresado($event)"></app-idiomas>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-  <!-- Fin Idioma Egresado Modal -->
-
-
 
 
 </ion-content>
