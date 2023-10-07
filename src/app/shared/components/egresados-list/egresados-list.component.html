@@ -1,4 +1,5 @@
 <ion-content>
+  <app-loader></app-loader>
   <ng-container *ngIf="egresados">
     <ion-list>
       <ion-item
@@ -33,7 +34,7 @@
   </ng-container>
 
   <!-- Loading spinner -->
-  <ion-content *ngIf="!egresados">
+  <!--<ion-content *ngIf="!egresados">
     <ion-spinner name="crescent"></ion-spinner>
   </ion-content>
-</ion-content>
+</ion-content>-->

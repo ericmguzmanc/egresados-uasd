@@ -18,9 +18,10 @@
     </ion-toolbar>
   </ion-header>
   <!-- content Egresado -->
-  <ion-content *ngIf="loading">
+  <app-loader></app-loader>
+  <!--<ion-content *ngIf="loading">
     <ion-spinner name="crescent"></ion-spinner>
-  </ion-content>
+  </ion-content>-->
   <ion-content *ngIf="!loading">
     <!--Grid -->
     <ion-grid>
