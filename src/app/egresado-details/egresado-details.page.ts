@@ -28,7 +28,9 @@ export class EgresadoDetailsPage implements OnInit {
       if (egresadoId) {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
           this.egresado = egresado;
-          return this.loading = false;
+          setTimeout(() => {
+          this.loading = false;
+          },1000)
         });
       }
     });

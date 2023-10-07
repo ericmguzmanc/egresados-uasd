@@ -15,7 +15,7 @@ export class EgresadosPage implements OnInit {
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string = '';
   egresados: Egresado[] = [];
-  isLoading: boolean = true;
+  loading: boolean = true;
   constructor(private egresadosService: EgresadosService,
     public helperService: HelperService) { }
 
@@ -23,7 +23,9 @@ export class EgresadosPage implements OnInit {
     this.egresadosService.getEgresados()
       .subscribe((egresados: Egresado[]) => {
         this.egresados = egresados;
-        return this.isLoading =false;
+        setTimeout(() => {
+          this.loading = false;
+          },1000)
       });
   }
 
