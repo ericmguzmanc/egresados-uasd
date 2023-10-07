@@ -1,0 +1,19 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Habilidades</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!loading">
+    <ion-title style="margin-bottom: 15px;">Agregar Habilidad</ion-title>
+    <ion-item *ngFor="let habilidad of habilidades">
+      <ion-checkbox slot="end" [(ngModel)]="habilidad.checked" (ionChange)="checkboxChanged($event, habilidad)"></ion-checkbox>
+      <ion-label>{{habilidad.habilidad}}</ion-label>
+    </ion-item>
+  </ng-container>
+</ion-content>

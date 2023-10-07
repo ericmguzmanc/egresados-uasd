@@ -385,46 +385,22 @@
       "idioma": "Español"
     },
     {
-      "id": 8,
-      "egresadoId": 7,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 9,
-      "egresadoId": 8,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 10,
-      "egresadoId": 9,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 11,
-      "egresadoId": 10,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
       "idioma": "Español",
       "idiomaId": 1,
       "egresadoId": 1,
-      "id": 17
+      "id": 20
     },
     {
       "idioma": "Francés",
       "idiomaId": 3,
       "egresadoId": 1,
-      "id": 18
+      "id": 23
     },
     {
       "idioma": "Inglés",
       "idiomaId": 2,
       "egresadoId": 1,
-      "id": 19
+      "id": 25
     }
   ],
   "educacion_deprecated": [
@@ -511,56 +487,88 @@
   ],
   "egresadosHabilidad": [
     {
-      "id": 1,
+      "habilidad": "Angular",
+      "habilidadId": 2,
       "egresadoId": 1,
-      "habilidadesId": 1,
-      "habilidad": "Programador"
+      "id": 6
     },
     {
-      "id": 2,
+      "habilidad": "AWS",
+      "habilidadId": 6,
       "egresadoId": 1,
-      "habilidadesId": 2,
-      "habilidad": "Angular"
+      "id": 7
     },
     {
-      "id": 3,
+      "habilidad": "React",
+      "habilidadId": 3,
       "egresadoId": 1,
-      "habilidadesId": 3,
-      "habilidad": "React"
+      "id": 9
     },
     {
-      "id": 4,
+      "habilidad": "CI/CD",
+      "habilidadId": 10,
       "egresadoId": 1,
-      "habilidadesId": 4,
-      "habilidad": "HTML5"
+      "id": 10
     },
     {
-      "id": 5,
+      "habilidad": "VueJS",
+      "habilidadId": 9,
       "egresadoId": 1,
-      "habilidadesId": 5,
-      "habilidad": "CSS3"
+      "id": 12
     }
   ],
   "habilidades": [
     {
       "id": 1,
-      "habilida": "Programador"
+      "habilidad": "Programador"
     },
     {
       "id": 2,
-      "habilida": "Angular"
+      "habilidad": "Angular"
     },
     {
       "id": 3,
-      "habilida": "React"
+      "habilidad": "React"
     },
     {
       "id": 4,
-      "habilida": "HTML5"
+      "habilidad": "HTML5"
     },
     {
       "id": 5,
-      "habilida": "CSS3"
+      "habilidad": "CSS3"
+    },
+    {
+      "id": 6,
+      "habilidad": "AWS"
+    },
+    {
+      "id": 7,
+      "habilidad": "Java"
+    },
+    {
+      "id": 8,
+      "habilidad": "Método Ágil"
+    },
+    {
+      "id": 9,
+      "habilidad": "VueJS"
+    },
+    {
+      "id": 10,
+      "habilidad": "CI/CD"
+    },
+    {
+      "id": 11,
+      "habilidad": "SCRUM"
+    },
+    {
+      "id": 12,
+      "habilidad": "Liderazgo"
+    },
+    {
+      "id": 13,
+      "habilidad": "Testing"
     }
   ]
 }

@@ -9,6 +9,7 @@ import { EgresadoEditPageRoutingModule } from './egresado-edit-routing.module';
 import { EgresadoEditPage } from './egresado-edit.page';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { SharedModule } from '../shared/shared.module';
+import { HabilidadesComponent } from './habilidades/habilidades.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,12 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     IonicModule,
     EgresadoEditPageRoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  declarations: [EgresadoEditPage, IdiomasComponent]
+  declarations: [
+    EgresadoEditPage, 
+    IdiomasComponent, 
+    HabilidadesComponent
+  ],
 })
 export class EgresadoEditPageModule {}

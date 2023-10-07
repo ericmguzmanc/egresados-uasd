@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Egresado, Idioma } from '../interfaces/egresado.interface';
+import { Egresado, EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
 import { Observable } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 
@@ -30,6 +30,14 @@ export class EgresadosService {
 
   removeIdiomaEgresado(idiomaId: number): Observable<Idioma> {
     return this.http.delete<Idioma>(`${JSON_SERVER_URL}/idiomaEgresado/${idiomaId}`);
+  }
+
+  addHabilidadEgresado(habilidad: EgresadosHabilidad): Observable<EgresadosHabilidad> {
+    return this.http.post<EgresadosHabilidad>(`${JSON_SERVER_URL}/egresadosHabilidad`, habilidad);
+  }
+
+  removeHabilidadEgresado(egresadosHabilidadId: number): Observable<Idioma> {
+    return this.http.delete<EgresadosHabilidad>(`${JSON_SERVER_URL}/egresadosHabilidad/${egresadosHabilidadId}`);
   }
 
 }
