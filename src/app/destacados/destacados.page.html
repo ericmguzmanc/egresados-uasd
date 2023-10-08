@@ -10,8 +10,6 @@
       <ion-title size="large">Egresados Destacados</ion-title>
     </ion-toolbar>
   </ion-header>
+  <app-loader [isLoading]="loading"></app-loader>
   <app-egresados-list [egresados]="egresados"></app-egresados-list>
-  <ion-grid>
-    Lista de egresados destacados...
-  </ion-grid>
 </ion-content>

@@ -9,6 +9,7 @@ import { HelperService } from '../shared/services/helper.service';
 })
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
+  loading: boolean = true;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
@@ -33,7 +34,12 @@ export class DestacadosPage implements OnInit {
 
     this.egresadosService.getEgresados().subscribe((egresados: Egresado[]) => {
       const destacados = egresados.filter((ex) => ex.destacado);
-      return (this.egresados = destacados);
+      return (
+        (this.egresados = destacados),
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000)
+      );
     });
   }
 }

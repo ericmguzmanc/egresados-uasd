@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" (click)="onBackButtonClick()"></ion-back-button>
+      <ion-back-button
+        defaultHref="/"
+        (click)="onBackButtonClick()"
+      ></ion-back-button>
       <ion-title>Login</ion-title>
     </ion-buttons>
     <ion-title>Login</ion-title>
@@ -16,9 +19,8 @@
   </ion-header>
 
   <!-- Loading spinner -->
-  <app-loader *ngIf="loading"></app-loader>
-  
-  <div class="ion-margin container" *ngIf="!loading">
+  <app-loader [isLoading]="loading"></app-loader>
+  <div class="ion-margin container" >
     <ion-item>
       <ion-thumbnail slot="start">
         <img
@@ -29,7 +31,7 @@
       </ion-thumbnail>
       <ion-label>Portal de Egresados (UASD)</ion-label>
     </ion-item>
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" >
       <ion-input
         type="email"
         label="Email"
@@ -67,9 +69,10 @@
       </div>
       <br />
       <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox>
-      <ion-button type="button" (click)="login()" expand="block"
-        >Iniciar sesión</ion-button
-      >
+      <ion-button type="button" (click)="login()" expand="block" [disabled]="loading">
+        Iniciar sesión
+        
+      </ion-button>
       <a href="#">Olvidé mi contraseña</a>
     </form>
   </div>

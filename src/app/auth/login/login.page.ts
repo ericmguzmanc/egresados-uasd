@@ -7,7 +7,6 @@ import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/shared/interfaces/usuario.interface';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,7 +14,6 @@ import { Usuario } from 'src/app/shared/interfaces/usuario.interface';
 })
 export class LoginPage implements OnInit {
   loading = false;
-
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
@@ -46,7 +44,6 @@ export class LoginPage implements OnInit {
           const { egresadoId } = usuario[0];
           if (egresadoId) {
             this.router.navigate(['/egresado-edit/', 1]);
-
           }
           this.loading = false;
         },
