@@ -13,7 +13,7 @@ import { HelperService } from '../shared/services/helper.service';
 export class EgresadoDetailsPage implements OnInit {
   egresado: Egresado = {};
   loading:boolean = true;
-  time: number = 1000;
+  timer: number = 1000;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class EgresadoDetailsPage implements OnInit {
           this.egresado = egresado;
           setTimeout(() => {
           this.loading = false;
-          },this.time)
+          },this.timer)
         });
       }
     });
