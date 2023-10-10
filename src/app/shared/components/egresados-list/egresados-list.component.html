@@ -1,18 +1,14 @@
-
 <ion-content>
   <ng-container *ngIf="egresados">
     <ion-list>
       <ion-item
         href="/egresado-details/{{ egresado.id }}"
-        *ngFor="let egresado of egresados"
-      >
+        *ngFor="let egresado of egresados">
         <ion-thumbnail>
           <ion-img
             class="avatar-img"
-            src="{{
-              egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'
-            }}"
-          ></ion-img>
+            src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}">
+        </ion-img>
         </ion-thumbnail>
         <div class="separator"></div>
         <ion-label>
@@ -25,20 +21,15 @@
             <h6 class="muted">
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
-            <span class="muted"
-              >Emp. {{ this.helperService.getLatestEmpresa(egresado) }}</span
-            >
-            <span *ngIf="egresado.destacado" class="star"
-              ><ion-icon name="star"></ion-icon
-            ></span>
+            <span class="muted">
+              Emp. {{ this.helperService.getLatestEmpresa(egresado) }}
+            </span>
+            <span *ngIf="egresado.destacado" class="star">
+              <ion-icon name="star"></ion-icon>
+            </span>
           </ion-text>
         </ion-label>
       </ion-item>
     </ion-list>
   </ng-container>
-</ion-content>
-
-<!-- Loading spinner -->
-<ion-content *ngIf="isLoading">
-  <ion-spinner name="crescent"></ion-spinner>
 </ion-content>
