@@ -1,0 +1,50 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="confirm()">Agregar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!loading">
+    <form [formGroup]="contactoForm">
+      <ion-list>
+        <ion-item>
+          <ion-select 
+            placeholder="Tipo de contacto" 
+            formControlName="tipoContacto"
+            >
+            <ion-select-option [value]="tipoContacto.CELULAR">{{tipoContacto.CELULAR | titlecase}}</ion-select-option>
+            <ion-select-option [value]="tipoContacto.TRABAJO">{{tipoContacto.TRABAJO | titlecase}}</ion-select-option>
+            <ion-select-option [value]="tipoContacto.EMAIL">{{tipoContacto.EMAIL | titlecase}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ng-container *ngIf="tipodeContactoSeleccionado.value">
+          <ion-label position="floating">Valor de Contacto</ion-label>
+          <ion-input 
+          *ngIf="tipodeContactoSeleccionado.value !== tipoContacto.EMAIL" 
+          type="number" 
+          placeholder="Ingrese el Numero de contacto"
+          formControlName="contactoValueNumber"
+          ></ion-input>
+          <ion-input
+          *ngIf="tipodeContactoSeleccionado.value === tipoContacto.EMAIL"
+          placeholder="Ingrese el Email de contacto"
+          formControlName="contactoValueEmail"
+          ></ion-input>
+        </ng-container>
+        <ng-container *ngIf="!tipodeContactoSeleccionado.value">
+          <ion-label class="mutted">Seleccione el tipo de contacto</ion-label>
+        </ng-container>
+        </ion-item>
+    </form>
+  </ng-container>
+</ion-content>
