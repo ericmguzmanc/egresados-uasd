@@ -137,6 +137,18 @@
       "Genero": "Masculino",
       "profilePicUrl": null,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+    },
+    {
+      "id": 11,
+      "Nombre": "Luis",
+      "Apellido": "Gutiérrez",
+      "ApellidoPaterno": "Ferreiras",
+      "Cedula": "40238819382",
+      "Pasaporte": "RD55983",
+      "FechaNac": "1999-09-09",
+      "Genero": "Masculino",
+      "profilePicUrl": null,
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     }
   ],
   "experienciaLaboralEgresado": [
