@@ -10,6 +10,7 @@ import { HelperService } from '../shared/services/helper.service';
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
   loading: boolean = true;
+  time: number = 1000;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
@@ -38,7 +39,7 @@ export class DestacadosPage implements OnInit {
         (this.egresados = destacados),
         setTimeout(() => {
           this.loading = false;
-        }, 1000)
+        },this.time)
       );
     });
   }

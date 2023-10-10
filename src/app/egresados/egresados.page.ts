@@ -16,6 +16,7 @@ export class EgresadosPage implements OnInit {
   name: string = '';
   egresados: Egresado[] = [];
   loading: boolean = true;
+  time: number = 1000;
   constructor(private egresadosService: EgresadosService,
     public helperService: HelperService) { }
 
@@ -25,7 +26,7 @@ export class EgresadosPage implements OnInit {
         this.egresados = egresados;
         setTimeout(() => {
           this.loading = false;
-          },1000)
+          },this.time)
       });
   }
 
