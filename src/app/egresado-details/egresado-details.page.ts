@@ -4,7 +4,7 @@ import { Egresado } from '../shared/interfaces/egresado.interface';
 import { ActivatedRoute } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { HelperService } from '../shared/services/helper.service';
-import { TIMER_LOADING } from '../shared/constants';
+import { LOADING_TIMEOUT } from '../shared/constants';
 
 @Component({
   selector: 'app-egresado-details',
@@ -14,7 +14,6 @@ import { TIMER_LOADING } from '../shared/constants';
 export class EgresadoDetailsPage implements OnInit {
   egresado: Egresado = {};
   loading:boolean = true;
-  timer: number = 1000;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +30,8 @@ export class EgresadoDetailsPage implements OnInit {
         this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
           this.egresado = egresado;
           setTimeout(() => {
-          this.loading = false;
-          },TIMER_LOADING)
+            this.loading = false;
+          },LOADING_TIMEOUT)
         });
       }
     });
