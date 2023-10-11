@@ -16,7 +16,7 @@
     </ion-toolbar>
   </ion-header>
   <app-loader [isLoading]="loading"></app-loader>
-  <app-egresados-list [egresados]="egresados" (numberPage)="numberPage($event)"></app-egresados-list>
+  <app-egresados-list [egresados]="egresados"></app-egresados-list>
 
   <!-- Filrar Modal -->
   <ion-modal trigger="open-filtrado-modal" (willDismiss)="onWillDismiss($event)">

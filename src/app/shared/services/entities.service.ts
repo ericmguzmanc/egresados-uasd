@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
+import { Contacto, EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
 import { Observable } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 
@@ -18,5 +18,9 @@ export class EntitiesService {
 
   getHabilidades(): Observable<EgresadosHabilidad[]> {
     return this.http.get<EgresadosHabilidad[]>(`${JSON_SERVER_URL}/habilidades?_sort=habilidad`)
+  }
+
+  getContactoByTipoAndValor({tipo, valor}: { tipo: string, valor: string}): Observable<Contacto[]> {
+    return this.http.get<Contacto[]>(`${JSON_SERVER_URL}/contacto/?tipo=${tipo}&valor=${valor}`)
   }
 }

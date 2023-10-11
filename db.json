@@ -27,7 +27,8 @@
       "Genero": "Masculino",
       "profilePicUrl": "assets/img/profile/1.jpeg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
-      "destacado": true
+      "destacado": true,
+      "descripcionDestacado": "Gelem Lluberes es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Licenciatura en Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
     },
     {
       "id": 2,
@@ -228,14 +229,8 @@
     {
       "id": 1,
       "egresadoId": 1,
-      "tipo": "MOVIL",
+      "tipo": "CELULAR",
       "valor": "8094883372"
-    },
-    {
-      "id": 2,
-      "egresadoId": 1,
-      "tipo": "EMAIL",
-      "valor": "test@google.com"
     },
     {
       "id": 3,
@@ -276,13 +271,13 @@
     {
       "id": 9,
       "egresadoId": 8,
-      "tipo": "TELEFONO",
+      "tipo": "TRABAJO",
       "valor": "8094483982"
     },
     {
       "id": 10,
       "egresadoId": 9,
-      "tipo": "TELEFONO",
+      "tipo": "TRABAJO",
       "valor": "82933849378"
     },
     {
@@ -290,6 +285,12 @@
       "egresadoId": 10,
       "tipo": "EMAIL",
       "valor": "test@google.com"
+    },
+    {
+      "egresadoId": 1,
+      "tipo": "EMAIL",
+      "valor": "eericguzmanff@gmail.com",
+      "id": 12
     }
   ],
   "educacion": [
@@ -581,6 +582,10 @@
     {
       "id": 13,
       "habilidad": "Testing"
+    },
+    {
+      "id": 14,
+      "habilidad": "Python"
     }
   ]
 }

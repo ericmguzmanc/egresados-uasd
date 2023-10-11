@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
         next: (usuario: Usuario[]) => {
           const { egresadoId } = usuario[0];
           if (egresadoId) {
-            this.router.navigate(['/egresado-edit/', 1]);
+            this.router.navigate(['/egresado-edit/', egresadoId]);
           }
           this.loading = false;
         },
