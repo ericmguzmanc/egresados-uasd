@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../shared/interfaces/egresado.interface';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +6,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
+import { ContactosComponent } from './contactos/contactos.component';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -37,13 +37,12 @@ export class EgresadoEditPage implements OnInit {
   });;
 
   constructor(
-    private location: Location,
     private route: ActivatedRoute,
     private egresadoService: EgresadosService,
     private fb: FormBuilder,
     private alertController: AlertController,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
   ) { }
 
   get idiomaEgresadoArray(): FormArray {
@@ -140,14 +139,6 @@ export class EgresadoEditPage implements OnInit {
     return habilidades;
   }
 
-  private createHabilidadFormGroup(habilidad: EgresadosHabilidad) {
-    return this.fb.group({
-      id: new FormControl(habilidad?.id || 0),
-      egresadoId: new FormControl(habilidad?.egresadoId || this.egresado.id),
-      habilidad: new FormControl(habilidad?.habilidad || ''),
-  });
-  }
-
   fillIdiomaArray() {
     const idiomas = [];
     if (this.egresado?.idiomaEgresado && this.egresado?.idiomaEgresado.length > 0) {
@@ -158,6 +149,88 @@ export class EgresadoEditPage implements OnInit {
       }
     }
     return idiomas;
+  }
+
+  fillExperienciaLaboralArray() {
+    const experiencias = [];
+    if (this.egresado?.experienciaLaboralEgresado && this.egresado?.experienciaLaboralEgresado.length > 0) {
+      for (const experiencia of this.egresado?.experienciaLaboralEgresado) {
+        experiencias.push(
+          this.createExperienciaLaboralFormGroup(experiencia)
+        );
+      }
+    }
+    return experiencias;
+  }
+
+  fillEducacionEgresadoArray() {
+    const educaciones = [];
+    if (this.egresado?.educacion && this.egresado?.educacion.length > 0) {
+      for (const educacion of this.egresado?.educacion) {
+        educaciones.push(
+          this.createEducacionEgresadoFormGroup(educacion)
+        );
+      }
+    }
+    return educaciones;
+  }
+
+  fillContactoEgresadoArray() {
+    const contactos = [];
+    if (this.egresado?.contacto && this.egresado?.contacto.length > 0) {
+      for (const contacto of this.egresado?.contacto) {
+        contactos.push(
+          this.createContactoEgresadoFormGroup(contacto)
+        );
+      }
+    }
+    return contactos;
+  }
+
+  private createHabilidadFormGroup(habilidad: EgresadosHabilidad) {
+    return this.fb.group({
+      id: new FormControl(habilidad?.id || 0),
+      egresadoId: new FormControl(habilidad?.egresadoId || this.egresado.id),
+      habilidad: new FormControl(habilidad?.habilidad || ''),
+    });
+  }
+
+  private createIdiomaFormGroup(idioma?: Idioma): FormGroup {
+    return this.fb.group({
+        id: new FormControl(idioma?.id || 0),
+        egresadoId: new FormControl(idioma?.egresadoId || this.egresado.id),
+        idioma: new FormControl(idioma?.idioma || ''),
+    });
+  }
+
+  private createExperienciaLaboralFormGroup(experiencia?: ExperienciaLaboral): FormGroup {
+    return this.fb.group({
+      empresa: new FormControl(experiencia?.empresa),
+      posicion: new FormControl(experiencia?.posicion),
+      Salario: new FormControl(experiencia?.Salario),
+      FechaEntr: new FormControl(experiencia?.FechaEntr),
+      FechaSal: new FormControl(experiencia?.FechaSal)
+    });
+  }
+
+
+  private createEducacionEgresadoFormGroup(educacion?: Educacion): FormGroup {
+    return this.fb.group({
+      Universidad: new FormControl(educacion?.Universidad),
+      FechaEntr: new FormControl(educacion?.FechaEntr),
+      FechaSal: new FormControl(educacion?.FechaSal),
+      Titulo: new FormControl(educacion?.Titulo),
+      TipoTitulo: new FormControl(educacion?.TipoTitulo),
+    });
+  }
+
+  private createContactoEgresadoFormGroup(contacto?: Contacto): FormGroup {
+    return this.fb.group({
+      id: new FormControl(contacto?.id),
+      egresadoId: new FormControl(contacto?.egresadoId),
+      tipo: new FormControl(contacto?.tipo),
+      valor: new FormControl(contacto?.valor)
+    });
   }
 
   addIdiomaEgresado(idiomas: Idioma[] | undefined) {
@@ -178,14 +251,6 @@ export class EgresadoEditPage implements OnInit {
     }
   }
 
-  private createIdiomaFormGroup(idioma?: Idioma): FormGroup {
-    return this.fb.group({
-        id: new FormControl(idioma?.id || 0),
-        egresadoId: new FormControl(idioma?.egresadoId || this.egresado.id),
-        idioma: new FormControl(idioma?.idioma || ''),
-    });
-  }
-
   addHabilidadEgresado(habilidades: EgresadosHabilidad[] | undefined) {
     this.loading = true;
 
@@ -204,67 +269,35 @@ export class EgresadoEditPage implements OnInit {
     }
   }
 
-  fillExperienciaLaboralArray() {
-    const experiencias = [];
-    if (this.egresado?.experienciaLaboralEgresado && this.egresado?.experienciaLaboralEgresado.length > 0) {
-      for (const experiencia of this.egresado?.experienciaLaboralEgresado) {
-        experiencias.push(
-          this.createExperienciaLaboralFormGroup(experiencia)
-        );
-      }
-    }
-    return experiencias;
+  addContactoEgresado(contacto: Contacto) {
+    this.contactoEgresadoArray.push(this.createContactoEgresadoFormGroup(contacto));
+    this.egresado.contacto.push(contacto);
   }
 
-  private createExperienciaLaboralFormGroup(experiencia?: ExperienciaLaboral): FormGroup {
-    return this.fb.group({
-      empresa: new FormControl(experiencia?.empresa),
-      posicion: new FormControl(experiencia?.posicion),
-      Salario: new FormControl(experiencia?.Salario),
-      FechaEntr: new FormControl(experiencia?.FechaEntr),
-      FechaSal: new FormControl(experiencia?.FechaSal)
-    });
-  }
+  deleteContactoEgresado(contactoId: number) {
+    this.egresadoService.deleteContactoEgresado(contactoId)
+      .subscribe(async (_) => {
+        this.contactoEgresadoArray.clear();
+        this.egresado.contacto = this.egresado.contacto.filter((contacto) => contacto.id != contactoId);
+        this.egresado.contacto.forEach((contacto) => {
+          this.contactoEgresadoArray.push(this.createContactoEgresadoFormGroup(contacto));
+        });
 
-  fillEducacionEgresadoArray() {
-    const educaciones = [];
-    if (this.egresado?.educacion && this.egresado?.educacion.length > 0) {
-      for (const educacion of this.egresado?.educacion) {
-        educaciones.push(
-          this.createEducacionEgresadoFormGroup(educacion)
-        );
-      }
-    }
-    return educaciones;
-  }
+        const alert = await this.alertController.create({
+          header: 'Contacto borrado',
+          subHeader: '',
+          message: 'El contacto ha sido borrado con éxito',
+          buttons: [
+            {
+              text: 'Ok',
+              role: '',
+            },
+          ],
+        });
+        
 
-  private createEducacionEgresadoFormGroup(educacion?: Educacion): FormGroup {
-    return this.fb.group({
-      Universidad: new FormControl(educacion?.Universidad),
-      FechaEntr: new FormControl(educacion?.FechaEntr),
-      FechaSal: new FormControl(educacion?.FechaSal),
-      Titulo: new FormControl(educacion?.Titulo),
-      TipoTitulo: new FormControl(educacion?.TipoTitulo),
-    });
-  }
-
-  fillContactoEgresadoArray() {
-    const contactos = [];
-    if (this.egresado?.contacto && this.egresado?.contacto.length > 0) {
-      for (const contacto of this.egresado?.contacto) {
-        contactos.push(
-          this.createContactoEgresadoFormGroup(contacto)
-        );
-      }
-    }
-    return contactos;
-  }
-
-  private createContactoEgresadoFormGroup(contacto?: Contacto): FormGroup {
-    return this.fb.group({
-      tipo: new FormControl(contacto?.tipo),
-      valor: new FormControl(contacto?.valor)
-    });
+        await alert.present();
+      });
   }
 
   save() {
@@ -361,4 +394,22 @@ export class EgresadoEditPage implements OnInit {
 
   }
 
+  async openContactoModal() {
+    const contactoModal = await this.modalCtrl.create({
+      component: ContactosComponent,
+      componentProps: {
+        egresadoId: this.egresado.id,
+      }
+    });
+
+    contactoModal.present();
+
+    const { data, role } = await contactoModal.onWillDismiss();
+    
+    if (role === 'confirm') {
+      this.addContactoEgresado(data);
+    } else {
+      console.log('Modal closed cancelled')
+    }
+  }
 }

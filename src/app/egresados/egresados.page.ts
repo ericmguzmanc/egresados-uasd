@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
+import  {TIMER_LOADING} from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-egresados',

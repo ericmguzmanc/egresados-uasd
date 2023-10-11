@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Egresado, EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
+import { Contacto, Egresado, EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
 import { Observable } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 
@@ -8,8 +8,9 @@ import { JSON_SERVER_URL } from '../constants';
   providedIn: 'root'
 })
 export class EgresadosService {
+
   egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=egresadosHabilidad'
-  
+ 
   constructor(private http: HttpClient) { }
 
   getEgresados(page?: number): Observable<Egresado[]> {
@@ -38,6 +39,14 @@ export class EgresadosService {
 
   removeHabilidadEgresado(egresadosHabilidadId: number): Observable<Idioma> {
     return this.http.delete<EgresadosHabilidad>(`${JSON_SERVER_URL}/egresadosHabilidad/${egresadosHabilidadId}`);
+  }
+
+  addContactoEgresado(contacto: Contacto): Observable<Contacto> {
+    return this.http.post<Contacto>(`${JSON_SERVER_URL}/contacto`, contacto);
+  }
+
+  deleteContactoEgresado(contactoId: number): Observable<Contacto> {
+    return this.http.delete<Contacto>(`${JSON_SERVER_URL}/contacto/${contactoId}`);
   }
 
 }

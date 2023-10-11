@@ -10,6 +10,7 @@ import { EgresadoEditPage } from './egresado-edit.page';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { SharedModule } from '../shared/shared.module';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
+import { ContactosComponent } from './contactos/contactos.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { HabilidadesComponent } from './habilidades/habilidades.component';
   declarations: [
     EgresadoEditPage, 
     IdiomasComponent, 
-    HabilidadesComponent
+    HabilidadesComponent,
+    ContactosComponent
   ],
 })
 export class EgresadoEditPageModule {}
