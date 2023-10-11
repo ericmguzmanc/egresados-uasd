@@ -77,7 +77,7 @@ export interface Idioma {
 }
 
 export interface Contacto {
-  id: number;
+  id?: number;
   egresadoId?: number;
   tipo?: string;
   valor?: string;
