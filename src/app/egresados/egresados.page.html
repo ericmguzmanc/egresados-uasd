@@ -15,7 +15,7 @@
       <ion-title size="large">Egresados</ion-title>
     </ion-toolbar>
   </ion-header>
-
+  <app-loader [isLoading]="loading"></app-loader>
   <app-egresados-list [egresados]="egresados"></app-egresados-list>
 
   <!-- Filrar Modal -->
@@ -40,4 +40,5 @@
       </ion-content>
     </ng-template>
   </ion-modal>
+  
 </ion-content>

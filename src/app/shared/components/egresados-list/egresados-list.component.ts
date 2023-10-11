@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Egresado } from '../../interfaces/egresado.interface';
 import { HelperService } from '../../services/helper.service';
 
@@ -9,7 +9,7 @@ import { HelperService } from '../../services/helper.service';
 })
 export class EgresadosListComponent implements OnInit {
   @Input() egresados: Egresado[] = [];
-
+  @Input() isLoading: boolean = true;
   constructor(public helperService: HelperService) {}
 
   ngOnInit() {}

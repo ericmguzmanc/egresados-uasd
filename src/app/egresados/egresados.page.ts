@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
+import  {TIMER_LOADING} from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-egresados',
@@ -12,19 +13,27 @@ import { HelperService } from '../shared/services/helper.service';
 })
 export class EgresadosPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
-  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  message =
+    'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string = '';
   egresados: Egresado[] = [];
-  constructor(private egresadosService: EgresadosService,
-    public helperService: HelperService) { }
-
+  loading: boolean = true;
+  pageFinaly: number = 1;
+  constructor(
+    private egresadosService: EgresadosService,
+    public helperService: HelperService
+  ) {}
+  
   ngOnInit() {
-    this.egresadosService.getEgresados()
-      .subscribe((egresados: Egresado[]) => {
-        this.egresados = egresados;
-      });
-  }
+    this.egresadosService.getEgresados(this.pageFinaly).subscribe((egresados: Egresado[]) => {
+      this.egresados = egresados;
+      setTimeout(() => {
+        this.loading = false;
+      }, TIMER_LOADING);
+    });
 
+  }
+  
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
@@ -39,5 +48,4 @@ export class EgresadosPage implements OnInit {
       this.message = `Hello, ${ev.detail.data}!`;
     }
   }
-
 }

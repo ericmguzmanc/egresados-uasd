@@ -5,3 +5,5 @@ export const TIPO_CONTACTO = {
   TRABAJO: "TRABAJO",
   EMAIL: "EMAIL",
 }
+
+export const TIMER_LOADING = 1000 

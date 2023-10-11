@@ -8,6 +8,7 @@ import { DestacadosPageRoutingModule } from './destacados-routing.module';
 
 import { DestacadosPage } from './destacados.page';
 import { SharedModule } from '../shared/shared.module';
+import { LoaderComponentModule } from '../shared/components/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     IonicModule,
     DestacadosPageRoutingModule,
-    SharedModule
+    SharedModule,
+    LoaderComponentModule
   ],
   declarations: [DestacadosPage]
 })

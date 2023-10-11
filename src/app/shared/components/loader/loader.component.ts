@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-loader',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent  implements OnInit {
-
+  @Input() isLoading:boolean = true;
   constructor() { }
 
   ngOnInit() {}

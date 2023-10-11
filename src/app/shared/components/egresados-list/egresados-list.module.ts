@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { EgresadosListComponent } from './egresados-list.component';
 import { EgresadosService } from '../../services/egresados.service';
 import { HelperService } from '../../services/helper.service';
+import { LoaderComponentModule } from '../loader/loader.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { spinnerInterceptor } from '../../interceptor/spinner.interceptor';
 
 @NgModule({
   declarations: [EgresadosListComponent],
   exports: [EgresadosListComponent],
   providers: [
     EgresadosService,
-    HelperService
+    HelperService,
+    {provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true}
   ],
-  imports: [CommonModule, FormsModule, IonicModule],
+  imports: [CommonModule, FormsModule, IonicModule, LoaderComponentModule],
 })
 export class EgresadosListComponentModule {}

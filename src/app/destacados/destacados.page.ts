@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
+import { TIMER_LOADING } from '../shared/constants';
 @Component({
   selector: 'app-destacados',
   templateUrl: './destacados.page.html',
@@ -9,6 +10,8 @@ import { HelperService } from '../shared/services/helper.service';
 })
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
+  loading: boolean = true;
+  time: number = 1000;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
@@ -33,7 +36,12 @@ export class DestacadosPage implements OnInit {
 
     this.egresadosService.getEgresados().subscribe((egresados: Egresado[]) => {
       const destacados = egresados.filter((ex) => ex.destacado);
-      return (this.egresados = destacados);
+      return (
+        (this.egresados = destacados),
+        setTimeout(() => {
+          this.loading = false;
+        }, TIMER_LOADING)
+      );
     });
   }
 }

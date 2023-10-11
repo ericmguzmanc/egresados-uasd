@@ -8,6 +8,9 @@ import { EgresadoDetailsPageRoutingModule } from './egresado-details-routing.mod
 
 import { EgresadoDetailsPage } from './egresado-details.page';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { spinnerInterceptor } from '../shared/interceptor/spinner.interceptor';
+import { LoaderComponentModule } from '../shared/components/loader/loader.module';
 
 @NgModule({
   imports: [
@@ -15,8 +18,10 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     IonicModule,
     EgresadoDetailsPageRoutingModule,
-    SharedModule
+    SharedModule,
+    LoaderComponentModule
   ],
-  declarations: [EgresadoDetailsPage]
+  declarations: [EgresadoDetailsPage],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true},]
 })
 export class EgresadoDetailsPageModule {}
