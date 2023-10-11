@@ -11,6 +11,7 @@ import { TIMER_LOADING } from '../shared/constants';
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
   loading: boolean = true;
+  time: number = 1000;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService

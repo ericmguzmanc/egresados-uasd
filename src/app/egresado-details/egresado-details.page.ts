@@ -13,7 +13,8 @@ import { TIMER_LOADING } from '../shared/constants';
 })
 export class EgresadoDetailsPage implements OnInit {
   egresado: Egresado = {};
-  loading = true;
+  loading:boolean = true;
+  timer: number = 1000;
 
   constructor(
     private route: ActivatedRoute,

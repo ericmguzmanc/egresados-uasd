@@ -8,7 +8,7 @@ import { SpinnerService } from '../../services/spinner.service';
 })
 export class LoaderComponent  implements OnInit {
   @Input() isLoading:boolean = true;
-  constructor(private spinnerSvc: SpinnerService) { }
+  constructor() { }
 
   ngOnInit() {}
 

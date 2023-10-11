@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Egresado } from '../../interfaces/egresado.interface';
 import { HelperService } from '../../services/helper.service';
 
