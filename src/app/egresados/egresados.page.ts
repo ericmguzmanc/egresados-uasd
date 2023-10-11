@@ -12,21 +12,35 @@ import { HelperService } from '../shared/services/helper.service';
 })
 export class EgresadosPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
-  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  message =
+    'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string = '';
   egresados: Egresado[] = [];
   loading: boolean = true;
-  constructor(private egresadosService: EgresadosService,
-    public helperService: HelperService) { }
+  pageNumber: number = 1;
+  constructor(
+    private egresadosService: EgresadosService,
+    public helperService: HelperService
+  ) {}
 
   ngOnInit() {
-    this.egresadosService.getEgresados()
+    this.egresadosFuncion();
+  }
+
+  egresadosFuncion() {
+    this.egresadosService
+      .getEgresados(this.pageNumber)
       .subscribe((egresados: Egresado[]) => {
-        this.egresados = egresados;
+        this.egresados = [...this.egresados, ...egresados];
         setTimeout(() => {
           this.loading = false;
-          },1000)
+        }, 1000);
       });
+  }
+
+  numberOfPage(page: number) {
+    this.pageNumber = page;
+    this.egresadosFuncion();
   }
 
   cancel() {
@@ -43,5 +57,4 @@ export class EgresadosPage implements OnInit {
       this.message = `Hello, ${ev.detail.data}!`;
     }
   }
-
 }
