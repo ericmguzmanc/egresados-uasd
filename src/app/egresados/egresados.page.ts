@@ -18,22 +18,32 @@ export class EgresadosPage implements OnInit {
   name: string = '';
   egresados: Egresado[] = [];
   loading: boolean = true;
-  pageFinaly: number = 1;
+  pageNumber: number = 1;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
   ) {}
-  
-  ngOnInit() {
-    this.egresadosService.getEgresados(this.pageFinaly).subscribe((egresados: Egresado[]) => {
-      this.egresados = egresados;
-      setTimeout(() => {
-        this.loading = false;
-      }, TIMER_LOADING);
-    });
 
+  ngOnInit() {
+    this.loadEgresados();
   }
-  
+
+  loadEgresados() {
+    this.egresadosService
+      .getEgresados(this.pageNumber)
+      .subscribe((egresados: Egresado[]) => {
+        this.egresados = [...this.egresados, ...egresados];
+        setTimeout(() => {
+          this.loading = false;
+        }, TIMER_LOADING );
+      });
+  }
+
+  setPageNumber(page: number) {
+    this.pageNumber = page;
+    this.loadEgresados();
+  }
+
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }

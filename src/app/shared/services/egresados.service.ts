@@ -13,7 +13,7 @@ export class EgresadosService {
  
   constructor(private http: HttpClient) { }
 
-  getEgresados(page? : number): Observable<Egresado[]> {
+  getEgresados(page?: number): Observable<Egresado[]> {
     return this.http.get<Egresado[]>(`${JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`)
   }
 
