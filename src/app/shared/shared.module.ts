@@ -15,11 +15,11 @@ import { LoaderComponentModule } from './components/loader/loader.module';
     CommonModule,
     IonicModule,
     EgresadosListComponentModule,
-    LoaderComponentModule
+    LoaderComponentModule,
   ],
   exports: [
     EgresadosListComponentModule,
-    LoaderComponentModule
+    LoaderComponentModule,
   ],
   providers: [
     EgresadosService,

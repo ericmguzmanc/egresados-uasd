@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Experiencia</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="confirm()">Agregar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <app-loader *ngIf="loading"></app-loader>
+  <ng-container *ngIf="!loading">
+    <form [formGroup]="experienciaLaboralForm">
+      <ion-item>
+        <ion-label position="floating">Posición</ion-label>
+        <ion-input placeholder="Escriba el nombre de la posición" formControlName="posicion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Empresa</ion-label>
+        <ion-input placeholder="Escriba el nombre de la empresa" formControlName="empresa"></ion-input>
+      </ion-item>
+      <!-- Date Picker -->
+      <ion-item>
+        <ion-label>Fecha de Inicio</ion-label>
+        <ion-datetime-button datetime="date-inicio"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+              id="date-inicio" 
+              presentation="date"
+              locale="es-Es"
+              formControlName="fechaEntrada"
+              [max]="fechaEntradaMax"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item *ngIf="!hideFechaSalida" >
+        <ion-label>Fecha Fin</ion-label>
+        <ion-datetime-button datetime="date-fin"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+              id="date-fin" 
+              presentation="date"
+              locale="es-ES"
+              formControlName="fechaSalida"
+              [min]="fechaSalidaMin"
+              [max]="fechaSalidaMax"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <p *ngIf="experienciaLaboralForm.errors?.['dateValid'] && (experienciaLaboralForm.touched ||experienciaLaboralForm.dirty)">Please add a valid from and to date</p>
+      <ion-item>
+        <ion-label>¿Sigues en esta posición?</ion-label>
+        <ion-checkbox slot="end" (ionChange)="positionToggle($event)"></ion-checkbox>
+      </ion-item>
+    </form>
+  </ng-container>
+</ion-content>
