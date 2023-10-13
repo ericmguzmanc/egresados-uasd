@@ -3,7 +3,6 @@ import { Egresado } from '../../interfaces/egresado.interface';
 import { HelperService } from '../../services/helper.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-egresados-list',
   templateUrl: './egresados-list.component.html',
@@ -12,16 +11,18 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
 export class EgresadosListComponent implements OnInit {
   @Input() egresados: Egresado[] = [];
   @Input() isLoading: boolean = true;
+  @Output() pageNumber: EventEmitter<number> = new EventEmitter<number>();
+
   page: number = 1;
-  @Output() pageOfNumber: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(public helperService: HelperService) {}
 
   ngOnInit() {}
   onIonInfinite(ev: any) {
-      this.page++
-      this.pageOfNumber.emit(this.page);
-      setTimeout(() => {
-        (ev as InfiniteScrollCustomEvent).target.complete();
-      }, 500);
+    this.page++;
+    this.pageNumber.emit(this.page);
+    setTimeout(() => {
+      (ev as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 }

@@ -25,23 +25,23 @@ export class EgresadosPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.egresadosFuncion();
+    this.loadEgresados();
   }
 
-  egresadosFuncion() {
+  loadEgresados() {
     this.egresadosService
       .getEgresados(this.pageNumber)
       .subscribe((egresados: Egresado[]) => {
         this.egresados = [...this.egresados, ...egresados];
         setTimeout(() => {
           this.loading = false;
-        }, 1000);
+        }, TIMER_LOADING );
       });
   }
 
-  numberOfPage(page: number) {
+  setPageNumber(page: number) {
     this.pageNumber = page;
-    this.egresadosFuncion();
+    this.loadEgresados();
   }
 
   cancel() {
