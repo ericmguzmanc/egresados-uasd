@@ -4,7 +4,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
-import  {TIMER_LOADING} from 'src/app/shared/constants';
+import  {LOADING_TIMEOUT} from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-egresados',
@@ -35,7 +35,7 @@ export class EgresadosPage implements OnInit {
         this.egresados = [...this.egresados, ...egresados];
         setTimeout(() => {
           this.loading = false;
-        }, TIMER_LOADING );
+        }, LOADING_TIMEOUT );
       });
   }
 

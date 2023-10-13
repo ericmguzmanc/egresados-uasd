@@ -7,6 +7,8 @@ import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
+import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
+import { HelperService } from '../shared/services/helper.service';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -43,6 +45,7 @@ export class EgresadoEditPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private modalCtrl: ModalController,
+    private helperService: HelperService
   ) { }
 
   get idiomaEgresadoArray(): FormArray {
@@ -53,7 +56,7 @@ export class EgresadoEditPage implements OnInit {
     return this.egresadoForm.get('nacionalidadEgresado') as FormArray;
   }
 
-  get experienciaLaboralEgresado(): FormArray {
+  get experienciaLaboralEgresadoArray(): FormArray {
     return this.egresadoForm.get('experienciaLaboralEgresado') as FormArray;
   }
 
@@ -205,9 +208,10 @@ export class EgresadoEditPage implements OnInit {
 
   private createExperienciaLaboralFormGroup(experiencia?: ExperienciaLaboral): FormGroup {
     return this.fb.group({
+      id: new FormControl(experiencia?.id),
       empresa: new FormControl(experiencia?.empresa),
       posicion: new FormControl(experiencia?.posicion),
-      Salario: new FormControl(experiencia?.Salario),
+      salario: new FormControl(experiencia?.salario),
       FechaEntr: new FormControl(experiencia?.FechaEntr),
       FechaSal: new FormControl(experiencia?.FechaSal)
     });
@@ -274,6 +278,18 @@ export class EgresadoEditPage implements OnInit {
     this.egresado.contacto.push(contacto);
   }
 
+  addExperienciaLaboralEgresado(experienciaLaboral: ExperienciaLaboral) {
+    this.experienciaLaboralEgresadoArray.push(this.createExperienciaLaboralFormGroup(experienciaLaboral));
+    this.egresado.experienciaLaboralEgresado.push(experienciaLaboral);
+
+    this.egresado.experienciaLaboralEgresado = this.helperService
+      .sortByDate(this.egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');;
+
+    this.experienciaLaboralEgresadoArray.controls.sort((a,b) => {
+      return new Date(b.value.FechaEntr).getTime() - new Date(a.value.FechaEntr).getTime();
+    });
+  }
+
   deleteContactoEgresado(contactoId: number) {
     this.egresadoService.deleteContactoEgresado(contactoId)
       .subscribe(async (_) => {
@@ -295,6 +311,30 @@ export class EgresadoEditPage implements OnInit {
           ],
         });
         
+
+        await alert.present();
+      });
+  }
+
+  deleteExperienciaLaboralEgresado(experienciaLaboralEgresadoId: number) {
+    this.egresadoService.deleteExperienciaLaboralEgresado(experienciaLaboralEgresadoId)
+      .subscribe(async (_) => {
+        this.experienciaLaboralEgresadoArray.clear();
+        this.egresado.experienciaLaboralEgresado = this.egresado.experienciaLaboralEgresado.filter((el) => el.id != experienciaLaboralEgresadoId);
+        this.egresado.experienciaLaboralEgresado.forEach((experienciaLaboral) => {
+          this.experienciaLaboralEgresadoArray.push(this.createExperienciaLaboralFormGroup(experienciaLaboral));
+        });
+
+        const alert = await this.alertController.create({
+          header: 'Experiencia Borrada',
+          message: 'La experiencia laboral se ha borrado con éxito',
+          buttons: [
+            {
+              text: 'Ok',
+              role: '',
+            }
+          ]
+        });
 
         await alert.present();
       });
@@ -408,6 +448,25 @@ export class EgresadoEditPage implements OnInit {
     
     if (role === 'confirm') {
       this.addContactoEgresado(data);
+    } else {
+      console.log('Modal closed cancelled')
+    }
+  }
+
+  async openExperienciaLaboralModal() {
+    const experienciaLaboralModal = await this.modalCtrl.create({
+      component: ExperienciaLaboralComponent,
+      componentProps: {
+        egresadoId: this.egresado.id,
+      }
+    });
+
+    experienciaLaboralModal.present();
+
+    const { data, role } = await experienciaLaboralModal.onWillDismiss();
+    
+    if (role === 'confirm') {
+      this.addExperienciaLaboralEgresado(data);
     } else {
       console.log('Modal closed cancelled')
     }

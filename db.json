@@ -226,14 +226,7 @@
   ],
   "experienciaLaboralEgresado": [
     {
-      "egresadoId": 1,
-      "posicion": "Programador Junior",
-      "empresa": "Grupo Vimenca",
-      "salario": 25000,
-      "FechaEntr": "2016-01-01",
-      "FechaSal": "2016-12-30"
-    },
-    {
+      "id": 2,
       "egresadoId": 2,
       "posicion": "Programador II",
       "empresa": "Newtech S.A.",
@@ -242,14 +235,7 @@
       "FechaSal": "2018-05-30"
     },
     {
-      "egresadoId": 1,
-      "posicion": "Programador III",
-      "empresa": "Teleperformance",
-      "salario": 85000,
-      "FechaEntr": "2018-06-01",
-      "FechaSal": "2022-12-30"
-    },
-    {
+      "id": 4,
       "egresadoId": 1,
       "posicion": "Programador Senior",
       "empresa": "Neural Technology Solutions",
@@ -258,6 +244,7 @@
       "FechaSal": null
     },
     {
+      "id": 5,
       "egresadoId": 2,
       "posicion": "Programador Junior",
       "empresa": "Newtech S.A.",
@@ -266,6 +253,7 @@
       "FechaSal": null
     },
     {
+      "id": 6,
       "egresadoId": 3,
       "posicion": "Programador Backend",
       "empresa": "Nearsure",
@@ -274,6 +262,7 @@
       "FechaSal": null
     },
     {
+      "id": 7,
       "egresadoId": 4,
       "posicion": "Programador Frontend",
       "salario": 65000,
@@ -281,6 +270,7 @@
       "FechaSal": null
     },
     {
+      "id": 8,
       "egresadoId": 5,
       "posicion": "Programador Node",
       "empresa": "Neural Technology Solutions",
@@ -289,12 +279,40 @@
       "FechaSal": null
     },
     {
+      "id": 9,
       "egresadoId": 6,
       "posicion": "Programador React",
       "empresa": "Neural Technology Solutions",
       "salario": 85000,
       "FechaEntr": "2022-08-17",
       "FechaSal": null
+    },
+    {
+      "egresadoId": 1,
+      "posicion": "Software Engineer II",
+      "empresa": "Newtech S.R.L",
+      "salario": null,
+      "FechaEntr": "2016-9-4",
+      "FechaSal": "2020-8-11",
+      "id": 10
+    },
+    {
+      "egresadoId": 1,
+      "posicion": "Senior Full Stack Engineer",
+      "empresa": "Neural Technology Solutions",
+      "salario": null,
+      "FechaEntr": "2020-8-13",
+      "FechaSal": "2022-3-13",
+      "id": 11
+    },
+    {
+      "egresadoId": 1,
+      "posicion": "Frontend Engineer",
+      "empresa": "Augmedix",
+      "salario": null,
+      "FechaEntr": "2022-1-6",
+      "FechaSal": null,
+      "id": 12
     }
   ],
   "contacto": [

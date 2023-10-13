@@ -11,6 +11,7 @@ import { IdiomasComponent } from './idiomas/idiomas.component';
 import { SharedModule } from '../shared/shared.module';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
+import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { ContactosComponent } from './contactos/contactos.component';
     EgresadoEditPage, 
     IdiomasComponent, 
     HabilidadesComponent,
-    ContactosComponent
+    ContactosComponent,
+    ExperienciaLaboralComponent
   ],
 })
 export class EgresadoEditPageModule {}

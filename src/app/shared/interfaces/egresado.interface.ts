@@ -26,10 +26,11 @@ export interface Egresado {
 } 
 
 export interface ExperienciaLaboral {
-  EgresadoId?: number;
+  id?: number,
+  egresadoId?: number;
   empresa?: string;
   posicion?: string;
-  Salario?: number;
+  salario?: number;
   FechaEntr?: string;
   FechaSal?: string;
 }

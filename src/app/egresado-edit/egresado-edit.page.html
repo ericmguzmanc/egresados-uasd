@@ -157,28 +157,28 @@
             <h5>Experiencia Laboral</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right>
+            <ion-button color="primary" float-right (click)="openExperienciaLaboralModal()">
               <ion-icon name="add-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
 
-        <ng-container *ngIf="experienciaLaboralEgresado.controls.length === 0">
+        <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length === 0">
           <ion-label class="muted upper-separation"> No hay Experiencia Laboral definida</ion-label>
         </ng-container>
 
-        <ng-container *ngIf="experienciaLaboralEgresado.controls.length >= 0">
-          <ion-item *ngFor="let experiencia of experienciaLaboralEgresado.controls; let i = index" class="work-experience-item">
+        <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length >= 0">
+          <ion-item *ngFor="let experiencia of experienciaLaboralEgresadoArray.controls; let i = index" class="work-experience-item">
             <ion-content style="min-height: 60px;">
               <ion-label>{{experiencia.value.posicion}}</ion-label>
 
               <ion-label class="muted">
-                {{experiencia.value.empresa}}
+                <span>{{experiencia.value.empresa}}</span>
                 <br/>
                 {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal || 'Actualidad'}}
               </ion-label>
             </ion-content>
-            <ion-button color="danger">
+            <ion-button color="danger" (click)="deleteExperienciaLaboralEgresado(experiencia.value.id)">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </ion-item>
@@ -205,8 +205,13 @@
 
         <ng-container *ngIf="educacionEgresadoArray.controls.length >= 0">
           <ion-item *ngFor="let educacion of educacionEgresadoArray.controls; let i = index">
-            <ion-content>
-              <ion-label>{{educacion.value.Titulo}}</ion-label>
+            <ion-content style="min-height: 60px;">
+              <ion-label>
+                <span>{{educacion.value.Titulo}}</span>
+              </ion-label>
+              <ion-label class="muted">
+                {{educacion.value.Universidad}}
+              </ion-label>
               <ion-label class="muted">
                 {{educacion.value.FechaEntr}} - {{educacion.value.FechaSal || 'Actualidad'}}
               </ion-label>
@@ -240,7 +245,7 @@
           <ion-item *ngFor="let contacto of contactoEgresadoArray.controls; let i = index">
             <ion-content>
               <ion-label>{{contacto.value.valor}}</ion-label>
-              <ion-label class="muted">{{contacto.value.tipo | lowercase}}</ion-label>
+              <ion-label class="muted">{{contacto.value.tipo | titlecase}}</ion-label>
             </ion-content>
               <ion-button color="danger" (click)="deleteContactoEgresado(contacto.value.id)">
                 <ion-icon name="trash-outline"></ion-icon>

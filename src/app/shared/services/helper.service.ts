@@ -32,4 +32,10 @@ export class HelperService {
     const latestEmpresa = experienciaLaboralEgresado?.filter(ex => !ex.FechaSal)[0];
     return latestEmpresa ? latestEmpresa?.empresa : "";
   }
+
+  sortByDate<T extends Record<string, any>>(array: T[], startDate: keyof T, endDate: keyof T) {
+    return array.sort((a: T, b: T) => {
+      return new Date(b[startDate]).getTime() - new Date(a[endDate]).getTime();
+    });
+  }
 }
