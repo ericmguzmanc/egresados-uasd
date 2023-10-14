@@ -234,15 +234,15 @@
           </ion-col>
         </ion-row>
 
-        <ng-container *ngIf="experienciaLaboralEgresado.controls.length === 0">
+        <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length === 0">
           <ion-label class="muted upper-separation">
             No hay Experiencia Laboral definida</ion-label
           >
         </ng-container>
 
-        <ng-container *ngIf="experienciaLaboralEgresado.controls.length >= 0">
+        <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length >= 0">
           <ion-item
-            *ngFor="let experiencia of experienciaLaboralEgresado.controls; let i = index"
+            *ngFor="let experiencia of experienciaLaboralEgresadoArray.controls; let i = index"
             class="work-experience-item"
           >
             <ion-content style="min-height: 60px">
