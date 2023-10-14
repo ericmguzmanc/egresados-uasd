@@ -227,12 +227,6 @@
   ],
   "contacto": [
     {
-      "id": 1,
-      "egresadoId": 1,
-      "tipo": "CELULAR",
-      "valor": "8094883372"
-    },
-    {
       "id": 3,
       "egresadoId": 2,
       "tipo": "CELULAR",
@@ -291,6 +285,12 @@
       "tipo": "EMAIL",
       "valor": "eericguzmanff@gmail.com",
       "id": 12
+    },
+    {
+      "egresadoId": 1,
+      "tipo": "CELULAR",
+      "valor": 8296545220,
+      "id": 13
     }
   ],
   "educacion": [

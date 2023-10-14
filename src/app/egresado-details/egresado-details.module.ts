@@ -12,6 +12,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { spinnerInterceptor } from '../shared/interceptor/spinner.interceptor';
 import { LoaderComponentModule } from '../shared/components/loader/loader.module';
 
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,9 +21,11 @@ import { LoaderComponentModule } from '../shared/components/loader/loader.module
     IonicModule,
     EgresadoDetailsPageRoutingModule,
     SharedModule,
-    LoaderComponentModule
+    LoaderComponentModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   declarations: [EgresadoDetailsPage],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true},]
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true}, provideNgxMask()]
 })
 export class EgresadoDetailsPageModule {}

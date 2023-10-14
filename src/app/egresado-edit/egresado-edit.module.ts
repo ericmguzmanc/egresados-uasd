@@ -12,6 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
 
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,7 +21,7 @@ import { ContactosComponent } from './contactos/contactos.component';
     ReactiveFormsModule,
     IonicModule,
     EgresadoEditPageRoutingModule,
-    SharedModule,
+    SharedModule, 
   ],
   declarations: [
     EgresadoEditPage, 
@@ -27,5 +29,7 @@ import { ContactosComponent } from './contactos/contactos.component';
     HabilidadesComponent,
     ContactosComponent
   ],
+  
+  providers: [provideNgxMask()]
 })
 export class EgresadoEditPageModule {}

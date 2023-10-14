@@ -17,7 +17,6 @@ export class ContactosComponent  implements OnInit {
 
   private contactoNumberValidators = [
     Validators.minLength(10), 
-    Validators.maxLength(13)
   ];
 
   private contactEmailValidators = [
