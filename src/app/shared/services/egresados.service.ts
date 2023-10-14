@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Contacto, Egresado, EgresadosHabilidad, Idioma } from '../interfaces/egresado.interface';
-import { Observable } from 'rxjs';
+import { Contacto, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
+import { Observable, map } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,25 @@ export class EgresadosService {
 
   egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=egresadosHabilidad'
  
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private helperService: HelperService,
+  ) { }
 
-  getEgresados(page? : number): Observable<Egresado[]> {
-    return this.http.get<Egresado[]>(`${JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`)
+  getEgresados(page?: number): Observable<Egresado[]> {
+    return this.http.get<Egresado[]>(`${JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`);
   }
 
   getEgresadoById(id: number): Observable<Egresado> {
-    return this.http.get<Egresado>(`${JSON_SERVER_URL}/egresado/${id}?${this.egresado_relationships}`);
+    return this.http.get<Egresado>(`${JSON_SERVER_URL}/egresado/${id}?${this.egresado_relationships}`)
+      .pipe(
+        map((egresado) => {
+          egresado.experienciaLaboralEgresado = this.helperService
+            .sortByDate(egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');
+
+          return egresado;
+        })
+      );
   }
 
   updateEgresado(egresado: Egresado): Observable<Egresado> {
@@ -47,6 +59,14 @@ export class EgresadosService {
 
   deleteContactoEgresado(contactoId: number): Observable<Contacto> {
     return this.http.delete<Contacto>(`${JSON_SERVER_URL}/contacto/${contactoId}`);
+  }
+
+  addExperienciaLaboralEgresado(experienciaLaboral: ExperienciaLaboral): Observable<ExperienciaLaboral> {
+    return this.http.post<ExperienciaLaboral>(`${JSON_SERVER_URL}/experienciaLaboralEgresado`, experienciaLaboral);
+  }
+
+  deleteExperienciaLaboralEgresado(experienciaLaboralId: number) {
+    return this.http.delete<ExperienciaLaboral>(`${JSON_SERVER_URL}/experienciaLaboralEgresado/${experienciaLaboralId}`);
   }
 
 }

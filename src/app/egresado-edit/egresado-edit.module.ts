@@ -11,6 +11,7 @@ import { IdiomasComponent } from './idiomas/idiomas.component';
 import { SharedModule } from '../shared/shared.module';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
+import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
@@ -27,7 +28,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     EgresadoEditPage, 
     IdiomasComponent, 
     HabilidadesComponent,
-    ContactosComponent
+    ContactosComponent,
+    ExperienciaLaboralComponent
   ],
   
   providers: [provideNgxMask()]

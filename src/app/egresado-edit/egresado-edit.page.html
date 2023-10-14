@@ -228,7 +228,7 @@
             <h5>Experiencia Laboral</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right>
+            <ion-button color="primary" float-right (click)="openExperienciaLaboralModal()">
               <ion-icon name="add-outline"></ion-icon>
             </ion-button>
           </ion-col>
@@ -255,7 +255,7 @@
                 || 'Actualidad'}}
               </ion-label>
             </ion-content>
-            <ion-button color="danger">
+            <ion-button color="danger" (click)="deleteExperienciaLaboralEgresado(experiencia.value.id)">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
           </ion-item>

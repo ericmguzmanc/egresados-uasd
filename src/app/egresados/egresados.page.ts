@@ -4,7 +4,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
-import  {TIMER_LOADING} from 'src/app/shared/constants';
+import  {LOADING_TIMEOUT} from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-egresados',
@@ -18,22 +18,32 @@ export class EgresadosPage implements OnInit {
   name: string = '';
   egresados: Egresado[] = [];
   loading: boolean = true;
-  pageFinaly: number = 1;
+  pageNumber: number = 1;
   constructor(
     private egresadosService: EgresadosService,
     public helperService: HelperService
   ) {}
-  
-  ngOnInit() {
-    this.egresadosService.getEgresados(this.pageFinaly).subscribe((egresados: Egresado[]) => {
-      this.egresados = egresados;
-      setTimeout(() => {
-        this.loading = false;
-      }, TIMER_LOADING);
-    });
 
+  ngOnInit() {
+    this.loadEgresados();
   }
-  
+
+  loadEgresados() {
+    this.egresadosService
+      .getEgresados(this.pageNumber)
+      .subscribe((egresados: Egresado[]) => {
+        this.egresados = [...this.egresados, ...egresados];
+        setTimeout(() => {
+          this.loading = false;
+        }, LOADING_TIMEOUT );
+      });
+  }
+
+  setPageNumber(page: number) {
+    this.pageNumber = page;
+    this.loadEgresados();
+  }
+
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }

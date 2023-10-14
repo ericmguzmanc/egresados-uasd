@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {  AlertController, ModalController } from '@ionic/angular';
-import { TIPO_CONTACTO } from 'src/app/shared/constants';
+import { LOADING_TIMEOUT, TIPO_CONTACTO } from 'src/app/shared/constants';
 import { Contacto } from 'src/app/shared/interfaces/egresado.interface';
 import { EgresadosService } from 'src/app/shared/services/egresados.service';
 import { EntitiesService } from 'src/app/shared/services/entities.service';
@@ -75,6 +75,7 @@ export class ContactosComponent  implements OnInit {
 
   save() {
     if (this.contactoForm.valid) {
+      this.loading = true;
       const contacto = this.getContactoParams();
 
       this.entitiesService.getContactoByTipoAndValor({ tipo: contacto.tipo, valor: contacto.valor })
@@ -93,10 +94,13 @@ export class ContactosComponent  implements OnInit {
 
               await alert.present();
             } else {
-              this.egresadoService.addContactoEgresado(contacto)
+              setTimeout(() => {
+                this.egresadoService.addContactoEgresado(contacto)
                 .subscribe((contacto) => {
+                  this.loading = false;
                   return this.modalCtrl.dismiss(contacto, 'confirm');
                 });
+              }, LOADING_TIMEOUT);
             }
         });
     }

@@ -6,4 +6,4 @@ export const TIPO_CONTACTO = {
   EMAIL: "EMAIL",
 }
 
-export const TIMER_LOADING = 1000 
+export const LOADING_TIMEOUT = 1000 
