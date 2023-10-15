@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/shared/interfaces/usuario.interface';
 import { CookieService } from 'ngx-cookie-service';
+import { EXPCOOKIE } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,9 @@ export class LoginPage implements OnInit {
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (usuario: Usuario[]) => {
           const { egresadoId, token } = usuario[0];
-          this.cookieService.set('token', token)
+          let date = new Date()
+          date.setMinutes(date.getMinutes() + EXPCOOKIE);
+          this.cookieService.set('token', token, date)
           if (egresadoId) {
             this.router.navigate(['/egresado-edit/', egresadoId]);
           }
