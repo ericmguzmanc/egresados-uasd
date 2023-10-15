@@ -179,7 +179,8 @@
           <ion-row *ngFor="let contactos of egresado.contacto">
             <ion-col>
               <h3>{{contactos.tipo}}</h3>
-              <span>{{contactos.valor}}</span>
+              <span *ngIf="contactos.tipo !== 'EMAIL' else emailType ">{{contactos.valor | mask:'000-000-0000'}}</span>
+              <ng-template #emailType>{{contactos.valor}}</ng-template>
             </ion-col>
           </ion-row>
         </ion-grid>

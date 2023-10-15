@@ -13,6 +13,8 @@ import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +22,7 @@ import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-l
     ReactiveFormsModule,
     IonicModule,
     EgresadoEditPageRoutingModule,
-    SharedModule,
+    SharedModule, 
   ],
   declarations: [
     EgresadoEditPage, 
@@ -29,5 +31,7 @@ import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-l
     ContactosComponent,
     ExperienciaLaboralComponent
   ],
+  
+  providers: [provideNgxMask()]
 })
 export class EgresadoEditPageModule {}

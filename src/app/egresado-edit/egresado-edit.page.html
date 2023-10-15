@@ -12,57 +12,110 @@
   </ion-header>
 
   <ion-content>
-    <ion-title style="margin-top: 15px;">Información Personal</ion-title>
-    <form class="ion-margin" [formGroup]="egresadoForm" (ngSubmit)="save()" *ngIf="egresado">
+    <ion-title style="margin-top: 15px">Información Personal</ion-title>
+    <form
+      class="ion-margin"
+      [formGroup]="egresadoForm"
+      (ngSubmit)="save()"
+      *ngIf="egresado"
+    >
       <!-- Nombre Egresado -->
-      <ion-input type="text" fill="solid" label="Nombres" labelPlacement="floating" 
-      helperText="Ingresa tu Nombre" errorText="Nombre Inválido" formControlName="Nombre"></ion-input>
+      <ion-input
+        type="text"
+        fill="solid"
+        label="Nombres"
+        labelPlacement="floating"
+        helperText="Ingresa tu Nombre"
+        errorText="Nombre Inválido"
+        formControlName="Nombre"
+      ></ion-input>
 
       <!-- Apellido Paterno  -->
-      <ion-input type="text" fill="solid" label="Primer Apellido" labelPlacement="floating"
-        helperText="Ingresa tu Primer Apellido" errorText="Primer Apellido Inválido"
-        formControlName="ApellidoPaterno"></ion-input>
+      <ion-input
+        type="text"
+        fill="solid"
+        label="Primer Apellido"
+        labelPlacement="floating"
+        helperText="Ingresa tu Primer Apellido"
+        errorText="Primer Apellido Inválido"
+        formControlName="ApellidoPaterno"
+      ></ion-input>
 
       <!-- Apellido Materno -->
-      <ion-input type="text" fill="solid" label="Segundo Apellido" labelPlacement="floating"
-        helperText="Ingresa tu Segundo Apellido" errorText="Segundo Apellido Inválido"
-        formControlName="ApellidoMaterno"></ion-input>
+      <ion-input
+        type="text"
+        fill="solid"
+        label="Segundo Apellido"
+        labelPlacement="floating"
+        helperText="Ingresa tu Segundo Apellido"
+        errorText="Segundo Apellido Inválido"
+        formControlName="ApellidoMaterno"
+      ></ion-input>
 
       <!-- About -->
-      <ion-textarea type="text" fill="solid" label="Acerca de" labelPlacement="floating"
-        helperText="Ingresa tu Información" errorText="Información Inválida"
-        formControlName="about"></ion-textarea>
+      <ion-textarea
+        type="text"
+        fill="solid"
+        label="Acerca de"
+        labelPlacement="floating"
+        helperText="Ingresa tu Información"
+        errorText="Información Inválida"
+        formControlName="about"
+      ></ion-textarea>
 
       <!-- Cédula -->
-      <ion-input type="text" fill="solid" label="Cédula" labelPlacement="floating"
-        helperText="Ingresa tu Cédula" errorText="Cédula Inválida"
-        formControlName="Cedula"></ion-input>
+      <ion-input
+        type="text"
+        fill="solid"
+        label="Cédula"
+        labelPlacement="floating"
+        helperText="Ingresa tu Cédula"
+        errorText="Cédula Inválida"
+        formControlName="Cedula"
+      ></ion-input>
 
       <!-- Pasaporte -->
-      <ion-input type="text" fill="solid" label="Pasaporte" labelPlacement="floating"
-        helperText="Ingresa tu Pasaporte" errorText="Pasaporte Inválido"
-        formControlName="Pasaporte"></ion-input>
-
+      <ion-input
+        type="text"
+        fill="solid"
+        label="Pasaporte"
+        labelPlacement="floating"
+        helperText="Ingresa tu Pasaporte"
+        errorText="Pasaporte Inválido"
+        formControlName="Pasaporte"
+      ></ion-input>
 
       <!-- Fecha Nacimiento -->
-      <ion-input type="date" fill="solid" label="Fecha Nacimiento" labelPlacement="floating"
-        helperText="Ingresa tu Fecha de Nacimiento" errorText="Fecha de Nacimiento Inválida"
-        formControlName="FechaNac"></ion-input>
+      <ion-input
+        type="date"
+        fill="solid"
+        label="Fecha Nacimiento"
+        labelPlacement="floating"
+        helperText="Ingresa tu Fecha de Nacimiento"
+        errorText="Fecha de Nacimiento Inválida"
+        formControlName="FechaNac"
+      ></ion-input>
 
       <!-- Genero -->
       <ion-text>
         <h5>Sexo</h5>
       </ion-text>
-      <ion-radio-group [value]="egresadoForm.controls['Genero']" [allowEmptySelection]="true" formControlName="Genero">
-        <ion-radio value="Masculino" labelPlacement="fixed">Masculino</ion-radio><br />
-        <ion-radio value="Femenino" labelPlacement="fixed">Femenino</ion-radio><br />
+      <ion-radio-group
+        [value]="egresadoForm.controls['Genero']"
+        [allowEmptySelection]="true"
+        formControlName="Genero"
+      >
+        <ion-radio value="Masculino" labelPlacement="fixed">Masculino</ion-radio
+        ><br />
+        <ion-radio value="Femenino" labelPlacement="fixed">Femenino</ion-radio
+        ><br />
         <ion-radio value="Otro" labelPlacement="fixed">Otro</ion-radio><br />
       </ion-radio-group>
 
-      <ion-grid style="margin-top: 15px; margin-bottom: 15px;">
+      <ion-grid style="margin-top: 15px; margin-bottom: 15px">
         <ion-row>
           <ion-col size-sm="12" size="12" class="ion-text-center">
-            <ion-button expand="full" class="ion-text-wrap  " type="submit">
+            <ion-button expand="full" class="ion-text-wrap" type="submit">
               Guardar datos personales
               <ion-icon name="save-outline" slot="end"></ion-icon>
             </ion-button>
@@ -71,7 +124,9 @@
       </ion-grid>
       <ion-item-divider></ion-item-divider>
 
-      <ion-title style="margin-top: 15px; margin-left: -15px;">Información Adicional</ion-title>
+      <ion-title style="margin-top: 15px; margin-left: -15px"
+        >Información Adicional</ion-title
+      >
       <!-- Nacionalidad -->
       <!-- <ion-list formArrayName="nacionalidadEgresado">
         <ion-row>
@@ -107,18 +162,26 @@
             <h5>Habilidades</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right (click)="openHabilidadesModal()">
+            <ion-button
+              color="primary"
+              float-right
+              (click)="openHabilidadesModal()"
+            >
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
 
         <ng-container *ngIf="habilidadesEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation"> No hay habilidades definidas</ion-label>
+          <ion-label class="muted upper-separation">
+            No hay habilidades definidas</ion-label
+          >
         </ng-container>
 
         <ng-container *ngIf="habilidadesEgresadoArray.controls.length >= 0">
-          <ion-item *ngFor="let habilidad of habilidadesEgresadoArray.controls; let i = index">
+          <ion-item
+            *ngFor="let habilidad of habilidadesEgresadoArray.controls; let i = index"
+          >
             <ion-label>{{habilidad.value.habilidad}}</ion-label>
           </ion-item>
         </ng-container>
@@ -132,18 +195,26 @@
             <h5>Idioma</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right (click)="openIdiomasModal()">
+            <ion-button
+              color="primary"
+              float-right
+              (click)="openIdiomasModal()"
+            >
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
 
         <ng-container *ngIf="idiomaEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation"> No hay Idiomas definidos</ion-label>
+          <ion-label class="muted upper-separation">
+            No hay Idiomas definidos</ion-label
+          >
         </ng-container>
 
         <ng-container *ngIf="idiomaEgresadoArray.controls.length >= 0">
-          <ion-item *ngFor="let idioma of idiomaEgresadoArray.controls; let i = index">
+          <ion-item
+            *ngFor="let idioma of idiomaEgresadoArray.controls; let i = index"
+          >
             <ion-label>{{idioma.value.idioma}}</ion-label>
           </ion-item>
         </ng-container>
@@ -164,18 +235,24 @@
         </ion-row>
 
         <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation"> No hay Experiencia Laboral definida</ion-label>
+          <ion-label class="muted upper-separation">
+            No hay Experiencia Laboral definida</ion-label
+          >
         </ng-container>
 
         <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length >= 0">
-          <ion-item *ngFor="let experiencia of experienciaLaboralEgresadoArray.controls; let i = index" class="work-experience-item">
-            <ion-content style="min-height: 60px;">
+          <ion-item
+            *ngFor="let experiencia of experienciaLaboralEgresadoArray.controls; let i = index"
+            class="work-experience-item"
+          >
+            <ion-content style="min-height: 60px">
               <ion-label>{{experiencia.value.posicion}}</ion-label>
 
               <ion-label class="muted">
-                <span>{{experiencia.value.empresa}}</span>
-                <br/>
-                {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal || 'Actualidad'}}
+                {{experiencia.value.empresa}}
+                <br />
+                {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal
+                || 'Actualidad'}}
               </ion-label>
             </ion-content>
             <ion-button color="danger" (click)="deleteExperienciaLaboralEgresado(experiencia.value.id)">
@@ -200,26 +277,26 @@
         </ion-row>
 
         <ng-container *ngIf="educacionEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation"> No hay Educación definida</ion-label>
+          <ion-label class="muted upper-separation">
+            No hay Educación definida</ion-label
+          >
         </ng-container>
 
         <ng-container *ngIf="educacionEgresadoArray.controls.length >= 0">
-          <ion-item *ngFor="let educacion of educacionEgresadoArray.controls; let i = index">
-            <ion-content style="min-height: 60px;">
-              <ion-label>
-                <span>{{educacion.value.Titulo}}</span>
-              </ion-label>
+          <ion-item
+            *ngFor="let educacion of educacionEgresadoArray.controls; let i = index"
+          >
+            <ion-content>
+              <ion-label>{{educacion.value.Titulo}}</ion-label>
               <ion-label class="muted">
-                {{educacion.value.Universidad}}
-              </ion-label>
-              <ion-label class="muted">
-                {{educacion.value.FechaEntr}} - {{educacion.value.FechaSal || 'Actualidad'}}
+                {{educacion.value.FechaEntr}} - {{educacion.value.FechaSal ||
+                'Actualidad'}}
               </ion-label>
             </ion-content>
             <ion-button color="danger">
               <ion-icon name="trash-outline"></ion-icon>
             </ion-button>
-            </ion-item>
+          </ion-item>
         </ng-container>
       </ion-list>
       <!-- Fin de Educación -->
@@ -231,35 +308,56 @@
             <h5>Contacto</h5>
           </ion-col>
           <ion-col size="2">
-            <ion-button color="primary" float-right (click)="openContactoModal()">
+            <ion-button
+              color="primary"
+              float-right
+              (click)="openContactoModal()"
+            >
               <ion-icon name="add-outline"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
 
         <ng-container *ngIf="contactoEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation"> No hay Información de Contacto definida</ion-label>
+          <ion-label class="muted upper-separation">
+            No hay Información de Contacto definida</ion-label
+          >
         </ng-container>
 
         <ng-container *ngIf="contactoEgresadoArray.controls.length >= 0">
-          <ion-item *ngFor="let contacto of contactoEgresadoArray.controls; let i = index">
+          <ion-item
+            *ngFor="let contacto of contactoEgresadoArray.controls; let i = index"
+          >
             <ion-content>
-              <ion-label>{{contacto.value.valor}}</ion-label>
-              <ion-label class="muted">{{contacto.value.tipo | titlecase}}</ion-label>
+              <ion-label *ngIf="contacto.value.tipo !=='EMAIL', else isEmail">
+                {{contacto.value.valor | mask:'000-000-0000'}}
+              </ion-label>
+              <ng-template #isEmail>{{contacto.value.valor}}</ng-template>
+              <ion-label class="muted">
+                {{contacto.value.tipo | lowercase}}
+              </ion-label>
             </ion-content>
-              <ion-button color="danger" (click)="deleteContactoEgresado(contacto.value.id)">
-                <ion-icon name="trash-outline"></ion-icon>
-              </ion-button>
+            <ion-button
+              color="danger"
+              (click)="deleteContactoEgresado(contacto.value.id)"
+            >
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
           </ion-item>
         </ng-container>
       </ion-list>
       <!-- Fin de Contacto -->
 
       <ion-item-divider></ion-item-divider>
-      <ion-grid style="margin-top: 15px; margin-bottom: 15px;">
+      <ion-grid style="margin-top: 15px; margin-bottom: 15px">
         <ion-row>
           <ion-col size-sm="12" size="12" class="ion-text-center">
-            <ion-button expand="full" class="ion-text-wrap" color="light" (click)="onCancelClick()">
+            <ion-button
+              expand="full"
+              class="ion-text-wrap"
+              color="light"
+              (click)="onCancelClick()"
+            >
               Salir de edición de perfil
               <ion-icon name="exit-outline" slot="end"></ion-icon>
             </ion-button>
@@ -268,6 +366,4 @@
       </ion-grid>
     </form>
   </ion-content>
-
-
 </ion-content>

@@ -13,6 +13,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { spinnerInterceptor } from '../shared/interceptor/spinner.interceptor';
 import { LoaderComponentModule } from '../shared/components/loader/loader.module';
 
+
+
 @NgModule({
   imports: [
     IonicModule,
@@ -21,7 +23,8 @@ import { LoaderComponentModule } from '../shared/components/loader/loader.module
     ExploreContainerComponentModule,
     EgresadosPageRoutingModule,
     SharedModule,
-    LoaderComponentModule
+    LoaderComponentModule,
+    
   ],
   declarations: [EgresadosPage],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true}],

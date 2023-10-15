@@ -19,7 +19,7 @@
             placeholder="Tipo de contacto" 
             formControlName="tipoContacto"
             >
-            <ion-select-option [value]="tipoContacto.CELULAR">{{tipoContacto.CELULAR | titlecase}}</ion-select-option>
+            <ion-select-option [value]="tipoContacto.CELULAR">{{tipoContacto.CELULAR | titlecase }}</ion-select-option>
             <ion-select-option [value]="tipoContacto.TRABAJO">{{tipoContacto.TRABAJO | titlecase}}</ion-select-option>
             <ion-select-option [value]="tipoContacto.EMAIL">{{tipoContacto.EMAIL | titlecase}}</ion-select-option>
           </ion-select>
@@ -30,9 +30,10 @@
           <ion-label position="floating">Valor de Contacto</ion-label>
           <ion-input 
           *ngIf="tipodeContactoSeleccionado.value !== tipoContacto.EMAIL" 
-          type="number" 
+          type="text" 
           placeholder="Ingrese el Numero de contacto"
           formControlName="contactoValueNumber"
+          appPhoneMask
           ></ion-input>
           <ion-input
           *ngIf="tipodeContactoSeleccionado.value === tipoContacto.EMAIL"
