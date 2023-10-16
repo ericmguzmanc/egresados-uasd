@@ -5,7 +5,8 @@
       "email": "example1@example.com",
       "password": "password1",
       "username ": "user1",
-      "egresadoId": 1
+      "egresadoId": 1,
+      "token": "valid1"
     },
     {
       "id": 2,

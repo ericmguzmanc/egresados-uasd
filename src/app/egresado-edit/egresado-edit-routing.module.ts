@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { EgresadoEditPage } from './egresado-edit.page';
+import { loginGuard } from '../shared/guards/login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: EgresadoEditPage
+    component: EgresadoEditPage,
+    canActivate: [loginGuard]
   }
 ];
 
