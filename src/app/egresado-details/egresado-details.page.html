@@ -19,9 +19,7 @@
   </ion-header>
   <!-- content Egresado -->
   <app-loader [isLoading]="loading"></app-loader>
-  <!--<ion-content *ngIf="loading">
-    <ion-spinner name="crescent"></ion-spinner>
-  </ion-content>-->
+
   <ion-content *ngIf="!loading">
     <!--Grid -->
     <ion-grid>
@@ -41,9 +39,9 @@
                 {{egresado.Nombre}} {{egresado.ApellidoPaterno}}
                 {{egresado.ApellidoMaterno}}
               </h3>
-              <span class="muted spaced-text"
-                >{{this.helperService.getLatestPosition(egresado)}}</span
-              >
+              <span class="muted spaced-text">
+                {{this.helperService.getLatestPosition(egresado)}}
+              </span>
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
@@ -61,9 +59,15 @@
             <span> Genero: </span>
             <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
           </ion-row>
-          <span *ngIf="egresado.destacado" class="star"
-            ><ion-icon name="star"></ion-icon
-          ></span>
+            <span class="muted spaced-text " >
+              <span *ngFor="let direccion of egresado.direccionEgresado">
+                <ion-icon name="locate-outline"></ion-icon>
+                {{direccion.provincia}}
+              </span>
+            </span>
+          <span *ngIf="egresado.destacado" class="star">
+            <ion-icon name="star"></ion-icon>
+          </span>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -179,7 +183,9 @@
           <ion-row *ngFor="let contactos of egresado.contacto">
             <ion-col>
               <h3>{{contactos.tipo}}</h3>
-              <span *ngIf="contactos.tipo !== 'EMAIL' else emailType ">{{contactos.valor | mask:'000-000-0000'}}</span>
+              <span *ngIf="contactos.tipo !== 'EMAIL' else emailType "
+                >{{contactos.valor | mask:'000-000-0000'}}</span
+              >
               <ng-template #emailType>{{contactos.valor}}</ng-template>
             </ion-col>
           </ion-row>

@@ -33,6 +33,7 @@ export class EgresadosPage implements OnInit {
       .getEgresados(this.pageNumber)
       .subscribe((egresados: Egresado[]) => {
         this.egresados = [...this.egresados, ...egresados];
+        console.log(this.egresados);
         setTimeout(() => {
           this.loading = false;
         }, LOADING_TIMEOUT );

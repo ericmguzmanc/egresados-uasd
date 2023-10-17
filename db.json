@@ -517,6 +517,26 @@
       "carreraId": 2
     }
   ],
+  "direccionEgresado":[
+    {
+      "id":1,
+      "egresadoId":1,
+      "provincia":"Distrito Nacional",
+      "provinciaId":1
+    },
+    {
+      "id":2,
+      "egresadoId":2,
+      "provincia":"Barahona",
+      "provinciaId":4
+    },
+    {
+      "id":3,
+      "egresadoId":3,
+      "provincia":"Puerto Plata",
+      "provinciaId":18
+    }
+  ],
   "nacionalidad": [
     {
       "id": 1,
@@ -677,6 +697,136 @@
     {
       "id": 14,
       "habilidad": "Python"
+    }
+  ],
+  "provincias": [
+    {
+      "id": 1,
+      "Provincia": "Distrito Nacional"
+    },
+    {
+      "id": 2,
+      "Povincia": "Azua"
+    },
+    {
+      "id": 3,
+      "Povincia": "Bahoruco"
+    },
+    {
+      "id": 4,
+      "Povincia": "Barahona"
+    },
+    {
+      "id": 5,
+      "Povincia": "Dajabón"
+    },
+    {
+      "id": 6,
+      "Povincia": "Duarte"
+    },
+    {
+      "id": 7,
+      "Povincia": "Elías Piña"
+    },
+    {
+      "id": 8,
+      "Povincia": "El Seibo"
+    },
+    {
+      "id": 9,
+      "Povincia": "Espaillat"
+    },
+    {
+      "id": 10,
+      "Povincia": "Independencia"
+    },
+    {
+      "id": 1,
+      "Povincia": "La Altagracia"
+    },
+    {
+      "id": 12,
+      "Povincia": "La Romana"
+    },
+    {
+      "id": 13,
+      "Povincia": "La Vega"
+    },
+    {
+      "id":14,
+      "Povincia": "María Trinidad Sánchez"
+    },
+    {
+      "id": 15,
+      "Povincia": "Monte Cristi"
+    },
+    {
+      "id": 16,
+      "Povincia": "Pedernales"
+    },
+    {
+      "id": 17,
+      "Povincia": "Peravia"
+    },
+    {
+      "id": 18,
+      "Povincia": "Puerto Plata"
+    },
+    {
+      "id": 19,
+      "Povincia": "Hermanas Mirabal"
+    },
+    {
+      "id": 20,
+      "Povincia": "Samaná"
+    },
+    {
+      "id": 21,
+      "Povincia": "San Cristóbal"
+    },
+    {
+      "id": 22,
+      "Povincia": "San Juan"
+    },
+    {
+      "id": 23,
+      "Povincia": "San Pedro de Macorís"
+    },
+    {
+      "id": 24,
+      "Povincia": "Sánchez Ramírez"
+    },
+    {
+      "id": 25,
+      "Povincia": "Santiago"
+    },
+    {
+      "id": 26,
+      "Povincia": "Santiago Rodríguez"
+    },
+    {
+      "id": 27,
+      "Povincia": "Valverde"
+    },
+    {
+      "id": 28,
+      "Povincia": "Monseñor Nouel"
+    },
+    {
+      "id": 29,
+      "Povincia": "Monte Plata"
+    },
+    {
+      "id": 30,
+      "Povincia": "Hato Mayor"
+    },
+    {
+      "id": 31,
+      "Povincia": "San José de Ocoa"
+    },
+    {
+      "id": 32,
+      "Povincia": "Santo Domingo"
     }
   ]
 }

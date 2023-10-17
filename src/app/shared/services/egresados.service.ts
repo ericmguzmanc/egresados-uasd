@@ -10,7 +10,7 @@ import { HelperService } from './helper.service';
 })
 export class EgresadosService {
 
-  egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=egresadosHabilidad'
+  egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=egresadosHabilidad&_embed=direccionEgresado'
  
   constructor(
     private http: HttpClient,
