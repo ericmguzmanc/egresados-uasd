@@ -4,6 +4,7 @@ import { Contacto, EgresadosHabilidad, Idioma } from '../interfaces/egresado.int
 import { Observable, map } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 import { Carrera } from '../interfaces/carrera.interface';
+import { Provincia } from '../interfaces/provincia.interface';
 
 
 @Injectable({
@@ -30,20 +31,7 @@ export class EntitiesService {
       .pipe(
         map((carreras) => {
           if (carreras.length > 0) {
-            carreras.sort((a, b) => {
-              const facultadA = a.facultad.nombre.toUpperCase();
-              const facultadB = b.facultad.nombre.toUpperCase();
-              if (facultadA < facultadB) {
-                return -1
-              }
-  
-              if (facultadA > facultadB) {
-                return 1
-              }
-  
-              return 0;
-            
-            });
+            carreras.sort((a, b) => a.facultad.nombre.toUpperCase().localeCompare(b.facultad.nombre.toUpperCase()));
           }
           return carreras;
         })
@@ -54,5 +42,17 @@ export class EntitiesService {
     { egresadoId, titulo, tipoTitulo }: { egresadoId: number, titulo: string, tipoTitulo: string}
   ) {
     return this.http.get<Contacto[]>(`${JSON_SERVER_URL}/educacion/?egresadoId=${egresadoId}&Titulo=${titulo}&TipoTitulo=${tipoTitulo}`);
+  }
+
+  getProvincias(): Observable<Provincia[]> {
+    return this.http.get<Provincia[]>(`${JSON_SERVER_URL}/provincias`)
+      .pipe(
+        map((provincias) => {
+          if (provincias.length > 0) {
+            provincias.sort((a, b) => a.provincia.toUpperCase().localeCompare(b.provincia.toUpperCase()));
+          }
+          return provincias;
+        })
+      );
   }
 }

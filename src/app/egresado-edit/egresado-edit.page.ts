@@ -2,19 +2,35 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../shared/interfaces/egresado.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertController, IonModal, ModalController } from '@ionic/angular';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AlertController, IonModal, IonicModule, ModalController } from '@ionic/angular';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 import { HelperService } from '../shared/services/helper.service';
 import { EducacionComponent } from './educacion/educacion.component';
+import { forkJoin } from 'rxjs';
+import { EntitiesService } from '../shared/services/entities.service';
+import { Provincia } from '../shared/interfaces/provincia.interface';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { EgresadoEditPageRoutingModule } from './egresado-edit-routing.module';
 
 @Component({
   selector: 'app-egresado-edit',
   templateUrl: './egresado-edit.page.html',
   styleUrls: ['./egresado-edit.page.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    SharedModule,
+    IonicSelectableComponent,
+  ]
 })
 export class EgresadoEditPage implements OnInit {
   @ViewChild(IonModal) IdiomaModal: IonModal;
@@ -22,6 +38,8 @@ export class EgresadoEditPage implements OnInit {
 
   loading = false;
   egresado: Egresado = {};
+  provincias: Provincia[];
+
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],
     ApellidoPaterno: ['', [Validators.required, Validators.maxLength(100)]],
@@ -30,7 +48,8 @@ export class EgresadoEditPage implements OnInit {
     Pasaporte: [''],
     Genero: [''],
     FechaNac: ['', [Validators.required]],
-    about: ['', [Validators.maxLength(300)]],
+    about: ['', [Validators.maxLength(500)]],
+    direccionEgresado: [''],
     contacto: this.fb.array([]),
     nacionalidadEgresado: this.fb.array([]),
     idiomaEgresado: this.fb.array([]),
@@ -42,11 +61,12 @@ export class EgresadoEditPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private egresadoService: EgresadosService,
+    private entitiesService: EntitiesService,
+    private helperService: HelperService,
     private fb: FormBuilder,
     private alertController: AlertController,
     private router: Router,
     private modalCtrl: ModalController,
-    private helperService: HelperService
   ) { }
 
   get idiomaEgresadoArray(): FormArray {
@@ -78,10 +98,20 @@ export class EgresadoEditPage implements OnInit {
     this.route.params.subscribe(params => {
       const egresadoId = params['id'];
       if (egresadoId) {
-        this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
-          this.egresado = egresado;  
-          this.loading = false;
-          this.loadEgresadoForm();
+
+        forkJoin([
+          this.entitiesService.getProvincias(),
+          this.egresadoService.getEgresadoById(egresadoId)
+        ]).subscribe(([provincias, egresado ]) => {
+          if (provincias.length > 0) {
+            this.provincias = provincias
+          }
+
+          if (egresado) {
+            this.egresado = egresado;  
+            this.loading = false;
+            this.loadEgresadoForm();
+          }
         });
       }
     });
@@ -109,7 +139,7 @@ export class EgresadoEditPage implements OnInit {
 
   loadEgresadoForm(): void {
     if (this.egresado.Nombre) {
-      const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Pasaporte, Genero, FechaNac, about } = this.egresado
+      const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Pasaporte, Genero, FechaNac, about, direccionEgresado } = this.egresado
       this.egresadoForm.patchValue({
         Nombre,
         ApellidoPaterno,
@@ -119,6 +149,7 @@ export class EgresadoEditPage implements OnInit {
         Genero,
         FechaNac,
         about,
+        direccionEgresado: direccionEgresado[0],
       });
 
       this.egresadoForm.setControl('idiomaEgresado', this.fb.array(this.fillIdiomaArray()));
@@ -127,6 +158,18 @@ export class EgresadoEditPage implements OnInit {
       this.egresadoForm.setControl('contacto', this.fb.array(this.fillContactoEgresadoArray()));
       this.egresadoForm.setControl('egresadosHabilidad', this.fb.array(this.fillHabilidadesArray()))
     }
+  }
+
+  fillIdiomaArray() {
+    const idiomas = [];
+    if (this.egresado?.idiomaEgresado && this.egresado?.idiomaEgresado.length > 0) {
+      for (const idioma of this.egresado?.idiomaEgresado) {
+        idiomas.push(
+          this.createIdiomaFormGroup(idioma)
+        );
+      }
+    }
+    return idiomas;
   }
 
   fillHabilidadesArray() {
@@ -141,18 +184,6 @@ export class EgresadoEditPage implements OnInit {
     }
 
     return habilidades;
-  }
-
-  fillIdiomaArray() {
-    const idiomas = [];
-    if (this.egresado?.idiomaEgresado && this.egresado?.idiomaEgresado.length > 0) {
-      for (const idioma of this.egresado?.idiomaEgresado) {
-        idiomas.push(
-          this.createIdiomaFormGroup(idioma)
-        );
-      }
-    }
-    return idiomas;
   }
 
   fillExperienciaLaboralArray() {
@@ -382,8 +413,40 @@ export class EgresadoEditPage implements OnInit {
     if (this.egresadoForm.valid) {
       const egresado = this.buildEgresadoUpdateObject();
       
-      this.egresadoService.updateEgresado(egresado)
-      .subscribe(() => {
+      // We build our requests array
+      const saveRequests = [
+        this.egresadoService.updateEgresado(egresado)
+      ];
+
+      // If there is an direccionEgresado selected we create a direccionEgresado object for the requests
+      if (this.egresadoForm.get('direccionEgresado').value) {
+        let direccionEgresado: any = {
+          provincia: this.egresadoForm.get('direccionEgresado').value.provincia,
+          provinciaId: this.egresadoForm.get('direccionEgresado').value.id,
+          egresadoId: this.egresado.id
+        };
+        
+        // If we didn't have any direccionEgresado preloaded this means we create the record
+        // If we already had a direccionEgresado preloaded we just update that record
+        if (this.egresado.direccionEgresado.length === 0) {
+          saveRequests.push(this.egresadoService.addDireccionEgresado(direccionEgresado));
+        } else {
+          direccionEgresado = {
+            ...direccionEgresado,
+          id: this.egresado.direccionEgresado[0].id,
+          };
+          saveRequests.push(this.egresadoService.updateDireccionEgresado(direccionEgresado));
+        }
+      }
+
+      forkJoin([
+        ...saveRequests
+      ])
+      .subscribe(([_, direccionEgresado]) => {
+        // We update the egresado object in case we make a further update
+        this.egresado.direccionEgresado = [];
+        this.egresado.direccionEgresado.push(direccionEgresado);
+
         this.savedConfirmation();
       });
     }

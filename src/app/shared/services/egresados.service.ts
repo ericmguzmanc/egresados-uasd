@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
+import { Contacto, DireccionEgresado, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
 import { Observable, map } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 import { HelperService } from './helper.service';
@@ -78,5 +78,13 @@ export class EgresadosService {
 
   deleteEducacionEgresado(educacionId: number): Observable<Educacion> {
     return this.http.delete<Educacion>(`${JSON_SERVER_URL}/educacion/${educacionId}`);
+  }
+
+  addDireccionEgresado(direccionEgresado: DireccionEgresado): Observable<DireccionEgresado> {
+    return this.http.post<DireccionEgresado>(`${JSON_SERVER_URL}/direccionEgresado`, direccionEgresado);
+  }
+
+  updateDireccionEgresado(direccionEgresado: DireccionEgresado): Observable<DireccionEgresado> {
+    return this.http.patch<DireccionEgresado>(`${JSON_SERVER_URL}/direccionEgresado/${direccionEgresado.id}`, direccionEgresado);
   }
 }

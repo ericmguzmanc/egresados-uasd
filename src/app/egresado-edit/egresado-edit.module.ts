@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { EgresadoEditPageRoutingModule } from './egresado-edit-routing.module';
 
-import { EgresadoEditPage } from './egresado-edit.page';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { SharedModule } from '../shared/shared.module';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
@@ -24,7 +23,6 @@ import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-l
     SharedModule, 
   ],
   declarations: [
-    EgresadoEditPage, 
     IdiomasComponent, 
     HabilidadesComponent,
     ContactosComponent,
