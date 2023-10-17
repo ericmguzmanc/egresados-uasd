@@ -23,6 +23,8 @@ export interface Egresado {
   contacto?: Contacto[];
   // Habilidades
   egresadosHabilidad?: EgresadosHabilidad[];
+  // Direccion
+  direccionEgresado?: DireccionEgresado[];
 } 
 
 export interface ExperienciaLaboral {
@@ -84,5 +86,11 @@ export interface EgresadosHabilidad {
   habilidadId?: number;
   habilidad?: string;
   checked?: boolean;
+}
+
+export interface DireccionEgresado {
+  id?: number;
+  egresadoId?: number;
+  provincia?: string;
 }
 

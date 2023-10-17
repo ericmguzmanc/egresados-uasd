@@ -24,6 +24,10 @@
             <span class="muted">
               Emp. {{ this.helperService.getLatestEmpresa(egresado) }}
             </span>
+            <br>
+          <h6 class="muted" *ngFor="let direccion of egresado.direccionEgresado">
+            Provincia: {{direccion.provincia}}
+          </h6>
             <span *ngIf="egresado.destacado" class="star">
               <ion-icon name="star"></ion-icon>
             </span>
