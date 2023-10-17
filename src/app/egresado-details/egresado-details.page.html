@@ -59,9 +59,9 @@
             <span> Genero: </span>
             <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
           </ion-row>
-            <span class="muted spaced-text " >
+            <span class="muted spaced-text" >
               <span *ngFor="let direccion of egresado.direccionEgresado">
-                <ion-icon name="locate-outline"></ion-icon>
+                <ion-icon name="location-sharp"></ion-icon>
                 {{direccion.provincia}}
               </span>
             </span>
@@ -78,6 +78,9 @@
         <ion-card-subtitle>{{egresado.Nombre}}</ion-card-subtitle>
       </ion-card-header>
       <!--Card Contenido -->
+      <ion-card-content *ngIf="!egresado.about.length">
+        Este usuario no tiene About definido
+      </ion-card-content>
       <ion-card-content> {{egresado.about}} </ion-card-content>
     </ion-card>
     <!--Grid de Habilidades-->
@@ -86,8 +89,8 @@
     </div>
     <ion-grid class="chip">
       <ion-row>
-        <ion-text class="ion-margin" *ngIf="!egresado.egresadosHabilidad.length ">
-          Este usuario no tiene Habilidades definido
+        <ion-text *ngIf="!egresado.egresadosHabilidad.length ">
+          Este usuario no tiene Habilidades definidas
         </ion-text>
         <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad">
           <ion-chip>
@@ -103,6 +106,9 @@
         <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
       </ion-card-header>
       <!--Card Contenido -->
+      <ion-card-content *ngIf="!egresado.experienciaLaboralEgresado.length">
+        Este usuario no tiene Experiencias Laboraless definidas
+      </ion-card-content>
       <ion-card-content>
         <ion-grid>
           <ion-row
@@ -112,10 +118,9 @@
               <ion-row>
                 <ion-text>
                   <h3>{{experiencia.empresa}} - {{experiencia.posicion}}</h3>
-                  <span
-                    >{{experiencia.FechaEntr }} | {{experiencia.FechaSal ||
-                    'Actualidad' }}</span
-                  >
+                  <span>
+                    {{experiencia.FechaEntr }} | {{experiencia.FechaSal ||'Actualidad' }}
+                    </span>
                 </ion-text>
               </ion-row>
             </ion-col>
@@ -125,8 +130,20 @@
       </ion-card-content>
     </ion-card>
     <!--Card Educacion-->
+    <ion-card *ngIf="!egresado.educacion.length">
+      <ion-card-header >
+        <ion-card-title>
+          <ion-icon name="book"></ion-icon>
+          Educacion
+        </ion-card-title>
+      </ion-card-header>
+        <ion-card-content >
+          Este usuario no tiene La Educacion definida
+        </ion-card-content>
+    </ion-card>
+    <!-- Card Contenido -->
     <ion-card *ngFor=" let educacion of egresado.educacion">
-      <ion-card-header>
+      <ion-card-header >
         <ion-card-title>
           <ion-icon name="book"></ion-icon>
           Educacion
@@ -151,6 +168,9 @@
     </div>
     <ion-grid class="chip">
       <ion-row>
+        <ion-text *ngIf="!egresado.idiomaEgresado.length">
+          Este usuario no tiene el Idiomas definidos
+        </ion-text>
         <ion-col *ngFor="let idiaomas of egresado.idiomaEgresado">
           <ion-chip>
             <ion-icon name="chatbubbles-outline" color="primary"></ion-icon>
@@ -161,10 +181,16 @@
     </ion-grid>
     <!-- Seccion Nacionalidad -->
     <div class="titulo">
-      <h3><ion-icon name="globe-outline"></ion-icon> Nacionalidad</h3>
+      <h3>
+        <ion-icon name="globe-outline"></ion-icon> 
+        Nacionalidad
+      </h3>
     </div>
     <ion-grid class="chip">
       <ion-row>
+        <ion-text *ngIf="!egresado.nacionalidadEgresado.length">
+          Este usuario no tiene Nacionalidad definidas
+        </ion-text>
         <ion-col *ngFor="let nacionalidad of egresado.nacionalidadEgresado">
           <ion-chip>
             <ion-icon name="flag-outline" color="primary"></ion-icon>
@@ -183,6 +209,9 @@
       </ion-card-header>
       <ion-card-content>
         <ion-grid>
+          <ion-text *ngIf="!egresado.contacto.length">
+            Este usuario no tiene Contactos definidos
+          </ion-text>
           <ion-row *ngFor="let contactos of egresado.contacto">
             <ion-col>
               <h3>{{contactos.tipo}}</h3>
