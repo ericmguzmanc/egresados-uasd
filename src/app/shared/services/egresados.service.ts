@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Contacto, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
+import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
 import { Observable, map } from 'rxjs';
 import { JSON_SERVER_URL } from '../constants';
 import { HelperService } from './helper.service';
@@ -27,6 +27,9 @@ export class EgresadosService {
         map((egresado) => {
           egresado.experienciaLaboralEgresado = this.helperService
             .sortByDate(egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');
+
+          egresado.educacion = this.helperService
+            .sortByDate(egresado.educacion, 'FechaEntr', 'FechaSal');
 
           return egresado;
         })
@@ -69,4 +72,11 @@ export class EgresadosService {
     return this.http.delete<ExperienciaLaboral>(`${JSON_SERVER_URL}/experienciaLaboralEgresado/${experienciaLaboralId}`);
   }
 
+  addEducacionEgresado(educacion: Educacion): Observable<Educacion> {
+    return this.http.post<Educacion>(`${JSON_SERVER_URL}/educacion`, educacion);
+  }
+
+  deleteEducacionEgresado(educacionId: number): Observable<Educacion> {
+    return this.http.delete<Educacion>(`${JSON_SERVER_URL}/educacion/${educacionId}`);
+  }
 }

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Educación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="confirm()">Agregar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <app-loader *ngIf="loading"></app-loader>
+  <ng-container *ngIf="!loading">
+    <form [formGroup]="educacionForm">
+      <ion-item>
+        <ion-label>Estudios</ion-label>
+        <ionic-selectable
+          item-content
+          formControlName="carrera"
+          [items]="carreras"
+          itemValueField="id"
+          itemTextField="NombreCarrera"
+          [canSearch]="true"
+          groupValueField="facultad.id"
+          groupTextField="facultad.nombre">
+          <ng-template ionicSelectableGroupTemplate let-group="group">
+            {{group.text}}
+          </ng-template>
+        </ionic-selectable>
+      </ion-item>
+      <ng-container *ngIf="nivelCarrera">
+        <br>
+        <ion-label class="ion-padding muted">
+          {{nombreCarrera}}
+        </ion-label>
+        <br>
+        <ion-label class="ion-padding muted">
+          {{nivelCarrera}}
+        </ion-label>
+        <br>
+      </ng-container>
+
+      <br>
+      <ion-item>
+        <ion-label>Fecha de Inicio</ion-label>
+        <ion-datetime-button datetime="date-inicio"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+              id="date-inicio" 
+              presentation="date"
+              locale="es-Es"
+              formControlName="fechaEntrada"
+              [max]="fechaEntradaMax"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha Fin</ion-label>
+        <ion-datetime-button datetime="date-fin"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+              id="date-fin" 
+              presentation="date"
+              locale="es-ES"
+              [min]="fechaSalidaMin"
+              [max]="fechaSalidaMax"
+              formControlName="fechaSalida"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    </form>
+    
+  </ng-container>
+</ion-content>

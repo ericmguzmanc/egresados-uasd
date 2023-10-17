@@ -25,6 +25,7 @@ export class IdiomasComponent  implements OnInit {
   ) { }
     
   ngOnInit() {
+    // TODO: usar IonicSelectable to abilitate search
     this.loading = true;
     this.entitiesService.getIdiomas()
       .subscribe((idiomas: Idioma[]) => {

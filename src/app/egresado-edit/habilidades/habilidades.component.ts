@@ -23,6 +23,7 @@ export class HabilidadesComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
+    // TODO: usar IonicSelectable to abilitate search
     this.loading = true;
     this.entitiesService.getHabilidades()
     .subscribe((habilidades: EgresadosHabilidad[]) => {
