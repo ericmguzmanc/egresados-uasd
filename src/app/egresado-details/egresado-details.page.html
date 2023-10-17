@@ -86,6 +86,9 @@
     </div>
     <ion-grid class="chip">
       <ion-row>
+        <ion-text class="ion-margin" *ngIf="!egresado.egresadosHabilidad.length ">
+          Este usuario no tiene Habilidades definido
+        </ion-text>
         <ion-col *ngFor="let habilidad of egresado.egresadosHabilidad">
           <ion-chip>
             <ion-label>{{habilidad.habilidad}}</ion-label>
