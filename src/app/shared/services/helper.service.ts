@@ -38,4 +38,13 @@ export class HelperService {
       return new Date(b[startDate]).getTime() - new Date(a[endDate]).getTime();
     });
   }
+
+  getFormattedDate(value: string, addDays: number = 0) {
+    const date = new Date(value);
+    const day = date.getDate() + addDays;
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    return `${year}-${month + 1}-${day}`;
+  }
 }

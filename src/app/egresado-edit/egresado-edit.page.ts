@@ -9,6 +9,7 @@ import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 import { HelperService } from '../shared/services/helper.service';
+import { EducacionComponent } from './educacion/educacion.component';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -220,6 +221,7 @@ export class EgresadoEditPage implements OnInit {
 
   private createEducacionEgresadoFormGroup(educacion?: Educacion): FormGroup {
     return this.fb.group({
+      id: new FormControl(educacion?.id),
       Universidad: new FormControl(educacion?.Universidad),
       FechaEntr: new FormControl(educacion?.FechaEntr),
       FechaSal: new FormControl(educacion?.FechaSal),
@@ -283,9 +285,21 @@ export class EgresadoEditPage implements OnInit {
     this.egresado.experienciaLaboralEgresado.push(experienciaLaboral);
 
     this.egresado.experienciaLaboralEgresado = this.helperService
-      .sortByDate(this.egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');;
+      .sortByDate(this.egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');
 
     this.experienciaLaboralEgresadoArray.controls.sort((a,b) => {
+      return new Date(b.value.FechaEntr).getTime() - new Date(a.value.FechaEntr).getTime();
+    });
+  }
+
+  addEducacionEgresado(educacion: Educacion) {
+    this.educacionEgresadoArray.push(this.createEducacionEgresadoFormGroup(educacion));
+    this.egresado.educacion.push(educacion);
+
+    this.egresado.educacion = this.helperService
+      .sortByDate(this.egresado.educacion, 'FechaEntr', 'FechaSal');
+
+    this.educacionEgresadoArray.controls.sort((a,b) => {
       return new Date(b.value.FechaEntr).getTime() - new Date(a.value.FechaEntr).getTime();
     });
   }
@@ -328,6 +342,30 @@ export class EgresadoEditPage implements OnInit {
         const alert = await this.alertController.create({
           header: 'Experiencia Borrada',
           message: 'La experiencia laboral se ha borrado con éxito',
+          buttons: [
+            {
+              text: 'Ok',
+              role: '',
+            }
+          ]
+        });
+
+        await alert.present();
+      });
+  }
+
+  deleteEducacionEgresado(educacionId: number) {
+    this.egresadoService.deleteEducacionEgresado(educacionId)
+      .subscribe(async (_) => {
+        this.educacionEgresadoArray.clear();
+        this.egresado.educacion = this.egresado.educacion.filter((e) => e.id != educacionId);
+        this.egresado.educacion.forEach((educacion) => {
+          this.educacionEgresadoArray.push(this.createEducacionEgresadoFormGroup(educacion));
+        });
+
+        const alert = await this.alertController.create({
+          header: 'Record Educativo Borrada',
+          message: 'El Record Educativo se ha borrado con éxito',
           buttons: [
             {
               text: 'Ok',
@@ -467,6 +505,25 @@ export class EgresadoEditPage implements OnInit {
     
     if (role === 'confirm') {
       this.addExperienciaLaboralEgresado(data);
+    } else {
+      console.log('Modal closed cancelled')
+    }
+  }
+
+  async openEducacionModal() {
+    const educacionModal = await this.modalCtrl.create({
+      component: EducacionComponent,
+      componentProps: {
+        egresadoId: this.egresado.id,
+      }
+    });
+
+    educacionModal.present();
+
+    const { data, role } = await educacionModal.onWillDismiss();
+    
+    if (role === 'confirm') {
+      this.addEducacionEgresado(data);
     } else {
       console.log('Modal closed cancelled')
     }

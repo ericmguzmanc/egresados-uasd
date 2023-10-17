@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { provideNgxMask } from 'ngx-mask';
 import { IonicModule } from '@ionic/angular';
 
 import { EgresadoEditPageRoutingModule } from './egresado-edit-routing.module';
@@ -13,7 +13,6 @@ import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component';
 
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -29,7 +28,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     IdiomasComponent, 
     HabilidadesComponent,
     ContactosComponent,
-    ExperienciaLaboralComponent
+    ExperienciaLaboralComponent,
   ],
   
   providers: [provideNgxMask()]
