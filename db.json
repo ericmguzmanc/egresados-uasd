@@ -29,7 +29,7 @@
       "profilePicUrl": "assets/img/profile/1.jpeg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true,
-      "descripcionDestacado": "Gelem Lluberes es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Licenciatura en Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
+      "descripcionDestacado": "Gelem Lluberes es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
     },
     {
       "id": 2,
@@ -391,6 +391,7 @@
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
+      "carreraId": 2,
       "Titulo": "Licenciatura en Informática",
       "TipoTitulo": "Licenciatura"
     },
@@ -404,61 +405,754 @@
       "TipoTitulo": "Ingeniería"
     },
     {
-      "id": 3,
-      "egresadoId": 3,
-      "Universidad": "Universidad Tecnológica de Santo Domingo",
-      "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
-      "Titulo": "Ingeniería de Software",
-      "TipoTitulo": "Ingeniería"
-    },
-    {
       "id": 4,
       "egresadoId": 4,
       "Universidad": "Universidad Tecnológica de Santo Domingo",
       "FechaEntr": "2017-10-20",
       "FechaSal": "2024-06-10",
+      "carreraId": 2,
       "Titulo": "Igeniería de Sistemas",
       "TipoTitulo": "Ingeniería"
     },
     {
-      "id": 5,
-      "egresadoId": 5,
+      "egresadoId": 1,
       "Universidad": "Universidad Autónoma de Santo Domingo",
-      "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
-      "Titulo": "Licenciatura en Informática",
-      "TipoTitulo": "Licenciatura"
+      "FechaEntr": "2022-10-3",
+      "FechaSal": "2023-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Doctorado",
+      "id": 5
+    }
+  ],
+  "carreras": [
+    {
+      "id": 2,
+      "NombreCarrera": "Informática",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 4,
+      "NombreCarrera": "Administración de Empresas",
+      "Nivel": "Licenciatura",
+      "facultadId": 3
+    },
+    {
+      "id": 5,
+      "NombreCarrera": "Contabilidad",
+      "Nivel": "Licenciatura",
+      "facultadId": 3
     },
     {
       "id": 6,
-      "egresadoId": 6,
-      "Universidad": "Universidad Autónoma de Santo Domingo",
-      "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
-      "Titulo": "Licenciatura en Informática",
-      "TipoTitulo": "Licenciatura"
+      "NombreCarrera": "Machine Learning",
+      "facultadId": 2,
+      "Nivel": "Maestría"
     },
     {
       "id": 7,
-      "egresadoId": 7,
-      "Universidad": "Universidad Autónoma de Santo Domingo",
-      "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
-      "Titulo": "Licenciatura en Informática",
-      "TipoTitulo": "Licenciatura"
+      "NombreCarrera": "Administración de Cloud Services",
+      "Nivel": "Maestría",
+      "facultadId": 2
+    },
+    {
+      "id": 8,
+      "NombreCarrera": "Redes Neuronales para Análisis de Datos ",
+      "Nivel": "Doctorado",
+      "facultadId": 2
+    },
+    {
+      "id": 9,
+      "NombreCarrera": "Economía",
+      "Nivel": "Licenciatura",
+      "facultadId": 3
+    },
+    {
+      "id": 10,
+      "NombreCarrera": "Química",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 11,
+      "NombreCarrera": "Filosofía",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 12,
+      "NombreCarrera": "Comunicación Social",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 13,
+      "NombreCarrera": "Arquitectura",
+      "Nivel": "Licenciatura",
+      "facultadId": 9
+    },
+    {
+      "id": 14,
+      "NombreCarrera": "Artes Plásticas",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 15,
+      "NombreCarrera": "Artes Plásticas Mencion Escultura",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 16,
+      "NombreCarrera": "Artes Plásticas Mencion Pintura",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 16,
+      "NombreCarrera": "Cinematografía y Audiovisuales Mención Cine",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 17,
+      "NombreCarrera": "Cinematografía y Audiovisuales Mención Televisión",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 18,
+      "NombreCarrera": "Técnico en Fotografía y Medios Audiovisuales",
+      "Nivel": "Técnico",
+      "facultadId": 1
+    },
+    {
+      "id": 19,
+      "NombreCarrera": "Historia y Crítica Del Arte",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 20,
+      "NombreCarrera": "Artes Industriales Menc Diseño Artesanal",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 21,
+      "NombreCarrera": "Artes Industriales Mención Diseño Indust",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 22,
+      "NombreCarrera": "Artes Industriales Menc Diseño de Modas",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 23,
+      "NombreCarrera": "Música",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 24,
+      "NombreCarrera": "Música Mención Teoría y Educ. Musical",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 25,
+      "NombreCarrera": "Publicidad Mención Diseño",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 26,
+      "NombreCarrera": "Publicidad Mención Ilustración",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 24,
+      "NombreCarrera": "Publicidad Menc Creatividad y Gerencia",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 25,
+      "NombreCarrera": "Teatro",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 26,
+      "NombreCarrera": "Teatro Mención Actuación",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 27,
+      "NombreCarrera": "Teatro Mención Dirección",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 28,
+      "NombreCarrera": "Teatro Mención Dramaturgia",
+      "Nivel": "Licenciatura",
+      "facultadId": 1
+    },
+    {
+      "id": 29,
+      "NombreCarrera": "Biología",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 30,
+      "NombreCarrera": "Geografía Mención Rec Naturales y Ecotur",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 31,
+      "NombreCarrera": "Geografía",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 32,
+      "NombreCarrera": "Geografía Mención Represent Espacial",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 33,
+      "NombreCarrera": "Física",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 34,
+      "NombreCarrera": "Matemáticas",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 35,
+      "NombreCarrera": "Microbiología",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 32,
+      "NombreCarrera": "Administración Pública",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 33,
+      "NombreCarrera": "Adm de Empresas Turísticas y Hoteleras",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 34,
+      "NombreCarrera": "Aduana y Comercio Exterior",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 35,
+      "NombreCarrera": "Estadística Mención Informática",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 36,
+      "NombreCarrera": "Estadística Mención Socioeconómica",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 33,
+      "NombreCarrera": "Mercadotecnia",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 34,
+      "NombreCarrera": "Sociología",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 35,
+      "NombreCarrera": "Trabajo Social",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 36,
+      "NombreCarrera": "Téc en Turismo y Hotelería",
+      "Nivel": "Técnico",
+      "facultadId": 2
+    },
+    {
+      "id": 37,
+      "NombreCarrera": "Licenciatura en Turismo y Hotelería",
+      "Nivel": "Licenciatura",
+      "facultadId": 2
+    },
+    {
+      "id": 38,
+      "NombreCarrera": "Ciencias Políticas",
+      "Nivel": "Licenciatura",
+      "facultadId": 4
+    },
+    {
+      "id": 39,
+      "NombreCarrera": "Derecho",
+      "Nivel": "Licenciatura",
+      "facultadId": 4
+    },
+    {
+      "id": 40,
+      "NombreCarrera": "Bibliotecología y Ciencias de la Información",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 41,
+      "NombreCarrera": "Educación Mención Bibliotecología",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 42,
+      "NombreCarrera": "Educación Mención Informática Educativa",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 43,
+      "NombreCarrera": " Educación Física y Deporte",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 44,
+      "NombreCarrera": "Educación Física",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 45,
+      "NombreCarrera": "Educación Básica",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 46,
+      "NombreCarrera": "Educación Infantil",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 47,
+      "NombreCarrera": "Educación Inicial",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 48,
+      "NombreCarrera": "EduEducación Mención Arte Escolar",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 49,
+      "NombreCarrera": "Educación Básica",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 50,
+      "NombreCarrera": "Frances",
+      "Nivel": "Certificado",
+      "facultadId": 5
+    },
+    {
+      "id": 51,
+      "NombreCarrera": "Inglés",
+      "Nivel": "Certificado",
+      "facultadId": 5
+    },
+    {
+      "id": 52,
+      "NombreCarrera": "Educación Mención Filosofía y Letras",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 53,
+      "NombreCarrera": "Educación Media Mención Biología y Química",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 54,
+      "NombreCarrera": "Educación Media Mención Ciencias Sociales",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 55,
+      "NombreCarrera": "Educación Media Mención Física y Matemática",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 56,
+      "NombreCarrera": "Educación Media Mención Francés",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 57,
+      "NombreCarrera": "Educación Media Mención Inglés",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 58,
+      "NombreCarrera": "Educación Media Mención Letras",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 59,
+      "NombreCarrera": "Educación Especial",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 60,
+      "NombreCarrera": "Educación Mención Orientación Académica",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 62,
+      "NombreCarrera": "Educación Menc Orient Socio-Comunitaria",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 63,
+      "NombreCarrera": "Educ. Menc Orient Para El Des de Rec Humanos",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 64,
+      "NombreCarrera": "Educación Mención Orientación Psicopedagógic",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 65,
+      "NombreCarrera": "Educación Mención Gestión Educativa",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 66,
+      "NombreCarrera": "Educación para Personas Jóvenes y Adultas",
+      "Nivel": "Licenciatura",
+      "facultadId": 5
+    },
+    {
+      "id": 67,
+      "NombreCarrera": "Bioanálisis",
+      "Nivel": "Licenciatura",
+      "facultadId": 6
+    },
+    {
+      "id": 68,
+      "NombreCarrera": "Imagenologia",
+      "Nivel": "Licenciatura",
+      "facultadId": 6
+    },
+    {
+      "id": 69,
+      "NombreCarrera": "Radiólogo",
+      "Nivel": "Técnico",
+      "facultadId": 6
+    },
+    {
+      "id": 70,
+      "NombreCarrera": "Enfermería",
+      "Nivel": "Licenciatura",
+      "facultadId": 6
+    },
+    {
+      "id": 71,
+      "NombreCarrera": "Licenciatura Farmacia",
+      "Nivel": "Licenciatura",
+      "facultadId": 6
+    },
+    {
+      "id": 72,
+      "NombreCarrera": " Técnico Superior Farmacia",
+      "Nivel": "Técnico Superior",
+      "facultadId": 6
+    },
+    {
+      "id": 73,
+      "NombreCarrera": "Medicina",
+      "Nivel": "Doctorado",
+      "facultadId": 6
+    },
+    {
+      "id": 74,
+      "NombreCarrera": "Pre-Médica/Medicina",
+      "Nivel": "Licenciatura",
+      "facultadId": 6
+    },
+    {
+      "id": 75,
+      "NombreCarrera": "Odontología",
+      "Nivel": "Doctorado",
+      "facultadId": 6
+    },
+    {
+      "id": 76,
+      "NombreCarrera": "Atención Pre Hospitalaria",
+      "Nivel": "Técnico Superior",
+      "facultadId": 6
+    },
+    {
+      "id": 77,
+      "NombreCarrera": "Agronómica-Mención Desarrollo Agrícola",
+      "Nivel": "Ingeniería",
+      "facultadId": 7
+    },
+    {
+      "id": 78,
+      "NombreCarrera": "Agronómica-Mención Producción de Cultivos",
+      "Nivel": "Ingeniería",
+      "facultadId": 7
+    },
+    {
+      "id": 79,
+      "NombreCarrera": "Agronómica-Mención Suelo y Riego",
+      "Nivel": "Ingeniería",
+      "facultadId": 7
+    },
+    {
+      "id": 80,
+      "NombreCarrera": "Medicina Veterinaria",
+      "Nivel": "Licenciatura",
+      "facultadId": 7
+    },
+    {
+      "id": 81,
+      "NombreCarrera": "Lácteo Alimentaria",
+      "Nivel": "Ingeniería",
+      "facultadId": 7
+    },
+    {
+      "id": 82,
+      "NombreCarrera": "Zootecnia",
+      "Nivel": "Ingeniería",
+      "facultadId": 7
+    },
+    {
+      "id": 83,
+      "NombreCarrera": "Procesos Lácteo Alimentarios",
+      "Nivel": "Técnico",
+      "facultadId": 7
+    },
+    {
+      "id": 84,
+      "NombreCarrera": "Com Social Mención Comunicación Grafica",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 85,
+      "NombreCarrera": "Com Social Mención Periodismo",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 86,
+      "NombreCarrera": "Com Social Mención Relaciones Publicas",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 87,
+      "NombreCarrera": "Antropología",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 88,
+      "NombreCarrera": "Historia",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 89,
+      "NombreCarrera": "Lenguas Modernas Mención Francés",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 90,
+      "NombreCarrera": "Lenguas Modernas Mención Inglés",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 91,
+      "NombreCarrera": "Letras",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 92,
+      "NombreCarrera": "Psicología Mención Psi Del Desarr Humano",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 93,
+      "NombreCarrera": "Psicología Mención Psicología Clínica",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 94,
+      "NombreCarrera": "Psicología Mención Psicología Escolar",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 95,
+      "NombreCarrera": "Psicología Mención Psicología Industrial",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 96,
+      "NombreCarrera": "Psicología Mención Psicología Social",
+      "Nivel": "Licenciatura",
+      "facultadId": 8
+    },
+    {
+      "id": 97,
+      "NombreCarrera": "Ingeniería en Agrimensura",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 98,
+      "NombreCarrera": "Geomática",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 99,
+      "NombreCarrera": "Licenciatura en Agrimensura",
+      "Nivel": "Licenciatura",
+      "facultadId": 9
+    },
+    {
+      "id": 100,
+      "NombreCarrera": "Técnico Superior en Agrimensura",
+      "Nivel": "Técnico Superior",
+      "facultadId": 9
+    },
+    {
+      "id": 101,
+      "NombreCarrera": "Electromecánica Mención Eléctrica",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 102,
+      "NombreCarrera": "Electromecánica Mención Mecánica",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 103,
+      "NombreCarrera": "Electromecánica Mención Electrónica",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 104,
+      "NombreCarrera": "Civil",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 105,
+      "NombreCarrera": "Industrial",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
+    },
+    {
+      "id": 106,
+      "NombreCarrera": "Química",
+      "Nivel": "Ingeniería",
+      "facultadId": 9
     }
   ],
-  "carrera": [
+  "facultads": [
     {
       "id": 1,
-      "NombreCarrera": "Ingeniería de Sistemas",
-      "Nivel": "Ingenieria"
+      "nombre": "Artes"
     },
     {
       "id": 2,
-      "NombreCarrera": "Licenciatura en Informática",
-      "Nivel": "Licenciatura"
+      "nombre": "Ciencias"
+    },
+    {
+      "id": 3,
+      "nombre": "Ciencias Económicas y Sociales"
+    },
+    {
+      "id": 4,
+      "nombre": "Ciencias Jurídicas y Políticas"
+    },
+    {
+      "id": 5,
+      "nombre": "Ciencias de la Educación"
+    },
+    {
+      "id": 6,
+      "nombre": "Ciencias de la Salud"
+    },
+    {
+      "id": 7,
+      "nombre": "Ciencias Agronómicas y Veterinarias"
+    },
+    {
+      "id": 8,
+      "nombre": "Humanidades"
+    },
+    {
+      "id": 9,
+      "nombre": "Ingeniería y Arquitectura"
     }
   ],
   "nacionalidadEgresado": [

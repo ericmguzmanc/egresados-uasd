@@ -41,19 +41,13 @@ export interface Posicion {
 }
 
 export interface Educacion {
-  id: number,
+  id?: number,
   egresadoId: number,
   Universidad?: string,
   FechaEntr?: string,
   FechaSal?: string,
   Titulo?: string,
   TipoTitulo?: string
-}
-
-export interface Carrera {
-  id?: number;
-  NombreCarrera?: string;
-  Nivel?: string;
 }
 
 export interface Titulo {
