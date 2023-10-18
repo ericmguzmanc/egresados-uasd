@@ -26,7 +26,7 @@
       "Pasaporte": "RD588392",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
-      "profilePicUrl": "assets/img/profile/1.jpeg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662560/egresados-uasd/profilePics/egresado-id-1.jpg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true,
       "descripcionDestacado": "Gelem Lluberes es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
@@ -36,11 +36,11 @@
       "Nombre": "Juan",
       "Apellido": "López",
       "ApellidoPaterno": "Hernandez",
-      "Cedula": "402399201893",
+      "Cedula": "40239920189",
       "Pasaporte": null,
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
-      "profilePicUrl": "assets/img/profile/2.jpeg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662098/egresados-uasd/profilePics/egresado-id-2.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
       "destacado": true
     },
@@ -53,7 +53,7 @@
       "Pasaporte": null,
       "FechaNac": "1999-02-05",
       "Genero": "Femenino",
-      "profilePicUrl": "assets/img/profile/3.jpeg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662119/egresados-uasd/profilePics/egresado-id-3.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -77,7 +77,7 @@
       "Pasaporte": "RD77894",
       "FechaNac": "1999-04-22",
       "Genero": "Masculino",
-      "profilePicUrl": null,
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697658989/egresados-uasd/profilePics/egresado-id-5.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -1204,19 +1204,19 @@
       "id": 1,
       "egresadoId": 1,
       "provincia": "Samaná",
-      "provinciaId": 20
+      "provinciaId": 1
     },
     {
       "id": 2,
       "egresadoId": 2,
       "provincia": "Barahona",
-      "provinciaId": 4
+      "provinciaId": 2
     },
     {
       "id": 3,
       "egresadoId": 3,
       "provincia": "Hato Mayor",
-      "provinciaId": 30
+      "provinciaId": 3
     },
     {
       "provincia": "El Seibo",
@@ -1226,7 +1226,7 @@
     },
     {
       "provincia": "Elías Piña",
-      "provinciaId": 7,
+      "provinciaId": 6,
       "egresadoId": 5,
       "id": 6
     }

@@ -13,6 +13,32 @@
 
   <ion-content>
     <ion-title style="margin-top: 15px">Información Personal</ion-title>
+    <br>
+    <br>
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-img
+            class="avatar-img"
+            src="{{egresadoForm.controls['profilePicUrl'].value ? (egresadoForm.controls['profilePicUrl'].value) : 'assets/img/profile/profile-icon.webp'}}">
+          </ion-img>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button color="light" (click)="selectImage()">
+            Foto de Perfil  
+            <ion-icon name="camera-outline" style="margin-left: 5px;"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    <br>
+
     <form
       class="ion-margin"
       [formGroup]="egresadoForm"

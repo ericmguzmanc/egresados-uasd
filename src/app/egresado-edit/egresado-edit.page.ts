@@ -3,7 +3,7 @@ import { Contacto, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, 
 import { ActivatedRoute, Router } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AlertController, IonModal, IonicModule, ModalController } from '@ionic/angular';
+import { AlertController, IonModal, IonicModule, LoadingController, ModalController } from '@ionic/angular';
 import { IdiomasComponent } from './idiomas/idiomas.component';
 import { HabilidadesComponent } from './habilidades/habilidades.component';
 import { ContactosComponent } from './contactos/contactos.component';
@@ -16,6 +16,8 @@ import { Provincia } from '../shared/interfaces/provincia.interface';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { IonicSelectableComponent } from 'ionic-selectable';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { SHA1 } from 'crypto-js'
 
 @Component({
   selector: 'app-egresado-edit',
@@ -38,6 +40,7 @@ export class EgresadoEditPage implements OnInit {
   loading = false;
   egresado: Egresado = {};
   provincias: Provincia[];
+  selectedProfilePic: any;
 
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],
@@ -46,6 +49,7 @@ export class EgresadoEditPage implements OnInit {
     Cedula: ['', [Validators.required, Validators.maxLength(11)]],
     Pasaporte: [''],
     Genero: [''],
+    profilePicUrl: [''],
     FechaNac: ['', [Validators.required]],
     about: ['', [Validators.maxLength(500)]],
     direccionEgresado: [''],
@@ -66,7 +70,8 @@ export class EgresadoEditPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private modalCtrl: ModalController,
-  ) { }
+    private loadingCtrl: LoadingController,
+  ) {}
 
   get idiomaEgresadoArray(): FormArray {
     return this.egresadoForm.get('idiomaEgresado') as FormArray;
@@ -92,12 +97,14 @@ export class EgresadoEditPage implements OnInit {
     return this.egresadoForm.get('egresadosHabilidad') as FormArray;
   }
 
-  ngOnInit() {
-    this.loading = true;
+  async ngOnInit() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...'
+    });
+
     this.route.params.subscribe(params => {
       const egresadoId = params['id'];
       if (egresadoId) {
-
         forkJoin([
           this.entitiesService.getProvincias(),
           this.egresadoService.getEgresadoById(egresadoId)
@@ -108,37 +115,18 @@ export class EgresadoEditPage implements OnInit {
 
           if (egresado) {
             this.egresado = egresado;  
-            this.loading = false;
             this.loadEgresadoForm();
           }
+
+          loading.dismiss();
         });
       }
     });
   }
 
-  async savedConfirmation() {
-    const alert = await this.alertController.create({
-      header: 'Alerta',
-      subHeader: 'Cambios Guardados',
-      message: `Los cambios al perfil del egresado ${this.egresado.Nombre} ${this.egresado.ApellidoPaterno} han sido guardados.`,
-      buttons: [
-        {
-          text: 'OK',
-          role: 'Confirmar',
-          handler: () => {
-            console.log('✨ Alerta Aceptada');
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-    
-  }
-
   loadEgresadoForm(): void {
     if (this.egresado.Nombre) {
-      const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Pasaporte, Genero, FechaNac, about, direccionEgresado } = this.egresado
+      const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Pasaporte, Genero, FechaNac, about, direccionEgresado, profilePicUrl } = this.egresado
       this.egresadoForm.patchValue({
         Nombre,
         ApellidoPaterno,
@@ -148,6 +136,7 @@ export class EgresadoEditPage implements OnInit {
         Genero,
         FechaNac,
         about,
+        profilePicUrl,
         direccionEgresado: direccionEgresado[0],
       });
 
@@ -408,13 +397,13 @@ export class EgresadoEditPage implements OnInit {
       });
   }
 
-  save() {
+  async save() {
     if (this.egresadoForm.valid) {
       const egresado = this.buildEgresadoUpdateObject();
       
       // We build our requests array
       const saveRequests = [
-        this.egresadoService.updateEgresado(egresado)
+        this.egresadoService.updateEgresado({egresado, selectedProfilePic: this.selectedProfilePic})
       ];
 
       // If there is an direccionEgresado selected we create a direccionEgresado object for the requests
@@ -438,6 +427,12 @@ export class EgresadoEditPage implements OnInit {
         }
       }
 
+      const loading = await this.loadingCtrl.create({
+        message: 'Guardando...'
+      });
+  
+      loading.present();
+
       forkJoin([
         ...saveRequests
       ])
@@ -446,13 +441,14 @@ export class EgresadoEditPage implements OnInit {
         this.egresado.direccionEgresado = [];
         this.egresado.direccionEgresado.push(direccionEgresado);
 
-        this.savedConfirmation();
+        this.selectedProfilePic = null;
+        loading.dismiss();
       });
     }
   }
 
   buildEgresadoUpdateObject() {
-    const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Genero, FechaNac, Pasaporte, about} = this.egresadoForm.value
+    const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Genero, FechaNac, Pasaporte, about, profilePicUrl} = this.egresadoForm.value
     return {
       id: this.egresado.id,
       Nombre, 
@@ -462,7 +458,8 @@ export class EgresadoEditPage implements OnInit {
       Genero,
       FechaNac,
       Pasaporte,
-      about
+      about,
+      profilePicUrl
     }
   }
 
@@ -588,6 +585,19 @@ export class EgresadoEditPage implements OnInit {
       this.addEducacionEgresado(data);
     } else {
       console.log('Modal closed cancelled')
+    }
+  }
+
+  async selectImage() {
+    this.selectedProfilePic = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Photos
+    });
+    
+    if (this.selectedProfilePic) {
+      this.egresadoForm.patchValue({ profilePicUrl: this.selectedProfilePic.dataUrl});
     }
   }
 }
