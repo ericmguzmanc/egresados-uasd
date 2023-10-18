@@ -15,6 +15,7 @@ export class HabilidadesComponent  implements OnInit {
 
   loading = false;
   habilidades: EgresadosHabilidad[] = [];
+  results: EgresadosHabilidad[];
 
   constructor(
     private modalCtrl: ModalController,
@@ -23,7 +24,6 @@ export class HabilidadesComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    // TODO: usar IonicSelectable to abilitate search
     this.loading = true;
     this.entitiesService.getHabilidades()
     .subscribe((habilidades: EgresadosHabilidad[]) => {
@@ -32,7 +32,14 @@ export class HabilidadesComponent  implements OnInit {
         return { ...habilidad, checked: !!exists }
       });
       this.loading = false;
+
+      this.results = [...this.habilidades];
     });
+  }
+
+  handleSearchBarChange(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.habilidades.filter((d) => d.habilidad.toLowerCase().indexOf(query) > -1);
   }
 
   checkboxChanged(event: any, habilidad: EgresadosHabilidad) {

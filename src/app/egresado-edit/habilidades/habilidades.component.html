@@ -2,16 +2,17 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>Habilidades</ion-title>
+    <ion-title>Editar Habilidades</ion-title>
     <ion-buttons slot="end">
       <ion-button [strong]="true" (click)="close()">Cerrar</ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-searchbar [debounce]="200" (ionInput)="handleSearchBarChange($event)"></ion-searchbar>
 </ion-header>
 <ion-content class="ion-padding">
   <ng-container *ngIf="!loading">
-    <ion-title style="margin-bottom: 15px;">Agregar Habilidad</ion-title>
-    <ion-item *ngFor="let habilidad of habilidades">
+    <ion-item *ngFor="let habilidad of results">
       <ion-checkbox slot="end" [(ngModel)]="habilidad.checked" (ionChange)="checkboxChanged($event, habilidad)"></ion-checkbox>
       <ion-label>{{habilidad.habilidad}}</ion-label>
     </ion-item>
