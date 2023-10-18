@@ -61,7 +61,7 @@
       "Nombre": "Estephany",
       "Apellido": "Guzman",
       "ApellidoPaterno": "Ramirez",
-      "Cedula": "094588293404",
+      "Cedula": "09458829340",
       "Pasaporte": "RD79186",
       "FechaNac": "1998-02-11",
       "Genero": "Femenino",
@@ -511,7 +511,7 @@
       "facultadId": 1
     },
     {
-      "id": 16,
+      "id": 107,
       "NombreCarrera": "Cinematografía y Audiovisuales Mención Cine",
       "Nivel": "Licenciatura",
       "facultadId": 1
@@ -577,19 +577,19 @@
       "facultadId": 1
     },
     {
-      "id": 24,
+      "id": 108,
       "NombreCarrera": "Publicidad Menc Creatividad y Gerencia",
       "Nivel": "Licenciatura",
       "facultadId": 1
     },
     {
-      "id": 25,
+      "id": 109,
       "NombreCarrera": "Teatro",
       "Nivel": "Licenciatura",
       "facultadId": 1
     },
     {
-      "id": 26,
+      "id": 110,
       "NombreCarrera": "Teatro Mención Actuación",
       "Nivel": "Licenciatura",
       "facultadId": 1
@@ -649,25 +649,25 @@
       "facultadId": 2
     },
     {
-      "id": 32,
+      "id": 108,
       "NombreCarrera": "Administración Pública",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 33,
+      "id": 109,
       "NombreCarrera": "Adm de Empresas Turísticas y Hoteleras",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 34,
+      "id": 110,
       "NombreCarrera": "Aduana y Comercio Exterior",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 35,
+      "id": 111,
       "NombreCarrera": "Estadística Mención Informática",
       "Nivel": "Licenciatura",
       "facultadId": 2
@@ -679,25 +679,25 @@
       "facultadId": 2
     },
     {
-      "id": 33,
+      "id": 112,
       "NombreCarrera": "Mercadotecnia",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 34,
+      "id": 113,
       "NombreCarrera": "Sociología",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 35,
+      "id": 114,
       "NombreCarrera": "Trabajo Social",
       "Nivel": "Licenciatura",
       "facultadId": 2
     },
     {
-      "id": 36,
+      "id": 115,
       "NombreCarrera": "Téc en Turismo y Hotelería",
       "Nivel": "Técnico",
       "facultadId": 2
@@ -1211,24 +1211,36 @@
       "carreraId": 2
     }
   ],
-  "direccionEgresado":[
+  "direccionEgresado": [
     {
-      "id":1,
-      "egresadoId":1,
-      "provincia":"Distrito Nacional",
-      "provinciaId":1
+      "id": 1,
+      "egresadoId": 1,
+      "provincia": "Dajabón",
+      "provinciaId": 1
     },
     {
-      "id":2,
-      "egresadoId":2,
-      "provincia":"Barahona",
-      "provinciaId":4
+      "id": 2,
+      "egresadoId": 2,
+      "provincia": "Barahona",
+      "provinciaId": 4
     },
     {
-      "id":3,
-      "egresadoId":3,
-      "provincia":"Puerto Plata",
-      "provinciaId":18
+      "id": 3,
+      "egresadoId": 3,
+      "provincia": "Hato Mayor",
+      "provinciaId": 30
+    },
+    {
+      "provincia": "El Seibo",
+      "provinciaId": 8,
+      "egresadoId": 4,
+      "id": 4
+    },
+    {
+      "provincia": "Elías Piña",
+      "provinciaId": 7,
+      "egresadoId": 5,
+      "id": 6
     }
   ],
   "nacionalidad": [
@@ -1396,131 +1408,131 @@
   "provincias": [
     {
       "id": 1,
-      "Provincia": "Distrito Nacional"
+      "provincia": "Distrito Nacional"
     },
     {
       "id": 2,
-      "Povincia": "Azua"
+      "provincia": "Azua"
     },
     {
       "id": 3,
-      "Povincia": "Bahoruco"
+      "provincia": "Bahoruco"
     },
     {
       "id": 4,
-      "Povincia": "Barahona"
+      "provincia": "Barahona"
     },
     {
       "id": 5,
-      "Povincia": "Dajabón"
+      "provincia": "Dajabón"
     },
     {
       "id": 6,
-      "Povincia": "Duarte"
+      "provincia": "Duarte"
     },
     {
       "id": 7,
-      "Povincia": "Elías Piña"
+      "provincia": "Elías Piña"
     },
     {
       "id": 8,
-      "Povincia": "El Seibo"
+      "provincia": "El Seibo"
     },
     {
       "id": 9,
-      "Povincia": "Espaillat"
+      "provincia": "Espaillat"
     },
     {
       "id": 10,
-      "Povincia": "Independencia"
+      "provincia": "Independencia"
     },
     {
-      "id": 1,
-      "Povincia": "La Altagracia"
+      "id": 11,
+      "provincia": "La Altagracia"
     },
     {
       "id": 12,
-      "Povincia": "La Romana"
+      "provincia": "La Romana"
     },
     {
       "id": 13,
-      "Povincia": "La Vega"
+      "provincia": "La Vega"
     },
     {
-      "id":14,
-      "Povincia": "María Trinidad Sánchez"
+      "id": 14,
+      "provincia": "María Trinidad Sánchez"
     },
     {
       "id": 15,
-      "Povincia": "Monte Cristi"
+      "provincia": "Monte Cristi"
     },
     {
       "id": 16,
-      "Povincia": "Pedernales"
+      "provincia": "Pedernales"
     },
     {
       "id": 17,
-      "Povincia": "Peravia"
+      "provincia": "Peravia"
     },
     {
       "id": 18,
-      "Povincia": "Puerto Plata"
+      "provincia": "Puerto Plata"
     },
     {
       "id": 19,
-      "Povincia": "Hermanas Mirabal"
+      "provincia": "Hermanas Mirabal"
     },
     {
       "id": 20,
-      "Povincia": "Samaná"
+      "provincia": "Samaná"
     },
     {
       "id": 21,
-      "Povincia": "San Cristóbal"
+      "provincia": "San Cristóbal"
     },
     {
       "id": 22,
-      "Povincia": "San Juan"
+      "provincia": "San Juan"
     },
     {
       "id": 23,
-      "Povincia": "San Pedro de Macorís"
+      "provincia": "San Pedro de Macorís"
     },
     {
       "id": 24,
-      "Povincia": "Sánchez Ramírez"
+      "provincia": "Sánchez Ramírez"
     },
     {
       "id": 25,
-      "Povincia": "Santiago"
+      "provincia": "Santiago"
     },
     {
       "id": 26,
-      "Povincia": "Santiago Rodríguez"
+      "provincia": "Santiago Rodríguez"
     },
     {
       "id": 27,
-      "Povincia": "Valverde"
+      "provincia": "Valverde"
     },
     {
       "id": 28,
-      "Povincia": "Monseñor Nouel"
+      "provincia": "Monseñor Nouel"
     },
     {
       "id": 29,
-      "Povincia": "Monte Plata"
+      "provincia": "Monte Plata"
     },
     {
       "id": 30,
-      "Povincia": "Hato Mayor"
+      "provincia": "Hato Mayor"
     },
     {
       "id": 31,
-      "Povincia": "San José de Ocoa"
+      "provincia": "San José de Ocoa"
     },
     {
       "id": 32,
-      "Povincia": "Santo Domingo"
+      "provincia": "Santo Domingo"
     }
   ]
 }

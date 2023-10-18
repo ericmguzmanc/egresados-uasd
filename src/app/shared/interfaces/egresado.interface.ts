@@ -92,5 +92,6 @@ export interface DireccionEgresado {
   id?: number;
   egresadoId?: number;
   provincia?: string;
+  provinciaId?: number;
 }
 
