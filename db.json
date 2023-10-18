@@ -1171,34 +1171,22 @@
   ],
   "idiomaEgresado": [
     {
-      "id": 6,
-      "egresadoId": 5,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 7,
-      "egresadoId": 6,
-      "idiomaId": 1,
-      "idioma": "Español"
-    },
-    {
       "idioma": "Español",
-      "idiomaId": 1,
+      "idiomaId": 2,
       "egresadoId": 1,
-      "id": 20
+      "id": 1
     },
     {
       "idioma": "Francés",
-      "idiomaId": 3,
+      "idiomaId": 9,
       "egresadoId": 1,
-      "id": 23
+      "id": 2
     },
     {
       "idioma": "Inglés",
-      "idiomaId": 2,
+      "idiomaId": 1,
       "egresadoId": 1,
-      "id": 25
+      "id": 3
     }
   ],
   "educacion_deprecated": [
@@ -1296,113 +1284,393 @@
   "idioma": [
     {
       "id": 1,
-      "idioma": "Español"
-    },
-    {
-      "id": 2,
       "idioma": "Inglés"
     },
     {
+      "id": 2,
+      "idioma": "Español"
+    },
+    {
       "id": 3,
-      "idioma": "Francés"
+      "idioma": "Chino mandarín"
     },
     {
       "id": 4,
-      "idioma": "Mandarín"
+      "idioma": "Hindi"
     },
     {
       "id": 5,
-      "idioma": "Indhi"
+      "idioma": "Árabe"
+    },
+    {
+      "id": 6,
+      "idioma": "Bengalí"
+    },
+    {
+      "id": 7,
+      "idioma": "Portugués"
+    },
+    {
+      "id": 8,
+      "idioma": "Ruso"
+    },
+    {
+      "id": 9,
+      "idioma": "Francés"
+    },
+    {
+      "id": 10,
+      "idioma": "Japonés"
+    },
+    {
+      "id": 11,
+      "idioma": "Coreano"
+    },
+    {
+      "id": 12,
+      "idioma": "Javanés"
+    },
+    {
+      "id": 13,
+      "idioma": "Hindi-Urdú"
+    },
+    {
+      "id": 14,
+      "idioma": "Tamazight"
+    },
+    {
+      "id": 15,
+      "idioma": "Telugu"
+    },
+    {
+      "id": 16,
+      "idioma": "Marathi"
+    },
+    {
+      "id": 17,
+      "idioma": "Tamil"
+    },
+    {
+      "id": 18,
+      "idioma": "Bosnio"
+    },
+    {
+      "id": 19,
+      "idioma": "Croata"
+    },
+    {
+      "id": 20,
+      "idioma": "Serbio"
+    },
+    {
+      "id": 21,
+      "idioma": "Punjabi"
+    },
+    {
+      "id": 22,
+      "idioma": "Persa"
+    },
+    {
+      "id": 23,
+      "idioma": "Javanés"
+    },
+    {
+      "id": 24,
+      "idioma": "Bengalí"
+    },
+    {
+      "id": 25,
+      "idioma": "Portugués"
+    },
+    {
+      "id": 26,
+      "idioma": "Ruso"
+    },
+    {
+      "id": 27,
+      "idioma": "Alemán"
+    },
+    {
+      "id": 28,
+      "idioma": "Italiano"
+    },
+    {
+      "id": 29,
+      "idioma": "Turco"
+    },
+    {
+      "id": 30,
+      "idioma": "Búlgaro"
+    },
+    {
+      "id": 31,
+      "idioma": "Ucraniano"
+    },
+    {
+      "id": 32,
+      "idioma": "Vietnamita"
+    },
+    {
+      "id": 33,
+      "idioma": "Urdu"
+    },
+    {
+      "id": 34,
+      "idioma": "Malayo"
+    },
+    {
+      "id": 35,
+      "idioma": "Tamil"
+    },
+    {
+      "id": 36,
+      "idioma": "Telugu"
+    },
+    {
+      "id": 37,
+      "idioma": "Marathi"
+    },
+    {
+      "id": 38,
+      "idioma": "Kannada"
+    },
+    {
+      "id": 39,
+      "idioma": "Gujarati"
+    },
+    {
+      "id": 40,
+      "idioma": "Punjabi (Pashto)"
+    },
+    {
+      "id": 41,
+      "idioma": "Oriya"
+    },
+    {
+      "id": 42,
+      "idioma": "Bihari"
+    },
+    {
+      "id": 43,
+      "idioma": "Rajasthani"
+    },
+    {
+      "id": 44,
+      "idioma": "Marathi (Marathi)"
+    },
+    {
+      "id": 45,
+      "idioma": "Sánscrito"
+    },
+    {
+      "id": 46,
+      "idioma": "Malayalam"
+    },
+    {
+      "id": 47,
+      "idioma": "Hindú"
+    },
+    {
+      "id": 48,
+      "idioma": "Cebuano"
+    },
+    {
+      "id": 49,
+      "idioma": "Tíbet"
+    },
+    {
+      "id": 50,
+      "idioma": "Hausa"
+    },
+    {
+      "id": 51,
+      "idioma": "Yoruba"
+    },
+    {
+      "id": 52,
+      "idioma": "Igbo"
+    },
+    {
+      "id": 53,
+      "idioma": "Ewe"
+    },
+    {
+      "id": 54,
+      "idioma": "Wolof"
+    },
+    {
+      "id": 55,
+      "idioma": "Zulu"
+    },
+    {
+      "id": 56,
+      "idioma": "Xhosa"
     }
   ],
   "egresadosHabilidad": [
     {
       "habilidad": "Angular",
-      "habilidadId": 2,
+      "habilidadId": 13,
       "egresadoId": 1,
-      "id": 6
-    },
-    {
-      "habilidad": "AWS",
-      "habilidadId": 6,
-      "egresadoId": 1,
-      "id": 7
+      "id": 1
     },
     {
       "habilidad": "React",
-      "habilidadId": 3,
+      "habilidadId": 14,
       "egresadoId": 1,
-      "id": 9
+      "id": 2
     },
     {
-      "habilidad": "CI/CD",
-      "habilidadId": 10,
+      "habilidad": "HTML5",
+      "habilidadId": 22,
       "egresadoId": 1,
-      "id": 10
+      "id": 3
     },
     {
-      "habilidad": "VueJS",
-      "habilidadId": 9,
+      "habilidad": "CSS",
+      "habilidadId": 21,
       "egresadoId": 1,
-      "id": 12
+      "id": 4
+    },
+    {
+      "habilidad": "Desarrollo web",
+      "habilidadId": 23,
+      "egresadoId": 1,
+      "id": 5
     }
   ],
   "habilidades": [
     {
       "id": 1,
-      "habilidad": "Programador"
+      "habilidad": "JavaScript"
     },
     {
       "id": 2,
-      "habilidad": "Angular"
-    },
-    {
-      "id": 3,
-      "habilidad": "React"
-    },
-    {
-      "id": 4,
-      "habilidad": "HTML5"
-    },
-    {
-      "id": 5,
-      "habilidad": "CSS3"
-    },
-    {
-      "id": 6,
-      "habilidad": "AWS"
-    },
-    {
-      "id": 7,
       "habilidad": "Java"
     },
     {
+      "id": 3,
+      "habilidad": "Python"
+    },
+    {
+      "id": 4,
+      "habilidad": "C++"
+    },
+    {
+      "id": 5,
+      "habilidad": "C#"
+    },
+    {
+      "id": 6,
+      "habilidad": "Go"
+    },
+    {
       "id": 8,
-      "habilidad": "Método Ágil"
+      "habilidad": "PHP"
     },
     {
       "id": 9,
-      "habilidad": "VueJS"
+      "habilidad": "Ruby"
     },
     {
       "id": 10,
-      "habilidad": "CI/CD"
+      "habilidad": "Swift"
     },
     {
       "id": 11,
-      "habilidad": "SCRUM"
-    },
-    {
-      "id": 12,
-      "habilidad": "Liderazgo"
+      "habilidad": "Rust"
     },
     {
       "id": 13,
-      "habilidad": "Testing"
+      "habilidad": "Angular"
     },
     {
       "id": 14,
-      "habilidad": "Python"
+      "habilidad": "React"
+    },
+    {
+      "id": 15,
+      "habilidad": "VueJS"
+    },
+    {
+      "id": 16,
+      "habilidad": "Razor"
+    },
+    {
+      "id": 17,
+      "habilidad": "Blazor"
+    },
+    {
+      "id": 18,
+      "habilidad": "Deno"
+    },
+    {
+      "id": 19,
+      "habilidad": "Bun"
+    },
+    {
+      "id": 20,
+      "habilidad": "NetCore"
+    },
+    {
+      "id": 21,
+      "habilidad": "CSS"
+    },
+    {
+      "id": 22,
+      "habilidad": "HTML5"
+    },
+    {
+      "id": 23,
+      "habilidad": "Desarrollo web"
+    },
+    {
+      "id": 24,
+      "habilidad": "Desarrollo de aplicaciones móviles"
+    },
+    {
+      "id": 25,
+      "habilidad": "Desarrollo de videojuegos"
+    },
+    {
+      "id": 26,
+      "habilidad": "Arquitectura de software"
+    },
+    {
+      "id": 27,
+      "habilidad": "Diseño de sistemas"
+    },
+    {
+      "id": 28,
+      "habilidad": "Ingeniería de software"
+    },
+    {
+      "id": 29,
+      "habilidad": "Pruebas de software"
+    },
+    {
+      "id": 30,
+      "habilidad": "Gestión de proyectos de software"
+    },
+    {
+      "id": 31,
+      "habilidad": "Seguridad informática"
+    },
+    {
+      "id": 32,
+      "habilidad": "Big data"
+    },
+    {
+      "id": 33,
+      "habilidad": "Inteligencia artificial"
+    },
+    {
+      "id": 34,
+      "habilidad": "Machine learning"
+    },
+    {
+      "id": 35,
+      "habilidad": "Blockchain"
     }
   ],
   "provincias": [

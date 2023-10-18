@@ -16,6 +16,7 @@ export class IdiomasComponent  implements OnInit {
   
   selectedValue: number;
   idiomas: Idioma[];
+  results: Idioma[];
   loading = false;
   
   constructor(
@@ -25,7 +26,6 @@ export class IdiomasComponent  implements OnInit {
   ) { }
     
   ngOnInit() {
-    // TODO: usar IonicSelectable to abilitate search
     this.loading = true;
     this.entitiesService.getIdiomas()
       .subscribe((idiomas: Idioma[]) => {
@@ -34,11 +34,18 @@ export class IdiomasComponent  implements OnInit {
           return { ...i, checked: !!exists }
         });
         this.loading = false;
+
+        this.results = [...this.idiomas];
       });
   }
 
   close() {
     return this.modalCtrl.dismiss(this.idiomasEgresado, 'confirm');
+  }
+
+  handleSearchBarChange(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.results = this.idiomas.filter((d) => d.idioma.toLowerCase().indexOf(query) > -1);
   }
 
   checkboxChanged(event: any, idioma: Idioma) {
