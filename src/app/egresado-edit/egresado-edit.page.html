@@ -259,14 +259,20 @@
             *ngFor="let experiencia of experienciaLaboralEgresadoArray.controls; let i = index"
             class="work-experience-item"
           >
-            <ion-content style="min-height: 60px">
+            <ion-content style="min-height: 70px">
               <ion-label>{{experiencia.value.posicion}}</ion-label>
 
               <ion-label class="muted">
                 {{experiencia.value.empresa}}
                 <br />
                 {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal
-                || 'Actualidad'}}
+                  || 'Actualidad'}}
+                  
+                  <br>
+                  <br />
+                  Descripción
+                  <br>
+                <ion-text>{{experiencia.value.descripcion}}</ion-text>
               </ion-label>
             </ion-content>
             <ion-button color="danger" (click)="deleteExperienciaLaboralEgresado(experiencia.value.id)">

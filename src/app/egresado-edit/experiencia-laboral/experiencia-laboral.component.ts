@@ -26,7 +26,8 @@ export class ExperienciaLaboralComponent  implements OnInit {
     posicion: ['', [Validators.required, Validators.maxLength(50)]],
     empresa: ['', [Validators.required, Validators.maxLength(50)]],
     fechaEntrada: [new Date().toJSON(), [Validators.required]],
-    fechaSalida: [null]
+    fechaSalida: [null],
+    descripcionPosicion: ['']
   });
   
   constructor(
@@ -60,6 +61,7 @@ export class ExperienciaLaboralComponent  implements OnInit {
     const empresa = this.experienciaLaboralForm.get('empresa').value;
     const FechaEntr = this.helperService.getFormattedDate(this.experienciaLaboralForm.get('fechaEntrada').value);
     const validFechaSal = this.experienciaLaboralForm.get('fechaSalida').value;
+    const descripcion = this.experienciaLaboralForm.get('descripcionPosicion').value
 
     return {
       egresadoId: this.egresadoId,
@@ -68,6 +70,7 @@ export class ExperienciaLaboralComponent  implements OnInit {
       salario: null,
       FechaEntr,
       FechaSal: this.hideFechaSalida ? null : this.helperService.getFormattedDate(validFechaSal),
+      descripcion,
     }
   }
   

@@ -58,6 +58,19 @@
         <ion-label>¿Sigues en esta posición?</ion-label>
         <ion-checkbox slot="end" (ionChange)="positionToggle($event)"></ion-checkbox>
       </ion-item>
+      <br>
+      <ion-item>
+        <!-- <ion-label>Descripción de esta posición</ion-label> -->
+        <ion-textarea
+          type="text"
+          fill="solid"
+          label="Descripción de esta posición"
+          labelPlacement="floating"
+          helperText="Describa sus funciones y logros en esta posición"
+          errorText="Información Inválida"
+          formControlName="descripcionPosicion"
+      ></ion-textarea>
+      </ion-item>
     </form>
   </ng-container>
 </ion-content>

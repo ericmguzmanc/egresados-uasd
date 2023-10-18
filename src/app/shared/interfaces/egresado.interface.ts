@@ -35,6 +35,7 @@ export interface ExperienciaLaboral {
   salario?: number;
   FechaEntr?: string;
   FechaSal?: string;
+  descripcion?: string;
 }
 
 export interface Posicion {

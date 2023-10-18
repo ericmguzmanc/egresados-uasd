@@ -244,7 +244,8 @@ export class EgresadoEditPage implements OnInit {
       posicion: new FormControl(experiencia?.posicion),
       salario: new FormControl(experiencia?.salario),
       FechaEntr: new FormControl(experiencia?.FechaEntr),
-      FechaSal: new FormControl(experiencia?.FechaSal)
+      FechaSal: new FormControl(experiencia?.FechaSal),
+      descripcion: new FormControl(experiencia?.descripcion)
     });
   }
 
