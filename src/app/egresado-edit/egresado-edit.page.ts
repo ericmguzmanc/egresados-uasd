@@ -16,7 +16,6 @@ import { Provincia } from '../shared/interfaces/provincia.interface';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { IonicSelectableComponent } from 'ionic-selectable';
-import { EgresadoEditPageRoutingModule } from './egresado-edit-routing.module';
 
 @Component({
   selector: 'app-egresado-edit',
