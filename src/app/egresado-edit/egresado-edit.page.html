@@ -96,6 +96,20 @@
         formControlName="FechaNac"
       ></ion-input>
 
+      <!-- Dirección: Provincia -->
+      <ion-item>
+        <ion-label>Provincia </ion-label>
+        <ionic-selectable
+          item-content
+          formControlName="direccionEgresado"
+          [items]="provincias"
+          itemValueField="id"
+          itemTextField="provincia"
+          [canSearch]="true">
+        </ionic-selectable>
+      </ion-item>
+      <!-- Fin de Dirección: Provincia -->
+
       <!-- Genero -->
       <ion-text>
         <h5>Sexo</h5>
@@ -173,8 +187,8 @@
         </ion-row>
 
         <ng-container *ngIf="habilidadesEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation">
-            No hay habilidades definidas</ion-label
+          <ion-label class="muted upper-separation label-padding">
+            No tienes Habilidades definidas</ion-label
           >
         </ng-container>
 
@@ -206,8 +220,8 @@
         </ion-row>
 
         <ng-container *ngIf="idiomaEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation">
-            No hay Idiomas definidos</ion-label
+          <ion-label class="muted upper-separation label-padding">
+            No tienes Idiomas definidos</ion-label
           >
         </ng-container>
 
@@ -235,8 +249,8 @@
         </ion-row>
 
         <ng-container *ngIf="experienciaLaboralEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation">
-            No hay Experiencia Laboral definida</ion-label
+          <ion-label class="muted upper-separation label-padding">
+            No tienes Experiencia Laboral definida</ion-label
           >
         </ng-container>
 
@@ -277,8 +291,8 @@
         </ion-row>
 
         <ng-container *ngIf="educacionEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation">
-            No hay Educación definida</ion-label
+          <ion-label class="muted upper-separation label-padding">
+            No tienes Educación definida</ion-label
           >
         </ng-container>
 
@@ -319,8 +333,8 @@
         </ion-row>
 
         <ng-container *ngIf="contactoEgresadoArray.controls.length === 0">
-          <ion-label class="muted upper-separation">
-            No hay Información de Contacto definida</ion-label
+          <ion-label class="muted upper-separation label-paddingt">
+            No hay Información de Contactos definidos</ion-label
           >
         </ng-container>
 
