@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Contacto, DireccionEgresado, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
-import { Observable, map } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { HelperService } from './helper.service';
 import { environment } from 'src/environments/environment';
 
@@ -37,8 +37,20 @@ export class EgresadosService {
       );
   }
 
-  updateEgresado(egresado: Egresado): Observable<Egresado> {
-    return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
+  updateEgresado({ egresado, selectedProfilePic}: { egresado: Egresado, selectedProfilePic: any}): Observable<Egresado> {
+    if (selectedProfilePic) {
+      const formData = this.helperService.getProfilePicFormData(selectedProfilePic, egresado.id);
+      return this.uploadEgresadoProfilePic(formData)
+        .pipe(
+          switchMap((imageData) => {
+            if (imageData) {
+              egresado.profilePicUrl = imageData.url;
+            }
+            return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
+        }));
+    } else {
+      return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
+    }
   }
 
   addIdiomaEgresado(idioma: Idioma): Observable<Idioma> {
@@ -87,5 +99,9 @@ export class EgresadosService {
 
   updateDireccionEgresado(direccionEgresado: DireccionEgresado): Observable<DireccionEgresado> {
     return this.http.patch<DireccionEgresado>(`${this.JSON_SERVER_URL}/direccionEgresado/${direccionEgresado.id}`, direccionEgresado);
+  }
+
+  uploadEgresadoProfilePic(data: any): Observable<any>{
+    return this.http.post(`https://api.cloudinary.com/v1_1/egcss/image/upload`, data);
   }
 }

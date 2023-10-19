@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Egresado } from '../interfaces/egresado.interface';
-
+import { SHA1 } from 'crypto-js';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,42 @@ export class HelperService {
     const month = date.getMonth();
 
     return `${year}-${month + 1}-${day}`;
+  }
+
+  getProfilePicFormData(image: any, egresadoId: number) {
+    const formData = new FormData();
+    const timestamp = new Date().getTime();
+    const eager = environment.cloudinary.eager;
+    const public_id = `egresado-id-${egresadoId}`;
+    const api_secret = environment.cloudinary.api_secret;
+    const file = this.DataURIToBlob(image.dataUrl);
+
+    formData.append("file", file);
+    formData.append("cloud_name", environment.cloudinary.cloud_name);
+    formData.append("public_id", public_id);
+    formData.append("api_key", environment.cloudinary.api_key);
+    formData.append("folder", environment.cloudinary.profilePic_folter);
+    formData.append("timestamp", `${timestamp}`);
+    formData.append("eager", eager);
+    formData.append("upload_preset", "ml_default");
+
+    const serielizedSignature = `eager=${eager}&folder=egresados-uasd/profilePics&public_id=${public_id}&timestamp=${timestamp}&upload_preset=ml_default`;
+    const signature = SHA1(serielizedSignature + api_secret);
+
+    formData.append("signature", `${signature}`);
+
+  return formData;
+}
+
+  DataURIToBlob(dataURI: string) {
+    const splitDataURI = dataURI.split(',')
+    const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
+
+    const ia = new Uint8Array(byteString.length)
+    for (let i = 0; i < byteString.length; i++)
+        ia[i] = byteString.charCodeAt(i)
+
+    return new Blob([ia], { type: mimeString })
   }
 }
