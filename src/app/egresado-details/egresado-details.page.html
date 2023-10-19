@@ -1,13 +1,10 @@
 <!--Header-->
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/"
-        (click)="onBackButtonClick()"
-      ></ion-back-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles Egresado</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="confirm()">Cerrar</ion-button>
     </ion-buttons>
-    <ion-title>Detalle del Egresado</ion-title>
   </ion-toolbar>
 </ion-header>
 <!--Content-->
