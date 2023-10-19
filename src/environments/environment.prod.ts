@@ -2,6 +2,7 @@ export const environment = {
   production: true,
   json_server_url: 'https://egresados-uasd-server.onrender.com',
   cloudinary: {
+    upload_url: 'https://api.cloudinary.com/v1_1/egcss/image/upload',
     api_secret: 'dX-sQZGzfP4Qi_nz9zuIu2r5B74',
     api_key: '113187432484716',
     cloud_name: 'egcss',

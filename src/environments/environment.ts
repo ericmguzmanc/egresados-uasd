@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   json_server_url: 'http://localhost:3006',
   cloudinary: {
+    upload_url: 'https://api.cloudinary.com/v1_1/egcss/image/upload',
     api_secret: 'dX-sQZGzfP4Qi_nz9zuIu2r5B74',
     api_key: '113187432484716',
     cloud_name: 'egcss',
