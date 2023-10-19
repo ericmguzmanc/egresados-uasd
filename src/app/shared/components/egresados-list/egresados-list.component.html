@@ -22,7 +22,7 @@
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
             <span class="muted">
-              Emp. {{ this.helperService.getLatestEmpresa(egresado) }}
+             {{ this.helperService.getLatestEmpresa(egresado) }}
             </span>
             <br>
           <h6 class="muted" *ngFor="let direccion of egresado.direccionEgresado">

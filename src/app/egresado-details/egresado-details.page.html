@@ -55,10 +55,6 @@
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
-          <ion-row>
-            <span> Genero: </span>
-            <span class="muted ion-margin-horizontal">{{egresado.Genero}}</span>
-          </ion-row>
             <span class="muted spaced-text" >
               <span *ngFor="let direccion of egresado.direccionEgresado">
                 <ion-icon name="location-sharp"></ion-icon>
@@ -85,7 +81,7 @@
     </ion-card>
     <!--Grid de Habilidades-->
     <div class="titulo">
-      <h3>Habilidades</h3>
+      <h3 class="bold">Habilidades</h3>
     </div>
     <ion-grid class="chip">
       <ion-row>
@@ -102,7 +98,7 @@
     <!--Card Experiencia-->
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Experiencias</ion-card-title>
+        <ion-card-title class="bold">Experiencias</ion-card-title>
         <ion-card-subtitle>Experiencias Laborales</ion-card-subtitle>
       </ion-card-header>
       <!--Card Contenido -->
@@ -132,7 +128,7 @@
     <!--Card Educacion-->
     <ion-card *ngIf="!egresado.educacion.length">
       <ion-card-header >
-        <ion-card-title>
+        <ion-card-title class="bold">
           <ion-icon name="book"></ion-icon>
           Educacion
         </ion-card-title>
@@ -142,16 +138,16 @@
         </ion-card-content>
     </ion-card>
     <!-- Card Contenido -->
-    <ion-card *ngFor=" let educacion of egresado.educacion">
+    <ion-card >
       <ion-card-header >
         <ion-card-title>
-          <ion-icon name="book"></ion-icon>
+          <ion-icon name="book" class="bold"></ion-icon>
           Educacion
         </ion-card-title>
-        <ion-card-subtitle>{{educacion.TipoTitulo}}</ion-card-subtitle>
+        <!--<ion-card-subtitle>{{educacion.TipoTitulo}}</ion-card-subtitle>-->
       </ion-card-header>
       <!--Card Contenido -->
-      <ion-card-content>
+      <ion-card-content *ngFor=" let educacion of egresado.educacion">
         <h3>{{educacion.Titulo}}</h3>
         <ion-text>
           <span>{{educacion.Universidad}}</span>
@@ -163,7 +159,7 @@
       </ion-card-content>
     </ion-card>
     <!--Seccion Idioma-->
-    <div class="titulo">
+    <div class="titulo bold" >
       <h3><ion-icon name="language"></ion-icon> Idiomas</h3>
     </div>
     <ion-grid class="chip">
@@ -180,9 +176,9 @@
       </ion-row>
     </ion-grid>
     <!-- Seccion Nacionalidad -->
-    <div class="titulo">
+    <div class="titulo bold">
       <h3>
-        <ion-icon name="globe-outline"></ion-icon> 
+        <ion-icon name="globe-outline" class="bold"></ion-icon> 
         Nacionalidad
       </h3>
     </div>
@@ -203,7 +199,7 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          <ion-icon name="call"></ion-icon>
+          <ion-icon name="call" class="bold"></ion-icon>
           Contactos
         </ion-card-title>
       </ion-card-header>
@@ -214,11 +210,11 @@
           </ion-text>
           <ion-row *ngFor="let contactos of egresado.contacto">
             <ion-col>
+              <span *ngIf="contactos.tipo !== 'EMAIL' else emailType " class="bold">
+                {{contactos.valor | mask:'000-000-0000'}}
+              </span>
+              <ng-template #emailType class="bold" >{{contactos.valor}}</ng-template>
               <h3>{{contactos.tipo}}</h3>
-              <span *ngIf="contactos.tipo !== 'EMAIL' else emailType "
-                >{{contactos.valor | mask:'000-000-0000'}}</span
-              >
-              <ng-template #emailType>{{contactos.valor}}</ng-template>
             </ion-col>
           </ion-row>
         </ion-grid>
