@@ -102,6 +102,6 @@ export class EgresadosService {
   }
 
   uploadEgresadoProfilePic(data: any): Observable<any>{
-    return this.http.post(`https://api.cloudinary.com/v1_1/egcss/image/upload`, data);
+    return this.http.post(environment.cloudinary.upload_url, data);
   }
 }
