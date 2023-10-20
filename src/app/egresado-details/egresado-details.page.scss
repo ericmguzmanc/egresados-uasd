@@ -38,7 +38,7 @@ h3 {
 .contentDetails {
   padding-top: 0;
 }
-.info{
+.infoPersomal{
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -47,16 +47,16 @@ h3 {
   padding: 10px;
 
 }
-.info h3{
+.infoPersomal h3{
   font-size: 32px;
   margin-bottom: 10px;
 }
-.info span{
+.infoPersomal span{
   font-size: 20px;
  
   justify-content: center;
 }
-.info2{
+.infoPersomalGrid{
  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;

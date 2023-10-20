@@ -28,7 +28,7 @@
       <!--Informacion Personal-->
 
       <ion-col>
-        <div class="info">
+        <div class="infoPersomal">
           <ion-row>
             <ion-text>
               <h3>
@@ -41,11 +41,9 @@
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
-          <div class="info2">
+          <div class="infoPersomalGrid">
             <ion-text>
-
               <span class="muted spaced-text">
-                <!--{{egresado.FechaNac | date}}-->
                 {{this.helperService.getAge(this.egresado.FechaNac)}} años
               </span>
             </ion-text>
