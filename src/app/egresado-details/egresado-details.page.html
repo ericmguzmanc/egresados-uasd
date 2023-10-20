@@ -1,6 +1,6 @@
 <!--Header-->
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Detalles Egresado</ion-title>
     <ion-buttons slot="end">
       <ion-button [strong]="true" (click)="confirm()">Cerrar</ion-button>
@@ -19,16 +19,15 @@
 
   <ion-content *ngIf="!loading">
     <!--Grid -->
-    <ion-grid class="contentDetails">
+    <ion-grid class="content-details">
       <ion-col>
         <!--Imagen De perfil-->
-        <ion-img class="profileImagen" src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}">
+        <ion-img class="profil-imagen" src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}">
         </ion-img>
       </ion-col>
       <!--Informacion Personal-->
-
       <ion-col>
-        <div class="infoPersomal">
+        <div class="info-persomal">
           <ion-row>
             <ion-text>
               <h3>
@@ -41,7 +40,7 @@
             </ion-text>
           </ion-row>
           <ion-row></ion-row>
-          <div class="infoPersomalGrid">
+          <div class="info-persomal-grid">
             <ion-text>
               <span class="muted spaced-text">
                 {{this.helperService.getAge(this.egresado.FechaNac)}} años

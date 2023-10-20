@@ -29,16 +29,16 @@ h3 {
   font-weight: 600;
   letter-spacing: 1px;
 }
-.profileImagen {
+.profil-imagen {
   width: 402px;
   height: 300px;
   padding-top: 0;
   object-fit: contain;
 }
-.contentDetails {
+.content-details {
   padding-top: 0;
 }
-.infoPersomal{
+.info-persomal{
   display: flex;
   flex-direction: column;
   row-gap: 5px;
@@ -47,16 +47,16 @@ h3 {
   padding: 10px;
 
 }
-.infoPersomal h3{
+.info-persomal h3{
   font-size: 32px;
   margin-bottom: 10px;
 }
-.infoPersomal span{
+.info-persomal span{
   font-size: 20px;
  
   justify-content: center;
 }
-.infoPersomalGrid{
+.info-persomal-grid{
  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
