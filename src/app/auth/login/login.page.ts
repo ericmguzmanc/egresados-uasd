@@ -79,6 +79,6 @@ export class LoginPage implements OnInit {
   }
 
   onBackButtonClick(): void {
-    this.location.back();
+    this.location.go('/');
   }
 }
