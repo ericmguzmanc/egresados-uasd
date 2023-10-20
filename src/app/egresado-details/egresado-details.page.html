@@ -26,9 +26,9 @@
         </ion-img>
       </ion-col>
       <!--Informacion Personal-->
-      
-        <ion-col>
-          <div class="info">
+
+      <ion-col>
+        <div class="info">
           <ion-row>
             <ion-text>
               <h3>
@@ -56,16 +56,16 @@
               </span>
             </span>
           </div>
-      </div>
-      <span *ngIf="egresado.destacado" class="star">
-        <ion-icon name="star"></ion-icon>
-      </span>
+        </div>
+        <span *ngIf="egresado.destacado" class="star">
+          <ion-icon name="star"></ion-icon>
+        </span>
       </ion-col>
     </ion-grid>
     <!--Card About-->
     <ion-card>
       <ion-card-header>
-        <ion-card-title>About</ion-card-title>
+        <ion-card-title class="bold">About</ion-card-title>
         <ion-card-subtitle>{{egresado.Nombre}}</ion-card-subtitle>
       </ion-card-header>
       <!--Card Contenido -->
@@ -133,7 +133,7 @@
       <ion-card-content *ngIf="!egresado.educacion.length">
         Este usuario no tiene La Educacion definida
       </ion-card-content>
-      <ion-card-content *ngFor=" let educacion of egresado.educacion">
+      <ion-card-content *ngFor=" let educacion of egresado.educacion" >
         <h3>{{educacion.Titulo}}</h3>
         <ion-text>
           <span>{{educacion.Universidad}}</span>
