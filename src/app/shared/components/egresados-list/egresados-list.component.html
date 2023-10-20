@@ -11,8 +11,7 @@
         </ion-thumbnail>
         <div class="separator"></div>
         <ion-label>
-          <h2>
-            {{ this.helperService.getTipoTituloEgresado(egresado) }}
+          <h2 class="name-zise">
             {{ egresado.Nombre }} {{ egresado.ApellidoPaterno }}
             {{ egresado.ApellidoMaterno }}
           </h2>
@@ -20,8 +19,8 @@
             <h6 class="muted">
               {{ this.helperService.getLatestPosition(egresado) }}
             </h6>
-            <span class="muted">
-              Emp. {{ this.helperService.getLatestEmpresa(egresado) }}
+            <span class="muted empresa-list">
+             {{ this.helperService.getLatestEmpresa(egresado) }}
             </span>
             <br>
           <h6 class="muted" *ngFor="let direccion of egresado.direccionEgresado">

@@ -9,20 +9,63 @@ ion-spinner {
 }
 
 h3 {
-  margin: 0px
+  margin: 0px;
 }
 
 .spaced-text {
   margin: 8px 0 15px 0;
-
 }
-.chip{
+.chip {
   display: flex;
- justify-content: center;
- margin-top: 10px;
- padding: 5px;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px;
 }
-.titulo{
+.titulo {
   margin-top: 10px;
   margin-left: 20px;
 }
+.bold {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.profil-imagen {
+  width: 402px;
+  height: 300px;
+  padding-top: 0;
+  object-fit: contain;
+}
+.content-details {
+  padding-top: 0;
+}
+.info-persomal{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px;
+
+}
+.info-persomal h3{
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.info-persomal span{
+  font-size: 20px;
+ 
+  justify-content: center;
+}
+.info-persomal-grid{
+ display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  align-items: baseline;
+}
+.star {
+  color:  #f1dd38;
+ align-items: end;
+  justify-content:right;
+  font-size: 25px;
+  padding-right: 20px;
+}	
