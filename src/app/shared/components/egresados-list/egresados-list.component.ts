@@ -12,17 +12,23 @@ export class EgresadosListComponent implements OnInit {
   @Input() egresados: Egresado[] = [];
   @Input() isLoading: boolean = true;
   @Output() pageNumber: EventEmitter<number> = new EventEmitter<number>();
+  @Output() egresadoClicked: EventEmitter<number> = new EventEmitter<number>();
 
   page: number = 1;
 
   constructor(public helperService: HelperService) {}
 
   ngOnInit() {}
+
   onIonInfinite(ev: any) {
     this.page++;
     this.pageNumber.emit(this.page);
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
+  }
+
+  onEgresadoClick(egresadoId: number) {
+    this.egresadoClicked.emit(egresadoId);
   }
 }

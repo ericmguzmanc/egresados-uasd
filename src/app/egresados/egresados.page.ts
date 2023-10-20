@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonModal, ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
-import { HelperService } from '../shared/services/helper.service';
-import  {LOADING_TIMEOUT} from 'src/app/shared/constants';
+import  { LOADING_TIMEOUT } from 'src/app/shared/constants';
+import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 
 @Component({
   selector: 'app-egresados',
@@ -21,7 +21,7 @@ export class EgresadosPage implements OnInit {
   pageNumber: number = 1;
   constructor(
     private egresadosService: EgresadosService,
-    public helperService: HelperService
+    private modalCtrl: ModalController,
   ) {}
 
   ngOnInit() {
@@ -29,11 +29,9 @@ export class EgresadosPage implements OnInit {
   }
 
   loadEgresados() {
-    this.egresadosService
-      .getEgresados(this.pageNumber)
+    this.egresadosService.getEgresados(this.pageNumber)
       .subscribe((egresados: Egresado[]) => {
         this.egresados = [...this.egresados, ...egresados];
-        console.log(this.egresados);
         setTimeout(() => {
           this.loading = false;
         }, LOADING_TIMEOUT );
@@ -43,6 +41,27 @@ export class EgresadosPage implements OnInit {
   setPageNumber(page: number) {
     this.pageNumber = page;
     this.loadEgresados();
+  }
+
+  async openEgresadoDetailsModal(egresadoId: number) {
+    if (!egresadoId) {
+      return;
+    }
+
+    const egresadoDetailModal = await this.modalCtrl.create({
+      component: EgresadoDetailsPage,
+      componentProps: {
+        egresadoId: egresadoId,
+      }
+    });
+
+    egresadoDetailModal.present();
+
+    const { data, role } = await egresadoDetailModal.onWillDismiss();
+    
+    if (role === 'confirm') {
+      console.log('✨ Modal egresadoDetail closed. ->', data);
+    } 
   }
 
   cancel() {

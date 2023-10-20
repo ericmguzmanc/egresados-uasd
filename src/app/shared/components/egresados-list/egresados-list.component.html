@@ -1,8 +1,7 @@
 <ion-content>
   <ng-container *ngIf="egresados">
     <ion-list>
-      <ion-item
-        href="/egresado-details/{{ egresado.id }}"
+      <ion-item button (click)="onEgresadoClick(egresado.id)"
         *ngFor="let egresado of egresados">
         <ion-thumbnail>
           <ion-img

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { ActivatedRoute } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
-import { HelperService } from '../shared/services/helper.service';
 import { LOADING_TIMEOUT } from '../shared/constants';
+import { ModalController } from '@ionic/angular';
+import { HelperService } from '../shared/services/helper.service';
 
 @Component({
   selector: 'app-egresado-details',
@@ -12,36 +13,42 @@ import { LOADING_TIMEOUT } from '../shared/constants';
   styleUrls: ['./egresado-details.page.scss'],
 })
 export class EgresadoDetailsPage implements OnInit {
+  @Input() egresadoId: number;
+
   egresado: Egresado = {};
-  loading:boolean = true;
+  loading: boolean = true;
 
   constructor(
-    private route: ActivatedRoute,
     private location: Location,
     private egresadoService: EgresadosService,
     public helperService: HelperService,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
-
-    this.route.params.subscribe(params => {
-      const egresadoId = params['id'];
-      if (egresadoId) {
-        this.egresadoService.getEgresadoById(egresadoId).subscribe((egresado: Egresado) => {
+    if (this.egresadoId) {
+      this.egresadoService.getEgresadoById(this.egresadoId)
+        .subscribe((egresado: Egresado) => {
           this.egresado = egresado;
-          //optener edad del egresado apartir de la fecha de nacimiento 
-          console.log(this.helperService.getAge(this.egresado.FechaNac));
-          console.log(this.egresado);
+          console.log('egresado-details: Egresado Cargado -> ', this.egresado);
+
           setTimeout(() => {
             this.loading = false;
           },LOADING_TIMEOUT)
-        });
-      }
-    });
+      });
+    }
   }
 
   onBackButtonClick(): void {
     this.location.back();
+  }
+
+  cancel() {
+    this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modalCtrl.dismiss(null, 'confirm');
   }
 
 }

@@ -6,9 +6,10 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, finalize } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Injectable()
 export class tokentAuth implements HttpInterceptor {
   constructor(private cookieSevise: CookieService, private router: Router) {}
@@ -19,7 +20,7 @@ export class tokentAuth implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token: string = this.cookieSevise.get('token');
     
-    if (token) {
+    if (token && request.url !== environment.cloudinary.upload_url) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
