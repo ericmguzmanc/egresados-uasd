@@ -12,14 +12,21 @@ export class EgresadosService {
 
   egresado_relationships = '_embed=educacion&_embed=contacto&_embed=nacionalidadEgresado&_embed=idiomaEgresado&_embed=experienciaLaboralEgresado&_embed=egresadosHabilidad&_embed=direccionEgresado'
   JSON_SERVER_URL = environment.json_server_url;
+  EXPRESS_SERVER_URL = environment.express_server_url;
 
   constructor(
     private http: HttpClient,
     private helperService: HelperService,
   ) { }
 
-  getEgresados(page?: number): Observable<Egresado[]> {
-    return this.http.get<Egresado[]>(`${this.JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`);
+  getEgresados(page?: number, q: any = null): Observable<Egresado[]> {
+    let url = `${this.JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`;
+
+    if (q) {
+      url += `${url}&q=${q}`
+    }
+
+    return this.http.get<Egresado[]>(url);
   }
 
   getEgresadoById(id: number): Observable<Egresado> {
@@ -30,11 +37,15 @@ export class EgresadosService {
             .sortByDate(egresado.experienciaLaboralEgresado, 'FechaEntr', 'FechaEntr');
 
           egresado.educacion = this.helperService
-            .sortByDate(egresado.educacion, 'FechaEntr', 'FechaSal');
+            .sortByDate(egresado.educacion, 'FechaSal', 'FechaSal');
 
           return egresado;
         })
       );
+  }
+
+  getEgresadoByName(name: string): Observable<Egresado[]> {
+    return this.http.get<Egresado[]>(`${this.EXPRESS_SERVER_URL}/egresados/searchEgresado?name=${name}`);
   }
 
   updateEgresado({ egresado, selectedProfilePic}: { egresado: Egresado, selectedProfilePic: any}): Observable<Egresado> {

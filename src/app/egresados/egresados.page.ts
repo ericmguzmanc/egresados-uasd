@@ -19,6 +19,9 @@ export class EgresadosPage implements OnInit {
   egresados: Egresado[] = [];
   loading: boolean = true;
   pageNumber: number = 1;
+  results: Egresado[];
+  searchQuery: string;
+
   constructor(
     private egresadosService: EgresadosService,
     private modalCtrl: ModalController,
@@ -29,7 +32,7 @@ export class EgresadosPage implements OnInit {
   }
 
   loadEgresados() {
-    this.egresadosService.getEgresados(this.pageNumber)
+    this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
       .subscribe((egresados: Egresado[]) => {
         this.egresados = [...this.egresados, ...egresados];
         setTimeout(() => {
@@ -41,6 +44,26 @@ export class EgresadosPage implements OnInit {
   setPageNumber(page: number) {
     this.pageNumber = page;
     this.loadEgresados();
+  }
+
+  handleSearchBarChange(event: any) {
+    const query = event.detail.value
+    if (query) {
+      this.searchQuery = query;
+      this.egresadosService.getEgresados(1, query)
+        .subscribe((egresados: Egresado[]) => {
+          this.egresados = [...egresados];
+          setTimeout(() => {
+            this.loading = false;
+          }, LOADING_TIMEOUT );
+        });
+      
+    } else {
+      this.searchQuery = null;
+      this.pageNumber = 1;
+      this.egresados = [];
+      this.loadEgresados();
+    }
   }
 
   async openEgresadoDetailsModal(egresadoId: number) {

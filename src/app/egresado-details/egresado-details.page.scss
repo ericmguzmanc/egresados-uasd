@@ -22,21 +22,27 @@ h3 {
   padding: 5px;
 }
 .titulo {
-  margin-top: 10px;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
+
+.title-color {
+  color: #45474B;
+}
+
 .bold {
   font-weight: 600;
-  letter-spacing: 1px;
 }
-.profil-imagen {
-  width: 402px;
-  height: 300px;
-  padding-top: 0;
-  object-fit: contain;
+
+.avatar-img {
+  border: 1px solid #7D7C7C;
+  border-radius: 100% !important;
+
 }
+
 .content-details {
-  padding-top: 0;
+  padding-top: 20px;
+  min-height: 340px;
 }
 .info-persomal{
   display: flex;
@@ -62,10 +68,37 @@ h3 {
   grid-gap: 10px;
   align-items: baseline;
 }
+
 .star {
-  color:  #f1dd38;
- align-items: end;
-  justify-content:right;
-  font-size: 25px;
-  padding-right: 20px;
-}	
+  font-size: 2.5rem;
+}
+
+.egresados-detail-thumnail {
+  height: 12rem;
+  width: 12rem;
+}
+
+.padding-top-15 {
+  padding-top: 15px;
+}
+
+.padding-top-10 {
+  padding-top: 10px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.egresados-list-egresado-direccion {
+  font-size: 0.9rem;
+}
+
+.info-text-color {
+  color: #45474B;
+}
+
+.profile-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

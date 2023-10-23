@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   json_server_url: 'http://localhost:3006',
+  express_server_url: 'https://egresados-uasd-server.onrender.com/v2',
   cloudinary: {
     upload_url: 'https://api.cloudinary.com/v1_1/egcss/image/upload',
     api_secret: 'dX-sQZGzfP4Qi_nz9zuIu2r5B74',

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar  color="primary">
+  <ion-toolbar color="primary">
     <ion-title size="large">Egresados</ion-title>
     <ion-buttons slot="primary">
       <ion-button id="open-filtrado-modal">
@@ -7,6 +7,8 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-searchbar [debounce]="250" placeholder="Buscar Por Nombre" (ionInput)="handleSearchBarChange($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="md">

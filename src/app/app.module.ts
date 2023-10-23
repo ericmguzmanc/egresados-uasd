@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -12,6 +12,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { spinnerInterceptor } from './shared/interceptor/spinner.interceptor';
 import { LoaderComponentModule } from './shared/components/loader/loader.module';
 import { tokentAuth } from './shared/interceptor/auth.interceptor';
+
+import localEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localEs, 'es');
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +31,7 @@ import { tokentAuth } from './shared/interceptor/auth.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: tokentAuth, multi: true  },
+    { provide: LOCALE_ID, useValue: 'es' }
   ],
   bootstrap: [AppComponent],
 })
