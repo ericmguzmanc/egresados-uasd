@@ -32,5 +32,24 @@ ion-textarea {
 }
 
 .avatar-img {
-  width: 14rem;
+  border: 1px solid #7D7C7C;
+  border-radius: 100% !important;
+}
+
+.egresados-detail-thumnail {
+  height: 12rem;
+  width: 12rem;
+}
+
+.span-info-item {
+  display: block;
+  color: #45474B;
+}
+
+.span-info-item-header {
+  font-weight: 600;
+}
+
+.span-info-item-content {
+  font-size: 0.8rem;
 }

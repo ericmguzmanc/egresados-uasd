@@ -34,7 +34,7 @@
     {
       "id": 2,
       "Nombre": "Juan",
-      "Apellido": "López",
+      "ApellidoMaterno": "López",
       "ApellidoPaterno": "Hernandez",
       "Cedula": "40239920189",
       "Pasaporte": null,
@@ -47,7 +47,7 @@
     {
       "id": 3,
       "Nombre": "Lorena",
-      "Apellido": "Serrán",
+      "ApelApellidoMaternolido": "Serrán",
       "ApellidoPaterno": "Berihuete",
       "Cedula": "40250038291",
       "Pasaporte": null,
@@ -59,7 +59,7 @@
     {
       "id": 4,
       "Nombre": "Estephany",
-      "Apellido": "Guzman",
+      "ApellidoMaterno": "Guzman",
       "ApellidoPaterno": "Ramirez",
       "Cedula": "09458829340",
       "Pasaporte": "RD79186",
@@ -71,7 +71,7 @@
     {
       "id": 5,
       "Nombre": "Leandro",
-      "Apellido": "García",
+      "ApellidoMaterno": "García",
       "ApellidoPaterno": "Torres",
       "Cedula": "00128830498",
       "Pasaporte": "RD77894",
@@ -83,7 +83,7 @@
     {
       "id": 6,
       "Nombre": "Ana",
-      "Apellido": "Rodriguez",
+      "ApellidoMaterno": "Rodriguez",
       "ApellidoPaterno": "Gonzales",
       "Cedula": "00148822736",
       "Pasaporte": null,
@@ -107,7 +107,7 @@
     {
       "id": 8,
       "Nombre": "José",
-      "Apellido": "Díaz",
+      "ApellidoMaterno": "Díaz",
       "ApellidoPaterno": "Moralez",
       "Cedula": "40248877654",
       "Pasaporte": null,
@@ -119,7 +119,7 @@
     {
       "id": 9,
       "Nombre": "John",
-      "Apellido": "Reyes",
+      "ApellidoMaterno": "Reyes",
       "ApellidoPaterno": "Sanchez",
       "Cedula": "40217733228",
       "Pasaporte": null,
@@ -131,7 +131,7 @@
     {
       "id": 10,
       "Nombre": "Luis",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -143,7 +143,7 @@
     {
       "id": 11,
       "Nombre": "Daniel",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -155,7 +155,7 @@
     {
       "id": 12,
       "Nombre": "Manuel",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -167,7 +167,7 @@
     {
       "id": 13,
       "Nombre": "Pedro",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -179,7 +179,7 @@
     {
       "id": 14,
       "Nombre": "Maria",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -191,7 +191,7 @@
     {
       "id": 15,
       "Nombre": "carlos",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -203,7 +203,7 @@
     {
       "id": 16,
       "Nombre": "José",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -215,7 +215,7 @@
     {
       "id": 17,
       "Nombre": "Gabriel",
-      "Apellido": "Gutiérrez",
+      "ApellidoMaterno": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -1537,6 +1537,12 @@
       "habilidadId": 23,
       "egresadoId": 1,
       "id": 5
+    },
+    {
+      "habilidad": "Arquitectura de software",
+      "habilidadId": 26,
+      "egresadoId": 1,
+      "id": 6
     }
   ],
   "habilidades": [

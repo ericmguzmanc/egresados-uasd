@@ -3,15 +3,45 @@
 }
 
 .avatar-img {
-  width: 3rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  border: 1px solid #7D7C7C;
 }
 
 .muted {
   color: gray;
 }
-.name-zise {
-  font-size: 1.5rem;
+.egresados-list-egresado-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #45474B;
 }
-.empresa-list{
-  font-size: 12px;
+
+.egresados-list-egresado-info {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #45474B;
+}
+
+.egresados-list-item {
+  min-height: 80px;
+} 
+
+.egresados-list-egresado-direccion {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: #45474B;
+}
+
+.egresados-list-info-divider {
+  height: 8px;
+}
+
+.egresados-list-avatar-img {
+  padding-top: 12px;
+}
+
+.info-text-width {
+  width: 100%;
 }

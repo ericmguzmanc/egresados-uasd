@@ -14,7 +14,7 @@ export class HelperService {
     const { experienciaLaboralEgresado } = egresado;
     const latestPosition = experienciaLaboralEgresado?.filter(ex => !ex.FechaSal)[0];
 
-    return latestPosition ? latestPosition?.posicion : "No Tiene experiencia Laboral";
+    return latestPosition ? latestPosition?.posicion : "Sin Experiencia Laboral";
   }
 
   getTipoTituloEgresado(egresado: Egresado): string | undefined {
@@ -71,8 +71,8 @@ export class HelperService {
 
     formData.append("signature", `${signature}`);
 
-  return formData;
-}
+    return formData;
+  }
 
   DataURIToBlob(dataURI: string) {
     const splitDataURI = dataURI.split(',')

@@ -16,25 +16,18 @@
     <br>
     <br>
       <ion-grid>
-        <ion-row>
-          <ion-col></ion-col>
-          <ion-col>
-            <ion-img
-            class="avatar-img"
-            src="{{egresadoForm.controls['profilePicUrl'].value ? (egresadoForm.controls['profilePicUrl'].value) : 'assets/img/profile/profile-icon.webp'}}">
-          </ion-img>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col></ion-col>
-        <ion-col>
-          <ion-button color="light" (click)="selectImage()">
-            Foto de Perfil  
-            <ion-icon name="camera-outline" style="margin-left: 5px;"></ion-icon>
-          </ion-button>
-        </ion-col>
-        <ion-col></ion-col>
+        <ion-row style="height: 100%;" class="ion-justify-content-center">
+          <ion-thumbnail class="egresados-detail-thumnail ">
+            <ion-img class="avatar-img" src="{{egresadoForm.controls['profilePicUrl'].value ? (egresadoForm.controls['profilePicUrl'].value) : 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+          </ion-thumbnail>
+        </ion-row>
+        <ion-row class="ion-justify-content-center padding-top-15 info-text-color" style="flex-direction: column; margin-top: 10px;">
+          <ion-row class="ion-justify-content-center">
+            <ion-button color="light" (click)="selectImage()">
+              Foto de Perfil  
+              <ion-icon name="camera-outline" style="margin-left: 5px;"></ion-icon>
+            </ion-button>
+          </ion-row>
         </ion-row>
       </ion-grid>
     <br>
@@ -286,14 +279,13 @@
             class="work-experience-item"
           >
             <ion-content style="min-height: 60px">
-              <ion-label>{{experiencia.value.posicion}}</ion-label>
-
-              <ion-label class="muted">
-                {{experiencia.value.empresa}}
-                <br />
-                {{experiencia.value.FechaEntr}} - {{experiencia.value.FechaSal
-                || 'Actualidad'}}
-              </ion-label>
+              <ion-text>
+                <span class="span-info-item span-info-item-header">{{experiencia.value.posicion}}</span>
+                <span class="span-info-item span-info-item-content">{{experiencia.value.empresa}}</span>
+                <span class="span-info-item span-info-item-content">
+                  {{experiencia.value.FechaEntr | date: 'dd/MM/yyy'}} - {{ (experiencia.value.FechaSal | date: 'dd/MM/yyy') || 'Actualidad'}}
+                </span>
+              </ion-text>
             </ion-content>
             <ion-button color="danger" (click)="deleteExperienciaLaboralEgresado(experiencia.value.id)">
               <ion-icon name="trash-outline"></ion-icon>
@@ -325,13 +317,15 @@
         <ng-container *ngIf="educacionEgresadoArray.controls.length >= 0">
           <ion-item
             *ngFor="let educacion of educacionEgresadoArray.controls; let i = index"
+            style="padding-bottom: 5px;"
           >
-            <ion-content>
-              <ion-label>{{educacion.value.Titulo}}</ion-label>
-              <ion-label class="muted">
-                {{educacion.value.FechaEntr}} - {{educacion.value.FechaSal ||
-                'Actualidad'}}
-              </ion-label>
+            <ion-content style="min-height: 50px">
+              <ion-text>
+                <span class="span-info-item span-info-item-header">{{educacion.value.Titulo}}</span>
+                <span class="span-info-item span-info-item-content">
+                  {{educacion.value.FechaEntr | date: 'dd/MM/yyy'}} - {{(educacion.value.FechaSal | date: 'dd/MM/yyy') || 'Actualidad'}}
+                </span>
+              </ion-text>
             </ion-content>
             <ion-button color="danger" (click)="deleteEducacionEgresado(educacion.value.id)">
               <ion-icon name="trash-outline"></ion-icon>
@@ -369,13 +363,15 @@
             *ngFor="let contacto of contactoEgresadoArray.controls; let i = index"
           >
             <ion-content>
-              <ion-label *ngIf="contacto.value.tipo !=='EMAIL', else isEmail">
-                {{contacto.value.valor | mask:'000-000-0000'}}
-              </ion-label>
-              <ng-template #isEmail>{{contacto.value.valor}}</ng-template>
-              <ion-label class="muted">
-                {{contacto.value.tipo | lowercase}}
-              </ion-label>
+              <ion-text>
+                <ng-container *ngIf="contacto.value.tipo !=='EMAIL', else isEmail">
+                  <span class="span-info-item span-info-item-header">{{contacto.value.valor | mask:'000-000-0000'}}</span>
+                </ng-container>
+                <ng-template #isEmail>{{contacto.value.valor}}</ng-template>
+                <span class="span-info-item span-info-item-content">
+                  {{contacto.value.tipo | lowercase}}
+                </span>
+                </ion-text>
             </ion-content>
             <ion-button
               color="danger"

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Egresado } from '../shared/interfaces/egresado.interface';
-import { ActivatedRoute } from '@angular/router';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { LOADING_TIMEOUT } from '../shared/constants';
 import { ModalController } from '@ionic/angular';
