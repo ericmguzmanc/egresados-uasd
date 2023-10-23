@@ -17,7 +17,7 @@
   <!-- content Egresado -->
   <app-loader [isLoading]="loading"></app-loader>
 
-  <ion-content *ngIf="!loading">
+  <ion-content *ngIf="!loading" [ngStyle]="egresado.destacado ? { '--ion-background-color': '#FDFAF1' } : null">
     <!--Grid -->
     <ion-grid class="content-details">
       <ion-row style="height: 100%;" class="ion-justify-content-center">
@@ -70,9 +70,22 @@
         </ion-row>
       </ion-row>
     </ion-grid>
+
+    <!-- Card Destacado -->
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null" *ngIf="egresado.destacado">
+      <ion-card-header>
+        <ion-card-title class="title-color">
+          <div style="display: flex; flex-direction: row; align-items: center;">
+            <ion-icon name="trophy" class="destacado-color"></ion-icon>
+            <span style="padding-left: 5px;">{{egresado.Nombre}} es destacado</span>
+          </div>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content> {{egresado.descripcionDestacado}} </ion-card-content>
+    </ion-card>
    
     <!--Card About-->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -88,7 +101,7 @@
     </ion-card>
 
     <!-- Habilidades -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -113,7 +126,7 @@
 
 
     <!-- Posiciones -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -148,7 +161,7 @@
 
 
     <!-- Educacion -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -180,7 +193,7 @@
     </ion-card>
 
    <!-- Idiomas -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -205,7 +218,7 @@
 
 
     <!-- Nacionalidad -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -230,7 +243,7 @@
 
 
     <!-- Contactos -->
-    <ion-card>
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">

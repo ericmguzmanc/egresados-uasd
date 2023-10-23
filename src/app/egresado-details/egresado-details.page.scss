@@ -73,6 +73,10 @@ h3 {
   font-size: 2.5rem;
 }
 
+.destacado-color {
+  color: #f1dd38;
+}
+
 .egresados-detail-thumnail {
   height: 12rem;
   width: 12rem;
@@ -102,3 +106,7 @@ h3 {
   font-size: 1.2rem;
   font-weight: 500;
 }
+
+.white-background {
+  --ion-background-color: '#fff' 
+} 
