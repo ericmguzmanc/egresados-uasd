@@ -32,7 +32,7 @@ ion-textarea {
 }
 
 .avatar-img {
-  border: 1px solid #7D7C7C;
+  border: 1px solid #7d7c7c;
   border-radius: 100% !important;
 }
 
@@ -43,7 +43,7 @@ ion-textarea {
 
 .span-info-item {
   display: block;
-  color: #45474B;
+  color: #45474b;
 }
 
 .span-info-item-header {
@@ -52,4 +52,11 @@ ion-textarea {
 
 .span-info-item-content {
   font-size: 0.8rem;
+}
+.Contador-de-letras {
+  font-size: 14px;
+  display: flex;
+  justify-content: right;
+  position: relative;
+  bottom: 15px;
 }

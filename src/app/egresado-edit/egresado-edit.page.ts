@@ -41,6 +41,7 @@ export class EgresadoEditPage implements OnInit {
   egresado: Egresado = {};
   provincias: Provincia[];
   selectedProfilePic: any;
+  contador = 0;
 
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],
@@ -98,6 +99,7 @@ export class EgresadoEditPage implements OnInit {
   }
 
   async ngOnInit() {
+    
     const loading = await this.loadingCtrl.create({
       message: 'Cargando...'
     });
@@ -122,6 +124,7 @@ export class EgresadoEditPage implements OnInit {
         });
       }
     });
+    
   }
 
   loadEgresadoForm(): void {
@@ -139,6 +142,7 @@ export class EgresadoEditPage implements OnInit {
         profilePicUrl,
         direccionEgresado: direccionEgresado[0],
       });
+      this.contador = about.length;
 
       this.egresadoForm.setControl('idiomaEgresado', this.fb.array(this.fillIdiomaArray()));
       this.egresadoForm.setControl('experienciaLaboralEgresado', this.fb.array(this.fillExperienciaLaboralArray()));
@@ -599,5 +603,9 @@ export class EgresadoEditPage implements OnInit {
     if (this.selectedProfilePic) {
       this.egresadoForm.patchValue({ profilePicUrl: this.selectedProfilePic.dataUrl});
     }
+  }
+  onKey(event?: any) {
+    this.contador = event.target.value.length;
+    console.log(this.contador);
   }
 }

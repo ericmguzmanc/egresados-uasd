@@ -80,7 +80,10 @@
         helperText="Ingresa tu Información"
         errorText="Información Inválida"
         formControlName="about"
-      ></ion-textarea>
+        (keyup)="onKey($event)"
+      >
+    </ion-textarea>
+    <span class="muted Contador-de-letras">{{contador}} / 500</span>
 
       <!-- Cédula -->
       <ion-input
