@@ -21,59 +21,47 @@
   <!-- Loading spinner -->
   <app-loader [isLoading]="loading"></app-loader>
   <div class="ion-margin container" >
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          alt="Logo de la Universidad Autonoma de Santo Domingo"
-          src="../../assets/logo-uasd-solo-footer.png"
-          class="img"
-        />
-      </ion-thumbnail>
-      <ion-label>Portal de Egresados (UASD)</ion-label>
-    </ion-item>
-    <form [formGroup]="loginForm" class="ion-padding-top">
-      <ion-input
-        type="email"
-        label="Email"
-        label-placement="floating"
-        fill="solid"
-        name="email"
-        placeholder="Enter Email"
-        formControlName="email"
-      ></ion-input>
-      <div
-        *ngIf="email.invalid && (email.dirty || email.touched)"
-        class="danger"
-      >
-        <div *ngIf="email.errors?.['required']">El Email es Reqerido.</div>
-        <div *ngIf="email.errors?.['email']">El correo debe ser tipo Email</div>
-      </div>
-      <br />
-
-      <ion-input
-        type="password"
-        label="Password"
-        name="password"
-        label-placement="floating"
-        fill="solid"
-        placeholder="Enter password"
-        formControlName="password"
-      ></ion-input>
-      <div
-        *ngIf="password.invalid && (password.dirty || password.touched)"
-        class="danger"
-      >
-        <div *ngIf="password.errors?.['required']">
-          El password es Reqerido.
-        </div>
-      </div>
-      <br />
-      <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox>
-      <ion-button type="button" (click)="login()" expand="block" [disabled]="loading">
-        Iniciar sesión
-        
-      </ion-button>
-      <a href="#">Olvidé mi contraseña</a>
-    </form>
+    <ion-grid style="width: 100%;">
+      <ion-row style="height: 100%;" class="ion-justify-content-center">
+          <ion-thumbnail>
+            <img
+              alt="Logo de la Universidad Autonoma de Santo Domingo"
+              src="assets/logo-uasd-solo-footer.png"
+              class="img"
+            />
+          </ion-thumbnail>
+      </ion-row>
+      <ion-row style="width:100%; flex-direction: column;">
+        <form [formGroup]="loginForm" class="ion-padding-top">
+          <ion-input
+            type="email"
+            label="Email"
+            labelPlacement="floating"
+            fill="solid"
+            name="email"
+            placeholder="Escribir Email"
+            errorText="El email es requerido"
+            formControlName="email"
+          ></ion-input>
+    
+          <ion-input
+            type="password"
+            label="Password"
+            name="password"
+            labelPlacement="floating"
+            fill="solid"
+            placeholder="Escribir password"
+            errorText="El password es requerido"
+            formControlName="password"
+          ></ion-input>
+          <br />
+          <!-- <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox> -->
+          <ion-button type="button" (click)="login()" expand="block" [disabled]="loading">
+            Iniciar sesión
+          </ion-button>
+          <a href="#">Olvidé mi contraseña</a>
+        </form>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

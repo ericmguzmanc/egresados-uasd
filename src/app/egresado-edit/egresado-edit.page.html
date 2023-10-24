@@ -4,18 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" mode="md">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" mode="md">
     <ion-toolbar>
       <ion-title size="large">Edición Egresado</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-title style="margin-top: 15px">Información Personal</ion-title>
-    <br>
-    <br>
       <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <h2>Información Personal</h2>
+          <br>
+          <br>
+        </ion-row>
         <ion-row style="height: 100%;" class="ion-justify-content-center">
           <ion-thumbnail class="egresados-detail-thumnail ">
             <ion-img class="avatar-img" src="{{egresadoForm.controls['profilePicUrl'].value ? (egresadoForm.controls['profilePicUrl'].value) : 'assets/img/profile/profile-icon.webp'}}"></ion-img>
@@ -115,20 +117,6 @@
         formControlName="FechaNac"
       ></ion-input>
 
-      <!-- Dirección: Provincia -->
-      <ion-item>
-        <ion-label>Provincia </ion-label>
-        <ionic-selectable
-          item-content
-          formControlName="direccionEgresado"
-          [items]="provincias"
-          itemValueField="id"
-          itemTextField="provincia"
-          [canSearch]="true">
-        </ionic-selectable>
-      </ion-item>
-      <!-- Fin de Dirección: Provincia -->
-
       <!-- Genero -->
       <ion-text>
         <h5>Sexo</h5>
@@ -145,21 +133,37 @@
         <ion-radio value="Otro" labelPlacement="fixed">Otro</ion-radio><br />
       </ion-radio-group>
 
+      <!-- Dirección: Provincia -->
+      <ion-item>
+        <ion-label>Provincia </ion-label>
+        <ionic-selectable
+          item-content
+          formControlName="direccionEgresado"
+          [items]="provincias"
+          itemValueField="id"
+          itemTextField="provincia"
+          [canSearch]="true">
+        </ionic-selectable>
+      </ion-item>
+      <!-- Fin de Dirección: Provincia -->
+
+
+      <!-- Boton Guardar datos personales -->
       <ion-grid style="margin-top: 15px; margin-bottom: 15px">
-        <ion-row>
-          <ion-col size-sm="12" size="12" class="ion-text-center">
-            <ion-button expand="full" class="ion-text-wrap" type="submit">
-              Guardar datos personales
-              <ion-icon name="save-outline" slot="end"></ion-icon>
-            </ion-button>
-          </ion-col>
+        <ion-row class="ion-justify-content-center">
+          <ion-button  color="primary" class="ion-text-wrap" type="submit">
+            Guardar datos personales
+            <ion-icon name="save-outline" slot="end"></ion-icon>
+          </ion-button>
         </ion-row>
       </ion-grid>
-      <ion-item-divider></ion-item-divider>
+      <div style="margin-top: 45px; border:1px solid lightgray"></div>
 
-      <ion-title style="margin-top: 15px; margin-left: -15px"
-        >Información Adicional</ion-title
-      >
+      <ion-row class="ion-justify-content-center">
+        <h2>Información Adicional</h2>
+        <br>
+        <br>
+      </ion-row>
       <!-- Nacionalidad -->
       <!-- <ion-list formArrayName="nacionalidadEgresado">
         <ion-row>
@@ -384,20 +388,16 @@
       </ion-list>
       <!-- Fin de Contacto -->
 
-      <ion-item-divider></ion-item-divider>
       <ion-grid style="margin-top: 15px; margin-bottom: 15px">
-        <ion-row>
-          <ion-col size-sm="12" size="12" class="ion-text-center">
-            <ion-button
-              expand="full"
-              class="ion-text-wrap"
-              color="light"
-              (click)="onCancelClick()"
-            >
-              Salir de edición de perfil
-              <ion-icon name="exit-outline" slot="end"></ion-icon>
-            </ion-button>
-          </ion-col>
+        <ion-row class="ion-justify-content-center">
+          <ion-button
+            class="ion-text-wrap"
+            color="light"
+            (click)="onCancelClick()"
+          >
+            Salir de edición de perfil
+            <ion-icon name="exit-outline" slot="end"></ion-icon>
+          </ion-button>
         </ion-row>
       </ion-grid>
     </form>

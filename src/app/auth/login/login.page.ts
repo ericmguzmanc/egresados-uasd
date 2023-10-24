@@ -43,13 +43,13 @@ export class LoginPage implements OnInit {
     if (this.loginForm.valid) {
       this.loading = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: (usuario: Usuario[]) => {
-          const { egresadoId, token } = usuario[0];
+        next: (response: any) => {
+          const { userId, token } = response;
           let date = new Date()
           date.setMinutes(date.getMinutes() + EXPCOOKIE);
           this.cookieService.set('token', token, date)
-          if (egresadoId) {
-            this.router.navigate(['/egresado-edit/', egresadoId]);
+          if (userId) {
+            this.router.navigate(['/egresado-edit/', userId]);
           }
           this.loading = false;
         },

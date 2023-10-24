@@ -13,6 +13,8 @@ import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
   loading: boolean = true;
+  pageNumber: number = 1;
+  searchQuery: string;
   
   constructor(
     private egresadosService: EgresadosService,
@@ -40,15 +42,20 @@ export class DestacadosPage implements OnInit {
   }.
   */
   loadEgresados() {
-    this.egresadosService.getEgresados()
+    this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
       .subscribe((egresados: Egresado[]) => {
         const destacados = egresados.filter((ex) => ex.destacado);
-        this.egresados = destacados;
+        this.egresados = [...this.egresados, ...destacados];
         
         setTimeout(() => {
           this.loading = false;
         }, LOADING_TIMEOUT)
     });
+  }
+
+  setPageNumber(page: number) {
+    this.pageNumber = page;
+    this.loadEgresados();
   }
 
   async openEgresadoDetailsModal(egresadoId: number) {
@@ -70,5 +77,26 @@ export class DestacadosPage implements OnInit {
     if (role === 'confirm') {
       console.log('✨ Modal egresadoDetail closed. ->', data);
     } 
+  }
+
+  handleSearchBarChange(event: any) {
+    const query = event.detail.value
+    if (query) {
+      this.searchQuery = query;
+      this.egresadosService.getEgresados(1, query)
+        .subscribe((egresados: Egresado[]) => {
+          const destacados = egresados.filter((ex) => ex.destacado);
+          this.egresados = [...destacados];
+          setTimeout(() => {
+            this.loading = false;
+          }, LOADING_TIMEOUT );
+        });
+      
+    } else {
+      this.searchQuery = null;
+      this.pageNumber = 1;
+      this.egresados = [];
+      this.loadEgresados();
+    }
   }
 }
