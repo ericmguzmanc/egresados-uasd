@@ -606,6 +606,5 @@ export class EgresadoEditPage implements OnInit {
   }
   onKey(event?: any) {
     this.contador = event.target.value.length;
-    console.log(this.contador);
   }
 }
