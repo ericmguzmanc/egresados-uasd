@@ -23,7 +23,7 @@ export class tokentAuth implements HttpInterceptor {
     if (token && request.url !== environment.cloudinary.upload_url) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `jwt ${token}`,
         },
       });
     }

@@ -26,7 +26,7 @@
       "Pasaporte": "RD588392",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
-      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697738303/egresados-uasd/profilePics/egresado-id-1.jpg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1698108713/egresados-uasd/profilePics/egresado-id-1.jpg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true,
       "descripcionDestacado": "Eric Guzmán es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
@@ -1178,16 +1178,16 @@
       "id": 1
     },
     {
-      "idioma": "Francés",
-      "idiomaId": 9,
-      "egresadoId": 1,
-      "id": 2
-    },
-    {
       "idioma": "Inglés",
       "idiomaId": 1,
       "egresadoId": 1,
       "id": 3
+    },
+    {
+      "idioma": "Francés",
+      "idiomaId": 9,
+      "egresadoId": 1,
+      "id": 4
     }
   ],
   "educacion_deprecated": [

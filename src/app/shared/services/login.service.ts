@@ -9,11 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  JSON_SERVER_URL = environment.json_server_url;
+  EXPRESS_SERVER_URL = environment.express_server_url;
 
   constructor(private http: HttpClient) {}
 
   login(credentials: LoginRequest): Observable<any> {
-    return this.http.get(`${this.JSON_SERVER_URL}/usuario?email=${credentials.email}&password=${credentials.password}`);
+    return this.http.post(`${this.EXPRESS_SERVER_URL}/auth/login`, {email: credentials.email, password:credentials.password });
   }
 }
