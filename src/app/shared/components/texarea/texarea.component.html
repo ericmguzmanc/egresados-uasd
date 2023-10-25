@@ -1,0 +1,13 @@
+<ion-textarea 
+  type="text" 
+  fill="solid" 
+  label="Acerca de" 
+  labelPlacement="floating" 
+  helperText="Ingresa tu Información"
+  errorText="Información Inválida" 
+  formControlName="about" 
+  (keyup)="onKeyH($event)"
+>
+</ion-textarea>
+<span class="muted Contador-de-letras">{{contador}} / {{maxLength}}</span> 
+
