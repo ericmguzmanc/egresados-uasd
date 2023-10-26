@@ -85,9 +85,8 @@
         (keyup)="onKey($event)"
       >
     </ion-textarea>
-    <span class="muted Contador-de-letras">{{contador}} / 500</span>
-    
-
+    <span class="muted Contador-de-letras">{{contador}} / {{maxLenght}}</span>
+    <app-texarea [contador]="contador" [maxLenght]="maxLenght" (onkeyH)="onKey($event)"></app-texarea>
       <!-- Cédula -->
       <ion-input
         type="text"

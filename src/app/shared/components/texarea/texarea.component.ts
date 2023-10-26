@@ -5,12 +5,11 @@ import { FormBuilder, FormControl } from '@angular/forms';
   selector: 'app-texarea',
   templateUrl: './texarea.component.html',
   styleUrls: ['./texarea.component.scss'],
-
 })
 
 export class TexareaComponent  implements OnInit {
   @Input() contador: number = 0;
-  @Input() maxLength: number = 0;
+  @Input() maxLenght: number = 0;
   
   @Output() onKey: EventEmitter<any> = new EventEmitter<any>();
 

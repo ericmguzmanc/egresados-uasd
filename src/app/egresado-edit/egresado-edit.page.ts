@@ -19,6 +19,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { SHA1 } from 'crypto-js'
 
+
 @Component({
   selector: 'app-egresado-edit',
   templateUrl: './egresado-edit.page.html',
@@ -41,7 +42,8 @@ export class EgresadoEditPage implements OnInit {
   egresado: Egresado = {};
   provincias: Provincia[];
   selectedProfilePic: any;
-  contador = 0;
+  contador: number = 0;
+  maxLenght: number = 500;
 
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],
@@ -60,7 +62,8 @@ export class EgresadoEditPage implements OnInit {
     experienciaLaboralEgresado: this.fb.array([]),
     egresadosHabilidad: this.fb.array([]),
     educacion: this.fb.array([]),
-  });;
+  });
+  
 
   constructor(
     private route: ActivatedRoute,

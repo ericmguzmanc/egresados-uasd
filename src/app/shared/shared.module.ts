@@ -7,6 +7,7 @@ import { EgresadosListComponentModule } from './components/egresados-list/egresa
 import { HelperService } from './services/helper.service';
 import { EntitiesService } from './services/entities.service';
 import { LoaderComponentModule } from './components/loader/loader.module';
+import { TextareaModule } from './components/texarea/texarea.module';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
@@ -22,14 +23,16 @@ import { PhoneMaskDirective } from './phone-mask.directive';
     EgresadosListComponentModule,
     LoaderComponentModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    TextareaModule
   ],
   exports: [
     EgresadosListComponentModule,
     LoaderComponentModule,
     NgxMaskPipe,
     NgxMaskDirective,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    TextareaModule
   ],
   providers: [
     EgresadosService,
