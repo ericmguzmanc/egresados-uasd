@@ -8,3 +8,5 @@ export const TIPO_CONTACTO = {
 export const LOADING_TIMEOUT = 0; 
 
 export const EXPCOOKIE = 30
+
+export const ABOUTLENGHT = 500

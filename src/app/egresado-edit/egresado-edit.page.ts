@@ -18,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { SHA1 } from 'crypto-js'
+import { ABOUTLENGHT } from '../shared/constants';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -41,6 +42,8 @@ export class EgresadoEditPage implements OnInit {
   egresado: Egresado = {};
   provincias: Provincia[];
   selectedProfilePic: any;
+  contador: number = 0;
+  maxLenght: number = ABOUTLENGHT;
 
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],
@@ -98,6 +101,7 @@ export class EgresadoEditPage implements OnInit {
   }
 
   async ngOnInit() {
+    
     const loading = await this.loadingCtrl.create({
       message: 'Cargando...'
     });
@@ -122,6 +126,7 @@ export class EgresadoEditPage implements OnInit {
         });
       }
     });
+    
   }
 
   loadEgresadoForm(): void {
@@ -139,6 +144,7 @@ export class EgresadoEditPage implements OnInit {
         profilePicUrl,
         direccionEgresado: direccionEgresado[0],
       });
+      this.contador = about.length;
 
       this.egresadoForm.setControl('idiomaEgresado', this.fb.array(this.fillIdiomaArray()));
       this.egresadoForm.setControl('experienciaLaboralEgresado', this.fb.array(this.fillExperienciaLaboralArray()));
@@ -599,5 +605,8 @@ export class EgresadoEditPage implements OnInit {
     if (this.selectedProfilePic) {
       this.egresadoForm.patchValue({ profilePicUrl: this.selectedProfilePic.dataUrl});
     }
+  }
+  onKey(event?: any) {
+    this.contador = event.target.value.length;
   }
 }

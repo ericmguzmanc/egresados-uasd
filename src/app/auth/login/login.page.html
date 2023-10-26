@@ -17,9 +17,7 @@
       <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <!-- Loading spinner -->
-  <app-loader [isLoading]="loading"></app-loader>
+ <!--Content login-->
   <div class="ion-margin container" >
     <ion-grid style="width: 100%;">
       <ion-row style="height: 100%;" class="ion-justify-content-center">
@@ -56,7 +54,7 @@
           ></ion-input>
           <br />
           <!-- <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox> -->
-          <ion-button type="button" (click)="login()" expand="block" [disabled]="loading">
+          <ion-button type="button" (click)="login()" expand="block" [disabled]="disableButton">
             Iniciar sesión
           </ion-button>
           <a href="#">Olvidé mi contraseña</a>
