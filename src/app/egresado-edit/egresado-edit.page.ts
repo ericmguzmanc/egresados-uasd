@@ -41,7 +41,8 @@ export class EgresadoEditPage implements OnInit {
   egresado: Egresado = {};
   provincias: Provincia[];
   selectedProfilePic: any;
-  contador = 0;
+  contador: number = 0;
+  maxLenght: number = 500;
 
   egresadoForm: FormGroup = this.fb.group({
     Nombre: ['', [Validators.required, Validators.maxLength(100)]],

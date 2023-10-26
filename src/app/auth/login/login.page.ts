@@ -39,27 +39,30 @@ export class LoginPage implements OnInit {
     return this.loginForm.controls.password;
   }
 
-  login() {
+  async login() {
     if (this.loginForm.valid) {
       this.loading = true;
+      const loading = await this.loadingController.create({
+        message: 'Cargando...',
+      });
+
+      loading.present();
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response: any) => {
           const { userId, token } = response;
-          let date = new Date()
+          let date = new Date();
           date.setMinutes(date.getMinutes() + EXPCOOKIE);
-          this.cookieService.set('token', token, date)
+          this.cookieService.set('token', token, date);
           if (userId) {
             this.router.navigate(['/egresado-edit/', userId]);
           }
-          this.loading = false;
         },
         error: (err) => {
-          this.loading = false;
           console.error(err);
         },
         complete: () => {
           console.info('complete');
-          this.loading = false;
+          loading.dismiss();
         },
       });
       this.loginForm.reset();
@@ -69,14 +72,7 @@ export class LoginPage implements OnInit {
     }
   }
 
-  async showLoading() {
-    const loading = await this.loadingController.create({
-      message: 'Cargando...',
-      duration: 3000,
-    });
-
-    loading.present();
-  }
+  async showLoading() {}
 
   onBackButtonClick(): void {
     this.location.go('/');
