@@ -15,7 +15,7 @@ import { EXPCOOKIE } from 'src/app/shared/constants';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loading = false;
+  disableButton = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
 
   async login() {
     if (this.loginForm.valid) {
-      this.loading = true;
+      this.disableButton = true;
       const loading = await this.loadingController.create({
         message: 'Cargando...',
       });
@@ -63,13 +63,16 @@ export class LoginPage implements OnInit {
         complete: () => {
           console.info('complete');
           loading.dismiss();
+          this.disableButton = false;
+          this.loginForm.reset();
         },
       });
-      this.loginForm.reset();
+      
     } else {
       this.loginForm.markAllAsTouched();
       console.log('Error');
     }
+    
   }
 
   async showLoading() {}
