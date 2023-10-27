@@ -5,6 +5,9 @@ import { HelperService } from '../shared/services/helper.service';
 import { LOADING_TIMEOUT } from '../shared/constants';
 import { ModalController } from '@ionic/angular';
 import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
+import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
+import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-destacados',
   templateUrl: './destacados.page.html',
@@ -15,6 +18,7 @@ export class DestacadosPage implements OnInit {
   loading: boolean = true;
   pageNumber: number = 1;
   searchQuery: string;
+  egresadosFilters: egresadosFilters;
   
   constructor(
     private egresadosService: EgresadosService,
@@ -26,31 +30,25 @@ export class DestacadosPage implements OnInit {
     this.loadEgresados();
   }
   
-  /** 
-  * Esta funcion se encarga de filtrar los egresados para mostrarlos solo los destacados.
-  * @summary funcion que filtra el array de egresados para mostrarlos solo los destacados  .
-  * @param {Array} egresados - Egresados es un array de objetos de tipo Egresado el cual trae de la Api todos los egresados para filtarlos y solo optener los destacados.
-  * @param {Array} - Esta obtine una array de objetos de tipo Egresado y filtra los destacados que reasigna a la variable objeto otra vez.
-  * @return {Array} debuelve un array de objetos de tipo Egresado y reasigna estos valores a egresados y los muetra al front solo los que cumpolen esta condición 
-  * @example
-  *   const egresados = [
-  {
-    id: 1,
-    nombre: 'John Doe',
-    apellido: 'Doe',
-    destacado: true
-  }.
-  */
   loadEgresados() {
-    this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
-      .subscribe((egresados: Egresado[]) => {
-        const destacados = egresados.filter((ex) => ex.destacado);
-        this.egresados = [...this.egresados, ...destacados];
-        
-        setTimeout(() => {
+    this.loading = true;
+
+    if (this.egresadosFilters && environment.production) {
+      console.log('Production Mode !!! 🚨');
+      this.applyFilters();
+    } else {
+      this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
+        .subscribe((egresados: Egresado[]) => {
+          const destacados = egresados.filter((ex) => ex.destacado);
+          if (this.searchQuery) {
+            this.egresados = [...destacados];
+          } else {
+            this.egresados = [...this.egresados, ...destacados];
+          }
+
           this.loading = false;
-        }, LOADING_TIMEOUT)
-    });
+        });
+    }
   }
 
   setPageNumber(page: number) {
@@ -79,24 +77,57 @@ export class DestacadosPage implements OnInit {
     } 
   }
 
+  async openEgresadosFiltersModal() {
+    const egresadosFiltersModal = await this.modalCtrl.create({
+      component: EgresadosFiltersComponent,
+      componentProps: {
+        egresadosFilters: this.egresadosFilters,
+        destacadosMode: true,
+      }
+    });
+
+    egresadosFiltersModal.present();
+
+    const { data, role } = await egresadosFiltersModal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.egresadosFilters = data;
+
+      if (this.egresadosFilters && environment.production) {
+        // Llamar la funcion de aplicar filtros
+        this.applyFilters();
+      } else {
+        this.loadEgresados();
+      }
+    }
+  }
+
   handleSearchBarChange(event: any) {
     const query = event.detail.value
     if (query) {
       this.searchQuery = query;
-      this.egresadosService.getEgresados(1, query)
-        .subscribe((egresados: Egresado[]) => {
-          const destacados = egresados.filter((ex) => ex.destacado);
-          this.egresados = [...destacados];
-          setTimeout(() => {
-            this.loading = false;
-          }, LOADING_TIMEOUT );
-        });
+      this.loadEgresados();
       
     } else {
       this.searchQuery = null;
       this.pageNumber = 1;
       this.egresados = [];
       this.loadEgresados();
+    }
+  }
+
+  applyFilters() {
+    if (this.egresadosFilters) {
+      this.egresadosService.filterEgresados(this.egresadosFilters, this.pageNumber, this.searchQuery)
+        .subscribe((egresados) => {
+          if (this.searchQuery) {
+            this.egresados = [...egresados];
+          } else {
+            this.egresados = [...egresados];
+          }
+
+          this.loading = false;
+        });
     }
   }
 }

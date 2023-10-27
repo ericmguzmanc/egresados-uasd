@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { SHA1 } from 'crypto-js'
 import { ABOUTLENGHT } from '../shared/constants';
 
 @Component({

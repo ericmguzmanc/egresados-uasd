@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from 'src/app/shared/interfaces/usuario.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { EXPCOOKIE } from 'src/app/shared/constants';
 

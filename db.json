@@ -26,15 +26,15 @@
       "Pasaporte": "RD588392",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
-      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1698108713/egresados-uasd/profilePics/egresado-id-1.jpg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662560/egresados-uasd/profilePics/egresado-id-1.jpg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true,
-      "descripcionDestacado": "Eric Guzmán es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
+      "descripcionDestacado": "Gelem Lluberes es responsable de la ejecución de los acuerdos de servicio para la generación de energía, supervisando Europa, África y Asia para Siemens Energy. Además, se desempeña como miembro de la junta de Future Energy Leaders en el World Energy Council.  Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
     },
     {
       "id": 2,
       "Nombre": "Juan",
-      "ApellidoMaterno": "López",
+      "Apellido": "López",
       "ApellidoPaterno": "Hernandez",
       "Cedula": "40239920189",
       "Pasaporte": null,
@@ -42,13 +42,12 @@
       "Genero": "Masculino",
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662098/egresados-uasd/profilePics/egresado-id-2.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
-      "destacado": true,
-      "descripcionDestacado": "Juán López fue ganador del Premio Nacional De Debate a la edad de 17 años. Se graduó de la Universidad con honores Summa Cum Laude y participó en el programa Youth Pristine de La embajada del Reino Unido, donde ayudó a cientos de jóvenes necesitados a perseguir sus sueños."
+      "destacado": true
     },
     {
       "id": 3,
       "Nombre": "Lorena",
-      "ApelApellidoMaternolido": "Serrán",
+      "Apellido": "Serrán",
       "ApellidoPaterno": "Berihuete",
       "Cedula": "40250038291",
       "Pasaporte": null,
@@ -60,7 +59,7 @@
     {
       "id": 4,
       "Nombre": "Estephany",
-      "ApellidoMaterno": "Guzman",
+      "Apellido": "Guzman",
       "ApellidoPaterno": "Ramirez",
       "Cedula": "09458829340",
       "Pasaporte": "RD79186",
@@ -72,7 +71,7 @@
     {
       "id": 5,
       "Nombre": "Leandro",
-      "ApellidoMaterno": "García",
+      "Apellido": "García",
       "ApellidoPaterno": "Torres",
       "Cedula": "00128830498",
       "Pasaporte": "RD77894",
@@ -84,7 +83,7 @@
     {
       "id": 6,
       "Nombre": "Ana",
-      "ApellidoMaterno": "Rodriguez",
+      "Apellido": "Rodriguez",
       "ApellidoPaterno": "Gonzales",
       "Cedula": "00148822736",
       "Pasaporte": null,
@@ -108,7 +107,7 @@
     {
       "id": 8,
       "Nombre": "José",
-      "ApellidoMaterno": "Díaz",
+      "Apellido": "Díaz",
       "ApellidoPaterno": "Moralez",
       "Cedula": "40248877654",
       "Pasaporte": null,
@@ -120,7 +119,7 @@
     {
       "id": 9,
       "Nombre": "John",
-      "ApellidoMaterno": "Reyes",
+      "Apellido": "Reyes",
       "ApellidoPaterno": "Sanchez",
       "Cedula": "40217733228",
       "Pasaporte": null,
@@ -132,7 +131,7 @@
     {
       "id": 10,
       "Nombre": "Luis",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -144,7 +143,7 @@
     {
       "id": 11,
       "Nombre": "Daniel",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -156,7 +155,7 @@
     {
       "id": 12,
       "Nombre": "Manuel",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -168,7 +167,7 @@
     {
       "id": 13,
       "Nombre": "Pedro",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -180,7 +179,7 @@
     {
       "id": 14,
       "Nombre": "Maria",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -192,7 +191,7 @@
     {
       "id": 15,
       "Nombre": "carlos",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -204,7 +203,7 @@
     {
       "id": 16,
       "Nombre": "José",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -216,7 +215,7 @@
     {
       "id": 17,
       "Nombre": "Gabriel",
-      "ApellidoMaterno": "Gutiérrez",
+      "Apellido": "Gutiérrez",
       "ApellidoPaterno": "Ferreiras",
       "Cedula": "40238819382",
       "Pasaporte": "RD55983",
@@ -391,7 +390,7 @@
       "egresadoId": 1,
       "Universidad": "Universidad Autónoma de Santo Domingo",
       "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
+      "FechaSal": "2023-06-10",
       "carreraId": 2,
       "Titulo": "Licenciatura en Informática",
       "TipoTitulo": "Licenciatura"
@@ -401,7 +400,7 @@
       "egresadoId": 2,
       "Universidad": "Universidad Tecnológica de Santiago",
       "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
+      "FechaSal": "2023-06-10",
       "Titulo": "Igeniería de Sistemas",
       "TipoTitulo": "Ingeniería"
     },
@@ -410,7 +409,7 @@
       "egresadoId": 4,
       "Universidad": "Universidad Tecnológica de Santo Domingo",
       "FechaEntr": "2017-10-20",
-      "FechaSal": "2024-06-10",
+      "FechaSal": "2022-06-10",
       "carreraId": 2,
       "Titulo": "Igeniería de Sistemas",
       "TipoTitulo": "Ingeniería"
@@ -418,8 +417,148 @@
     {
       "egresadoId": 1,
       "Universidad": "Universidad Autónoma de Santo Domingo",
-      "FechaEntr": "2022-10-3",
+      "FechaEntr": "2018-10-3",
+      "FechaSal": "2020-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Doctorado",
+      "id": 5
+    },
+    {
+      "egresadoId": 3,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2010-10-3",
+      "FechaSal": "2015-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Maestría",
+      "id": 5
+    },
+    {
+      "egresadoId": 5,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2011-10-3",
+      "FechaSal": "2016-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 6,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2013-10-3",
+      "FechaSal": "2017-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 7,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2014-10-3",
+      "FechaSal": "2018-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 8,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2015-10-3",
+      "FechaSal": "2019-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 9,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2016-10-3",
+      "FechaSal": "2020-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 10,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2017-10-3",
+      "FechaSal": "2021-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 11,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2017-10-3",
+      "FechaSal": "2022-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 12,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2016-10-3",
+      "FechaSal": "2020-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Licenciatura",
+      "id": 5
+    },
+    {
+      "egresadoId": 13,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2017-10-3",
       "FechaSal": "2023-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Técnico Superior",
+      "id": 5
+    },
+    {
+      "egresadoId": 14,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2017-10-3",
+      "FechaSal": "2023-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Maestría",
+      "id": 5
+    },
+    {
+      "egresadoId": 15,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2008-10-3",
+      "FechaSal": "2014-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Maestría",
+      "id": 5
+    },
+    {
+      "egresadoId": 16,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2007-10-3",
+      "FechaSal": "2015-10-16",
+      "carreraId": 8,
+      "Titulo": "Redes Neuronales para Análisis de Datos ",
+      "TipoTitulo": "Maestría",
+      "id": 5
+    },
+    {
+      "egresadoId": 17,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2009-10-3",
+      "FechaSal": "2016-10-16",
       "carreraId": 8,
       "Titulo": "Redes Neuronales para Análisis de Datos ",
       "TipoTitulo": "Doctorado",
@@ -1178,16 +1317,16 @@
       "id": 1
     },
     {
+      "idioma": "Francés",
+      "idiomaId": 9,
+      "egresadoId": 1,
+      "id": 2
+    },
+    {
       "idioma": "Inglés",
       "idiomaId": 1,
       "egresadoId": 1,
       "id": 3
-    },
-    {
-      "idioma": "Francés",
-      "idiomaId": 9,
-      "egresadoId": 1,
-      "id": 4
     }
   ],
   "educacion_deprecated": [
@@ -1230,6 +1369,78 @@
       "provinciaId": 6,
       "egresadoId": 5,
       "id": 6
+    },
+    {
+      "id": 7,
+      "egresadoId": 6,
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1
+    },
+    {
+      "id": 8,
+      "egresadoId": 7,
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1
+    },
+    {
+      "id": 9,
+      "egresadoId": 8,
+      "provincia": "Santo Domingo",
+      "provinciaId": 32
+    },
+    {
+      "provincia": "Santo Domingo",
+      "provinciaId": 32,
+      "egresadoId": 9,
+      "id": 10
+    },
+    {
+      "provincia": "Santo Domingo",
+      "provinciaId": 32,
+      "egresadoId": 10,
+      "id": 11
+    },
+    {
+      "id": 12,
+      "egresadoId": 11,
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1
+    },
+    {
+      "id": 13,
+      "egresadoId": 12,
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1
+    },
+    {
+      "id": 14,
+      "egresadoId": 13,
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1
+    },
+    {
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1,
+      "egresadoId": 14,
+      "id": 15
+    },
+    {
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1,
+      "egresadoId": 15,
+      "id": 16
+    },
+    {
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1,
+      "egresadoId": 16,
+      "id": 17
+    },
+    {
+      "provincia": "Distrito Nacional",
+      "provinciaId": 1,
+      "egresadoId": 17,
+      "id": 17
     }
   ],
   "nacionalidad": [
@@ -1540,10 +1751,16 @@
       "id": 5
     },
     {
-      "habilidad": "Arquitectura de software",
-      "habilidadId": 26,
-      "egresadoId": 1,
+      "habilidad": "React",
+      "habilidadId": 14,
+      "egresadoId": 2,
       "id": 6
+    },
+    {
+      "habilidad": "Angular",
+      "habilidadId": 13,
+      "egresadoId": 3,
+      "id": 7
     }
   ],
   "habilidades": [
