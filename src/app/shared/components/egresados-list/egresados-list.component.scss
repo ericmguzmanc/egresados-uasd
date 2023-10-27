@@ -45,3 +45,14 @@
 .info-text-width {
   width: 100%;
 }
+@media (prefers-color-scheme: dark) {
+  .egresados-list-egresado-name {
+    color: #96989b;
+  }
+  .egresados-list-egresado-info{
+    color: #96989b;
+  }
+  .egresados-list-egresado-direccion{
+    color: #96989b;
+  }
+}
