@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Contacto, DireccionEgresado, Educacion, Egresado, EgresadosHabilidad, ExperienciaLaboral, Idioma } from '../interfaces/egresado.interface';
 import { Observable, map, switchMap } from 'rxjs';
 import { HelperService } from './helper.service';
 import { environment } from 'src/environments/environment';
+import { egresadosFilters } from '../interfaces/egresadosFilters.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,21 @@ export class EgresadosService {
     } else {
       return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
     }
+  }
+
+  filterEgresados(egresadosFilters: egresadosFilters, page?: number, q: any = undefined) {
+    const params = new HttpParams()
+    .set('destacados', egresadosFilters.destacados)
+    .set('rangoFechaInicio', egresadosFilters.rangoFechaInicio || null)
+    .set('rangoFechaFin', egresadosFilters.rangoFechaFin || null)
+    .set('habilidades', JSON.stringify(egresadosFilters.habilidades))
+    .set('provincias', JSON.stringify(egresadosFilters.provincias))
+    .set('tituloTipos', JSON.stringify(egresadosFilters.tituloTipos))
+    .set('dateRangeDisabled', egresadosFilters.dateRangeDisabled)
+    .set('q', q)
+    .set('page', page);
+
+    return this.http.get<Egresado[]>(`${this.EXPRESS_SERVER_URL}/egresados/filter`, { params: params });
   }
 
   addIdiomaEgresado(idioma: Idioma): Observable<Idioma> {

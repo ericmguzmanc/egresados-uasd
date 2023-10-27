@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button [strong]="true" (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+    <ion-title>Filtros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="filtrar()">Aplicar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="filtrosForm">
+    <!-- Grados entre -->
+    <h3>Graduados entre</h3>
+    <ion-item *ngIf="dateRangeEnabled">
+      <ion-label>Fecha de Inicio</ion-label>
+      <ion-datetime-button datetime="date-inicio"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime 
+            id="date-inicio" 
+            presentation="date"
+            locale="es-Es"
+            formControlName="rangoFechaInicio"
+            [max]="fechaEntradaMax"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-item *ngIf="dateRangeEnabled">
+      <ion-label>Fecha Fin</ion-label>
+      <ion-datetime-button datetime="date-fin"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime 
+            id="date-fin" 
+            presentation="date"
+            locale="es-ES"
+            formControlName="rangoFechaFin"
+            [min]="fechaSalidaMin"
+            [max]="fechaSalidaMax"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-item style="margin-top: 15px; margin-bottom: 25px;">
+      <ion-text class="muted">Sin rango de tiempo</ion-text>
+      <ion-checkbox slot="end" (ionChange)="toggleDateRange()" formControlName="dateRangeDisabled"></ion-checkbox>
+    </ion-item>
+
+    <!-- Con titulo de tipo -->
+    <h3>Con título de tipo</h3>
+    <ion-item>
+      <ionic-selectable 
+        placeholder="Seleccionar tipo"
+        closeButtonText="Cancelar"
+        item-content
+        [items]="tipoTitulo"
+        itemValueField="nivel"
+        itemTextField="nivel"
+        [isMultiple]="true"
+        [canSearch]="false"
+        formControlName="tituloTipos"
+        [canClear]="true"
+        clearButtonText="Limpiar"
+        >
+      </ionic-selectable>
+    </ion-item>
+  
+    <!-- Con Habilidades -->
+    <h3>Con Habilidades</h3>
+    <ion-item>
+      <ionic-selectable 
+        placeholder="Seleccionar habilidades"
+        closeButtonText="Cancelar"
+        item-content
+        [items]="habilidades"
+        itemValueField="habilidad"
+        itemTextField="habilidad"
+        [isMultiple]="true"
+        [canSearch]="true"
+        formControlName="habilidades"
+        [canClear]="true"
+        clearButtonText="Limpiar"
+        >
+      </ionic-selectable>
+    </ion-item>
+
+    <!-- Con Habilidade -->
+    <h3>Qué residan en</h3>
+    <ion-item>
+      <ionic-selectable 
+        placeholder="Seleccionar provincias"
+        closeButtonText="Cancelar"
+        item-content
+        [items]="provincias"
+        itemValueField="provincia"
+        itemTextField="provincia"
+        [isMultiple]="true"
+        [canSearch]="true"
+        formControlName="provincias"
+        [canClear]="true"
+        clearButtonText="Limpiar"
+        >
+      </ionic-selectable>
+    </ion-item>
+
+    <!-- Es destacado -->
+    <ion-item style="margin-top: 15px; margin-left: -8px;" *ngIf="!destacadosMode">
+      <h3>Usuarios Destacados</h3>
+      <!-- <ion-label>Usuarios Destacados</ion-label> -->
+      <ion-checkbox slot="end" formControlName="destacados"></ion-checkbox>
+    </ion-item>
+  </form>
+
+  <ion-grid style="margin-top: 10%; margin-bottom: 15px">
+    <ion-row class="ion-justify-content-center">
+      <ion-button
+        style="width: 100%;"
+        class="ion-text-wrap"
+        color="light"
+        (click)="clearFiltrosFormConfirmation()"
+      >
+        Limpiar filtros
+        <ion-icon name="refresh-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

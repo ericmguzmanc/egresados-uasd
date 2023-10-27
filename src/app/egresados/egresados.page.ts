@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal, ModalController } from '@ionic/angular';
-import { OverlayEventDetail } from '@ionic/core/components';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
-import  { LOADING_TIMEOUT } from 'src/app/shared/constants';
 import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
+import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
+import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-egresados',
@@ -12,15 +13,13 @@ import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
   styleUrls: ['./egresados.page.scss'],
 })
 export class EgresadosPage implements OnInit {
-  @ViewChild(IonModal) modal!: IonModal;
-  message =
-    'This modal example uses triggers to automatically open a modal when the button is clicked.';
   name: string = '';
   egresados: Egresado[] = [];
-  loading: boolean = true;
   pageNumber: number = 1;
   results: Egresado[];
+  loading: boolean = false;
   searchQuery: string;
+  egresadosFilters: egresadosFilters;
 
   constructor(
     private egresadosService: EgresadosService,
@@ -31,14 +30,24 @@ export class EgresadosPage implements OnInit {
     this.loadEgresados();
   }
 
-  loadEgresados() {
-    this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
-      .subscribe((egresados: Egresado[]) => {
-        this.egresados = [...this.egresados, ...egresados];
-        setTimeout(() => {
+  async loadEgresados() {
+    this.loading = true;
+
+    if (this.egresadosFilters && environment.production) {
+      console.log('Production Mode !!! 🚨');
+      this.applyFilters();
+    } else {
+      this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
+        .subscribe((egresados: Egresado[]) => {
+          if (this.searchQuery) {
+            this.egresados = [...egresados];
+          } else {
+            this.egresados = [...this.egresados, ...egresados];
+          }
+
           this.loading = false;
-        }, LOADING_TIMEOUT );
-      });
+        });
+    }
   }
 
   setPageNumber(page: number) {
@@ -50,13 +59,7 @@ export class EgresadosPage implements OnInit {
     const query = event.detail.value
     if (query) {
       this.searchQuery = query;
-      this.egresadosService.getEgresados(1, query)
-        .subscribe((egresados: Egresado[]) => {
-          this.egresados = [...egresados];
-          setTimeout(() => {
-            this.loading = false;
-          }, LOADING_TIMEOUT );
-        });
+      this.loadEgresados();
       
     } else {
       this.searchQuery = null;
@@ -87,18 +90,43 @@ export class EgresadosPage implements OnInit {
     } 
   }
 
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
+  async openEgresadosFiltersModal() {
+    const egresadosFiltersModal = await this.modalCtrl.create({
+      component: EgresadosFiltersComponent,
+      componentProps: {
+        egresadosFilters: this.egresadosFilters,
+        destacadosMode: false,
+      }
+    });
+
+    egresadosFiltersModal.present();
+
+    const { data, role } = await egresadosFiltersModal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.egresadosFilters = data;
+
+      if (this.egresadosFilters && environment.production) {
+        // Llamar la funcion de aplicar filtros
+        this.applyFilters();
+      } else {
+        this.loadEgresados();
+      }
+    }
   }
 
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
+  applyFilters(loading?: HTMLIonLoadingElement) {
+    if (this.egresadosFilters) {
+      this.egresadosService.filterEgresados(this.egresadosFilters, this.pageNumber, this.searchQuery)
+        .subscribe((egresados) => {
+          if (this.searchQuery) {
+            this.egresados = [...egresados];
+          } else {
+            this.egresados = [...this.egresados, ...egresados];
+          }
 
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
+          this.loading = false;
+        });
     }
   }
 }

@@ -1,14 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar color="primary">
     <ion-title size="large">Egresados</ion-title>
     <ion-buttons slot="primary">
-      <ion-button id="open-filtrado-modal">
+      <ion-button (click)="openEgresadosFiltersModal()">
         <ion-icon slot="end" name="filter"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-searchbar [debounce]="250" placeholder="Buscar Por Nombre" (ionInput)="handleSearchBarChange($event)"></ion-searchbar>
+  <ion-searchbar [debounce]="250" placeholder="Buscar" (ionInput)="handleSearchBarChange($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="md">
@@ -18,29 +18,12 @@
     </ion-toolbar>
   </ion-header>
   <app-loader [isLoading]="loading"></app-loader>
-  <app-egresados-list [egresados]="egresados" (pageNumber)="setPageNumber($event)" (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
-
-  <!-- Filrar Modal -->
-  <ion-modal trigger="open-filtrado-modal" (willDismiss)="onWillDismiss($event)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancelar</ion-button>
-          </ion-buttons>
-          <ion-title>Filtros</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Filtrar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <!-- Opciones de contenido: Más antiguas, más recientes, letras -->
-      <ion-content class="ion-padding">
-        <ion-text>
-          <h3>Aquí irán los filtros</h3>
-        </ion-text>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-  
+  <div class="row" *ngIf="!(egresados.length > 0)">
+    <div class="col">
+      <div class="text-center">
+          <ion-text style="text-align: center; display: block;" color="medium" >No hay resultados disponibles</ion-text>
+      </div>
+    </div>
+  </div>
+  <app-egresados-list *ngIf="egresados.length > 0" [egresados]="egresados" (pageNumber)="setPageNumber($event)" (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
 </ion-content>

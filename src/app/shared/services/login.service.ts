@@ -14,6 +14,6 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(credentials: LoginRequest): Observable<any> {
-    return this.http.post(`${this.EXPRESS_SERVER_URL}/auth/login`, {email: credentials.email, password:credentials.password });
+    return this.http.post(`${this.EXPRESS_SERVER_URL}/auth/login`, {email: credentials.email, password: credentials.password });
   }
 }
