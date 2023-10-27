@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
+@import "@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -26,7 +26,7 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .star {
-  color:  #f1dd38;
+  color: #f1dd38;
   font-size: 1.5rem;
 }
 
@@ -36,4 +36,12 @@
 
 .muted {
   color: gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode variables go here */
+    --ion-text-color:#9d9fa3;
+  }
+  
 }
