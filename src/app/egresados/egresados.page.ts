@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 export class EgresadosPage implements OnInit {
   name: string = '';
   egresados: Egresado[] = [];
+  lastEgresadosResponse: Egresado[] = [];
   pageNumber: number = 1;
   results: Egresado[];
   loading: boolean = false;
@@ -45,14 +46,17 @@ export class EgresadosPage implements OnInit {
             this.egresados = [...this.egresados, ...egresados];
           }
 
+          this.lastEgresadosResponse = egresados;
           this.loading = false;
         });
     }
   }
 
   setPageNumber(page: number) {
-    this.pageNumber = page;
-    this.loadEgresados();
+    if (this.lastEgresadosResponse.length > 0) {
+      this.pageNumber = page;
+      this.loadEgresados();
+    }
   }
 
   handleSearchBarChange(event: any) {
@@ -105,6 +109,8 @@ export class EgresadosPage implements OnInit {
 
     if (role === 'confirm') {
       this.egresadosFilters = data;
+      this.pageNumber = 1;
+      this.egresados = [];
 
       if (this.egresadosFilters && environment.production) {
         // Llamar la funcion de aplicar filtros
@@ -115,16 +121,17 @@ export class EgresadosPage implements OnInit {
     }
   }
 
-  applyFilters(loading?: HTMLIonLoadingElement) {
+  applyFilters() {
     if (this.egresadosFilters) {
       this.egresadosService.filterEgresados(this.egresadosFilters, this.pageNumber, this.searchQuery)
         .subscribe((egresados) => {
           if (this.searchQuery) {
             this.egresados = [...egresados];
           } else {
-            this.egresados = [...this.egresados, ...egresados];
+            this.egresados = [...egresados];
           }
 
+          this.lastEgresadosResponse = egresados;
           this.loading = false;
         });
     }

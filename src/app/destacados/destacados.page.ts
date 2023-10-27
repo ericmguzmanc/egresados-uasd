@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DestacadosPage implements OnInit {
   egresados: Egresado[] = [];
+  lastEgresadosResponse: Egresado[] = [];
   loading: boolean = true;
   pageNumber: number = 1;
   searchQuery: string;
@@ -46,14 +47,17 @@ export class DestacadosPage implements OnInit {
             this.egresados = [...this.egresados, ...destacados];
           }
 
+          this.lastEgresadosResponse = egresados;
           this.loading = false;
         });
     }
   }
 
   setPageNumber(page: number) {
-    this.pageNumber = page;
-    this.loadEgresados();
+    if (this.lastEgresadosResponse.length > 0) {
+      this.pageNumber = page;
+      this.loadEgresados();
+    }
   }
 
   async openEgresadoDetailsModal(egresadoId: number) {
@@ -92,7 +96,9 @@ export class DestacadosPage implements OnInit {
 
     if (role === 'confirm') {
       this.egresadosFilters = data;
-
+      this.pageNumber = 1;
+      this.egresados = [];
+      
       if (this.egresadosFilters && environment.production) {
         // Llamar la funcion de aplicar filtros
         this.applyFilters();
@@ -126,6 +132,7 @@ export class DestacadosPage implements OnInit {
             this.egresados = [...egresados];
           }
 
+          this.lastEgresadosResponse = egresados;
           this.loading = false;
         });
     }
