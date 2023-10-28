@@ -2,9 +2,10 @@
 
 export interface Egresado {
   id?: number;
-  Nombre?: string;
-  ApellidoPaterno?: string;
-  ApellidoMaterno?: string;
+  PrimerNombre?: string;
+  SegundoNombre?: string;
+  PrimerApellido?: string;
+  SegundoApellido?: string;
   Cedula?: string;
   Pasaporte?: string;
   Genero?: string;

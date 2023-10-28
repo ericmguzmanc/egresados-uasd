@@ -28,7 +28,7 @@
       <ion-row class="ion-justify-content-center padding-top-15 info-text-color" style="flex-direction: column;">
         <ion-row class="ion-justify-content-center">
           <ion-text class="profile-name">
-            {{egresado.Nombre}} {{egresado.ApellidoPaterno}} {{egresado.ApellidoMaterno}}
+            {{egresado.PrimerNombre}} {{egresado.SegundoNombre}} {{egresado.PrimerApellido}} {{egresado.SegundoApellido}}
           </ion-text>
         </ion-row>
         <ion-row class="ion-justify-content-center">
@@ -77,7 +77,7 @@
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
             <ion-icon name="trophy" class="destacado-color"></ion-icon>
-            <span style="padding-left: 5px;">{{egresado.Nombre}} es destacado</span>
+            <span style="padding-left: 5px;">{{egresado.PrimerNombre}} es destacado</span>
           </div>
         </ion-card-title>
       </ion-card-header>
@@ -90,7 +90,7 @@
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
             <ion-icon name="information-circle-outline"></ion-icon>
-            <span style="padding-left: 5px;">Sobre {{egresado.Nombre}}</span>
+            <span style="padding-left: 5px;">Sobre {{egresado.PrimerNombre}}</span>
           </div>
         </ion-card-title>
       </ion-card-header>

@@ -45,9 +45,10 @@ export class EgresadoEditPage implements OnInit {
   maxLenght: number = ABOUTLENGHT;
 
   egresadoForm: FormGroup = this.fb.group({
-    Nombre: ['', [Validators.required, Validators.maxLength(100)]],
-    ApellidoPaterno: ['', [Validators.required, Validators.maxLength(100)]],
-    ApellidoMaterno: ['', [Validators.maxLength(100)]],
+    PrimerNombre: ['', [Validators.required, Validators.maxLength(100)]],
+    SegundoNombre: ['', [ Validators.maxLength(100)]],
+    PrimerApellido: ['', [Validators.required, Validators.maxLength(100)]],
+    SegundoApellido: ['', [Validators.maxLength(100)]],
     Cedula: ['', [Validators.required, Validators.maxLength(11)]],
     Pasaporte: [''],
     Genero: [''],
@@ -129,12 +130,13 @@ export class EgresadoEditPage implements OnInit {
   }
 
   loadEgresadoForm(): void {
-    if (this.egresado.Nombre) {
-      const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Pasaporte, Genero, FechaNac, about, direccionEgresado, profilePicUrl } = this.egresado
+    if (this.egresado.PrimerNombre) {
+      const { PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Cedula, Pasaporte, Genero, FechaNac, about, direccionEgresado, profilePicUrl } = this.egresado;
       this.egresadoForm.patchValue({
-        Nombre,
-        ApellidoPaterno,
-        ApellidoMaterno,
+        PrimerNombre,
+        SegundoNombre,
+        PrimerApellido,
+        SegundoApellido,
         Cedula,
         Pasaporte,
         Genero,
@@ -453,19 +455,20 @@ export class EgresadoEditPage implements OnInit {
   }
 
   buildEgresadoUpdateObject() {
-    const { Nombre, ApellidoPaterno, ApellidoMaterno, Cedula, Genero, FechaNac, Pasaporte, about, profilePicUrl} = this.egresadoForm.value
+    const { PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Cedula, Genero, FechaNac, Pasaporte, about, profilePicUrl} = this.egresadoForm.value;
     return {
       id: this.egresado.id,
-      Nombre, 
-      ApellidoPaterno,
-      ApellidoMaterno,
+      PrimerNombre, 
+      SegundoNombre,
+      PrimerApellido,
+      SegundoApellido,
       Cedula,
       Genero,
       FechaNac,
       Pasaporte,
       about,
       profilePicUrl
-    }
+    };
   }
 
   async onCancelClick() {
