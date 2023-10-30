@@ -2,18 +2,27 @@
   "usuario": [
     {
       "id": 1,
+      "email": " admin@admin.com",
+      "password": "admin",
+      "username ": "admin",
+      "rol": "admin"
+    },	
+    {
+      "id": 2,
       "email": "example1@example.com",
       "password": "password1",
       "username ": "user1",
       "egresadoId": 1,
-      "token": "valid1"
+      "token": "valid1",
+      "rol": "usuario"
     },
     {
-      "id": 2,
+      "id": 3,
       "email": "example2@example.com",
       "password": "password2",
       "username ": "user2",
-      "egresadoId": 2
+      "egresadoId": 2,
+      "rol": "usuario"
     }
   ],
   "egresado": [
