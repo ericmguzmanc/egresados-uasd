@@ -2,6 +2,13 @@
   "usuario": [
     {
       "id": 1,
+      "email": " admin@admin.com",
+      "password": "admin",
+      "username ": "admin",
+      "rol": "admin"
+    },	
+    {
+      "id": 2,
       "email": "example1@example.com",
       "password": "password1",
       "username": "user1",
@@ -9,7 +16,7 @@
       "roleId": 1
     },
     {
-      "id": 2,
+      "id": 3,
       "email": "example2@example.com",
       "password": "password2",
       "username": "user2",
