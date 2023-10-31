@@ -14,6 +14,7 @@ export interface Egresado {
   about?: string;
   destacado?: boolean;
   descripcionDestacado?: string;
+  Activo?: boolean;
   // Nacionalidad
   nacionalidadEgresado?: Nacionalidad[];
   idiomaEgresado?: Idioma[];

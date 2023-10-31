@@ -25,8 +25,7 @@ export class ConfiguracionPage {
   ) { }
 
   async ionViewWillEnter() {
-    const loggedInUser = await this.storage.get('loggedInUserId')
-    console.log('from storage ', loggedInUser );
+    const loggedInUser = await this.storage.get('loggedInUserId');
 
     this.loggedUserId = loggedInUser;
     if (loggedInUser) {
@@ -34,6 +33,8 @@ export class ConfiguracionPage {
         .subscribe((usuario: Usuario) => {
           this.usuario = usuario;
           console.log('🚀 ~ file: configuracion.page.ts:25 ~ ConfiguracionPage ~ .subscribe ~ usuario:', usuario);
+          this.authService.setLoggedUserRole(usuario.rolUsuario[0]);
+          this.storage.set('loggedUserRole', usuario.rolUsuario[0]);
         }); 
     } else {
       this.router.navigate(['/tabs/login']);
@@ -53,7 +54,8 @@ export class ConfiguracionPage {
   }
 
   async logout() {
-    await this.storage.remove('loggedInUserId');
+    this.authService.setLoggedUserRole(null);
+    await this.storage.clear();
     this.router.navigate(['/tabs/egresados']);
   }
 }

@@ -50,10 +50,8 @@ export class LoginPage implements OnInit {
       loading.present();
 
       this.authService.login(this.loginForm.value as LoginRequest).subscribe((response: any) => {
-        console.log('🚀 ~ file: login.page.ts:53 ~ LoginPage ~ this.authService.login ~ response:', response)
         if (response) {
           const { userId, token } = response;
-          console.log('🚀 ~ file: login.page.ts:55 ~ LoginPage ~ this.authService.login ~ response:', response)
           let date = new Date();
           date.setMinutes(date.getMinutes() + EXPCOOKIE);
           this.cookieService.set('token', token, date);

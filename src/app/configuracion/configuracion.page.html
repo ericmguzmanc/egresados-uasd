@@ -28,7 +28,7 @@
         </ion-grid>
       </div>
 
-      <ion-button expand="block" color="light" (click)="goToEgresadoEdit()" *ngIf="isAdminUser()">
+      <ion-button expand="block" color="light" (click)="goToEgresadoEdit()" *ngIf="!isAdminUser()">
         Editar Perfil
         <ion-icon name="create-outline" slot="end"></ion-icon>
       </ion-button>

@@ -10,8 +10,6 @@ export const loginGuard = async () => {
   const token = cookieService.get('token');
   const loggedInUserId = await storage.get('loggedInUserId');
   
-  console.log('🚀 ~ file: login.guard.ts:13 ~ loginGuard ~ loggedInUserId:', loggedInUserId)
-
   if (token && loggedInUserId) {
     return true;
   } else {
