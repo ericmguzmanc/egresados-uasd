@@ -15,6 +15,7 @@ import { tokentAuth } from './shared/interceptor/auth.interceptor';
 
 import localEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { IonicStorageModule } from '@ionic/storage-angular';
 registerLocaleData(localEs, 'es');
 
 @NgModule({
@@ -26,6 +27,7 @@ registerLocaleData(localEs, 'es');
     HttpClientModule,
     ReactiveFormsModule,
     LoaderComponentModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: spinnerInterceptor, multi: true },

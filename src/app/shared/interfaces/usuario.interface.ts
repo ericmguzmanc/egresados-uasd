@@ -4,5 +4,12 @@ export interface Usuario {
   password: string;
   username: string;
   egresadoId: number;
-  token: string;
+  roleId: number;
+  rolUsuario: RolUsuario[]
+}
+
+export interface RolUsuario {
+  usuarioId: number;
+  roleId: number;
+  rol: string;
 }

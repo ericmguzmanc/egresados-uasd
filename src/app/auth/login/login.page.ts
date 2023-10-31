@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { EXPCOOKIE } from 'src/app/shared/constants';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,11 @@ export class LoginPage implements OnInit {
 
   constructor(
     private location: Location,
-    private loginService: LoginService,
+    private authService: AuthService,
     private router: Router,
     private loadingController: LoadingController,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private storageService: StorageService,
   ) {}
 
   ngOnInit() {}
@@ -46,25 +48,25 @@ export class LoginPage implements OnInit {
       });
 
       loading.present();
-      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: (response: any) => {
+
+      this.authService.login(this.loginForm.value as LoginRequest).subscribe((response: any) => {
+        console.log('🚀 ~ file: login.page.ts:53 ~ LoginPage ~ this.authService.login ~ response:', response)
+        if (response) {
           const { userId, token } = response;
+          console.log('🚀 ~ file: login.page.ts:55 ~ LoginPage ~ this.authService.login ~ response:', response)
           let date = new Date();
           date.setMinutes(date.getMinutes() + EXPCOOKIE);
           this.cookieService.set('token', token, date);
-          if (userId) {
-            this.router.navigate(['/egresado-edit/', userId]);
-          }
-        },
-        error: (err) => {
-          console.error(err);
-        },
-        complete: () => {
+    
+          this.storageService.set('loggedInUserId', userId)
+    
+          this.router.navigate(['/tabs/cuenta']);
           console.info('complete');
-          loading.dismiss();
           this.disableButton = false;
           this.loginForm.reset();
-        },
+        }
+
+        loading.dismiss();
       });
       
     } else {

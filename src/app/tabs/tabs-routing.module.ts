@@ -19,11 +19,12 @@ const routes: Routes = [
         loadChildren: () => import('../destacados/destacados.module').then( m => m.DestacadosPageModule)
       },
       {
-        path: 'configuracion',
-        loadChildren: () =>
-          import('../configuracion/configuracion.module').then(
-            (m) => m.ConfiguracionPageModule
-          ),
+        path: 'cuenta',
+        loadChildren: () => import('../configuracion/configuracion.module').then((m) => m.ConfiguracionPageModule),
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('../auth/login/login.module').then((m) => m.LoginPageModule),
       },
       {
         path: '',
