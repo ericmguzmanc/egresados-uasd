@@ -2,10 +2,10 @@
   "usuario": [
     {
       "id": 1,
-      "email": " admin@admin.com",
+      "email": "admin@admin.com",
       "password": "admin",
       "username ": "admin",
-      "rol": "admin"
+      "roleId": 2
     },	
     {
       "id": 2,
@@ -26,12 +26,20 @@
   ],
   "rolUsuario": [
     {
-      "usuarioId": 1,
+      "id": 1,
+      "usuarioId": 2,
       "roleId": 1,
       "rol": "EGRESADO"
     },
     {
-      "usuarioId": 2,
+      "id": 2,
+      "usuarioId": 3,
+      "roleId": 2,
+      "rol": "ADMINISTRADOR"
+    },
+    {
+      "id": 3,
+      "usuarioId": 1,
       "roleId": 2,
       "rol": "ADMINISTRADOR"
     }
@@ -57,6 +65,7 @@
       "Pasaporte": "RD588392",
       "FechaNac": "1997-06-21",
       "Genero": "Masculino",
+      "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662560/egresados-uasd/profilePics/egresado-id-1.jpg",
       "about": "Soy un desarrollador web con más de 5 años de experiencia, apasionado por crear aplicaciones y sitios web interactivos. Me encanta aprender nuevas tecnologías y trabajar en proyectos desafiantes. Siempre estoy buscando formas de mejorar mis habilidades y crear experiencias digitales únicas.",
       "destacado": true,
@@ -72,6 +81,7 @@
       "Pasaporte": null,
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
+      "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662098/egresados-uasd/profilePics/egresado-id-2.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
       "destacado": true
@@ -86,6 +96,7 @@
       "Pasaporte": null,
       "FechaNac": "1999-02-05",
       "Genero": "Femenino",
+      "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662119/egresados-uasd/profilePics/egresado-id-3.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
@@ -100,6 +111,7 @@
       "FechaNac": "1998-02-11",
       "Genero": "Femenino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -112,6 +124,7 @@
       "Pasaporte": "RD77894",
       "FechaNac": "1999-04-22",
       "Genero": "Masculino",
+      "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697658989/egresados-uasd/profilePics/egresado-id-5.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
@@ -126,6 +139,7 @@
       "FechaNac": "1994-06-01",
       "Genero": "Femenino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -139,6 +153,7 @@
       "FechaNac": "19973-02-28",
       "Genero": "Femenino",
       "profilePicUrl": null,
+      "Activo": false,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -152,6 +167,7 @@
       "FechaNac": "1997-07-27",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": false,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -165,6 +181,7 @@
       "FechaNac": "1993-06-16",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": false,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -178,6 +195,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -191,6 +209,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -204,6 +223,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -217,6 +237,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -243,6 +264,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -256,6 +278,7 @@
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
       "profilePicUrl": null,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -268,6 +291,7 @@
       "Pasaporte": "RD55983",
       "FechaNac": "1999-09-09",
       "Genero": "Masculino",
+      "Activo": true,
       "profilePicUrl": null,
       "about": ""
     }

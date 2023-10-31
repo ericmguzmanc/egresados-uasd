@@ -11,6 +11,11 @@
       <ion-label>Destacados</ion-label>
     </ion-tab-button>
 
+    <ion-tab-button *ngIf="userIsAdmin" tab="candidatos-destacados" href="/tabs/candidatos-destacados">
+      <ion-icon aria-hidden="true" name="sparkles"></ion-icon>
+      <ion-label>Candidatos</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button tab="cuenta" href="/tabs/cuenta">
       <ion-icon aria-hidden="true" name="person-circle-outline"></ion-icon>
       <ion-label>Cuenta</ion-label>

@@ -63,6 +63,39 @@
             </ion-text>
           </ion-row>
         </ion-row>
+        <ion-row style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-10">
+          <ion-row class="ion-justify-content-between" style="min-width: 170px;">
+            <ion-button expand="block" color="light" *ngIf="egresado.Activo">
+              Desactivar Perfil
+              <ion-icon name="eye-off-outline" slot="end"></ion-icon>
+            </ion-button>
+            <ion-button expand="block" color="light" *ngIf="!egresado.Activo">
+              Activar Perfil
+              <ion-icon name="eye-outline" slot="end"></ion-icon>
+            </ion-button>
+            <!-- <ion-text>
+              <span class="info-text-color egresados-list-egresado-direccion">
+                {{this.helperService.getAge(this.egresado.FechaNac)}} años
+              </span>
+            </ion-text>
+            <ion-text class="egresados-list-egresado-direccion info-text-width" *ngFor="let direccion of egresado.direccionEgresado">
+              <ion-row class="ion-align-items-center">
+                <ion-icon name="location-sharp"></ion-icon>
+                <span *ngIf="direccion">
+                  {{direccion.provincia}}
+                </span>
+              </ion-row>
+            </ion-text> -->
+            <!-- <ion-text class="egresados-list-egresado-direccion info-text-width" *ngIf="egresado.direccionEgresado && egresado.direccionEgresado.length === 0">
+              <ion-row class="ion-align-items-center">
+                <ion-icon name="location-sharp"></ion-icon>
+                <span>
+                 Sin especificar
+                </span>
+              </ion-row>
+            </ion-text> -->
+          </ion-row>
+        </ion-row>
         <ion-row *ngIf="egresado.destacado" style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-15">
           <ion-text class="star">
             <ion-icon name="star"></ion-icon>

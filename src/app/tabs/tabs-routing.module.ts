@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import('../destacados/destacados.module').then( m => m.DestacadosPageModule)
       },
       {
+        path: 'candidatos-destacados',
+        loadChildren: () => import('../candidatos-destacados/candidatos-destacados.module').then( m => m.CandidatosDestacadosModule)
+      },
+      {
         path: 'cuenta',
         loadChildren: () => import('../configuracion/configuracion.module').then((m) => m.ConfiguracionPageModule),
       },

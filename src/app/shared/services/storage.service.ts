@@ -6,30 +6,27 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 export class StorageService {
-  private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) {
-    this.init();
-  }
-
-  async init() {
-    // If using, define drivers here: await this.storage.defineDriver(/*...*/);
-    const storage = await this.storage.create();
-    this._storage = storage;
+  constructor(private _storage: Storage) {
+    this._storage.create();
   }
 
   // Create and expose methods that users of this service can
   // call, for example:
   public set(key: string, value: any) {
-    console.log('🚀 ~ file: storage.service.ts:24 ~ StorageService ~ set ~ key:', key)
     this._storage?.set(key, value);
   }
 
-  public async get(key: string) {
-    return await this._storage?.get(key);
+  public async get(key: string): Promise<any> {
+    const data = await this._storage?.get(key);
+    return data;
   }
 
-  public async remove(key: string) {
-    return await this._storage.remove(key);
+  public async remove(key: string): Promise<void>{
+    await this._storage?.remove(key);
+  }
+
+  public async clear(): Promise<void>{
+    await this._storage?.clear();
   }
 } 
