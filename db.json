@@ -11,18 +11,39 @@
       "id": 2,
       "email": "example1@example.com",
       "password": "password1",
-      "username ": "user1",
+      "username": "user1",
       "egresadoId": 1,
-      "token": "valid1",
-      "rol": "usuario"
+      "roleId": 1
     },
     {
       "id": 3,
       "email": "example2@example.com",
       "password": "password2",
-      "username ": "user2",
+      "username": "user2",
       "egresadoId": 2,
-      "rol": "usuario"
+      "roleId": 2
+    }
+  ],
+  "rolUsuario": [
+    {
+      "usuarioId": 1,
+      "roleId": 1,
+      "rol": "EGRESADO"
+    },
+    {
+      "usuarioId": 2,
+      "roleId": 2,
+      "rol": "ADMINISTRADOR"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "rol": "EGRESADO"
+    },
+    {
+      "id": 2,
+      "rol": "ADMINISTRADOR"
     }
   ],
   "egresado": [
@@ -162,7 +183,7 @@
     {
       "id": 11,
       "PrimerNombre": "Daniel",
-      "SegundoNombre":"",
+      "SegundoNombre": "",
       "SegundoApellido": "Gutiérrez",
       "PrimerApellido": "Ferreiras",
       "Cedula": "40238819382",

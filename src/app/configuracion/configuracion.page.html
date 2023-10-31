@@ -1,29 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Configuración</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense" mode="md">
-    <ion-toolbar>
-      <ion-title size="large">Configuración</ion-title>
+<ng-container>
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-title>Cuenta</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item href="/login">
-      <ion-label> ¿Eres estudiante?, Actualiza tu perfil </ion-label>
-      <ion-icon slot="end" name="person"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Acerca de Egresados-UASD App</ion-label>
-      <ion-icon name="information-circle"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Créditos</ion-label>
-      <ion-icon name="sparkles"></ion-icon>
-    </ion-item>
-  </ion-list>
+  <ion-content [fullscreen]="true">
+      <ion-header collapse="condense" mode="md">
+        <ion-toolbar>
+          <ion-title size="large">Configuración</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
 
-</ion-content>
+      <div style="min-height: 30%;">
+        <ion-grid style="height: 100%;">
+          <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+            <h4 *ngIf="usuario">
+              {{usuario.email}}
+            </h4>
+          </ion-row>
+          <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+            <ion-text *ngIf="usuario">
+              {{getRole()}}
+            </ion-text>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-button expand="block" color="light" (click)="goToEgresadoEdit()" *ngIf="isAdminUser()">
+        Editar Perfil
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button expand="block" color="danger" style="margin-top: 10px;" (click)="logout()">
+        Salir de la Sesión
+        <ion-icon name="exit-outline" slot="end"></ion-icon>
+      </ion-button>
+  </ion-content>
+</ng-container>

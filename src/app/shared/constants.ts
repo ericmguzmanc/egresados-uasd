@@ -29,3 +29,8 @@ export const TIPO_TITULO = [
     nivel: NivelCarrera.Doctorado
   }
 ];
+
+export enum ROLES {
+  EGRESADO = "EGRESADO",
+  ADMINISTRADOR = "ADMINISTRADOR"
+}

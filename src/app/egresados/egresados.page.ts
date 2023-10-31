@@ -28,12 +28,11 @@ export class EgresadosPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loading = true;
     this.loadEgresados();
   }
 
   async loadEgresados() {
-    this.loading = true;
-
     if (this.egresadosFilters && environment.production) {
       console.log('Production Mode !!! 🚨');
       this.applyFilters();
