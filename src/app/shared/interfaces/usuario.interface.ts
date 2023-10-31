@@ -5,4 +5,5 @@ export interface Usuario {
   username: string;
   egresadoId: number;
   token: string;
+  rol: string;
 }
