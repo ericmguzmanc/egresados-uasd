@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
-import { ROLES } from '../shared/constants';
 import { StorageService } from '../shared/services/storage.service';
-import { RolUsuario } from '../shared/interfaces/usuario.interface';
+import { HelperService } from '../shared/services/helper.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-tabs',
@@ -13,29 +13,31 @@ export class TabsPage implements OnInit {
 
   userIsAdmin: boolean = false;
 
-  constructor(private storage: StorageService, private authService: AuthService) {}
+  constructor(
+    private storage: StorageService, 
+    private authService: AuthService,
+    private helperService: HelperService,
+    private cookieService: CookieService,
+  ) {}
 
   async ngOnInit() {
     console.log('in tabs')
 
-    const loggedUserRole = await this.storage.get('loggedUserRole'); 
-    if (loggedUserRole) {
-      this.setUserIsAdmin(loggedUserRole);
+    if (this.cookieService.get('token')) {
+      const loggedUserRole = await this.storage.get('loggedUserRole'); 
+      if (loggedUserRole) {
+        this.authService.setLoggedUserRole(loggedUserRole);
+        this.userIsAdmin = this.helperService.isUserAdmin(loggedUserRole);
+      }
+    } else {
+     this.storage.clear();
     }
+
     // Se dispara cada vez que el subject cambie su valor.
     this.authService.loggedUserRole
       .subscribe((rolUsuario) => {
-        this.setUserIsAdmin(rolUsuario);
+        this.userIsAdmin = this.helperService.isUserAdmin(rolUsuario);
       });
-  }
-
-  setUserIsAdmin(rolUsuario: RolUsuario) {
-    if (rolUsuario) {
-      console.log('🚀 ~ SUBJECT -> TabsPage ~ .subscribe ~ rol:', rolUsuario.rol);
-      this.userIsAdmin = rolUsuario.rol === ROLES.ADMINISTRADOR;
-    } else {
-      this.userIsAdmin = false;
-    }
   }
 
 }

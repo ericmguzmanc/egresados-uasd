@@ -6,6 +6,8 @@ import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
 import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
 import { environment } from 'src/environments/environment';
+import { StorageService } from '../shared/services/storage.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-egresados',
@@ -90,6 +92,9 @@ export class EgresadosPage implements OnInit {
     
     if (role === 'confirm') {
       console.log('✨ Modal egresadoDetail closed. ->', data);
+      if (data) {
+        this.applyEgresadoDetailsChange(data);
+      }
     } 
   }
 
@@ -134,5 +139,16 @@ export class EgresadosPage implements OnInit {
           this.loading = false;
         });
     }
+  }
+
+  applyEgresadoDetailsChange(updatedEgresado: Egresado) {
+    this.egresados = this.egresados.map((egresado) => {
+
+      if (egresado.id === updatedEgresado.id) {
+        egresado = updatedEgresado;
+      }
+
+      return egresado
+    });
   }
 }

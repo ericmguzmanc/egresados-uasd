@@ -6,7 +6,7 @@
       "password": "admin",
       "username ": "admin",
       "roleId": 2
-    },	
+    },
     {
       "id": 2,
       "email": "example1@example.com",
@@ -82,7 +82,7 @@
       "FechaNac": "1996-08-23",
       "Genero": "Masculino",
       "Activo": true,
-      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662098/egresados-uasd/profilePics/egresado-id-2.jpg",
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1698886157/egresados-uasd/profilePics/egresado-id-2.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
       "destacado": true
     },
@@ -111,7 +111,7 @@
       "FechaNac": "1998-02-11",
       "Genero": "Femenino",
       "profilePicUrl": null,
-      "Activo": true,
+      "Activo": false,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -153,7 +153,7 @@
       "FechaNac": "19973-02-28",
       "Genero": "Femenino",
       "profilePicUrl": null,
-      "Activo": false,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -167,7 +167,7 @@
       "FechaNac": "1997-07-27",
       "Genero": "Masculino",
       "profilePicUrl": null,
-      "Activo": false,
+      "Activo": true,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
     {
@@ -1420,7 +1420,7 @@
     {
       "id": 2,
       "egresadoId": 2,
-      "provincia": "Barahona",
+      "provincia": "Bahoruco",
       "provinciaId": 2
     },
     {

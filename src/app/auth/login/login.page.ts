@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/shared/interfaces/loginRequest.interface';
@@ -16,6 +16,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class LoginPage implements OnInit {
   disableButton = false;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
@@ -28,6 +29,7 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private cookieService: CookieService,
     private storageService: StorageService,
+    private toastCtrl: ToastController,
   ) {}
 
   ngOnInit() {}
@@ -49,20 +51,34 @@ export class LoginPage implements OnInit {
 
       loading.present();
 
-      this.authService.login(this.loginForm.value as LoginRequest).subscribe((response: any) => {
-        if (response) {
-          const { userId, token } = response;
-          let date = new Date();
-          date.setMinutes(date.getMinutes() + EXPCOOKIE);
-          this.cookieService.set('token', token, date);
+      this.authService.login(this.loginForm.value as LoginRequest)
+        .subscribe((response: any) => {
+          if (response) {
+            const { userId, token } = response;
+            let date = new Date();
+            date.setMinutes(date.getMinutes() + EXPCOOKIE);
+            this.cookieService.set('token', token, date);
+      
+            this.storageService.set('loggedInUserId', userId)
+      
+            this.router.navigate(['/tabs/cuenta']);
+            console.info('complete');
+            this.disableButton = false;
+            this.loginForm.reset();
+          }
+
+        loading.dismiss();
+      }, 
+      async (e) => {
+        console.log('🚀 ~ file: login.page.ts:72 ~ LoginPage ~ login ~ error:', e);
+        this.disableButton = false;
+        const toast = await this.toastCtrl.create({
+          message: `${e.error.message}`,
+          duration: 1500,
+          position: 'top',
+        });
     
-          this.storageService.set('loggedInUserId', userId)
-    
-          this.router.navigate(['/tabs/cuenta']);
-          console.info('complete');
-          this.disableButton = false;
-          this.loginForm.reset();
-        }
+        await toast.present();
 
         loading.dismiss();
       });
@@ -73,8 +89,6 @@ export class LoginPage implements OnInit {
     }
     
   }
-
-  async showLoading() {}
 
   onBackButtonClick(): void {
     this.location.go('/');

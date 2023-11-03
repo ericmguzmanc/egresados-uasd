@@ -63,13 +63,18 @@
             </ion-text>
           </ion-row>
         </ion-row>
-        <ion-row style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-10">
+        <ion-row *ngIf="userIsAdmin" style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-10">
+          <ion-row *ngIf="!egresado.Activo" style="width: 80%;" class="ion-justify-content-center ion-align-items-center padding-top-10 padding-bottom-10">
+              <p style="color: #CE5A67">
+                Este egresado se encuentra desactivado, no será visible en la listas de egresado.
+              </p>
+          </ion-row>
           <ion-row class="ion-justify-content-between" style="min-width: 170px;">
-            <ion-button expand="block" color="light" *ngIf="egresado.Activo">
+            <ion-button expand="block" color="light" *ngIf="egresado.Activo" (click)="setEgresadoStatus(false)">
               Desactivar Perfil
               <ion-icon name="eye-off-outline" slot="end"></ion-icon>
             </ion-button>
-            <ion-button expand="block" color="light" *ngIf="!egresado.Activo">
+            <ion-button expand="block" color="light" *ngIf="!egresado.Activo" (click)="setEgresadoStatus(true)">
               Activar Perfil
               <ion-icon name="eye-outline" slot="end"></ion-icon>
             </ion-button>
