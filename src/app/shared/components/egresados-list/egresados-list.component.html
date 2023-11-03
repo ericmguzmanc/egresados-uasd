@@ -1,60 +1,61 @@
 <ion-content>
   <ng-container *ngIf="egresados">
     <ion-list>
-      <ion-item button (click)="onEgresadoClick(egresado.id)"
-        *ngFor="let egresado of egresados">
-        <ion-grid class="egresados-list-item">
-          <ion-row class="ion-justify-content-between">
-            <ion-col size="3" class="egresados-list-avatar-img">
-              <ion-thumbnail>
-                <ion-img
-                  class="avatar-img"
-                  src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}">
-                </ion-img>
-              </ion-thumbnail>
-            </ion-col>
-            <ion-col size="7" style="min-height: 86px;">
-              <ion-row class="ion-align-items-center" style="height:100%;">
-                <ion-text class="egresados-list-egresado-name info-text-width">
-                 {{egresado.PrimerNombre}} {{egresado.SegundoNombre}} {{ egresado.PrimerApellido }}
-                  {{ egresado.SegundoApellido }}
-                </ion-text>
-                <br>
-                <ion-text class="egresados-list-egresado-info info-text-width">
-                  {{ this.helperService.getLatestPosition(egresado) }} 
+      <ng-container *ngFor="let egresado of egresados">
+        <ion-item *ngIf="(isUserAdmin && !egresado.Activo) || egresado.Activo" [ngClass]="{'status-opacity': !egresado.Activo}" button (click)="onEgresadoClick(egresado.id)">
+          <ion-grid class="egresados-list-item">
+            <ion-row class="ion-justify-content-between">
+              <ion-col size="3" class="egresados-list-avatar-img">
+                <ion-thumbnail>
+                  <ion-img
+                    class="avatar-img"
+                    src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}">
+                  </ion-img>
+                </ion-thumbnail>
+              </ion-col>
+              <ion-col size="7" style="min-height: 86px;">
+                <ion-row class="ion-align-items-center" style="height:100%;">
+                  <ion-text class="egresados-list-egresado-name info-text-width">
+                  {{egresado.PrimerNombre}} {{egresado.SegundoNombre}} {{ egresado.PrimerApellido }}
+                    {{ egresado.SegundoApellido }}
+                  </ion-text>
                   <br>
-                  {{ this.helperService.getLatestEmpresa(egresado) }}
-                </ion-text>
-                <br>
-                <div class="egresados-list-info-divider"></div>
-                <ion-text class="egresados-list-egresado-direccion info-text-width" *ngFor="let direccion of egresado.direccionEgresado">
-                  <ion-row class="ion-align-items-center">
-                    <ion-icon name="location-sharp"></ion-icon>
-                    <span *ngIf="direccion">
-                      {{direccion.provincia}}
-                    </span>
-                  </ion-row>
-                </ion-text>
-                <ion-text class="egresados-list-egresado-direccion info-text-width" *ngIf="egresado.direccionEgresado && egresado.direccionEgresado.length === 0">
-                  <ion-row class="ion-align-items-center">
-                    <ion-icon name="location-sharp"></ion-icon>
-                    <span>
-                     Sin especificar
-                    </span>
-                  </ion-row>
-                </ion-text>
-              </ion-row>
-            </ion-col>
-            <ion-col size="2" class="ion-align-items-center">
-              <ion-row style="height: 100%;" class="ion-align-items-center ion-justify-content-center">
-                <ion-text *ngIf="egresado.destacado" class="star">
-                  <ion-icon name="star"></ion-icon>
-                </ion-text>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+                  <ion-text class="egresados-list-egresado-info info-text-width">
+                    {{ this.helperService.getLatestPosition(egresado) }} 
+                    <br>
+                    {{ this.helperService.getLatestEmpresa(egresado) }}
+                  </ion-text>
+                  <br>
+                  <div class="egresados-list-info-divider"></div>
+                  <ion-text class="egresados-list-egresado-direccion info-text-width" *ngFor="let direccion of egresado.direccionEgresado">
+                    <ion-row class="ion-align-items-center">
+                      <ion-icon name="location-sharp"></ion-icon>
+                      <span *ngIf="direccion">
+                        {{direccion.provincia}}
+                      </span>
+                    </ion-row>
+                  </ion-text>
+                  <ion-text class="egresados-list-egresado-direccion info-text-width" *ngIf="egresado.direccionEgresado && egresado.direccionEgresado.length === 0">
+                    <ion-row class="ion-align-items-center">
+                      <ion-icon name="location-sharp"></ion-icon>
+                      <span>
+                      Sin especificar
+                      </span>
+                    </ion-row>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+              <ion-col size="2" class="ion-align-items-center">
+                <ion-row style="height: 100%;" class="ion-align-items-center ion-justify-content-center">
+                  <ion-text *ngIf="egresado.destacado" class="star">
+                    <ion-icon name="star"></ion-icon>
+                  </ion-text>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ng-container>
     </ion-list>
   </ng-container>
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">

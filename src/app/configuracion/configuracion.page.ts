@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
-import { LoadingController } from '@ionic/angular';
-import { RolUsuario, Usuario } from '../shared/interfaces/usuario.interface';
+import { Usuario } from '../shared/interfaces/usuario.interface';
 import { ROLES } from '../shared/constants';
 import { Router } from '@angular/router';
 import { StorageService } from '../shared/services/storage.service';
@@ -19,7 +18,6 @@ export class ConfiguracionPage {
 
   constructor(
     private authService: AuthService,
-    private loadingCtrl: LoadingController,
     private router: Router,
     private storage: StorageService
   ) { }
@@ -54,8 +52,7 @@ export class ConfiguracionPage {
   }
 
   async logout() {
-    this.authService.setLoggedUserRole(null);
-    await this.storage.clear();
+    this.authService.logout();
     this.router.navigate(['/tabs/egresados']);
   }
 }

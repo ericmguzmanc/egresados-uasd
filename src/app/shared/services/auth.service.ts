@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RolUsuario, Usuario } from '../interfaces/usuario.interface';
+import { StorageService } from './storage.service';
+import { CookieService } from 'ngx-cookie-service';
+import { EgresadosService } from './egresados.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +18,22 @@ export class AuthService {
 
   loggedUserRole: Subject<RolUsuario> = new Subject<RolUsuario>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient, 
+    private storage: StorageService, 
+    private cookieService: CookieService,
+    private egresadosService: EgresadosService,
+  ) {}
 
   login(credentials: LoginRequest): Observable<any> {
     return this.http.post(`${this.EXPRESS_SERVER_URL}/auth/login`, {email: credentials.email, password: credentials.password });
+  }
+
+  async logout() {
+    this.setLoggedUserRole(null);
+    this.egresadosService.loggedUserRole = null;
+    this.cookieService.delete('token');
+    await this.storage.clear();
   }
 
   getUsuario(userId: number): Observable<Usuario> {

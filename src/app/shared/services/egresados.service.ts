@@ -5,6 +5,8 @@ import { Observable, map, switchMap } from 'rxjs';
 import { HelperService } from './helper.service';
 import { environment } from 'src/environments/environment';
 import { egresadosFilters } from '../interfaces/egresadosFilters.interface';
+import { StorageService } from './storage.service';
+import { RolUsuario } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +17,29 @@ export class EgresadosService {
   JSON_SERVER_URL = environment.json_server_url;
   EXPRESS_SERVER_URL = environment.express_server_url;
 
+  private _loggedUserRole: RolUsuario;
+
   constructor(
     private http: HttpClient,
     private helperService: HelperService,
+    private storage: StorageService,
   ) { }
 
-  getEgresados(page?: number, q: any = null): Observable<Egresado[]> {
+  get loggedUserRole() {
+    return this._loggedUserRole;
+  }
+
+  set loggedUserRole(rol: RolUsuario) {
+    this._loggedUserRole = rol;
+  }
+
+   getEgresados(page?: number, q: any = null): Observable<Egresado[]> {
     let url = `${this.JSON_SERVER_URL}/egresado?_page=${page}?${this.egresado_relationships}`;
 
     if (q) {
       url += `${url}&q=${q}`
     }
-
+  
     return this.http.get<Egresado[]>(url);
   }
 
@@ -63,6 +76,10 @@ export class EgresadosService {
     } else {
       return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresado.id}`, egresado);
     }
+  }
+
+  updateEgresadoStatus(egresadoId: number, status: boolean): Observable<Egresado> {
+    return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresadoId}`, { Activo: status });
   }
 
   filterEgresados(egresadosFilters: egresadosFilters, page?: number, q: any = undefined) {

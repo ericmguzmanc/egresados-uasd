@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Egresado } from '../interfaces/egresado.interface';
 import { SHA1 } from 'crypto-js';
 import { environment } from 'src/environments/environment';
+import { ROLES } from '../constants';
+import { RolUsuario } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +87,7 @@ export class HelperService {
 
     return new Blob([ia], { type: mimeString })
   }
+  
   getAge(dateString: string) {
     const today = new Date();
     const birthDate = new Date(dateString);
@@ -92,5 +95,9 @@ export class HelperService {
     const month = today.getMonth() - birthDate.getMonth();
     if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) { age--; }
     return age;
+  }
+
+  isUserAdmin(rolUsuario: RolUsuario) {
+    return rolUsuario ? rolUsuario.rol === ROLES.ADMINISTRADOR : false;
   }
 }

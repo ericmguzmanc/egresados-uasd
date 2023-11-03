@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Egresado } from '../../interfaces/egresado.interface';
 import { HelperService } from '../../services/helper.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-egresados-list',
@@ -14,11 +15,22 @@ export class EgresadosListComponent implements OnInit {
   @Output() pageNumber: EventEmitter<number> = new EventEmitter<number>();
   @Output() egresadoClicked: EventEmitter<number> = new EventEmitter<number>();
 
+  isUserAdmin: boolean;
+
   page: number = 1;
 
-  constructor(public helperService: HelperService) {}
+  constructor(
+    public helperService: HelperService,
+    public authService: AuthService,
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.loggedUserRole
+      .subscribe((rol) => {
+        console.log('🚀 ~ file: egresados-list.component.ts:28 ~ EgresadosListComponent ~ .subscribe ~ rol:', rol)
+        this.isUserAdmin = this.helperService.isUserAdmin(rol);
+      });
+  }
 
   onIonInfinite(ev: any) {
     this.page++;

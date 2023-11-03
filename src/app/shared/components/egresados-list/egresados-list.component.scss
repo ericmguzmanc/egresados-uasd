@@ -45,6 +45,11 @@
 .info-text-width {
   width: 100%;
 }
+
+.status-opacity {
+  opacity: 50%;
+}
+
 @media (prefers-color-scheme: dark) {
   .egresados-list-egresado-name {
     color: #96989b;
