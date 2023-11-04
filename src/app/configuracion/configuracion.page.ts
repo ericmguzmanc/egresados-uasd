@@ -13,40 +13,42 @@ import { Egresado } from '../shared/interfaces/egresado.interface';
   styleUrls: ['./configuracion.page.scss'],
 })
 export class ConfiguracionPage {
-
   loggedInRol: ROLES;
   loggedUserId: number;
   usuario: Usuario;
-  egresado:Egresado;
+  egresado: Egresado;
+  userId: number;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private storage: StorageService,
-    private egresadosService: EgresadosService,
-  ) { }
+    private egresadosService: EgresadosService
+  ) {}
 
   async ionViewWillEnter() {
     const loggedInUser = await this.storage.get('loggedInUserId');
 
     this.loggedUserId = loggedInUser;
     if (loggedInUser) {
-      this.authService.getUsuario(loggedInUser)
+      this.authService
+        .getUsuario(loggedInUser)
         .subscribe((usuario: Usuario) => {
           this.usuario = usuario;
+          this.userId = usuario.egresadoId;
           this.authService.setLoggedUserRole(usuario.rolUsuario[0]);
           this.storage.set('loggedUserRole', usuario.rolUsuario[0]);
-        }); 
+          this.egresadosService
+            .getEgresadoById(this.userId)
+            .subscribe((egresado: Egresado) => {
+              this.egresado = egresado;
+            });
+        });
     } else {
       this.router.navigate(['/tabs/login']);
     }
-    
-    this.egresadosService.getEgresadoById(this.loggedUserId)
-    .subscribe((egresado: Egresado) => {
-      this.egresado = egresado;
-    });
-  };
- 
+  }
+
   goToEgresadoEdit() {
     this.router.navigate(['/egresado-edit', this.loggedUserId]);
   }
@@ -56,7 +58,9 @@ export class ConfiguracionPage {
   }
 
   isAdminUser() {
-    return this.usuario ? this.usuario.rolUsuario[0].rol === ROLES.ADMINISTRADOR : null
+    return this.usuario
+      ? this.usuario.rolUsuario[0].rol === ROLES.ADMINISTRADOR
+      : null;
   }
 
   async logout() {
