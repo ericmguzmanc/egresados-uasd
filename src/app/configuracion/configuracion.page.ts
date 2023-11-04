@@ -34,19 +34,17 @@ export class ConfiguracionPage {
       this.authService.getUsuario(loggedInUser)
         .subscribe((usuario: Usuario) => {
           this.usuario = usuario;
-          console.log('🚀 ~ file: configuracion.page.ts:25 ~ ConfiguracionPage ~ .subscribe ~ usuario:', usuario);
           this.authService.setLoggedUserRole(usuario.rolUsuario[0]);
           this.storage.set('loggedUserRole', usuario.rolUsuario[0]);
-          console.log('🚀 ~ file: configuracion.page.ts:27 ~ ConfiguracionPage ~ .subscribe ~ this.authService.getLoggedUserRole()', this.egresado, this.loggedUserId);
         }); 
     } else {
       this.router.navigate(['/tabs/login']);
     }
-    this.egresadosService.getEgresadoById(this.loggedUserId).subscribe((egresado: Egresado) => {
+    
+    this.egresadosService.getEgresadoById(this.loggedUserId)
+    .subscribe((egresado: Egresado) => {
       this.egresado = egresado;
-      console.log('🚀 ~ file: configuracion.page.ts:27 ~ ConfiguracionPage ~ .subscribe ~ this.authService.getLoggedUserRole()', this.egresado, this.loggedUserId);
     });
-  
   };
  
   goToEgresadoEdit() {

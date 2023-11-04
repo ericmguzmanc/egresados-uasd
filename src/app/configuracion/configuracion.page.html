@@ -1,3 +1,10 @@
+
+<!-- FILEPATH: /d:/workSpace/egresados-uasd/src/app/configuracion/configuracion.page.html -->
+<!-- 
+  Este archivo HTML representa la página de configuración de la aplicación.
+  Muestra la información de la cuenta del usuario, incluyendo su foto de perfil, nombre, correo electrónico y rol.
+  El usuario puede editar su perfil o cerrar la sesión usando los botones proporcionados.
+-->
 <ng-container>
   <ion-header [translucent]="true">
     <ion-toolbar color="primary">
@@ -6,45 +13,54 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-      <ion-header collapse="condense" mode="md">
-        <ion-toolbar>
-          <ion-title size="large">Configuración</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      
+    <ion-header collapse="condense" mode="md">
+      <ion-toolbar>
+        <ion-title size="large">Configuración</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-      <div style="min-height: 30%;">
-        <ion-grid style="height: 100%;">
-          <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
-            <h4 *ngIf="usuario">
-              {{usuario.email}}
-            </h4>
-          </ion-row>
-          <ion-row style="height: 100%;" class="ion-justify-content-center" *ngIf="egresado">
-            <ion-thumbnail class="egresados-detail-thumnail ">
-              <ion-img class="avatar-img" src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
-            </ion-thumbnail>
-          </ion-row>
-          <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
-            <h4 *ngIf="egresado">
-              {{egresado.PrimerNombre}} {{egresado.PrimerApellido}}
-            </h4>
-          </ion-row>
-          <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
-            <ion-text *ngIf="usuario">
-              {{getRole()}}
-            </ion-text>
-          </ion-row>
-        </ion-grid>
-      </div>
+    <div style="min-height: 50%;">
+      <ion-grid style="height: 100%;">
+        <ion-row style="height: 100%;" class="ion-justify-content-center" *ngIf="egresado">
+          <ion-thumbnail class="egresados-detail-thumnail ">
+            <ion-img class="avatar-img"
+              src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+          </ion-thumbnail>
+        </ion-row>
+        <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+          <h4 *ngIf="usuario">
+            {{usuario.email}}
+          </h4>
+        </ion-row>
+        <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+          <ion-text *ngIf="egresado">
+            {{egresado.PrimerNombre}} {{egresado.SegundoNombre}} {{egresado.PrimerApellido}}
+            {{egresado.SegundoApellido}}
+          </ion-text>
+        </ion-row>
+        <ion-row class="ion-justify-content-center" style="margin-top: 15px;">
+          <ion-text *ngIf="usuario">
+            {{getRole()}}
+          </ion-text>
+        </ion-row>
+      </ion-grid>
+    </div>
 
-      <ion-button expand="block" color="light" (click)="goToEgresadoEdit()" *ngIf="!isAdminUser()">
-        Editar Perfil
-        <ion-icon name="create-outline" slot="end"></ion-icon>
-      </ion-button>
-      <ion-button expand="block" color="danger" style="margin-top: 10px;" (click)="logout()">
-        Salir de la Sesión
-        <ion-icon name="exit-outline" slot="end"></ion-icon>
-      </ion-button>
+    <ion-card color="light" >
+      <ion-card-header>
+        <ion-card-title></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button expand="block" color="primary" (click)="goToEgresadoEdit()" *ngIf="!isAdminUser()">
+          Editar Perfil
+          <ion-icon name="create-outline" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button expand="block" color="danger" style="margin-top: 10px;" (click)="logout()">
+          Salir de la Sesión
+          <ion-icon name="exit-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </ion-content>
 </ng-container>
