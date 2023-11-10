@@ -82,7 +82,7 @@ export class EgresadosService {
     return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresadoId}`, { Activo: status });
   }
 
-  filterEgresados(egresadosFilters: egresadosFilters, page?: number, q: any = undefined) {
+  filterEgresados(egresadosFilters: egresadosFilters, page?: number, q: any = undefined): Observable<Egresado[]> {
     const params = new HttpParams()
     .set('destacados', egresadosFilters.destacados)
     .set('rangoFechaInicio', egresadosFilters.rangoFechaInicio || null)
@@ -95,6 +95,14 @@ export class EgresadosService {
     .set('page', page);
 
     return this.http.get<Egresado[]>(`${this.EXPRESS_SERVER_URL}/egresados/filter`, { params: params });
+  }
+
+  getEgresadosCandidatos(page?: number, q?: string): Observable<Egresado[]> {
+    const params = new HttpParams()
+      .set('page', page)
+      .set('q', q);
+
+    return this.http.get<Egresado[]>(`${this.EXPRESS_SERVER_URL}/egresados/candidatos`, { params });
   }
 
   addIdiomaEgresado(idioma: Idioma): Observable<Idioma> {

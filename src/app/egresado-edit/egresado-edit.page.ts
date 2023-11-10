@@ -268,8 +268,8 @@ export class EgresadoEditPage implements OnInit {
   addIdiomaEgresado(idiomas: Idioma[] | undefined) {
     this.loading = true;
 
+    this.idiomaEgresadoArray.clear();
     if (idiomas.length > 0) {
-      this.idiomaEgresadoArray.clear();
       this.egresado.idiomaEgresado = [];
       
       idiomas.forEach((idioma) => {
@@ -286,8 +286,8 @@ export class EgresadoEditPage implements OnInit {
   addHabilidadEgresado(habilidades: EgresadosHabilidad[] | undefined) {
     this.loading = true;
 
+    this.habilidadesEgresadoArray.clear();
     if (habilidades.length > 0) {
-      this.habilidadesEgresadoArray.clear();
       this.egresado.egresadosHabilidad = [];
       
       habilidades.forEach((habilidad) => {
