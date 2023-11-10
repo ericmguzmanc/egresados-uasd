@@ -3,9 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
-import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
 import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-egresados',
@@ -33,22 +31,11 @@ export class CandidatosDestacadosPage implements OnInit {
   }
 
   async loadEgresados() {
-    if (this.egresadosFilters && environment.production) {
-      console.log('Production Mode !!! 🚨');
-      this.applyFilters();
-    } else {
-      this.egresadosService.getEgresados(this.pageNumber, this.searchQuery)
-        .subscribe((egresados: Egresado[]) => {
-          if (this.searchQuery) {
-            this.egresados = [...egresados];
-          } else {
-            this.egresados = [...this.egresados, ...egresados];
-          }
-
-          this.lastEgresadosResponse = egresados;
-          this.loading = false;
-        });
-    }
+    this.egresadosService.getEgresadosCandidatos(this.pageNumber, this.searchQuery)
+      .subscribe((egresados) => {
+        this.egresados = egresados;
+        this.loading = false;
+      });
   }
 
   setPageNumber(page: number) {
@@ -91,48 +78,5 @@ export class CandidatosDestacadosPage implements OnInit {
     if (role === 'confirm') {
       console.log('✨ Modal egresadoDetail closed. ->', data);
     } 
-  }
-
-  async openEgresadosFiltersModal() {
-    const egresadosFiltersModal = await this.modalCtrl.create({
-      component: EgresadosFiltersComponent,
-      componentProps: {
-        egresadosFilters: this.egresadosFilters,
-        destacadosMode: false,
-      }
-    });
-
-    egresadosFiltersModal.present();
-
-    const { data, role } = await egresadosFiltersModal.onWillDismiss();
-
-    if (role === 'confirm') {
-      this.egresadosFilters = data;
-      this.pageNumber = 1;
-      this.egresados = [];
-
-      if (this.egresadosFilters && environment.production) {
-        // Llamar la funcion de aplicar filtros
-        this.applyFilters();
-      } else {
-        this.loadEgresados();
-      }
-    }
-  }
-
-  applyFilters() {
-    if (this.egresadosFilters) {
-      this.egresadosService.filterEgresados(this.egresadosFilters, this.pageNumber, this.searchQuery)
-        .subscribe((egresados) => {
-          if (this.searchQuery) {
-            this.egresados = [...egresados];
-          } else {
-            this.egresados = [...egresados];
-          }
-
-          this.lastEgresadosResponse = egresados;
-          this.loading = false;
-        });
-    }
   }
 }
