@@ -44,6 +44,7 @@
         </ion-label>
         <br>
       </ng-container>
+      <br>
 
       <!-- Nivel de estudios -->
       <ion-item>
@@ -71,6 +72,19 @@
         <br>
         <ion-label class="ion-padding muted" style="color: red;">
           Debe seleccionar un tipo de estudio
+        </ion-label>
+        <br>
+      </ng-container>
+
+      <!-- Universidad -->
+      <ion-item>
+        <ion-label position="floating">Universidad</ion-label>
+        <ion-input placeholder="Escriba el nombre de la Universidad" formControlName="universidad"></ion-input>
+      </ion-item>
+      <ng-container *ngIf="isUniversidadControlValid">
+        <br>
+        <ion-label class="ion-padding muted" style="color: red;">
+          Escriba la universidad
         </ion-label>
         <br>
       </ng-container>

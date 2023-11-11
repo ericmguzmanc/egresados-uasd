@@ -39,6 +39,7 @@ export class EducacionComponent  implements OnInit {
   educacionForm: FormGroup = this.fb.group({
     carrera: ['', [Validators.required]],
     tipoTitulo: [ '', [Validators.required]],
+    universidad: ['', [Validators.required]],
     fechaEntrada: [new Date().toJSON(), [Validators.required]],
     fechaSalida: [new Date().toJSON(), [Validators.required]]
   });
@@ -58,6 +59,11 @@ export class EducacionComponent  implements OnInit {
 
   get isTipoTituloControlValid() {
     return !this.educacionForm.get('tipoTitulo').valid 
+    && this.educacionForm.touched;
+  }
+
+  get isUniversidadControlValid() {
+    return !this.educacionForm.get('universidad').valid
     && this.educacionForm.touched;
   }
 
@@ -125,10 +131,11 @@ export class EducacionComponent  implements OnInit {
     const FechaSal = this.helperService.getFormattedDate(this.educacionForm.get('fechaSalida').value);
     const TipoTitulo = this.educacionForm.get('tipoTitulo').value;
     const carrera = this.educacionForm.get('carrera').value as Carrera;
+    const Universidad = this.educacionForm.get('universidad').value;
 
     return {
       egresadoId: this.egresadoId,
-      Universidad: 'Universidad Autónoma de Santo Domingo',
+      Universidad,
       FechaEntr,
       FechaSal,
       carreraId: carrera.id,
