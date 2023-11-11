@@ -43,4 +43,8 @@ export class AuthService {
   setLoggedUserRole(rol: RolUsuario) {
     this.loggedUserRole.next(rol);
   }
+
+  getResetPasswordToken(email: string): Observable<any> {
+    return this.http.put(`${this.EXPRESS_SERVER_URL}/auth/update-password`, {email});
+  }
 }
