@@ -114,6 +114,13 @@
       <!-- <ion-label>Usuarios Destacados</ion-label> -->
       <ion-checkbox slot="end" formControlName="destacados"></ion-checkbox>
     </ion-item>
+
+    <!-- Usuarios Deshabilitados - Modo Admin -->
+    <ion-item style="margin-top: 15px; margin-left: -8px;" *ngIf="isUserAdmin">
+      <h3>Egresados Deshabilitados</h3>
+      <!-- <ion-label>Usuarios Destacados</ion-label> -->
+      <ion-checkbox slot="end" formControlName="deshabilitados"></ion-checkbox>
+    </ion-item>
   </form>
 
   <ion-grid style="margin-top: 10%; margin-bottom: 15px">

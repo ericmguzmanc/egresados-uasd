@@ -8,4 +8,5 @@ export interface egresadosFilters {
   provincias?: Provincia[];
   tituloTipos?: string[];
   dateRangeDisabled?: boolean;
+  deshabilitados: boolean;
 }

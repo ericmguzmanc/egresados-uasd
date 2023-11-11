@@ -27,6 +27,7 @@ import { egresadosFilters } from '../../interfaces/egresadosFilters.interface';
 export class EgresadosFiltersComponent implements OnInit {
   @Input() egresadosFilters: egresadosFilters;
   @Input() destacadosMode: boolean;
+  @Input() isUserAdmin: boolean;
 
   tipoTitulo = TIPO_TITULO;
   habilidades: any[];
@@ -43,7 +44,8 @@ export class EgresadosFiltersComponent implements OnInit {
     habilidades: [null],
     provincias: [null],
     destacados: [false],
-    dateRangeDisabled: [false]
+    dateRangeDisabled: [false],
+    deshabilitados: [false]
   });
 
   constructor(
@@ -51,7 +53,7 @@ export class EgresadosFiltersComponent implements OnInit {
     private entitiesService: EntitiesService,
     private fb: FormBuilder,
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
   ) {}
 
   get rangoFechaInicio() {
@@ -100,7 +102,16 @@ export class EgresadosFiltersComponent implements OnInit {
   }
 
   loadEgresadosFiltersForm() {
-    const { destacados, rangoFechaInicio, rangoFechaFin, dateRangeDisabled, habilidades, tituloTipos, provincias } = this.egresadosFilters;
+    const {
+      destacados,
+      rangoFechaInicio,
+      rangoFechaFin,
+      dateRangeDisabled,
+      habilidades,
+      tituloTipos,
+      provincias,
+      deshabilitados,
+    } = this.egresadosFilters;
 
     this.dateRangeEnabled = !dateRangeDisabled
 
@@ -113,6 +124,7 @@ export class EgresadosFiltersComponent implements OnInit {
       tituloTipos,
       habilidades,
       provincias,
+      deshabilitados
     });
 
   }

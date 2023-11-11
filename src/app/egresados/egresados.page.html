@@ -25,5 +25,10 @@
       </div>
     </div>
   </div>
-  <app-egresados-list *ngIf="egresados.length > 0" [egresados]="egresados" (pageNumber)="setPageNumber($event)" (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
+  <app-egresados-list 
+    *ngIf="egresados.length > 0" 
+    [egresados]="egresados"
+    [isUserAdmin]="isUserAdmin"
+    (pageNumber)="setPageNumber($event)" 
+    (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
 </ion-content>

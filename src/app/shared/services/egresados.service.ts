@@ -91,6 +91,7 @@ export class EgresadosService {
     .set('provincias', JSON.stringify(egresadosFilters.provincias))
     .set('tituloTipos', JSON.stringify(egresadosFilters.tituloTipos))
     .set('dateRangeDisabled', egresadosFilters.dateRangeDisabled)
+    .set('deshabilitados', egresadosFilters.deshabilitados)
     .set('q', q)
     .set('page', page);
 
