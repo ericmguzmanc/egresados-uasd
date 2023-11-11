@@ -439,6 +439,51 @@
       "FechaEntr": "2017-9-1",
       "FechaSal": "2020-11-17",
       "id": 18
+    },
+    {
+      "egresadoId": 7,
+      "posicion": "Tester ",
+      "empresa": "Testing Solutions",
+      "salario": null,
+      "FechaEntr": "2019-11-5",
+      "FechaSal": "2021-11-11",
+      "id": 19
+    },
+    {
+      "egresadoId": 7,
+      "posicion": "Tester Senior",
+      "empresa": "Testing Solutions",
+      "salario": null,
+      "FechaEntr": "2021-11-1",
+      "FechaSal": "2022-11-11",
+      "id": 20
+    },
+    {
+      "egresadoId": 7,
+      "posicion": "Testing Lead",
+      "empresa": "Testing ",
+      "salario": null,
+      "FechaEntr": "2022-11-11",
+      "FechaSal": "1969-12-31",
+      "id": 21
+    },
+    {
+      "egresadoId": 7,
+      "posicion": "Testing Guru",
+      "empresa": "Testing Solutions",
+      "salario": null,
+      "FechaEntr": "2019-11-4",
+      "FechaSal": "2020-11-5",
+      "id": 22
+    },
+    {
+      "egresadoId": 7,
+      "posicion": "Testing MVP",
+      "empresa": "Testing Solutions",
+      "salario": null,
+      "FechaEntr": "2020-11-1",
+      "FechaSal": "1969-12-31",
+      "id": 23
     }
   ],
   "contacto": [
@@ -718,6 +763,26 @@
       "Titulo": " Técnico Superior Farmacia",
       "TipoTitulo": "Técnico Superior",
       "id": 8
+    },
+    {
+      "egresadoId": 7,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2023-11-2",
+      "FechaSal": "2023-11-11",
+      "carreraId": 24,
+      "Titulo": "Música Mención Teoría y Educ. Musical",
+      "TipoTitulo": "Especializacion",
+      "id": 9
+    },
+    {
+      "egresadoId": 7,
+      "Universidad": "Universidad Autónoma de Santo Domingo",
+      "FechaEntr": "2023-11-1",
+      "FechaSal": "2023-11-11",
+      "carreraId": 107,
+      "Titulo": "Cinematografía y Audiovisuales Mención Cine",
+      "TipoTitulo": "Certificado",
+      "id": 10
     }
   ],
   "carreras": [
@@ -1518,6 +1583,24 @@
       "idiomaId": 9,
       "egresadoId": 5,
       "id": 10
+    },
+    {
+      "idioma": "Bengalí",
+      "idiomaId": 6,
+      "egresadoId": 7,
+      "id": 11
+    },
+    {
+      "idioma": "Bihari",
+      "idiomaId": 42,
+      "egresadoId": 7,
+      "id": 12
+    },
+    {
+      "idioma": "Búlgaro",
+      "idiomaId": 30,
+      "egresadoId": 7,
+      "id": 13
     }
   ],
   "educacion_deprecated": [
@@ -2048,6 +2131,90 @@
       "habilidadId": 25,
       "egresadoId": 5,
       "id": 23
+    },
+    {
+      "habilidad": "Angular",
+      "habilidadId": 13,
+      "egresadoId": 7,
+      "id": 24
+    },
+    {
+      "habilidad": "Arquitectura de software",
+      "habilidadId": 26,
+      "egresadoId": 7,
+      "id": 25
+    },
+    {
+      "habilidad": "Big data",
+      "habilidadId": 32,
+      "egresadoId": 7,
+      "id": 26
+    },
+    {
+      "habilidad": "Blazor",
+      "habilidadId": 17,
+      "egresadoId": 7,
+      "id": 27
+    },
+    {
+      "habilidad": "Blockchain",
+      "habilidadId": 35,
+      "egresadoId": 7,
+      "id": 28
+    },
+    {
+      "habilidad": "Bun",
+      "habilidadId": 19,
+      "egresadoId": 7,
+      "id": 29
+    },
+    {
+      "habilidad": "C#",
+      "habilidadId": 5,
+      "egresadoId": 7,
+      "id": 30
+    },
+    {
+      "habilidad": "C++",
+      "habilidadId": 4,
+      "egresadoId": 7,
+      "id": 31
+    },
+    {
+      "habilidad": "Desarrollo web",
+      "habilidadId": 23,
+      "egresadoId": 7,
+      "id": 32
+    },
+    {
+      "habilidad": "Desarrollo de aplicaciones móviles",
+      "habilidadId": 24,
+      "egresadoId": 7,
+      "id": 33
+    },
+    {
+      "habilidad": "Deno",
+      "habilidadId": 18,
+      "egresadoId": 7,
+      "id": 34
+    },
+    {
+      "habilidad": "CSS",
+      "habilidadId": 21,
+      "egresadoId": 7,
+      "id": 35
+    },
+    {
+      "habilidad": "Desarrollo de videojuegos",
+      "habilidadId": 25,
+      "egresadoId": 7,
+      "id": 36
+    },
+    {
+      "habilidad": "Gestión de proyectos de software",
+      "habilidadId": 30,
+      "egresadoId": 7,
+      "id": 37
     }
   ],
   "habilidades": [
