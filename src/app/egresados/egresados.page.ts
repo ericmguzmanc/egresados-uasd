@@ -6,8 +6,8 @@ import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
 import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
 import { environment } from 'src/environments/environment';
-import { StorageService } from '../shared/services/storage.service';
 import { AuthService } from '../shared/services/auth.service';
+import { HelperService } from '../shared/services/helper.service';
 
 @Component({
   selector: 'app-egresados',
@@ -23,15 +23,24 @@ export class EgresadosPage implements OnInit {
   loading: boolean = false;
   searchQuery: string;
   egresadosFilters: egresadosFilters;
+  isUserAdmin: boolean;
 
   constructor(
     private egresadosService: EgresadosService,
     private modalCtrl: ModalController,
+    private authService: AuthService,
+    private helperService: HelperService,
   ) {}
 
   ngOnInit() {
     this.loading = true;
     this.loadEgresados();
+
+    this.authService.loggedUserRole
+      .subscribe((rol) => {
+        this.isUserAdmin = this.helperService.isUserAdmin(rol);
+      });
+
   }
 
   async loadEgresados() {
@@ -104,6 +113,7 @@ export class EgresadosPage implements OnInit {
       componentProps: {
         egresadosFilters: this.egresadosFilters,
         destacadosMode: false,
+        isUserAdmin: this.isUserAdmin
       }
     });
 

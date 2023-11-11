@@ -12,10 +12,9 @@ import { AuthService } from '../../services/auth.service';
 export class EgresadosListComponent implements OnInit {
   @Input() egresados: Egresado[] = [];
   @Input() isLoading: boolean = true;
+  @Input() isUserAdmin: boolean = false;
   @Output() pageNumber: EventEmitter<number> = new EventEmitter<number>();
   @Output() egresadoClicked: EventEmitter<number> = new EventEmitter<number>();
-
-  isUserAdmin: boolean;
 
   page: number = 1;
 
@@ -25,11 +24,6 @@ export class EgresadosListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.loggedUserRole
-      .subscribe((rol) => {
-        console.log('🚀 ~ file: egresados-list.component.ts:28 ~ EgresadosListComponent ~ .subscribe ~ rol:', rol)
-        this.isUserAdmin = this.helperService.isUserAdmin(rol);
-      });
   }
 
   onIonInfinite(ev: any) {
