@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./reset.page.scss'],
 })
 export class ResetPage implements OnInit {
-
   message: string = '';
   token: string = '';
   loading: boolean = false;
@@ -46,7 +45,6 @@ export class ResetPage implements OnInit {
   }
 
   resetPassword() {
-    
     if (this.formReset.valid) {
       if (this.password.value !== this.confirmPassword.value) {
         console.log('Las contraseñas no coinciden');
@@ -57,12 +55,10 @@ export class ResetPage implements OnInit {
           .setNewPassword(this.token, this.password.value)
           .subscribe(
             (response) => {
-              
               this.message = response.message;
               this.loading = false;
             },
             (error) => {
-              
               this.message = error.error.message;
               this.loading = false;
             }

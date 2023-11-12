@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 
+/**
+ * Componente para la página de restablecimiento de contraseña.
+ * @remarks
+ * Este componente contiene un formulario para enviar un correo electrónico con un enlace para restablecer la contraseña.
+ */
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.page.html',
