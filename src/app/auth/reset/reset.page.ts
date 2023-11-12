@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset',
@@ -27,7 +28,8 @@ export class ResetPage implements OnInit {
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private route: Router
+    private route: Router,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -55,8 +57,9 @@ export class ResetPage implements OnInit {
           .setNewPassword(this.token, this.password.value)
           .subscribe(
             (response) => {
-              this.message = response.message;
               this.loading = false;
+              this.navCtrl.navigateRoot('/tabs/login');
+              return;
             },
             (error) => {
               this.message = error.error.message;
