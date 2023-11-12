@@ -10,7 +10,10 @@ export enum NivelCarrera {
   Ingenieria = 'Ingeniería',
   Maestria = 'Maestría',
   Doctorado = 'Doctorado',
-  TecnicoSuperior = 'Técnico Superior'
+  TecnicoSuperior = 'Técnico Superior',
+  Tecnico = 'Técnico',
+  Especializacion = 'Especializacion',
+  Certificado = 'Certificado'
 }
 
 interface Facultad {
