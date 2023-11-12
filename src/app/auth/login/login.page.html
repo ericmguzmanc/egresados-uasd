@@ -10,47 +10,28 @@
       <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
- <!--Content login-->
-  <div class="ion-margin container" >
+  <!--Content login-->
+  <div class="ion-margin container">
     <ion-grid style="width: 100%;">
       <ion-row style="height: 100%;" class="ion-justify-content-center">
-          <ion-thumbnail>
-            <img
-              alt="Logo de la Universidad Autonoma de Santo Domingo"
-              src="assets/logo-uasd-solo-footer.png"
-              class="img"
-            />
-          </ion-thumbnail>
+
+        <img alt="Logo de la Universidad Autonoma de Santo Domingo" src="assets/logo_uasd_completo.png" class="img" />
+
       </ion-row>
       <ion-row style="width:100%; flex-direction: column;">
-        <form [formGroup]="loginForm" class="ion-padding-top">
-          <ion-input
-            type="email"
-            label="Email"
-            labelPlacement="floating"
-            fill="solid"
-            name="email"
-            placeholder="Escribir Email"
-            errorText="El email es requerido"
-            formControlName="email"
-          ></ion-input>
-    
-          <ion-input
-            type="password"
-            label="Password"
-            name="password"
-            labelPlacement="floating"
-            fill="solid"
-            placeholder="Escribir password"
-            errorText="El password es requerido"
-            formControlName="password"
-          ></ion-input>
-          <br />
-          <!-- <ion-checkbox class="ion-margin-bottom">Recuerdame</ion-checkbox> -->
-          <ion-button type="button" (click)="login()" expand="block" [disabled]="disableButton">
+        <form [formGroup]="loginForm" class="ion-padding">
+          <ion-input type="email" label="Email" labelPlacement="floating" fill="solid" name="email"
+            placeholder="Escribir Email" errorText="El email es requerido" formControlName="email"></ion-input>
+
+          <ion-input type="password" label="Password" name="password" labelPlacement="floating" fill="solid"
+            placeholder="Escribir password" errorText="El password es requerido" formControlName="password"></ion-input>
+          <br class="ion-padding" />
+          <ion-button type="button" (click)="login()" expand="block" [disabled]="disableButton" class="ion-padding">
             Iniciar sesión
           </ion-button>
-          <a href="#">Olvidé mi contraseña</a>
+          <div class="ion-text-center">
+            <a [routerLink]="['/reset-password']">Olvidé mi contraseña</a>
+          </div>
         </form>
       </ion-row>
     </ion-grid>

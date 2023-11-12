@@ -7,6 +7,7 @@ import { RolUsuario, Usuario } from '../interfaces/usuario.interface';
 import { StorageService } from './storage.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EgresadosService } from './egresados.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,16 @@ export class AuthService {
 
   setLoggedUserRole(rol: RolUsuario) {
     this.loggedUserRole.next(rol);
+  }
+
+  getResetPasswordToken(email: string): Observable<any> {
+    return this.http.put(`${this.EXPRESS_SERVER_URL}/auth/update-password`, {email});
+  }
+
+  // ...
+
+  setNewPassword(token: string, password: string): Observable<any> {
+    const headers = new HttpHeaders().set('reset', `${token}`);
+    return this.http.put(`${this.EXPRESS_SERVER_URL}/auth/reset-password`, { password }, { headers });
   }
 }

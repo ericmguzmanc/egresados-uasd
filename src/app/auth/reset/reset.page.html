@@ -1,0 +1,36 @@
+<!-- FILEPATH: /e:/WorkSpace/egresados-uasd/src/app/auth/reset/reset.page.html -->
+<!-- This page allows the user to reset their password by entering a new password and confirming it. -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Cambiar La contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-padding">
+    <img src="../../../assets/logo_uasd_completo.png" alt="Logo de La Universidad Autonoma de Santo Domingo">
+  </div>
+  <!--loading componet-->
+  <app-loader [isLoading]="loading"></app-loader>
+  <!--header-->
+  <ion-header collapse="condense" mode="md" class="ion-margin">
+    <ion-toolbar>
+      <ion-title size="large">reset</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <!--form-->
+  <form [formGroup]="formReset">
+    <ion-input type="Password" label="Nueva contraseña" labelPlacement="floating" fill="solid" name="password"
+      placeholder="Escribe Tu nueva contraseña" errorText="La contraseña es requerida"
+      formControlName="password"></ion-input>
+
+    <ion-input type="Password" label="Confirmar contraseña" labelPlacement="floating" fill="solid"
+      name="confirmPassword" placeholder="Confirma Tu nueva contraseña" errorText="La contraseña es requerida"
+      formControlName="confirmPassword"></ion-input>
+    <ion-text color="danger" *ngIf="message">
+      {{message}}
+    </ion-text>
+    <ion-button expand="block" color="primary" (click)="resetPassword()" [disabled]="loading">Cambiar contraseña</ion-button>
+  </form>
+</ion-content>

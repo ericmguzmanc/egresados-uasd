@@ -18,6 +18,15 @@ const routes: Routes = [
     path: 'egresado-edit/:id',
     loadChildren: () => import('./egresado-edit/egresado-edit.module').then( m => m.EgresadoEditPageModule)
   },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./auth/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
+  {
+    path: 'reset/:token',
+    loadChildren: () => import('./auth/reset/reset.module').then( m => m.ResetPageModule)
+  },
+
 ];
 @NgModule({
   imports: [
