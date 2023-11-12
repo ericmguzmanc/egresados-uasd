@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -7,18 +8,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reset-password.page.scss'],
 })
 export class ResetPasswordPage implements OnInit {
-
+  message: string = '';
   resetPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
   });
-  constructor() { }
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
   }
-  get email() {
-    return this.resetPasswordForm.controls.email;
-  }
+
+
   resetPassword() {
-    console.log(this.resetPasswordForm.value);
+
+    this.authService.getResetPasswordToken(this.resetPasswordForm.value.email).subscribe((response: any) => {
+      this.message = response.message;
+    });
   }
 }
