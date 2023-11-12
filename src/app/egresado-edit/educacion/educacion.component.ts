@@ -7,7 +7,7 @@ import { Carrera } from 'src/app/shared/interfaces/carrera.interface';
 import { EntitiesService } from 'src/app/shared/services/entities.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HelperService } from 'src/app/shared/services/helper.service';
-import { LOADING_TIMEOUT } from 'src/app/shared/constants';
+import { LOADING_TIMEOUT, TIPO_TITULO } from 'src/app/shared/constants';
 import { EgresadosService } from 'src/app/shared/services/egresados.service';
 
 @Component({
@@ -34,19 +34,37 @@ export class EducacionComponent  implements OnInit {
   fechaEntradaMax: string;
   fechaSalidaMin: string;
   fechaSalidaMax: string;
+  tipoTitulo = TIPO_TITULO
 
   educacionForm: FormGroup = this.fb.group({
     carrera: ['', [Validators.required]],
+    tipoTitulo: [ '', [Validators.required]],
+    universidad: ['', [Validators.required]],
     fechaEntrada: [new Date().toJSON(), [Validators.required]],
     fechaSalida: [new Date().toJSON(), [Validators.required]]
   });
 
   get nivelCarrera() {
-    return this.educacionForm.get('carrera').value.Nivel;
+    return this.educacionForm.get('tipoTitulo').value.nivel;
   }
 
   get nombreCarrera() {
     return this.educacionForm.get('carrera').value.NombreCarrera;
+  }
+
+  get isCarreraControlValid() {
+    return !this.educacionForm.get('carrera').valid 
+    && this.educacionForm.touched;
+  }
+
+  get isTipoTituloControlValid() {
+    return !this.educacionForm.get('tipoTitulo').valid 
+    && this.educacionForm.touched;
+  }
+
+  get isUniversidadControlValid() {
+    return !this.educacionForm.get('universidad').valid
+    && this.educacionForm.touched;
   }
 
   constructor(
@@ -111,16 +129,18 @@ export class EducacionComponent  implements OnInit {
   getFormData() {
     const FechaEntr = this.helperService.getFormattedDate(this.educacionForm.get('fechaEntrada').value);
     const FechaSal = this.helperService.getFormattedDate(this.educacionForm.get('fechaSalida').value);
+    const TipoTitulo = this.educacionForm.get('tipoTitulo').value;
     const carrera = this.educacionForm.get('carrera').value as Carrera;
+    const Universidad = this.educacionForm.get('universidad').value;
 
     return {
       egresadoId: this.egresadoId,
-      Universidad: 'Universidad Autónoma de Santo Domingo',
+      Universidad,
       FechaEntr,
       FechaSal,
       carreraId: carrera.id,
       Titulo: carrera.NombreCarrera,
-      TipoTitulo: carrera.Nivel,
+      TipoTitulo: TipoTitulo.nivel,
     } 
   }
 

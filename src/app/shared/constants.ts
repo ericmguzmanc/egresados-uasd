@@ -14,6 +14,15 @@ export const ABOUTLENGHT = 500
 
 export const TIPO_TITULO = [
   {
+    nivel: NivelCarrera.Tecnico
+  },
+  {
+    nivel: NivelCarrera.Especializacion
+  },
+  {
+    nivel: NivelCarrera.Certificado
+  },
+  {
     nivel: NivelCarrera.TecnicoSuperior
   },
   {
@@ -27,7 +36,7 @@ export const TIPO_TITULO = [
   },
   {
     nivel: NivelCarrera.Doctorado
-  }
+  },
 ];
 
 export enum ROLES {

@@ -23,7 +23,39 @@
           itemTextField="NombreCarrera"
           [canSearch]="true"
           groupValueField="facultad.id"
-          groupTextField="facultad.nombre">
+          groupTextField="facultad.nombre"
+          >
+          <ng-template ionicSelectableGroupTemplate let-group="group">
+            {{group.text}}
+          </ng-template>
+        </ionic-selectable>
+      </ion-item>
+      <ng-container *ngIf="nombreCarrera">
+        <br>
+        <ion-label class="ion-padding muted">
+          {{nombreCarrera}}
+        </ion-label>
+        <br>
+      </ng-container>
+      <ng-container *ngIf="isCarreraControlValid">
+        <br>
+        <ion-label class="ion-padding muted" style="color: red;">
+          Debe seleccionar una carrera
+        </ion-label>
+        <br>
+      </ng-container>
+      <br>
+
+      <!-- Nivel de estudios -->
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ionic-selectable
+          item-content
+          formControlName="tipoTitulo"
+          [items]="tipoTitulo"
+          itemValueField="nivel"
+          itemTextField="nivel"
+          >
           <ng-template ionicSelectableGroupTemplate let-group="group">
             {{group.text}}
           </ng-template>
@@ -32,11 +64,27 @@
       <ng-container *ngIf="nivelCarrera">
         <br>
         <ion-label class="ion-padding muted">
-          {{nombreCarrera}}
+          {{nivelCarrera}}
         </ion-label>
         <br>
-        <ion-label class="ion-padding muted">
-          {{nivelCarrera}}
+      </ng-container>
+      <ng-container *ngIf="isTipoTituloControlValid">
+        <br>
+        <ion-label class="ion-padding muted" style="color: red;">
+          Debe seleccionar un tipo de estudio
+        </ion-label>
+        <br>
+      </ng-container>
+
+      <!-- Universidad -->
+      <ion-item>
+        <ion-label position="floating">Universidad</ion-label>
+        <ion-input placeholder="Escriba el nombre de la Universidad" formControlName="universidad"></ion-input>
+      </ion-item>
+      <ng-container *ngIf="isUniversidadControlValid">
+        <br>
+        <ion-label class="ion-padding muted" style="color: red;">
+          Escriba la universidad
         </ion-label>
         <br>
       </ng-container>
