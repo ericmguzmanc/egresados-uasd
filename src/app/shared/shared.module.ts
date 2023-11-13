@@ -11,6 +11,7 @@ import { LoaderComponentModule } from './components/loader/loader.module';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { PhoneMaskDirective } from './phone-mask.directive';
+import { RouterExtService } from './services/RouterExt.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PhoneMaskDirective } from './phone-mask.directive';
     EgresadosService,
     HelperService,
     EntitiesService,
+    RouterExtService,
     provideNgxMask()
   ]
 })

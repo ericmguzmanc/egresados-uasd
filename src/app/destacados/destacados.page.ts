@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { HelperService } from '../shared/services/helper.service';
-import { LOADING_TIMEOUT } from '../shared/constants';
+import { APP_ROUTES } from '../shared/constants';
 import { ModalController } from '@ionic/angular';
 import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 import { EgresadosFiltersComponent } from '../shared/components/egresados-filters/egresados-filters.component';
 import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
 import { environment } from 'src/environments/environment';
+import { RouterExtService } from '../shared/services/RouterExt.service';
 @Component({
   selector: 'app-destacados',
   templateUrl: './destacados.page.html',
@@ -25,10 +26,19 @@ export class DestacadosPage implements OnInit {
     private egresadosService: EgresadosService,
     public helperService: HelperService,
     private modalCtrl: ModalController,
+    private routerExtService: RouterExtService
   ) {}
 
   ngOnInit() {
     this.loadEgresados();
+  }
+
+  ionViewWillEnter() {
+    const previousUrl = this.routerExtService.getPreviousUrl();
+    if (previousUrl === APP_ROUTES.tabs.candidatos) {
+      this.egresados = [];
+      this.loadEgresados();
+    }
   }
   
   loadEgresados() {
@@ -78,6 +88,10 @@ export class DestacadosPage implements OnInit {
     
     if (role === 'confirm') {
       console.log('✨ Modal egresadoDetail closed. ->', data);
+      if (data) {
+        this.egresados = [];
+        this.loadEgresados();
+      }
     } 
   }
 

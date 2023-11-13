@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { ABOUTLENGHT } from '../shared/constants';
+import { ABOUT_TEXTAREA_LENGTH } from '../shared/constants';
 
 @Component({
   selector: 'app-egresado-edit',
@@ -42,7 +42,7 @@ export class EgresadoEditPage implements OnInit {
   provincias: Provincia[];
   selectedProfilePic: any;
   contador: number = 0;
-  maxLenght: number = ABOUTLENGHT;
+  maxLenght: number = ABOUT_TEXTAREA_LENGTH;
 
   egresadoForm: FormGroup = this.fb.group({
     PrimerNombre: ['', [Validators.required, Validators.maxLength(100)]],
@@ -608,6 +608,7 @@ export class EgresadoEditPage implements OnInit {
       this.egresadoForm.patchValue({ profilePicUrl: this.selectedProfilePic.dataUrl});
     }
   }
+  
   onKey(event?: any) {
     this.contador = event.target.value.length;
   }

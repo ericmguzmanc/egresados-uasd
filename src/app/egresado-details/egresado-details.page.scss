@@ -74,6 +74,7 @@ h3 {
 }
 
 .destacado-color {
+  margin-left: 5px;
   color: #f1dd38;
 }
 
@@ -114,3 +115,10 @@ h3 {
 .white-background {
   --ion-background-color: '#fff' 
 } 
+
+.contador-de-letras {
+  font-size: 14px;
+  display: flex;
+  justify-content: right;
+  bottom: 15px;
+}

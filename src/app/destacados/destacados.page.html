@@ -18,12 +18,12 @@
     </ion-toolbar>
   </ion-header>
   <app-loader [isLoading]="loading"></app-loader>
-  <div class="row" *ngIf="!(egresados.length > 0)">
+  <div class="row" *ngIf="!(egresados && egresados.length > 0)">
     <div class="col">
       <div class="text-center">
           <ion-text style="text-align: center; display: block;" color="medium" >No hay resultados disponibles</ion-text>
       </div>
     </div>
   </div>
-  <app-egresados-list *ngIf="egresados.length > 0" [egresados]="egresados" (pageNumber)="setPageNumber($event)" (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
+  <app-egresados-list *ngIf="egresados && egresados.length > 0" [egresados]="egresados" (pageNumber)="setPageNumber($event)" (egresadoClicked)="openEgresadoDetailsModal($event)"></app-egresados-list>
 </ion-content>
