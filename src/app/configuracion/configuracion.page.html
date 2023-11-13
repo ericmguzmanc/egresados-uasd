@@ -24,7 +24,7 @@
         <ion-row style="height: 100%;" class="ion-justify-content-center" *ngIf="egresado">
           <ion-thumbnail class="egresados-detail-thumnail ">
             <ion-img class="avatar-img"
-              src="{{egresado.profilePicUrl || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
+              src="{{(egresado && egresado.profilePicUrl) || 'assets/img/profile/profile-icon.webp'}}"></ion-img>
           </ion-thumbnail>
         </ion-row>
         <ion-row class="ion-justify-content-center" style="margin-top: 15px;">

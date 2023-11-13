@@ -13,6 +13,7 @@ export interface Egresado {
   profilePicUrl?: string;
   about?: string;
   destacado?: boolean;
+  fueDestacado?: boolean;
   descripcionDestacado?: string;
   Activo?: boolean;
   // Nacionalidad

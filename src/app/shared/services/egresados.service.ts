@@ -78,8 +78,8 @@ export class EgresadosService {
     }
   }
 
-  updateEgresadoStatus(egresadoId: number, status: boolean): Observable<Egresado> {
-    return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresadoId}`, { Activo: status });
+  updateEgresadoStatus(egresadoId: number, update: Record<string, any>): Observable<Egresado> {
+    return this.http.patch<Egresado>(`${this.JSON_SERVER_URL}/egresado/${egresadoId}`, update);
   }
 
   filterEgresados(egresadosFilters: egresadosFilters, page?: number, q: any = undefined): Observable<Egresado[]> {

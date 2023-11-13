@@ -4,6 +4,8 @@ import { EgresadosService } from '../shared/services/egresados.service';
 import { Egresado } from '../shared/interfaces/egresado.interface';
 import { EgresadoDetailsPage } from '../egresado-details/egresado-details.page';
 import { egresadosFilters } from '../shared/interfaces/egresadosFilters.interface';
+import { RouterExtService } from '../shared/services/RouterExt.service';
+import { APP_ROUTES } from '../shared/constants';
 
 @Component({
   selector: 'app-egresados',
@@ -23,14 +25,23 @@ export class CandidatosDestacadosPage implements OnInit {
   constructor(
     private egresadosService: EgresadosService,
     private modalCtrl: ModalController,
+    private routerExtService: RouterExtService,
   ) {}
 
+  ionViewWillEnter() {
+    const previousUrl = this.routerExtService.getPreviousUrl();
+    if (previousUrl === APP_ROUTES.tabs.destacados) {
+      this.egresados = [];
+      this.loadEgresados();
+    }
+  }
+
   ngOnInit() {
-    this.loading = true;
     this.loadEgresados();
   }
 
   async loadEgresados() {
+    this.loading = true;
     this.egresadosService.getEgresadosCandidatos(this.pageNumber, this.searchQuery)
       .subscribe((egresados) => {
         this.egresados = egresados;
@@ -68,6 +79,7 @@ export class CandidatosDestacadosPage implements OnInit {
       component: EgresadoDetailsPage,
       componentProps: {
         egresadoId: egresadoId,
+        candidatosMode: true,
       }
     });
 
@@ -77,6 +89,10 @@ export class CandidatosDestacadosPage implements OnInit {
     
     if (role === 'confirm') {
       console.log('✨ Modal egresadoDetail closed. ->', data);
+
+      if (data) {
+        this.loadEgresados();
+      }
     } 
   }
 }

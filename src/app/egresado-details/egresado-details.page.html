@@ -63,42 +63,70 @@
             </ion-text>
           </ion-row>
         </ion-row>
+        <!-- Si el usuario es administrador puede ver esta sección -->
         <ion-row *ngIf="userIsAdmin" style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-10">
           <ion-row *ngIf="!egresado.Activo" style="width: 80%;" class="ion-justify-content-center ion-align-items-center padding-top-10 padding-bottom-10">
               <p style="color: #CE5A67">
                 Este egresado se encuentra desactivado, no será visible en la listas de egresado.
               </p>
           </ion-row>
-          <ion-row class="ion-justify-content-between" style="min-width: 170px;">
-            <ion-button expand="block" color="light" *ngIf="egresado.Activo" (click)="setEgresadoStatus(false)">
+          <ion-row class="ion-justify-content-center" style="min-width: 170px;">
+            <ion-button expand="block" color="light" *ngIf="egresado.Activo" (click)="toggleEgresadoActiveStatus(false)">
               Desactivar Perfil
               <ion-icon name="eye-off-outline" slot="end"></ion-icon>
             </ion-button>
-            <ion-button expand="block" color="light" *ngIf="!egresado.Activo" (click)="setEgresadoStatus(true)">
+            <ion-button expand="block" color="light" *ngIf="!egresado.Activo" (click)="toggleEgresadoActiveStatus(true)">
               Activar Perfil
               <ion-icon name="eye-outline" slot="end"></ion-icon>
             </ion-button>
-            <!-- <ion-text>
-              <span class="info-text-color egresados-list-egresado-direccion">
-                {{this.helperService.getAge(this.egresado.FechaNac)}} años
-              </span>
-            </ion-text>
-            <ion-text class="egresados-list-egresado-direccion info-text-width" *ngFor="let direccion of egresado.direccionEgresado">
-              <ion-row class="ion-align-items-center">
-                <ion-icon name="location-sharp"></ion-icon>
-                <span *ngIf="direccion">
-                  {{direccion.provincia}}
-                </span>
-              </ion-row>
-            </ion-text> -->
-            <!-- <ion-text class="egresados-list-egresado-direccion info-text-width" *ngIf="egresado.direccionEgresado && egresado.direccionEgresado.length === 0">
-              <ion-row class="ion-align-items-center">
-                <ion-icon name="location-sharp"></ion-icon>
-                <span>
-                 Sin especificar
-                </span>
-              </ion-row>
-            </ion-text> -->
+
+            <!-- Descripción de por qué el egresado es destacado -->
+            <ng-container>
+              <ion-button expand="block" color="light" *ngIf="!egresado.destacado && !marcarDestacadoMode && !egresado.fueDestacado" (click)="toggleMarcarDestacadoMode(true)">
+                Marcar como Destacado
+                <ion-icon name="star" class="destacado-color" slot="end"></ion-icon>
+              </ion-button>
+              <ion-button expand="block" color="light" *ngIf="egresado.destacado" (click)="desmarcarDestacadoConfirmation()">
+                Remover de Destacados
+                <ion-icon name="star-outline" class="destacado-color" slot="end"></ion-icon>
+              </ion-button>
+            
+              <ion-card [ngStyle]="{'--ion-background-color': '#fff' }" *ngIf="marcarDestacadoMode">
+                <ion-card-content> 
+                  <form
+                    class="ion-margin"
+                    [formGroup]="marcarDestacadoForm">
+                    <ion-row>
+                      <ion-textarea
+                        style="min-height: 150px;"
+                        type="text"
+                        fill="solid"
+                        label="Descripción Destacado"
+                        labelPlacement="floating"
+                        helperText="Ingresa una Descripción de Destacado"
+                        errorText="Información Inválida"
+                        formControlName="descripcionDestacado"
+                        [maxlength]="descripcionDestacadoLength"
+                        (keyup)="onDescripcionDestacadoKeyUp($event)">
+                      </ion-textarea>
+                      <div style="display: flex; flex-direction: column; justify-content: end; width: 100%;">
+                        <span class="muted contador-de-letras">{{contador}} / {{descripcionDestacadoLength}}</span>
+                      </div>
+                    </ion-row>
+                    <ion-row class="ion-justify-content-center" style="margin-top: 10px;">
+                      <ion-button color="light" class="ion-text-wrap" (click)="toggleMarcarDestacadoMode()">
+                        Cancelar
+                      </ion-button>
+                      <ion-button color="light" class="ion-text-wrap" (click)="marcarComoDestacado()">
+                        Aceptar
+                        <ion-icon name="star" class="destacado-color" slot="end"></ion-icon>
+                      </ion-button>
+                    </ion-row>
+                  </form>
+                </ion-card-content>
+              </ion-card>
+            </ng-container>
+
           </ion-row>
         </ion-row>
         <ion-row *ngIf="egresado.destacado" style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-15">
@@ -110,7 +138,7 @@
     </ion-grid>
 
     <!-- Card Destacado -->
-    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null" *ngIf="egresado.destacado">
+    <ion-card [ngStyle]="egresado.destacado ? { '--ion-background-color': '#fff' } : null" *ngIf="egresado.destacado && !marcarDestacadoMode">
       <ion-card-header>
         <ion-card-title class="title-color">
           <div style="display: flex; flex-direction: row; align-items: center;">
@@ -119,7 +147,16 @@
           </div>
         </ion-card-title>
       </ion-card-header>
-      <ion-card-content> {{egresado.descripcionDestacado}} </ion-card-content>
+      <ion-card-content> 
+        {{egresado.descripcionDestacado}}
+
+        <ion-row style="width: 100; margin-top: 5px;" class="ion-justify-content-center">
+          <ion-button color="light" *ngIf="userIsAdmin" (click)="toggleMarcarDestacadoMode()">
+            Editar Descripción
+            <ion-icon name="create-outline"  class="destacado-color"></ion-icon>
+          </ion-button>
+        </ion-row>
+      </ion-card-content>
     </ion-card>
    
     <!--Card About-->
