@@ -57,8 +57,8 @@ export class ResetPage implements OnInit {
           .setNewPassword(this.token, this.password.value)
           .subscribe(
             (response) => {
-              this.loading = false;
               this.navCtrl.navigateRoot('/tabs/login');
+              this.loading = false;
               return;
             },
             (error) => {
