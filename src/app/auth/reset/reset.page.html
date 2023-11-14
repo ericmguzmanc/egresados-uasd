@@ -21,15 +21,34 @@
   
   <!--form-->
   <form [formGroup]="formReset">
-    <ion-input type="Password" label="Nueva contraseña" labelPlacement="floating" fill="solid" name="password"
-      placeholder="Escribe Tu nueva contraseña" errorText="La contraseña es requerida"
+    <ion-input 
+      type="Password" 
+      label="Nueva contraseña" 
+      labelPlacement="floating" 
+      fill="solid" 
+      name="password"
+      placeholder="Escribe Tu nueva contraseña" 
+      errorText="La contraseña no es válida"
       formControlName="password"></ion-input>
-
-    <ion-input type="Password" label="Confirmar contraseña" labelPlacement="floating" fill="solid"
-      name="confirmPassword" placeholder="Confirma Tu nueva contraseña" errorText="La contraseña es requerida"
+    <br />
+    <ion-input 
+      type="Password" 
+      label="Confirmar contraseña" 
+      labelPlacement="floating" 
+      fill="solid" 
+      name="confirmPassword"
+      placeholder="Confirma Tu nueva contraseña" 
+      errorText="La contraseña válida"
       formControlName="confirmPassword"></ion-input>
+      <ion-text style="opacity: 50%;">
+        La nueva contraseña debe tener al menos 6 caractéres.
+      </ion-text>
+    <br />
+    <br />
     <ion-text color="danger" *ngIf="message">
       {{message}}
+      <br />
+      <br />
     </ion-text>
     <ion-button expand="block" color="primary" (click)="resetPassword()" [disabled]="loading">Cambiar contraseña</ion-button>
   </form>

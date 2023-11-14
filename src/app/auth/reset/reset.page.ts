@@ -28,7 +28,6 @@ export class ResetPage implements OnInit {
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private route: Router,
     private navCtrl: NavController
   ) {}
 
@@ -67,11 +66,8 @@ export class ResetPage implements OnInit {
             }
           );
         console.log(this.formReset.value);
-        this.message = 'Contraseña actualizada';
+        // this.message = 'Contraseña actualizada';
       }
-    } else {
-      console.log('Formulario inválido');
-      this.message = 'COMPLETE LOS CAMPOS';
     }
     this.loading = false;
   }

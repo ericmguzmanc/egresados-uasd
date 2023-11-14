@@ -18,10 +18,18 @@
     {
       "id": 3,
       "email": "example2@example.com",
-      "password": "password2",
+      "password": "SecambioElpassword2",
       "username": "user2",
       "egresadoId": 2,
       "roleId": 2
+    },
+    {
+      "id": 4,
+      "email": "theericguzman@gmail.com",
+      "password": "eric321",
+      "username": "100446184",
+      "egresadoId": 9,
+      "roleId": 1
     }
   ],
   "rolUsuario": [
@@ -42,6 +50,12 @@
       "usuarioId": 1,
       "roleId": 2,
       "rol": "ADMINISTRADOR"
+    },
+    {
+      "id": 4,
+      "usuarioId": 4,
+      "roleId": 1,
+      "rol": "EGRESADO"
     }
   ],
   "roles": [
@@ -84,7 +98,8 @@
       "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1698886157/egresados-uasd/profilePics/egresado-id-2.jpg",
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
-      "destacado": true
+      "destacado": true,
+      "descripcionDestacado": "Inició su carrera en campos de la energía luego de graduarse del INTEC con la Ingeniería Industrial. Sus funciones en Eaton Electrical se expandieron a la producción, el diseño y la manufactura. Más tarde se unió a Nestlé"
     },
     {
       "id": 3,
@@ -98,7 +113,10 @@
       "Genero": "Femenino",
       "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697662119/egresados-uasd/profilePics/egresado-id-3.jpg",
-      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
+      "destacado": false,
+      "fueDestacado": false,
+      "descripcionDestacado": ""
     },
     {
       "id": 4,
@@ -126,7 +144,10 @@
       "Genero": "Masculino",
       "Activo": true,
       "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1697658989/egresados-uasd/profilePics/egresado-id-5.jpg",
-      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
+      "destacado": false,
+      "fueDestacado": false,
+      "descripcionDestacado": ""
     },
     {
       "id": 6,
@@ -154,7 +175,10 @@
       "Genero": "Femenino",
       "profilePicUrl": null,
       "Activo": true,
-      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
+      "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!",
+      "destacado": false,
+      "fueDestacado": false,
+      "descripcionDestacado": ""
     },
     {
       "id": 8,
@@ -173,14 +197,14 @@
     {
       "id": 9,
       "PrimerNombre": "John",
-      "SegundoNombre": "",
+      "SegundoNombre": "Van",
       "SegundoApellido": "Reyes",
       "PrimerApellido": "Sanchez",
       "Cedula": "40217733228",
       "Pasaporte": null,
       "FechaNac": "1993-06-16",
       "Genero": "Masculino",
-      "profilePicUrl": null,
+      "profilePicUrl": "http://res.cloudinary.com/egcss/image/upload/v1699917638/egresados-uasd/profilePics/egresado-id-9.webp",
       "Activo": false,
       "about": "Soy un ingeniero de software apasionado por el desarrollo de aplicaciones y la creación de soluciones innovadoras. Me encanta trabajar en equipo y enfrentar desafíos técnicos. Siempre estoy aprendiendo nuevas tecnologías y buscando formas de mejorar mis habilidades. ¡Estoy emocionado de crear productos que tengan un impacto positivo en la vida de las personas!"
     },
@@ -293,7 +317,10 @@
       "Genero": "Masculino",
       "Activo": true,
       "profilePicUrl": null,
-      "about": ""
+      "about": "",
+      "descripcionDestacado": "",
+      "destacado": false,
+      "fueDestacado": false
     }
   ],
   "experienciaLaboralEgresado": [
@@ -464,7 +491,7 @@
       "empresa": "Testing ",
       "salario": null,
       "FechaEntr": "2022-11-11",
-      "FechaSal": "1969-12-31",
+      "FechaSal": "2023-12-31",
       "id": 21
     },
     {
@@ -484,6 +511,15 @@
       "FechaEntr": "2020-11-1",
       "FechaSal": "1969-12-31",
       "id": 23
+    },
+    {
+      "egresadoId": 9,
+      "posicion": "Angular Developer",
+      "empresa": "ABC",
+      "salario": null,
+      "FechaEntr": "2019-11-1",
+      "FechaSal": null,
+      "id": 24
     }
   ],
   "contacto": [
@@ -552,6 +588,12 @@
       "tipo": "CELULAR",
       "valor": 8296545220,
       "id": 13
+    },
+    {
+      "egresadoId": 9,
+      "tipo": "TRABAJO",
+      "valor": "809-448-3983",
+      "id": 14
     }
   ],
   "educacion": [
@@ -775,13 +817,13 @@
       "id": 9
     },
     {
-      "egresadoId": 7,
-      "Universidad": "Altos de Chavón",
-      "FechaEntr": "2023-11-1",
-      "FechaSal": "2023-11-11",
-      "carreraId": 14,
-      "Titulo": "Artes Plásticas",
-      "TipoTitulo": "Certificado",
+      "egresadoId": 9,
+      "Universidad": "INTEC",
+      "FechaEntr": "2020-11-1",
+      "FechaSal": "2021-11-1",
+      "carreraId": 109,
+      "Titulo": "Teatro",
+      "TipoTitulo": "Técnico",
       "id": 10
     }
   ],
@@ -1601,6 +1643,18 @@
       "idiomaId": 30,
       "egresadoId": 7,
       "id": 13
+    },
+    {
+      "idioma": "Español",
+      "idiomaId": 2,
+      "egresadoId": 9,
+      "id": 14
+    },
+    {
+      "idioma": "Inglés",
+      "idiomaId": 1,
+      "egresadoId": 9,
+      "id": 15
     }
   ],
   "educacion_deprecated": [
@@ -1664,7 +1718,7 @@
     },
     {
       "provincia": "Santo Domingo",
-      "provinciaId": 32,
+      "provinciaId": 10,
       "egresadoId": 9,
       "id": 10
     },
@@ -2215,6 +2269,18 @@
       "habilidadId": 30,
       "egresadoId": 7,
       "id": 37
+    },
+    {
+      "habilidad": "Angular",
+      "habilidadId": 13,
+      "egresadoId": 9,
+      "id": 38
+    },
+    {
+      "habilidad": "React",
+      "habilidadId": 14,
+      "egresadoId": 9,
+      "id": 39
     }
   ],
   "habilidades": [
