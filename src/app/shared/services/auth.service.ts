@@ -49,8 +49,6 @@ export class AuthService {
     return this.http.put(`${this.EXPRESS_SERVER_URL}/auth/update-password`, {email});
   }
 
-  // ...
-
   setNewPassword(token: string, password: string): Observable<any> {
     const headers = new HttpHeaders().set('reset', `${token}`);
     return this.http.put(`${this.EXPRESS_SERVER_URL}/auth/reset-password`, { password }, { headers });

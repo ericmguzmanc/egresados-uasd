@@ -25,7 +25,6 @@ export class ResetPasswordPage implements OnInit {
 
 
   resetPassword() {
-
     this.authService.getResetPasswordToken(this.resetPasswordForm.value.email).subscribe((response: any) => {
       this.message = response.message;
     });
