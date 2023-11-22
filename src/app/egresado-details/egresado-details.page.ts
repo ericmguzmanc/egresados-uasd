@@ -85,7 +85,7 @@ export class EgresadoDetailsPage implements OnInit {
     const egresadoUpdate = {
       destacado: status,
       fueDestacado: true,
-      descripcionDestacado: this.marcarDestacadoForm.get('descripcionDestacado').value
+      descripcionDestacado: status ? this.marcarDestacadoForm.get('descripcionDestacado').value : ""
     }
 
     this.egresadoService.updateEgresadoStatus(this.egresadoId, egresadoUpdate)
