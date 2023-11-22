@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 /**
  * Componente para la página de restablecimiento de contraseña.
@@ -14,19 +15,36 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class ResetPasswordPage implements OnInit {
   message: string = '';
+  showSuccessMsg: boolean = false;
+
   resetPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private toastCtrl: ToastController,
+  ) {}
 
   ngOnInit() {
   }
 
 
   resetPassword() {
-    this.authService.getResetPasswordToken(this.resetPasswordForm.value.email).subscribe((response: any) => {
+    this.authService.getResetPasswordToken(this.resetPasswordForm.value.email).subscribe( async (response: any) => {
       this.message = response.message;
+
+      if (response.code === '000') {
+        this.showSuccessMsg = true;
+      }
+
+      const toast = await this.toastCtrl.create({
+        message: `${this.message}`,
+        duration: 1500,
+        position: 'top',
+      });
+  
+      await toast.present();
     });
   }
 }
