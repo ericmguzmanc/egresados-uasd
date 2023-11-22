@@ -41,8 +41,8 @@
         <ion-row style="width: 100%;" class="ion-justify-content-center ion-align-items-center padding-top-10">
           <ion-row class="ion-justify-content-between" style="min-width: 170px;">
             <ion-text>
-              <span class="info-text-color egresados-list-egresado-direccion">
-                {{this.helperService.getAge(this.egresado.FechaNac)}} años
+              <span class="info-text-color egresados-list-egresado-direccion" style="margin-right: 5px;">
+                {{this.helperService.getExperiencia(this.egresado)}}
               </span>
             </ion-text>
             <ion-text class="egresados-list-egresado-direccion info-text-width" *ngFor="let direccion of egresado.direccionEgresado">
@@ -82,7 +82,7 @@
 
             <!-- Descripción de por qué el egresado es destacado -->
             <ng-container>
-              <ion-button expand="block" color="light" *ngIf="!egresado.destacado && !marcarDestacadoMode && !egresado.fueDestacado" (click)="toggleMarcarDestacadoMode(true)">
+              <ion-button expand="block" color="light" *ngIf="!egresado.destacado && !marcarDestacadoMode && candidatosMode  && !egresado.fueDestacado" (click)="toggleMarcarDestacadoMode(true)">
                 Marcar como Destacado
                 <ion-icon name="star" class="destacado-color" slot="end"></ion-icon>
               </ion-button>

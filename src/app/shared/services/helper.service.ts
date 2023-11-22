@@ -19,6 +19,28 @@ export class HelperService {
     return latestPosition ? latestPosition?.posicion : "Sin Experiencia Laboral";
   }
 
+  getExperiencia(egresado: Egresado): string {
+    let experiencia = 0
+    const { experienciaLaboralEgresado } = egresado;
+
+    if (experienciaLaboralEgresado.length === 0) {
+      return 'Sin experiencia';
+    }
+
+    const fechaMenor = new Date(experienciaLaboralEgresado[experienciaLaboralEgresado.length - 1].FechaEntr);
+    
+    let fechaMayor;
+    if (!experienciaLaboralEgresado[0].FechaSal) {
+      fechaMayor = new Date();
+    } else {
+      fechaMayor = new Date(experienciaLaboralEgresado[0].FechaSal);
+    }
+
+    experiencia =Math.abs(fechaMayor.getFullYear() - fechaMenor.getFullYear());
+    
+    return `${experiencia} de experiencia`;
+  }
+
   getTipoTituloEgresado(egresado: Egresado): string | undefined {
      const{educacion} = egresado;
      const titulo = educacion?.filter(ed => ed.TipoTitulo )[0];
