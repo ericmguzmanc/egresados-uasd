@@ -30,6 +30,14 @@
       "username": "100446184",
       "egresadoId": 9,
       "roleId": 1
+    },
+    {
+      "id": 5,
+      "email": "securejmb@gmail.com",
+      "password": "eric123321",
+      "username": "100446133",
+      "egresadoId": 10,
+      "roleId": 1
     }
   ],
   "rolUsuario": [
@@ -56,6 +64,12 @@
       "usuarioId": 4,
       "roleId": 1,
       "rol": "EGRESADO"
+    },
+    {
+      "id": 5,
+      "usuarioId": 5,
+      "roleId": 2,
+      "rol": "ADMINISTRADOR"
     }
   ],
   "roles": [
@@ -1752,7 +1766,7 @@
     },
     {
       "provincia": "Santo Domingo",
-      "provinciaId": 10,
+      "provinciaId": 32,
       "egresadoId": 9,
       "id": 10
     },
